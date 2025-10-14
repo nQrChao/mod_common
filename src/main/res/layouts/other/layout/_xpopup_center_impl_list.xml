@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:paddingHorizontal="@dimen/idp_18"
+        android:paddingVertical="@dimen/idp_14"
+        android:textColor="@color/_xpopup_title_color"
+        android:textSize="@dimen/isp_16"
+        android:textStyle="bold" />
+
+    <include layout="@layout/_xpopup_divider" />
+
+    <com.chaoji.other.xpopup.widget.VerticalRecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/idp_4"
+        android:orientation="vertical"
+        android:overScrollMode="never" />
+</LinearLayout>

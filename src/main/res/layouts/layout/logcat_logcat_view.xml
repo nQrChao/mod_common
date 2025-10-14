@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_log_root"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_dialog"
+    android:orientation="horizontal">
+
+    <Button
+        android:id="@+id/testBtn"
+        android:layout_width="@dimen/idp_20"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/idp_5"
+        android:background="@color/red"
+        android:ems="1"
+        android:gravity="center"
+        android:lines="5"
+        android:maxEms="1"
+        android:text="日志"
+        android:textColor="@color/black95"
+        android:textSize="@dimen/isp_10"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:id="@+id/ll_log_info"
+        android:layout_width="@dimen/idp_260"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/idp_5"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/ll_log_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:background="@color/logcat_window_background_color"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:weightSum="10"
+            app:layout_scrollFlags="scroll|enterAlways|snap">
+
+            <CheckBox
+                android:id="@+id/cb_log_switch"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/idp_5"
+                android:layout_weight="1"
+                android:button="@drawable/logcat_bg_log_check"
+                android:checked="false" />
+
+            <ImageView
+                android:id="@+id/iv_log_save"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/idp_5"
+                android:layout_weight="1"
+                android:src="@drawable/logcat_ic_save" />
+
+            <LinearLayout
+                android:id="@+id/ll_log_level"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/idp_5"
+                android:layout_weight="6"
+                android:background="@drawable/logcat_bg_log_frame"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingVertical="@dimen/idp_5">
+
+                <ImageView
+                    android:layout_width="@dimen/idp_15"
+                    android:layout_height="@dimen/idp_15"
+                    android:layout_marginStart="@dimen/idp_10"
+                    android:src="@drawable/logcat_ic_filter" />
+
+                <TextView
+                    android:id="@+id/tv_log_level"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/idp_10"
+                    android:text="Verbose"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/isp_12" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/iv_log_logcat_clear"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/idp_5"
+                android:layout_weight="1"
+                android:src="@drawable/logcat_ic_clear" />
+
+            <ImageView
+                android:id="@+id/iv_log_logcat_hide"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/idp_5"
+                android:layout_weight="1"
+                android:rotation="180"
+                android:src="@drawable/logcat_ic_down" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/lv_log_logcat_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_log_bar"
+            android:layout_marginVertical="@dimen/idp_15"
+            android:background="#2b2b2b"
+            android:dividerHeight="0px"
+            android:scrollbarSize="@dimen/idp_1"
+            android:scrollbarThumbVertical="@color/logcat_scrollbar_thumb_color"
+            android:scrollbars="vertical"
+            android:verticalScrollbarPosition="left"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            tools:listitem="@layout/logcat_item_logcat" />
+
+        <ImageButton
+            android:id="@+id/ib_log_logcat_down"
+            android:layout_width="@dimen/idp_40"
+            android:layout_height="@dimen/idp_40"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="end|bottom"
+            android:layout_margin="@dimen/idp_10"
+            android:background="@drawable/logcat_bg_log_roll"
+            android:src="@drawable/logcat_ic_down"
+            android:translationZ="@dimen/idp_5"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,1755 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 按照比例显示的 FrameLayout -->
+    <declare-styleable name="RatioFrameLayout">
+        <!-- 宽高比例 -->
+        <attr name="sizeRatio" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="AvatarImage">
+        <attr name="TSize" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="PersonCommonView">
+        <attr name="selectMaxSize" format="integer" />
+    </declare-styleable>
+
+    <!-- 缩放的 ImageView -->
+    <declare-styleable name="ScaleImageView">
+        <!-- 缩放比例 -->
+        <attr name="scaleRatio" format="float" />
+    </declare-styleable>
+
+    <declare-styleable name="TitleBar">
+        <!-- 标题栏背景 -->
+        <attr name="android:background" />
+        <!-- 标题栏样式 -->
+        <attr name="barStyle">
+            <enum name="light" value="0x10" />
+            <enum name="night" value="0x20" />
+            <enum name="transparent" value="0x30" />
+            <enum name="ripple" value="0x40" />
+        </attr>
+
+        <!-- 子控件垂直内间距（可用于调整标题栏自适应的高度） -->
+        <attr name="childVerticalPadding" format="dimension" />
+
+        <!-- 中间标题 -->
+        <attr name="title" format="string" />
+        <attr name="titleColor" format="reference|color" />
+        <attr name="titleSize" format="dimension" />
+        <attr name="titleGravity">
+            <flag name="left" value="0x03" />
+            <flag name="right" value="0x05" />
+            <flag name="center" value="0x11" />
+            <flag name="start" value="0x00800003" />
+            <flag name="end" value="0x00800005" />
+        </attr>
+        <attr name="titleStyle">
+            <flag name="normal" value="0" />
+            <flag name="bold" value="1" />
+            <flag name="italic" value="2" />
+        </attr>
+        <attr name="titleIcon" format="reference" />
+        <attr name="titleIconWidth" format="dimension" />
+        <attr name="titleIconHeight" format="dimension" />
+        <attr name="titleIconPadding" format="dimension" />
+        <attr name="titleIconTint" format="color" />
+        <attr name="titleIconGravity">
+            <flag name="top" value="0x30" />
+            <flag name="bottom" value="0x50" />
+            <flag name="left" value="0x03" />
+            <flag name="right" value="0x05" />
+            <flag name="start" value="0x00800003" />
+            <flag name="end" value="0x00800005" />
+        </attr>
+        <attr name="titleHorizontalPadding" format="dimension" />
+        <!-- 中间标题文本溢出处理模式（默认开启跑马灯） -->
+        <attr name="titleOverflowMode">
+            <enum name="none" value="0" />
+            <enum name="start" value="1" />
+            <enum name="middle" value="2" />
+            <enum name="end" value="3" />
+            <enum name="marquee" value="4" />
+        </attr>
+
+        <!-- 左标题 -->
+        <attr name="leftTitle" format="string" />
+        <attr name="leftTitleColor" format="reference|color" />
+        <attr name="leftTitleSize" format="dimension" />
+        <attr name="leftTitleStyle">
+            <flag name="normal" value="0" />
+            <flag name="bold" value="1" />
+            <flag name="italic" value="2" />
+        </attr>
+        <attr name="leftIcon" format="reference" />
+        <attr name="leftIconWidth" format="dimension" />
+        <attr name="leftIconHeight" format="dimension" />
+        <attr name="leftIconPadding" format="dimension" />
+        <attr name="leftIconTint" format="color" />
+        <attr name="leftIconGravity">
+            <flag name="top" value="0x30" />
+            <flag name="bottom" value="0x50" />
+            <flag name="left" value="0x03" />
+            <flag name="right" value="0x05" />
+            <flag name="start" value="0x00800003" />
+            <flag name="end" value="0x00800005" />
+        </attr>
+        <attr name="leftBackground" format="reference|color" />
+        <attr name="leftForeground" format="reference|color" />
+        <attr name="leftHorizontalPadding" format="dimension" />
+        <!-- 左边标题文本溢出处理模式 -->
+        <attr name="leftTitleOverflowMode">
+            <enum name="none" value="0" />
+            <enum name="start" value="1" />
+            <enum name="middle" value="2" />
+            <enum name="end" value="3" />
+            <enum name="marquee" value="4" />
+        </attr>
+
+        <!-- 右标题 -->
+        <attr name="rightTitle" format="string" localization="suggested"  />
+        <attr name="rightTitleColor" format="reference|color" />
+        <attr name="rightTitleSize" format="dimension" />
+        <attr name="rightTitleStyle">
+            <flag name="normal" value="0" />
+            <flag name="bold" value="1" />
+            <flag name="italic" value="2" />
+        </attr>
+        <attr name="rightIcon" format="reference" />
+        <attr name="rightIconWidth" format="dimension" />
+        <attr name="rightIconHeight" format="dimension" />
+        <attr name="rightIconPadding" format="dimension" />
+        <attr name="rightIconTint" format="color" />
+        <attr name="rightIconGravity">
+            <flag name="top" value="0x30" />
+            <flag name="bottom" value="0x50" />
+            <flag name="left" value="0x03" />
+            <flag name="right" value="0x05" />
+            <flag name="start" value="0x00800003" />
+            <flag name="end" value="0x00800005" />
+        </attr>
+        <attr name="rightBackground" format="reference|color" />
+        <attr name="rightForeground" format="reference|color" />
+        <attr name="rightHorizontalPadding" format="dimension" />
+        <!-- 右边标题文本溢出处理模式 -->
+        <attr name="rightTitleOverflowMode">
+            <enum name="none" value="0" />
+            <enum name="start" value="1" />
+            <enum name="middle" value="2" />
+            <enum name="end" value="3" />
+            <enum name="marquee" value="4" />
+        </attr>
+
+        <!-- 分割线 -->
+        <attr name="lineVisible" format="boolean" />
+        <attr name="lineDrawable" format="reference|color" />
+        <attr name="lineSize" format="dimension" />
+
+    </declare-styleable>
+    <!-- 仿 ios 开关按钮 -->
+    <declare-styleable name="SwitchButton">
+        <!-- 是否选中 -->
+        <attr name="android:checked" />
+        <!-- 是否禁用 -->
+        <attr name="android:enabled" />
+    </declare-styleable>
+
+    <!-- 支持限定 Drawable 大小的 TextView -->
+    <declare-styleable name="DrawableTextView">
+        <!-- Drawable 宽度 -->
+        <attr name="drawableWidth" format="dimension" />
+        <!-- Drawable 高度 -->
+        <attr name="drawableHeight" format="dimension" />
+    </declare-styleable>
+
+    <!-- 设置栏 -->
+    <declare-styleable name="SettingBar">
+
+        <attr name="bar_paddingHorizontal" format="dimension" />
+        <attr name="bar_paddingVertical" format="dimension" />
+        <!-- 左边 -->
+        <attr name="bar_leftText" format="string" />
+        <attr name="bar_leftTextColor" format="color" />
+        <attr name="bar_leftTextStyle">
+            <flag name="normal" value="0" />
+            <flag name="bold" value="1" />
+            <flag name="italic" value="2" />
+        </attr>
+        <attr name="bar_leftTextSize" format="dimension" />
+        <attr name="bar_leftTextHint" format="string" />
+        <attr name="bar_leftDrawable" format="reference" />
+        <attr name="bar_leftDrawablePadding" format="dimension" />
+        <attr name="bar_leftDrawableSize" format="dimension" />
+        <attr name="bar_leftDrawableTint" format="color" />
+        <!-- 右边 -->
+        <attr name="bar_rightText" format="string" />
+        <attr name="bar_rightTextColor" format="color" />
+        <attr name="bar_rightTextSize" format="dimension" />
+        <attr name="bar_rightTextStyle">
+            <flag name="normal" value="0" />
+            <flag name="bold" value="1" />
+            <flag name="italic" value="2" />
+        </attr>
+        <attr name="bar_rightTextHint" format="string" />
+        <attr name="bar_rightDrawable" format="reference" />
+        <attr name="bar_rightDrawablePadding" format="dimension" />
+        <attr name="bar_rightDrawableSize" format="dimension" />
+        <attr name="bar_rightDrawableTint" format="color" />
+        <!-- 分割线 -->
+        <attr name="bar_lineVisible" format="boolean" />
+        <attr name="bar_lineDrawable" format="reference|color" />
+        <attr name="bar_lineSize" format="dimension" />
+        <attr name="bar_lineMargin" format="dimension" />
+    </declare-styleable>
+
+
+    <declare-styleable name="customize">
+        <attr name="android:clickable" />
+        <attr name="android:hint" />
+        <attr name="android:radius" />
+        <attr name="isClear" format="boolean" />
+    </declare-styleable>
+
+
+    <declare-styleable name="CodeEditText">
+        <attr name="strokeLength" format="integer" />
+        <attr name="strokeWidth" format="dimension" />
+        <attr name="strokeHeight" format="dimension" />
+        <attr name="strokePadding" format="dimension" />
+        <attr name="strokeBackground" format="reference" />
+    </declare-styleable>
+
+
+    <declare-styleable name="SlideButton">
+        <attr name="sBackgroundColorOff" format="color|reference" />
+        <attr name="sBackgroundColorOn" format="color|reference" />
+        <attr name="sButtonColor" format="color|reference" />
+        <attr name="sMargin" format="dimension|reference" />
+    </declare-styleable>
+
+    <declare-styleable name="AVLoadingIndicatorView">
+        <attr name="minWidth" format="dimension" />
+        <attr name="maxWidth" format="dimension" />
+        <attr name="minHeight" format="dimension" />
+        <attr name="maxHeight" format="dimension" />
+        <attr name="indicatorName" format="string" />
+        <attr name="indicatorColor" format="color" />
+    </declare-styleable>
+
+
+    <declare-styleable name="RichTextEditor">
+        <attr name="rt_editor_image_height" format="integer" />
+        <attr name="rt_editor_image_bottom" format="integer" />
+        <attr name="rt_editor_text_init_hint" format="string" />
+        <attr name="rt_editor_text_size" format="dimension" />
+        <attr name="rt_editor_text_color" format="color" />
+        <attr name="rt_editor_text_line_space" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="RichTextView">
+        <attr name="rt_view_image_height" format="integer" />
+        <attr name="rt_view_image_bottom" format="integer" />
+        <attr name="rt_view_text_init_hint" format="string" />
+        <attr name="rt_view_text_size" format="dimension" />
+        <attr name="rt_view_text_color" format="color" />
+        <attr name="rt_view_text_line_space" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="RoundImageView">
+        <!-- 描边宽度-->
+        <attr name="border_width" format="dimension" />
+        <!-- 描边颜色-->
+        <attr name="border_color" format="color" />
+        <!--圆角大小-->
+        <attr name="corner_radius" format="dimension" />
+        <!--左上圆角大小-->
+        <attr name="leftTop_corner_radius" format="dimension" />
+        <!--右上圆角大小-->
+        <attr name="rightTop_corner_radius" format="dimension" />
+        <!--左下圆角大小-->
+        <attr name="leftBottom_corner_radius" format="dimension" />
+        <!--右下圆角大小-->
+        <attr name="rightBottom_corner_radius" format="dimension" />
+        <!--图片类型：圆角或者圆形-->
+        <attr name="rType" format="enum">
+            <enum name="oval" value="2" />
+            <enum name="round" value="1" />
+            <enum name="circle" value="0" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="MaterialHeaderIm">
+        <attr name="mhPrimaryColorIm" format="color" />
+        <attr name="mhShadowColorIm" format="color" />
+        <attr name="mhShadowRadiusIm" format="dimension" />
+        <attr name="mhShowBezierWaveIm" format="boolean" />
+        <attr name="mhScrollableWhenRefreshingIm" format="boolean" />
+
+        <attr name="srlPrimaryColorIm" format="color" />
+        <attr name="srlShadowColorIm" format="color" />
+        <attr name="srlShadowRadiusIm" format="dimension" />
+        <attr name="srlShowBezierWaveIm" format="boolean" />
+        <attr name="srlScrollableWhenRefreshingIm" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="FontResizeView">
+        <attr name="minSize" format="reference|dimension" /> <!--最小size-->
+        <attr name="maxSize" format="reference|dimension" /> <!--最大size-->
+        <attr name="totalGrade" format="integer" />   <!--可调整的等级、即总的等级-->
+        <attr name="standardGrade" format="integer" />  <!--标准等级-->
+
+        <attr name="leftText" format="reference|string" />  <!--左边文本，默认为 'A'-->
+        <attr name="middleText" format="reference|string" />  <!--中间文本，默认为 '标准'-->
+        <attr name="rightText" format="reference|string" />  <!--右边文本，默认为 'A'-->
+        <attr name="leftTextColor" format="reference|color" />  <!--左边文本颜色，默认为全黑-->
+        <attr name="middleTextColor" format="reference|color" />  <!--中间文本颜色，默认为全黑-->
+        <attr name="rightTextColor" format="reference|color" />  <!--右边文本颜色，默认为全黑-->
+
+        <attr name="sliderRadius" format="reference|dimension" />  <!--滑块半径-->
+        <attr name="sliderColor" format="reference|color" />  <!--滑块颜色-->
+        <attr name="sliderShadowColor" format="reference|color" />  <!--滑块边缘阴影颜色-->
+
+        <attr name="lineColor" format="reference|color" />  <!--线条颜色-->
+        <attr name="lineStrokeWidth" format="reference|dimension" />  <!--线条宽度，即粗细程度-->
+        <attr name="horizontalLineLength" format="reference|dimension" />  <!--横向线条长度-->
+        <attr name="verticalLineLength" format="reference|dimension" />  <!--纵向线条长度-->
+
+    </declare-styleable>
+
+
+    <declare-styleable name="BaseCircleIndicator">
+        <attr name="ci_width" format="dimension"/>
+        <attr name="ci_height" format="dimension"/>
+        <attr name="ci_margin" format="dimension"/>
+        <attr name="ci_animator" format="reference"/>
+        <attr name="ci_animator_reverse" format="reference"/>
+        <attr name="ci_drawable" format="reference"/>
+        <attr name="ci_drawable_unselected" format="reference"/>
+
+        <attr name="ci_orientation" format="enum">
+            <!-- Defines an horizontal widget. -->
+            <enum name="horizontal" value="0"/>
+            <!-- Defines a vertical widget. -->
+            <enum name="vertical" value="1"/>
+        </attr>
+
+        <attr name="ci_gravity">
+            <!-- Push object to the top of its container, not changing its size. -->
+            <flag name="top" value="0x30"/>
+            <!-- Push object to the bottom of its container, not changing its size. -->
+            <flag name="bottom" value="0x50"/>
+            <!-- Push object to the left of its container, not changing its size. -->
+            <flag name="left" value="0x03"/>
+            <!-- Push object to the right of its container, not changing its size. -->
+            <flag name="right" value="0x05"/>
+            <!-- Place object in the vertical center of its container, not changing its size. -->
+            <flag name="center_vertical" value="0x10"/>
+            <!-- Grow the vertical size of the object if needed so it completely fills its container. -->
+            <flag name="fill_vertical" value="0x70"/>
+            <!-- Place object in the horizontal center of its container, not changing its size. -->
+            <flag name="center_horizontal" value="0x01"/>
+            <!-- Grow the horizontal size of the object if needed so it completely fills its container. -->
+            <flag name="fill_horizontal" value="0x07"/>
+            <!-- Place the object in the center of its container in both the vertical and horizontal axis, not changing its size. -->
+            <flag name="center" value="0x11"/>
+            <!-- Grow the horizontal and vertical size of the object if needed so it completely fills its container. -->
+            <flag name="fill" value="0x77"/>
+            <!-- Additional option that can be set to have the top and/or bottom edges of
+            the child clipped to its container's bounds.
+            The clip will be based on the vertical gravity: a top gravity will clip the bottom
+            edge, a bottom gravity will clip the top edge, and neither will clip both edges. -->
+            <flag name="clip_vertical" value="0x80"/>
+            <!-- Additional option that can be set to have the left and/or right edges of
+            the child clipped to its container's bounds.
+            The clip will be based on the horizontal gravity: a left gravity will clip the right
+            edge, a right gravity will clip the left edge, and neither will clip both edges. -->
+            <flag name="clip_horizontal" value="0x08"/>
+            <!-- Push object to the beginning of its container, not changing its size. -->
+            <flag name="start" value="0x00800003"/>
+            <!-- Push object to the end of its container, not changing its size. -->
+            <flag name="end" value="0x00800005"/>
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="BottomBarItem">
+        <!--默认状态下的图标-->
+        <attr name="iconNormal" format="reference"/>
+        <!--选中状态下的图标-->
+        <attr name="iconSelected" format="reference"/>
+
+        <!--底部文字-->
+        <attr name="itemText" format="string"/>
+        <!--文字大小-->
+        <attr name="itemTextSize" format="dimension"/>
+        <!--文字加粗-->
+        <attr name="itemTextBold" format="boolean"/>
+        <!--默认状态下的文字颜色-->
+        <attr name="textColorNormal" format="color"/>
+        <!--选中状态下的文字颜色-->
+        <attr name="textColorSelected" format="color"/>
+
+        <!--文字和图标的顶部距离-->
+        <attr name="itemMarginTop" format="dimension"/>
+
+        <!--是否开启触摸背景效果-->
+        <attr name="openTouchBg" format="boolean"/>
+        <!--设置触摸背景-->
+        <attr name="touchDrawable" format="reference"/>
+
+        <!--设置图标的宽度-->
+        <attr name="iconWidth" format="dimension"/>
+        <!--设置图标的高度-->
+        <attr name="iconHeight" format="dimension"/>
+
+        <!--设置BottomBarItem的padding-->
+        <attr name="itemPadding" format="dimension"/>
+
+        <!--设置未读数字体大小-->
+        <attr name="unreadTextSize" format="dimension"/>
+        <!--设置未读数字体颜色-->
+        <attr name="unreadTextColor" format="reference"/>
+        <!--设置未读数背景色-->
+        <attr name="unreadTextBg" format="reference"/>
+
+        <!--设置提示消息字体大小-->
+        <attr name="msgTextSize" format="dimension"/>
+        <!--设置提示消息字体颜色-->
+        <attr name="msgTextColor" format="reference"/>
+        <!--设置提示消息背景-->
+        <attr name="msgTextBg" format="reference"/>
+
+        <!--设置提示点背景-->
+        <attr name="notifyPointBg" format="reference"/>
+
+        <!--设置未读数组阈值 大于阈值的数字将显示为 n+ n为设置的阈值-->
+        <attr name="unreadThreshold" format="integer"/>
+
+        <!--lottie文件名-->
+        <attr name="lottieJson" format="string"/>
+    </declare-styleable>
+
+    <declare-styleable name="BottomBarLayout">
+        <attr name="smoothScroll" format="boolean"/>
+    </declare-styleable>
+
+    <attr name="antiAlias" format="boolean" />
+    <attr name="startAngle" format="float" />
+    <attr name="sweepAngle" format="float" />
+    <attr name="animTime" format="integer" />
+    <attr name="maxValue" format="float" />
+    <attr name="value" format="float" />
+    <attr name="unit" format="string|reference" />
+    <attr name="unitSize" format="dimension" />
+    <attr name="unitColor" format="color|reference" />
+    <attr name="hint" format="string|reference" />
+    <attr name="hintSize" format="dimension" />
+    <attr name="hintColor" format="color|reference" />
+    <attr name="precision" format="integer" />
+    <attr name="valueSize" format="dimension" />
+    <attr name="valueColor" format="color|reference" />
+    <attr name="arcColor1" format="color|reference" />
+    <attr name="arcColor2" format="color|reference" />
+    <attr name="arcColor3" format="color|reference" />
+    <attr name="bgArcColor" format="color|reference" />
+    <attr name="arcWidth" format="dimension" />
+    <attr name="arcColors" format="color|reference" />
+    <attr name="textOffsetPercentInRadius" format="float" />
+
+    <declare-styleable name="CircleProgressBar">
+        <attr name="antiAlias" />
+        <attr name="startAngle" />
+        <attr name="sweepAngle" />
+        <attr name="animTime" />
+        <attr name="maxValue" />
+        <attr name="value" />
+        <attr name="precision" />
+        <attr name="valueSize" />
+        <attr name="valueColor" />
+        <attr name="textOffsetPercentInRadius" />
+        <attr name="hint" />
+        <attr name="hintSize" />
+        <attr name="hintColor" />
+        <attr name="unit" />
+        <attr name="unitSize" />
+        <attr name="unitColor" />
+        <attr name="arcWidth" />
+        <attr name="arcColors" />
+        <attr name="bgArcColor" />
+        <attr name="bgArcWidth" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="DialProgress">
+        <attr name="antiAlias" />
+        <attr name="startAngle" />
+        <attr name="sweepAngle" />
+        <attr name="animTime" />
+        <attr name="maxValue" />
+        <attr name="value" />
+        <attr name="precision" />
+        <attr name="valueSize" />
+        <attr name="valueColor" />
+        <attr name="textOffsetPercentInRadius" />
+        <attr name="unit" />
+        <attr name="unitSize" />
+        <attr name="unitColor" />
+        <attr name="hint" />
+        <attr name="hintSize" />
+        <attr name="hintColor" />
+        <attr name="arcWidth" />
+        <attr name="dialWidth" format="dimension|reference" />
+        <attr name="dialIntervalDegree" format="integer" />
+        <attr name="arcColors" />
+        <attr name="bgArcColor" />
+        <attr name="dialColor" format="color|reference" />
+    </declare-styleable>
+
+    <declare-styleable name="WaveProgress">
+        <attr name="antiAlias" />
+        <attr name="darkWaveAnimTime" format="integer" />
+        <attr name="lightWaveAnimTime" format="integer" />
+        <attr name="maxValue" />
+        <attr name="value" />
+        <attr name="valueColor" />
+        <attr name="valueSize" />
+        <attr name="hint" />
+        <attr name="hintSize" />
+        <attr name="hintColor" />
+        <attr name="circleWidth" format="dimension" />
+        <attr name="circleColor" format="color|reference" />
+        <attr name="bgCircleColor" format="color|reference" />
+        <attr name="lockWave" format="boolean" />
+        <attr name="waveNum" format="integer" />
+        <attr name="waveHeight" format="dimension" />
+        <attr name="darkWaveColor" format="color|reference" />
+        <attr name="showLightWave" format="boolean" />
+        <attr name="lightWaveColor" format="color|reference" />
+        <attr name="lightWaveDirect" format="enum">
+            <enum name="L2R" value="0" />
+            <enum name="R2L" value="1" />
+        </attr>
+    </declare-styleable>
+
+
+    <declare-styleable name="ButtonBarContainerTheme">
+        <attr name="metaButtonBarStyle" format="reference" />
+        <attr name="metaButtonBarButtonStyle" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="PuzzleView">
+        <attr name="line_size" format="integer" />
+        <attr name="line_color" format="color" />
+        <attr name="selected_line_color" format="color" />
+        <attr name="handle_bar_color" format="color" />
+        <attr name="need_draw_line" format="boolean" />
+        <attr name="need_draw_outer_line" format="boolean" />
+        <attr name="piece_padding" format="dimension" />
+        <attr name="animation_duration" format="integer" />
+        <attr name="radian" format="float" />
+    </declare-styleable>
+
+    <declare-styleable name="SubsamplingScaleImageView">
+        <attr name="src" format="reference"/>
+        <attr name="assetName" format="string"/>
+        <attr name="panEnabled" format="boolean"/>
+        <attr name="zoomEnabled" format="boolean"/>
+        <attr name="quickScaleEnabled" format="boolean"/>
+        <attr name="tileBackgroundColor" format="color"/>
+    </declare-styleable>
+
+    <attr name="srlStyle" format="reference"/><!--样式-->
+
+    <attr name="srlDrawableSize" format="dimension"/><!--图片尺寸-->
+    <attr name="srlDrawableArrowSize" format="dimension"/><!--箭头图片尺寸-->
+    <attr name="srlDrawableProgressSize" format="dimension"/><!--箭头图片尺寸-->
+    <attr name="srlDrawableMarginRight" format="dimension"/><!--图片和文字的间距-->
+    <attr name="srlTextSizeTitle" format="dimension"/><!--标题字体-->
+    <attr name="srlTextSizeTime" format="dimension"/><!--时间字体-->
+    <attr name="srlFinishDuration" format="integer"/><!--完成时停留时间-->
+    <attr name="srlPrimaryColor" format="color"/><!--主要颜色-->
+    <attr name="srlAccentColor" format="color"/><!--强调颜色-->
+    <attr name="srlDrawableArrow" format="reference"/><!--箭头图片-->
+    <attr name="srlDrawableProgress" format="reference"/><!--转动图片-->
+    <attr name="srlEnableHorizontalDrag" format="boolean"/><!--支持水平拖动-->
+
+    <attr name="srlTextPulling" format="string"/>
+    <attr name="srlTextLoading" format="string"/>
+    <attr name="srlTextRelease" format="string"/>
+    <attr name="srlTextFinish" format="string"/>
+    <attr name="srlTextFailed" format="string"/>
+    <attr name="srlTextUpdate" format="string"/>
+    <attr name="srlTextSecondary" format="string"/>
+    <attr name="srlTextRefreshing" format="string"/>
+    <attr name="srlTextNothing" format="string" />
+
+    <attr name="srlClassicsSpinnerStyle" format="enum">
+        <enum name="Translate" value="0"/><!--平行移动-->
+        <enum name="Scale" value="1"/><!--拉伸形变-->
+        <enum name="FixedBehind" value="2"/><!--固定在背后-->
+    </attr>
+
+    <attr name="layout_srlSpinnerStyle" format="enum">
+        <enum name="Translate" value="0"/><!--平行移动-->
+        <enum name="Scale" value="1"/><!--拉伸形变-->
+        <enum name="FixedBehind" value="2"/><!--固定在背后-->
+        <enum name="FixedFront" value="3"/><!--固定在前面-->
+        <enum name="MatchLayout" value="4"/><!--填满布局-->
+    </attr>
+
+    <declare-styleable name="SmartRefreshLayout">
+        <attr name="android:clipChildren"/>
+        <attr name="android:clipToPadding"/>
+        <attr name="srlPrimaryColor"/>
+        <attr name="srlAccentColor"/>
+        <attr name="srlReboundDuration" format="integer"/>
+        <attr name="srlHeaderHeight" format="dimension"/>
+        <attr name="srlFooterHeight" format="dimension"/>
+        <attr name="srlHeaderInsetStart" format="dimension"/>
+        <attr name="srlFooterInsetStart" format="dimension"/>
+        <attr name="srlDragRate" format="float"/>
+        <attr name="srlHeaderMaxDragRate" format="float"/>
+        <attr name="srlFooterMaxDragRate" format="float"/>
+        <attr name="srlHeaderTriggerRate" format="float"/>
+        <attr name="srlFooterTriggerRate" format="float"/>
+        <attr name="srlEnableRefresh" format="boolean"/>
+        <attr name="srlEnableLoadMore" format="boolean"/>
+        <attr name="srlEnableHeaderTranslationContent" format="boolean"/>
+        <attr name="srlEnableFooterTranslationContent" format="boolean"/>
+        <attr name="srlHeaderTranslationViewId" format="reference"/>
+        <attr name="srlFooterTranslationViewId" format="reference"/>
+        <attr name="srlEnablePreviewInEditMode" format="boolean"/>
+        <attr name="srlEnableAutoLoadMore" format="boolean"/>
+        <attr name="srlEnableOverScrollBounce" format="boolean"/>
+        <attr name="srlEnablePureScrollMode" format="boolean"/>
+        <attr name="srlEnableNestedScrolling" format="boolean"/>
+        <attr name="srlEnableScrollContentWhenLoaded" format="boolean"/>
+        <attr name="srlEnableScrollContentWhenRefreshed" format="boolean"/>
+        <attr name="srlEnableLoadMoreWhenContentNotFull" format="boolean"/>
+        <attr name="srlEnableFooterFollowWhenLoadFinished" format="boolean"/>
+        <attr name="srlEnableFooterFollowWhenNoMoreData" format="boolean"/>
+        <attr name="srlEnableClipHeaderWhenFixedBehind" format="boolean"/>
+        <attr name="srlEnableClipFooterWhenFixedBehind" format="boolean"/>
+        <attr name="srlEnableOverScrollDrag" format="boolean"/>
+        <attr name="srlDisableContentWhenRefresh" format="boolean"/>
+        <attr name="srlDisableContentWhenLoading" format="boolean"/>
+        <attr name="srlFixedHeaderViewId" format="reference"/>
+        <attr name="srlFixedFooterViewId" format="reference"/>
+    </declare-styleable>
+
+    <declare-styleable name="SmartRefreshLayout_Layout">
+        <attr name="layout_srlSpinnerStyle"/>
+        <attr name="layout_srlBackgroundColor" format="color"/>
+    </declare-styleable>
+
+    <style name="SmartRefreshStyle">
+        <item name="srlPrimaryColor">@android:color/holo_blue_dark</item>
+        <item name="srlAccentColor">@android:color/white</item>
+        <item name="srlReboundDuration">300</item>
+        <item name="srlHeaderHeight">100dp</item>
+        <item name="srlFooterHeight">60dp</item>
+        <item name="srlHeaderInsetStart">0dp</item>
+        <item name="srlFooterInsetStart">0dp</item>
+        <item name="srlDragRate">0.5</item>
+        <item name="srlHeaderMaxDragRate">2.5</item>
+        <item name="srlFooterMaxDragRate">2.5</item>
+        <item name="srlHeaderTriggerRate">1</item>
+        <item name="srlFooterTriggerRate">1</item>
+        <!--<item name="srlEnableRefresh">true</item>-->
+        <!--<item name="srlEnableLoadMore">true</item>-->
+        <!--<item name="srlEnableHeaderTranslationContent">true</item>-->
+        <!--<item name="srlEnableFooterTranslationContent">true</item>-->
+        <!--<item name="srlHeaderTranslationViewId">-1</item>-->
+        <!--<item name="srlFooterTranslationViewId">-1</item>-->
+        <item name="srlEnablePreviewInEditMode">true</item>
+        <item name="srlEnableAutoLoadMore">true</item>
+        <item name="srlEnableOverScrollDrag">false</item>
+        <item name="srlEnableOverScrollBounce">true</item>
+        <item name="srlEnablePureScrollMode">false</item>
+        <item name="srlEnableNestedScrolling">true</item>
+        <item name="srlEnableScrollContentWhenLoaded">true</item>
+        <item name="srlEnableScrollContentWhenRefreshed">true</item>
+        <item name="srlEnableLoadMoreWhenContentNotFull">true</item>
+        <!--<item name="srlEnableFooterFollowWhenLoadFinished" format="boolean"/>-->
+        <item name="srlEnableFooterFollowWhenNoMoreData">false</item>
+        <item name="srlEnableClipHeaderWhenFixedBehind">true</item>
+        <item name="srlEnableClipFooterWhenFixedBehind">true</item>
+        <item name="srlDisableContentWhenRefresh">false</item>
+        <item name="srlDisableContentWhenLoading">false</item>
+        <!--<item name="srlFixedHeaderViewId" format="reference"/>-->
+        <!--<item name="srlFixedFooterViewId" format="reference"/>-->
+    </style>
+
+    <declare-styleable name="TwoLevelHeader">
+        <attr name="srlMaxRate" format="float"/>
+        <attr name="srlFloorRate" format="float"/>
+        <attr name="srlRefreshRate" format="float"/>
+        <attr name="srlFloorDuration" format="integer"/>
+        <attr name="enableRefresh" format="boolean"/>
+        <attr name="srlEnableTwoLevel" format="boolean"/>
+        <attr name="srlBottomPullUpToCloseRate" format="float"/>
+        <attr name="srlEnablePullToCloseTwoLevel" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="ClassicsHeader">
+        <attr name="srlClassicsSpinnerStyle"/>
+        <attr name="srlPrimaryColor"/>
+        <attr name="srlAccentColor"/>
+        <attr name="srlFinishDuration"/>
+        <attr name="srlDrawableArrow"/>
+        <attr name="srlDrawableProgress"/>
+        <attr name="srlDrawableMarginRight"/>
+        <attr name="srlDrawableSize"/>
+        <attr name="srlDrawableArrowSize"/>
+        <attr name="srlDrawableProgressSize"/>
+        <attr name="srlTextSizeTitle"/>
+        <attr name="srlTextSizeTime"/>
+        <attr name="srlTextTimeMarginTop" format="dimension"/>
+        <attr name="srlEnableLastTime" format="boolean"/>
+
+        <attr name="srlTextPulling"/>
+        <attr name="srlTextLoading"/>
+        <attr name="srlTextRelease"/>
+        <attr name="srlTextFinish"/>
+        <attr name="srlTextFailed"/>
+        <attr name="srlTextUpdate"/>
+        <attr name="srlTextSecondary"/>
+        <attr name="srlTextRefreshing"/>
+
+    </declare-styleable>
+
+    <declare-styleable name="BallPulseFooter">
+        <attr name="srlClassicsSpinnerStyle"/>
+        <attr name="srlAnimatingColor" format="color"/>
+        <attr name="srlNormalColor" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="ClassicsFooter">
+        <attr name="srlClassicsSpinnerStyle"/>
+        <attr name="srlPrimaryColor"/>
+        <attr name="srlAccentColor"/>
+        <attr name="srlFinishDuration"/>
+        <attr name="srlTextSizeTitle"/>
+        <attr name="srlDrawableArrow"/>
+        <attr name="srlDrawableProgress"/>
+        <attr name="srlDrawableMarginRight"/>
+        <attr name="srlDrawableSize"/>
+        <attr name="srlDrawableArrowSize"/>
+        <attr name="srlDrawableProgressSize"/>
+        <attr name="srlTextPulling"/>
+        <attr name="srlTextRelease"/>
+        <attr name="srlTextLoading"/>
+        <attr name="srlTextRefreshing"/>
+        <attr name="srlTextFinish"/>
+        <attr name="srlTextFailed"/>
+        <attr name="srlTextNothing"/>
+    </declare-styleable>
+
+    <declare-styleable name="BezierRadarHeader">
+        <attr name="srlPrimaryColor"/>
+        <attr name="srlAccentColor"/>
+        <attr name="srlEnableHorizontalDrag"/>
+    </declare-styleable>
+
+
+
+
+
+    <!-- Shape 形状（默认是矩形） -->
+    <attr name="shape_type">
+        <!-- 矩形 -->
+        <enum name="rectangle" value="0" />
+        <!-- 椭圆形 -->
+        <enum name="oval" value="1" />
+        <!-- 线条 -->
+        <enum name="line" value="2" />
+        <!-- 圆环 -->
+        <enum name="ring" value="3" />
+    </attr>
+
+    <!-- Shape 宽度 -->
+    <attr name="shape_width" format="dimension" />
+    <!-- Shape 高度 -->
+    <attr name="shape_height" format="dimension" />
+
+    <!-- 圆角大小 -->
+    <attr name="shape_radius" format="dimension" />
+    <!-- 左上角的圆角大小 -->
+    <attr name="shape_radiusInTopLeft" format="dimension" />
+    <!-- 右上角的圆角大小 -->
+    <attr name="shape_radiusInTopRight" format="dimension" />
+    <!-- 左下角的圆角大小 -->
+    <attr name="shape_radiusInBottomLeft" format="dimension" />
+    <!-- 右下角的圆角大小 -->
+    <attr name="shape_radiusInBottomRight" format="dimension" />
+
+    <!-- 填充色（默认状态） -->
+    <attr name="shape_solidColor" format="color" />
+    <!-- 填充色（按下状态） -->
+    <attr name="shape_solidPressedColor" format="color" />
+    <!-- 填充色（选中状态） -->
+    <attr name="shape_solidCheckedColor" format="color" />
+    <!-- 填充色（禁用状态） -->
+    <attr name="shape_solidDisabledColor" format="color" />
+    <!-- 填充色（焦点状态） -->
+    <attr name="shape_solidFocusedColor" format="color" />
+    <!-- 填充色（选择状态） -->
+    <attr name="shape_solidSelectedColor" format="color" />
+
+    <!-- 填充色渐变色起始颜色 -->
+    <attr name="shape_solidGradientStartColor" format="color" />
+    <!-- 填充色渐变色中间颜色（可不设置） -->
+    <attr name="shape_solidGradientCenterColor" format="color" />
+    <!-- 填充色渐变色结束颜色 -->
+    <attr name="shape_solidGradientEndColor" format="color" />
+
+    <!-- 填充色渐变方向（仅用于线性渐变。必须是 0-315 范围内的值，并且是 45 的倍数） -->
+    <attr name="shape_solidGradientOrientation" >
+        <!-- 从左到右绘制渐变（0 度） -->
+        <enum name="leftToRight" value="0" />
+        <!-- 从右到左绘制渐变（180 度） -->
+        <enum name="rightToLeft" value="180" />
+        <!-- 从下到上绘制渐变（90 度） -->
+        <enum name="bottomToTop" value="90" />
+        <!-- 从上到下绘制渐变（270 度） -->
+        <enum name="topToBottom" value="270" />
+
+        <!-- 从左上角到右下角绘制渐变（315 度） -->
+        <enum name="topLeftToBottomRight" value="315" />
+        <!-- 从左下角到右上角绘制渐变（45 度） -->
+        <enum name="bottomLeftToTopRight" value="45" />
+        <!-- 从右上角到左下角绘制渐变（225 度） -->
+        <enum name="topRightToBottomLeft" value="225" />
+        <!-- 从右下角到左上角绘制渐变（135 度） -->
+        <enum name="bottomRightToTopLeft" value="135" />
+    </attr>
+    <!-- 填充色渐变类型（默认类型是线性渐变） -->
+    <attr name="shape_solidGradientType">
+        <!-- 线性渐变 -->
+        <enum name="linear" value="0" />
+        <!-- 径向渐变 -->
+        <enum name="radial" value="1" />
+        <!-- 扫描渐变 -->
+        <enum name="sweep"  value="2" />
+    </attr>
+    <!-- 填充色渐变中心 X 点坐标的相对位置（默认值为 0.5）-->
+    <attr name="shape_solidGradientCenterX" format="float|fraction" />
+    <!-- 填充色渐变中心 Y 点坐标的相对位置（默认值为 0.5）-->
+    <attr name="shape_solidGradientCenterY" format="float|fraction" />
+    <!-- 填充色渐变色半径（仅用于径向渐变） -->
+    <attr name="shape_solidGradientRadius" format="float|fraction|dimension" />
+
+    <!-- 边框色（默认状态） -->
+    <attr name="shape_strokeColor" format="color" />
+    <!-- 边框色（按下状态） -->
+    <attr name="shape_strokePressedColor" format="color" />
+    <!-- 边框色（选中状态） -->
+    <attr name="shape_strokeCheckedColor" format="color" />
+    <!-- 边框色（禁用状态） -->
+    <attr name="shape_strokeDisabledColor" format="color" />
+    <!-- 边框色（焦点状态） -->
+    <attr name="shape_strokeFocusedColor" format="color" />
+    <!-- 边框色（选择状态） -->
+    <attr name="shape_strokeSelectedColor" format="color" />
+
+    <!-- 边框色渐变色起始颜色 -->
+    <attr name="shape_strokeGradientStartColor" format="color" />
+    <!-- 边框渐变色中间颜色（可不设置） -->
+    <attr name="shape_strokeGradientCenterColor" format="color" />
+    <!-- 边框渐变色结束颜色 -->
+    <attr name="shape_strokeGradientColor" format="color" />
+
+    <!-- 边框色渐变方向（必须是 0-315 范围内的值，并且是 45 的倍数） -->
+    <attr name="shape_strokeGradientOrientation" >
+        <!-- 从左到右绘制渐变（0 度） -->
+        <enum name="leftToRight" value="0" />
+        <!-- 从右到左绘制渐变（180 度） -->
+        <enum name="rightToLeft" value="180" />
+        <!-- 从下到上绘制渐变（90 度） -->
+        <enum name="bottomToTop" value="90" />
+        <!-- 从上到下绘制渐变（270 度） -->
+        <enum name="topToBottom" value="270" />
+
+        <!-- 从左上角到右下角绘制渐变（315 度） -->
+        <enum name="topLeftToBottomRight" value="315" />
+        <!-- 从左下角到右上角绘制渐变（45 度） -->
+        <enum name="bottomLeftToTopRight" value="45" />
+        <!-- 从右上角到左下角绘制渐变（225 度） -->
+        <enum name="topRightToBottomLeft" value="225" />
+        <!-- 从右下角到左上角绘制渐变（135 度） -->
+        <enum name="bottomRightToTopLeft" value="135" />
+    </attr>
+
+    <!-- 边框大小 -->
+    <attr name="shape_strokeSize" format="dimension" />
+    <!-- 边框虚线大小（为 0 就是实线，大于 0 就是虚线） -->
+    <attr name="shape_strokeDashSize" format="dimension" />
+    <!-- 边框虚线间隔（虚线与虚线之间的间隔） -->
+    <attr name="shape_strokeDashGap" format="dimension" />
+
+    <!-- 阴影大小 -->
+    <attr name="shape_shadowSize" format="dimension" />
+    <!-- 阴影颜色 -->
+    <attr name="shape_shadowColor" format="color" />
+    <!-- 阴影水平偏移 -->
+    <attr name="shape_shadowOffsetX" format="dimension" />
+    <!-- 阴影垂直偏移 -->
+    <attr name="shape_shadowOffsetY" format="dimension" />
+
+    <!-- 内环的半径（仅在 shape="ring" 生效） -->
+    <attr name="shape_ringInnerRadiusSize" format="dimension" />
+    <!-- 内环的半径比率（仅在 shape="ring" 生效），计算公式：整个圆环 / innerRadiusRatio = innerRadius -->
+    <attr name="shape_ringInnerRadiusRatio" format="float" />
+    <!-- 外环的厚度（仅在 shape="ring" 生效） -->
+    <attr name="shape_ringThicknessSize" format="dimension" />
+    <!-- 外环的厚度比率（仅在 shape="ring" 生效），计算公式：整个圆环 / thicknessRatio = thickness -->
+    <attr name="shape_ringThicknessRatio" format="float" />
+
+    <!-- 线条重心（仅在 shape="line" 生效） -->
+    <attr name="shape_lineGravity">
+        <flag name="top" value="0x30" />
+        <flag name="bottom" value="0x50" />
+        <flag name="left" value="0x03" />
+        <flag name="right" value="0x05" />
+        <flag name="start" value="0x00800003" />
+        <flag name="end" value="0x00800005" />
+        <flag name="center" value="0x11" />
+    </attr>
+
+    <!-- 文本色（默认状态） -->
+    <attr name="shape_textColor" format="color" />
+    <!-- 文本色（按下状态） -->
+    <attr name="shape_textPressedColor" format="color" />
+    <!-- 文本色（选中状态） -->
+    <attr name="shape_textCheckedColor" format="color" />
+    <!-- 文本色（禁用状态） -->
+    <attr name="shape_textDisabledColor" format="color" />
+    <!-- 文本色（焦点状态） -->
+    <attr name="shape_textFocusedColor" format="color" />
+    <!-- 文本色（选择状态） -->
+    <attr name="shape_textSelectedColor" format="color" />
+
+    <!-- 文本渐变色起始颜色 -->
+    <attr name="shape_textStartColor" format="color" />
+    <!-- 文本渐变色中间颜色（可不设置） -->
+    <attr name="shape_textCenterColor" format="color" />
+    <!-- 文本渐变色结束颜色 -->
+    <attr name="shape_textEndColor" format="color" />
+    <!-- 文本渐变方向（默认类型是水平渐变） -->
+    <attr name="shape_textGradientOrientation">
+        <!-- 水平渐变 -->
+        <enum name="horizontal" value="0" />
+        <!-- 垂直渐变 -->
+        <enum name="vertical" value="1" />
+    </attr>
+
+    <!-- 文本边框颜色 -->
+    <attr name="shape_textStrokeColor" format="color" />
+    <!-- 文本边框大小 -->
+    <attr name="shape_textStrokeSize" format="dimension" />
+
+    <!-- CheckBox 或者 RadioButton 图标（默认状态） -->
+    <attr name="shape_buttonDrawable" format="reference" />
+    <!-- CheckBox 或者 RadioButton 图标（按下状态） -->
+    <attr name="shape_buttonPressedDrawable" format="reference" />
+    <!-- CheckBox 或者 RadioButton 图标（选中状态） -->
+    <attr name="shape_buttonCheckedDrawable" format="reference" />
+    <!-- CheckBox 或者 RadioButton 图标（禁用状态） -->
+    <attr name="shape_buttonDisabledDrawable" format="reference" />
+    <!-- CheckBox 或者 RadioButton 图标（焦点状态） -->
+    <attr name="shape_buttonFocusedDrawable" format="reference" />
+    <!-- CheckBox 或者 RadioButton 图标（选择状态） -->
+    <attr name="shape_buttonSelectedDrawable" format="reference" />
+
+    <declare-styleable name="ShapeTextView">
+        <attr name="shape_type" />
+        <attr name="shape_width" />
+        <attr name="shape_height" />
+
+        <attr name="shape_radius" />
+        <attr name="shape_radiusInTopLeft" />
+        <attr name="shape_radiusInTopRight" />
+        <attr name="shape_radiusInBottomLeft" />
+        <attr name="shape_radiusInBottomRight" />
+
+        <attr name="shape_solidColor" />
+        <attr name="shape_solidPressedColor" />
+        <attr name="shape_solidDisabledColor" />
+        <attr name="shape_solidFocusedColor" />
+        <attr name="shape_solidSelectedColor" />
+        <attr name="shape_solidGradientStartColor" />
+        <attr name="shape_solidGradientCenterColor" />
+        <attr name="shape_solidGradientEndColor" />
+        <attr name="shape_solidGradientOrientation" />
+        <attr name="shape_solidGradientType" />
+        <attr name="shape_solidGradientCenterX" />
+        <attr name="shape_solidGradientCenterY" />
+        <attr name="shape_solidGradientRadius" />
+
+        <attr name="shape_strokeColor" />
+        <attr name="shape_strokePressedColor" />
+        <attr name="shape_strokeDisabledColor" />
+        <attr name="shape_strokeFocusedColor" />
+        <attr name="shape_strokeSelectedColor" />
+        <attr name="shape_strokeGradientStartColor" />
+        <attr name="shape_strokeGradientCenterColor" />
+        <attr name="shape_strokeGradientColor" />
+        <attr name="shape_strokeGradientOrientation" />
+        <attr name="shape_strokeSize" />
+        <attr name="shape_strokeDashSize" />
+        <attr name="shape_strokeDashGap" />
+
+        <attr name="shape_shadowSize" />
+        <attr name="shape_shadowColor" />
+        <attr name="shape_shadowOffsetX" />
+        <attr name="shape_shadowOffsetY" />
+
+        <attr name="shape_ringInnerRadiusRatio" />
+        <attr name="shape_ringInnerRadiusSize" />
+        <attr name="shape_ringThicknessRatio" />
+        <attr name="shape_ringThicknessSize" />
+
+        <attr name="shape_lineGravity" />
+
+        <attr name="shape_textColor" />
+        <attr name="shape_textPressedColor" />
+        <attr name="shape_textDisabledColor" />
+        <attr name="shape_textFocusedColor" />
+        <attr name="shape_textSelectedColor" />
+
+        <attr name="shape_textStartColor" />
+        <attr name="shape_textCenterColor" />
+        <attr name="shape_textEndColor" />
+        <attr name="shape_textGradientOrientation" />
+
+        <attr name="shape_textStrokeColor" />
+        <attr name="shape_textStrokeSize" />
+    </declare-styleable>
+
+    <declare-styleable name="ShapeButton">
+        <attr name="shape_type" />
+        <attr name="shape_width" />
+        <attr name="shape_height" />
+
+        <attr name="shape_radius" />
+        <attr name="shape_radiusInTopLeft" />
+        <attr name="shape_radiusInTopRight" />
+        <attr name="shape_radiusInBottomLeft" />
+        <attr name="shape_radiusInBottomRight" />
+
+        <attr name="shape_solidColor" />
+        <attr name="shape_solidPressedColor" />
+        <attr name="shape_solidDisabledColor" />
+        <attr name="shape_solidFocusedColor" />
+        <attr name="shape_solidSelectedColor" />
+        <attr name="shape_solidGradientStartColor" />
+        <attr name="shape_solidGradientCenterColor" />
+        <attr name="shape_solidGradientEndColor" />
+        <attr name="shape_solidGradientOrientation" />
+        <attr name="shape_solidGradientType" />
+        <attr name="shape_solidGradientCenterX" />
+        <attr name="shape_solidGradientCenterY" />
+        <attr name="shape_solidGradientRadius" />
+
+        <attr name="shape_strokeColor" />
+        <attr name="shape_strokePressedColor" />
+        <attr name="shape_strokeDisabledColor" />
+        <attr name="shape_strokeFocusedColor" />
+        <attr name="shape_strokeSelectedColor" />
+        <attr name="shape_strokeGradientStartColor" />
+        <attr name="shape_strokeGradientCenterColor" />
+        <attr name="shape_strokeGradientColor" />
+        <attr name="shape_strokeGradientOrientation" />
+        <attr name="shape_strokeSize" />
+        <attr name="shape_strokeDashSize" />
+        <attr name="shape_strokeDashGap" />
+
+        <attr name="shape_shadowSize" />
+        <attr name="shape_shadowColor" />
+        <attr name="shape_shadowOffsetX" />
+        <attr name="shape_shadowOffsetY" />
+
+        <attr name="shape_ringInnerRadiusRatio" />
+        <attr name="shape_ringInnerRadiusSize" />
+        <attr name="shape_ringThicknessRatio" />
+        <attr name="shape_ringThicknessSize" />
+
+        <attr name="shape_lineGravity" />
+
+        <attr name="shape_textColor" />
+        <attr name="shape_textPressedColor" />
+        <attr name="shape_textDisabledColor" />
+        <attr name="shape_textFocusedColor" />
+        <attr name="shape_textSelectedColor" />
+
+        <attr name="shape_textStartColor" />
+        <attr name="shape_textCenterColor" />
+        <attr name="shape_textEndColor" />
+        <attr name="shape_textGradientOrientation" />
+
+        <attr name="shape_textStrokeColor" />
+        <attr name="shape_textStrokeSize" />
+    </declare-styleable>
+
+    <declare-styleable name="ShapeRadioButton">
+        <attr name="shape_type" />
+        <attr name="shape_width" />
+        <attr name="shape_height" />
+
+        <attr name="shape_radius" />
+        <attr name="shape_radiusInTopLeft" />
+        <attr name="shape_radiusInTopRight" />
+        <attr name="shape_radiusInBottomLeft" />
+        <attr name="shape_radiusInBottomRight" />
+
+        <attr name="shape_solidColor" />
+        <attr name="shape_solidPressedColor" />
+        <attr name="shape_solidCheckedColor" />
+        <attr name="shape_solidDisabledColor" />
+        <attr name="shape_solidFocusedColor" />
+        <attr name="shape_solidSelectedColor" />
+        <attr name="shape_solidGradientStartColor" />
+        <attr name="shape_solidGradientCenterColor" />
+        <attr name="shape_solidGradientEndColor" />
+        <attr name="shape_solidGradientOrientation" />
+        <attr name="shape_solidGradientType" />
+        <attr name="shape_solidGradientCenterX" />
+        <attr name="shape_solidGradientCenterY" />
+        <attr name="shape_solidGradientRadius" />
+
+        <attr name="shape_strokeColor" />
+        <attr name="shape_strokePressedColor" />
+        <attr name="shape_strokeCheckedColor" />
+        <attr name="shape_strokeDisabledColor" />
+        <attr name="shape_strokeFocusedColor" />
+        <attr name="shape_strokeSelectedColor" />
+        <attr name="shape_strokeGradientStartColor" />
+        <attr name="shape_strokeGradientCenterColor" />
+        <attr name="shape_strokeGradientColor" />
+        <attr name="shape_strokeGradientOrientation" />
+        <attr name="shape_strokeSize" />
+        <attr name="shape_strokeDashSize" />
+        <attr name="shape_strokeDashGap" />
+
+        <attr name="shape_shadowSize" />
+        <attr name="shape_shadowColor" />
+        <attr name="shape_shadowOffsetX" />
+        <attr name="shape_shadowOffsetY" />
+
+        <attr name="shape_ringInnerRadiusRatio" />
+        <attr name="shape_ringInnerRadiusSize" />
+        <attr name="shape_ringThicknessRatio" />
+        <attr name="shape_ringThicknessSize" />
+
+        <attr name="shape_lineGravity" />
+
+        <attr name="shape_textColor" />
+        <attr name="shape_textPressedColor" />
+        <attr name="shape_textCheckedColor" />
+        <attr name="shape_textDisabledColor" />
+        <attr name="shape_textFocusedColor" />
+        <attr name="shape_textSelectedColor" />
+
+        <attr name="shape_textStartColor" />
+        <attr name="shape_textCenterColor" />
+        <attr name="shape_textEndColor" />
+        <attr name="shape_textGradientOrientation" />
+
+        <attr name="shape_textStrokeColor" />
+        <attr name="shape_textStrokeSize" />
+
+        <attr name="shape_buttonDrawable" />
+        <attr name="shape_buttonPressedDrawable" />
+        <attr name="shape_buttonCheckedDrawable" />
+        <attr name="shape_buttonDisabledDrawable" />
+        <attr name="shape_buttonFocusedDrawable" />
+        <attr name="shape_buttonSelectedDrawable" />
+    </declare-styleable>
+
+    <declare-styleable name="ShapeCheckBox">
+        <attr name="shape_type" />
+        <attr name="shape_width" />
+        <attr name="shape_height" />
+
+        <attr name="shape_radius" />
+        <attr name="shape_radiusInTopLeft" />
+        <attr name="shape_radiusInTopRight" />
+        <attr name="shape_radiusInBottomLeft" />
+        <attr name="shape_radiusInBottomRight" />
+
+        <attr name="shape_solidColor" />
+        <attr name="shape_solidPressedColor" />
+        <attr name="shape_solidCheckedColor" />
+        <attr name="shape_solidDisabledColor" />
+        <attr name="shape_solidFocusedColor" />
+        <attr name="shape_solidSelectedColor" />
+        <attr name="shape_solidGradientStartColor" />
+        <attr name="shape_solidGradientCenterColor" />
+        <attr name="shape_solidGradientEndColor" />
+        <attr name="shape_solidGradientOrientation" />
+        <attr name="shape_solidGradientType" />
+        <attr name="shape_solidGradientCenterX" />
+        <attr name="shape_solidGradientCenterY" />
+        <attr name="shape_solidGradientRadius" />
+
+        <attr name="shape_strokeColor" />
+        <attr name="shape_strokePressedColor" />
+        <attr name="shape_strokeCheckedColor" />
+        <attr name="shape_strokeDisabledColor" />
+        <attr name="shape_strokeFocusedColor" />
+        <attr name="shape_strokeSelectedColor" />
+        <attr name="shape_strokeGradientStartColor" />
+        <attr name="shape_strokeGradientCenterColor" />
+        <attr name="shape_strokeGradientColor" />
+        <attr name="shape_strokeGradientOrientation" />
+        <attr name="shape_strokeSize" />
+        <attr name="shape_strokeDashSize" />
+        <attr name="shape_strokeDashGap" />
+
+        <attr name="shape_shadowSize" />
+        <attr name="shape_shadowColor" />
+        <attr name="shape_shadowOffsetX" />
+        <attr name="shape_shadowOffsetY" />
+
+        <attr name="shape_ringInnerRadiusRatio" />
+        <attr name="shape_ringInnerRadiusSize" />
+        <attr name="shape_ringThicknessRatio" />
+        <attr name="shape_ringThicknessSize" />
+
+        <attr name="shape_lineGravity" />
+
+        <attr name="shape_textColor" />
+        <attr name="shape_textPressedColor" />
+        <attr name="shape_textCheckedColor" />
+        <attr name="shape_textDisabledColor" />
+        <attr name="shape_textFocusedColor" />
+        <attr name="shape_textSelectedColor" />
+
+        <attr name="shape_textStartColor" />
+        <attr name="shape_textCenterColor" />
+        <attr name="shape_textEndColor" />
+        <attr name="shape_textGradientOrientation" />
+
+        <attr name="shape_textStrokeColor" />
+        <attr name="shape_textStrokeSize" />
+
+        <attr name="shape_buttonDrawable" />
+        <attr name="shape_buttonPressedDrawable" />
+        <attr name="shape_buttonCheckedDrawable" />
+        <attr name="shape_buttonDisabledDrawable" />
+        <attr name="shape_buttonFocusedDrawable" />
+        <attr name="shape_buttonSelectedDrawable" />
+    </declare-styleable>
+
+    <declare-styleable name="ShapeEditText">
+        <attr name="shape_type" />
+        <attr name="shape_width" />
+        <attr name="shape_height" />
+
+        <attr name="shape_radius" />
+        <attr name="shape_radiusInTopLeft" />
+        <attr name="shape_radiusInTopRight" />
+        <attr name="shape_radiusInBottomLeft" />
+        <attr name="shape_radiusInBottomRight" />
+
+        <attr name="shape_solidColor" />
+        <attr name="shape_solidPressedColor" />
+        <attr name="shape_solidDisabledColor" />
+        <attr name="shape_solidFocusedColor" />
+        <attr name="shape_solidSelectedColor" />
+        <attr name="shape_solidGradientStartColor" />
+        <attr name="shape_solidGradientCenterColor" />
+        <attr name="shape_solidGradientEndColor" />
+        <attr name="shape_solidGradientOrientation" />
+        <attr name="shape_solidGradientType" />
+        <attr name="shape_solidGradientCenterX" />
+        <attr name="shape_solidGradientCenterY" />
+        <attr name="shape_solidGradientRadius" />
+
+        <attr name="shape_strokeColor" />
+        <attr name="shape_strokePressedColor" />
+        <attr name="shape_strokeDisabledColor" />
+        <attr name="shape_strokeFocusedColor" />
+        <attr name="shape_strokeSelectedColor" />
+        <attr name="shape_strokeGradientStartColor" />
+        <attr name="shape_strokeGradientCenterColor" />
+        <attr name="shape_strokeGradientColor" />
+        <attr name="shape_strokeGradientOrientation" />
+        <attr name="shape_strokeSize" />
+        <attr name="shape_strokeDashSize" />
+        <attr name="shape_strokeDashGap" />
+
+        <attr name="shape_shadowSize" />
+        <attr name="shape_shadowColor" />
+        <attr name="shape_shadowOffsetX" />
+        <attr name="shape_shadowOffsetY" />
+
+        <attr name="shape_ringInnerRadiusRatio" />
+        <attr name="shape_ringInnerRadiusSize" />
+        <attr name="shape_ringThicknessRatio" />
+        <attr name="shape_ringThicknessSize" />
+
+        <attr name="shape_lineGravity" />
+
+        <attr name="shape_textColor" />
+        <attr name="shape_textPressedColor" />
+        <attr name="shape_textDisabledColor" />
+        <attr name="shape_textFocusedColor" />
+        <attr name="shape_textSelectedColor" />
+
+        <attr name="shape_textStartColor" />
+        <attr name="shape_textCenterColor" />
+        <attr name="shape_textEndColor" />
+        <attr name="shape_textGradientOrientation" />
+
+        <attr name="shape_textStrokeColor" />
+        <attr name="shape_textStrokeSize" />
+    </declare-styleable>
+
+    <declare-styleable name="ShapeImageView">
+        <attr name="shape_type" />
+        <attr name="shape_width" />
+        <attr name="shape_height" />
+
+        <attr name="shape_radius" />
+        <attr name="shape_radiusInTopLeft" />
+        <attr name="shape_radiusInTopRight" />
+        <attr name="shape_radiusInBottomLeft" />
+        <attr name="shape_radiusInBottomRight" />
+
+        <attr name="shape_solidColor" />
+        <attr name="shape_solidPressedColor" />
+        <attr name="shape_solidDisabledColor" />
+        <attr name="shape_solidFocusedColor" />
+        <attr name="shape_solidSelectedColor" />
+        <attr name="shape_solidGradientStartColor" />
+        <attr name="shape_solidGradientCenterColor" />
+        <attr name="shape_solidGradientEndColor" />
+        <attr name="shape_solidGradientOrientation" />
+        <attr name="shape_solidGradientType" />
+        <attr name="shape_solidGradientCenterX" />
+        <attr name="shape_solidGradientCenterY" />
+        <attr name="shape_solidGradientRadius" />
+
+        <attr name="shape_strokeColor" />
+        <attr name="shape_strokePressedColor" />
+        <attr name="shape_strokeDisabledColor" />
+        <attr name="shape_strokeFocusedColor" />
+        <attr name="shape_strokeSelectedColor" />
+        <attr name="shape_strokeGradientStartColor" />
+        <attr name="shape_strokeGradientCenterColor" />
+        <attr name="shape_strokeGradientColor" />
+        <attr name="shape_strokeGradientOrientation" />
+        <attr name="shape_strokeSize" />
+        <attr name="shape_strokeDashSize" />
+        <attr name="shape_strokeDashGap" />
+
+        <attr name="shape_shadowSize" />
+        <attr name="shape_shadowColor" />
+        <attr name="shape_shadowOffsetX" />
+        <attr name="shape_shadowOffsetY" />
+
+        <attr name="shape_ringInnerRadiusRatio" />
+        <attr name="shape_ringInnerRadiusSize" />
+        <attr name="shape_ringThicknessRatio" />
+        <attr name="shape_ringThicknessSize" />
+
+        <attr name="shape_lineGravity" />
+    </declare-styleable>
+
+    <declare-styleable name="ShapeView">
+        <attr name="shape_type" />
+        <attr name="shape_width" />
+        <attr name="shape_height" />
+
+        <attr name="shape_radius" />
+        <attr name="shape_radiusInTopLeft" />
+        <attr name="shape_radiusInTopRight" />
+        <attr name="shape_radiusInBottomLeft" />
+        <attr name="shape_radiusInBottomRight" />
+
+        <attr name="shape_solidColor" />
+        <attr name="shape_solidPressedColor" />
+        <attr name="shape_solidDisabledColor" />
+        <attr name="shape_solidFocusedColor" />
+        <attr name="shape_solidSelectedColor" />
+        <attr name="shape_solidGradientStartColor" />
+        <attr name="shape_solidGradientCenterColor" />
+        <attr name="shape_solidGradientEndColor" />
+        <attr name="shape_solidGradientOrientation" />
+        <attr name="shape_solidGradientType" />
+        <attr name="shape_solidGradientCenterX" />
+        <attr name="shape_solidGradientCenterY" />
+        <attr name="shape_solidGradientRadius" />
+
+        <attr name="shape_strokeColor" />
+        <attr name="shape_strokePressedColor" />
+        <attr name="shape_strokeDisabledColor" />
+        <attr name="shape_strokeFocusedColor" />
+        <attr name="shape_strokeSelectedColor" />
+        <attr name="shape_strokeGradientStartColor" />
+        <attr name="shape_strokeGradientCenterColor" />
+        <attr name="shape_strokeGradientColor" />
+        <attr name="shape_strokeGradientOrientation" />
+        <attr name="shape_strokeSize" />
+        <attr name="shape_strokeDashSize" />
+        <attr name="shape_strokeDashGap" />
+
+        <attr name="shape_shadowSize" />
+        <attr name="shape_shadowColor" />
+        <attr name="shape_shadowOffsetX" />
+        <attr name="shape_shadowOffsetY" />
+
+        <attr name="shape_ringInnerRadiusRatio" />
+        <attr name="shape_ringInnerRadiusSize" />
+        <attr name="shape_ringThicknessRatio" />
+        <attr name="shape_ringThicknessSize" />
+
+        <attr name="shape_lineGravity" />
+    </declare-styleable>
+
+    <declare-styleable name="ShapeLinearLayout">
+        <attr name="shape_type" />
+        <attr name="shape_width" />
+        <attr name="shape_height" />
+
+        <attr name="shape_radius" />
+        <attr name="shape_radiusInTopLeft" />
+        <attr name="shape_radiusInTopRight" />
+        <attr name="shape_radiusInBottomLeft" />
+        <attr name="shape_radiusInBottomRight" />
+
+        <attr name="shape_solidColor" />
+        <attr name="shape_solidPressedColor" />
+        <attr name="shape_solidDisabledColor" />
+        <attr name="shape_solidFocusedColor" />
+        <attr name="shape_solidSelectedColor" />
+        <attr name="shape_solidGradientStartColor" />
+        <attr name="shape_solidGradientCenterColor" />
+        <attr name="shape_solidGradientEndColor" />
+        <attr name="shape_solidGradientOrientation" />
+        <attr name="shape_solidGradientType" />
+        <attr name="shape_solidGradientCenterX" />
+        <attr name="shape_solidGradientCenterY" />
+        <attr name="shape_solidGradientRadius" />
+
+        <attr name="shape_strokeColor" />
+        <attr name="shape_strokePressedColor" />
+        <attr name="shape_strokeDisabledColor" />
+        <attr name="shape_strokeFocusedColor" />
+        <attr name="shape_strokeSelectedColor" />
+        <attr name="shape_strokeGradientStartColor" />
+        <attr name="shape_strokeGradientCenterColor" />
+        <attr name="shape_strokeGradientColor" />
+        <attr name="shape_strokeGradientOrientation" />
+        <attr name="shape_strokeSize" />
+        <attr name="shape_strokeDashSize" />
+        <attr name="shape_strokeDashGap" />
+
+        <attr name="shape_shadowSize" />
+        <attr name="shape_shadowColor" />
+        <attr name="shape_shadowOffsetX" />
+        <attr name="shape_shadowOffsetY" />
+
+        <attr name="shape_ringInnerRadiusRatio" />
+        <attr name="shape_ringInnerRadiusSize" />
+        <attr name="shape_ringThicknessRatio" />
+        <attr name="shape_ringThicknessSize" />
+
+        <attr name="shape_lineGravity" />
+    </declare-styleable>
+
+    <declare-styleable name="ShapeFrameLayout">
+        <attr name="shape_type" />
+        <attr name="shape_width" />
+        <attr name="shape_height" />
+
+        <attr name="shape_radius" />
+        <attr name="shape_radiusInTopLeft" />
+        <attr name="shape_radiusInTopRight" />
+        <attr name="shape_radiusInBottomLeft" />
+        <attr name="shape_radiusInBottomRight" />
+
+        <attr name="shape_solidColor" />
+        <attr name="shape_solidPressedColor" />
+        <attr name="shape_solidDisabledColor" />
+        <attr name="shape_solidFocusedColor" />
+        <attr name="shape_solidSelectedColor" />
+        <attr name="shape_solidGradientStartColor" />
+        <attr name="shape_solidGradientCenterColor" />
+        <attr name="shape_solidGradientEndColor" />
+        <attr name="shape_solidGradientOrientation" />
+        <attr name="shape_solidGradientType" />
+        <attr name="shape_solidGradientCenterX" />
+        <attr name="shape_solidGradientCenterY" />
+        <attr name="shape_solidGradientRadius" />
+
+        <attr name="shape_strokeColor" />
+        <attr name="shape_strokePressedColor" />
+        <attr name="shape_strokeDisabledColor" />
+        <attr name="shape_strokeFocusedColor" />
+        <attr name="shape_strokeSelectedColor" />
+        <attr name="shape_strokeGradientStartColor" />
+        <attr name="shape_strokeGradientCenterColor" />
+        <attr name="shape_strokeGradientColor" />
+        <attr name="shape_strokeGradientOrientation" />
+        <attr name="shape_strokeSize" />
+        <attr name="shape_strokeDashSize" />
+        <attr name="shape_strokeDashGap" />
+
+        <attr name="shape_shadowSize" />
+        <attr name="shape_shadowColor" />
+        <attr name="shape_shadowOffsetX" />
+        <attr name="shape_shadowOffsetY" />
+
+        <attr name="shape_ringInnerRadiusRatio" />
+        <attr name="shape_ringInnerRadiusSize" />
+        <attr name="shape_ringThicknessRatio" />
+        <attr name="shape_ringThicknessSize" />
+
+        <attr name="shape_lineGravity" />
+    </declare-styleable>
+
+    <declare-styleable name="ShapeRelativeLayout">
+        <attr name="shape_type" />
+        <attr name="shape_width" />
+        <attr name="shape_height" />
+
+        <attr name="shape_radius" />
+        <attr name="shape_radiusInTopLeft" />
+        <attr name="shape_radiusInTopRight" />
+        <attr name="shape_radiusInBottomLeft" />
+        <attr name="shape_radiusInBottomRight" />
+
+        <attr name="shape_solidColor" />
+        <attr name="shape_solidPressedColor" />
+        <attr name="shape_solidDisabledColor" />
+        <attr name="shape_solidFocusedColor" />
+        <attr name="shape_solidSelectedColor" />
+        <attr name="shape_solidGradientStartColor" />
+        <attr name="shape_solidGradientCenterColor" />
+        <attr name="shape_solidGradientEndColor" />
+        <attr name="shape_solidGradientOrientation" />
+        <attr name="shape_solidGradientType" />
+        <attr name="shape_solidGradientCenterX" />
+        <attr name="shape_solidGradientCenterY" />
+        <attr name="shape_solidGradientRadius" />
+
+        <attr name="shape_strokeColor" />
+        <attr name="shape_strokePressedColor" />
+        <attr name="shape_strokeDisabledColor" />
+        <attr name="shape_strokeFocusedColor" />
+        <attr name="shape_strokeSelectedColor" />
+        <attr name="shape_strokeGradientStartColor" />
+        <attr name="shape_strokeGradientCenterColor" />
+        <attr name="shape_strokeGradientColor" />
+        <attr name="shape_strokeGradientOrientation" />
+        <attr name="shape_strokeSize" />
+        <attr name="shape_strokeDashSize" />
+        <attr name="shape_strokeDashGap" />
+
+        <attr name="shape_shadowSize" />
+        <attr name="shape_shadowColor" />
+        <attr name="shape_shadowOffsetX" />
+        <attr name="shape_shadowOffsetY" />
+
+        <attr name="shape_ringInnerRadiusRatio" />
+        <attr name="shape_ringInnerRadiusSize" />
+        <attr name="shape_ringThicknessRatio" />
+        <attr name="shape_ringThicknessSize" />
+
+        <attr name="shape_lineGravity" />
+    </declare-styleable>
+
+    <declare-styleable name="ShapeConstraintLayout">
+        <attr name="shape_type" />
+        <attr name="shape_width" />
+        <attr name="shape_height" />
+
+        <attr name="shape_radius" />
+        <attr name="shape_radiusInTopLeft" />
+        <attr name="shape_radiusInTopRight" />
+        <attr name="shape_radiusInBottomLeft" />
+        <attr name="shape_radiusInBottomRight" />
+
+        <attr name="shape_solidColor" />
+        <attr name="shape_solidPressedColor" />
+        <attr name="shape_solidDisabledColor" />
+        <attr name="shape_solidFocusedColor" />
+        <attr name="shape_solidSelectedColor" />
+        <attr name="shape_solidGradientStartColor" />
+        <attr name="shape_solidGradientCenterColor" />
+        <attr name="shape_solidGradientEndColor" />
+        <attr name="shape_solidGradientOrientation" />
+        <attr name="shape_solidGradientType" />
+        <attr name="shape_solidGradientCenterX" />
+        <attr name="shape_solidGradientCenterY" />
+        <attr name="shape_solidGradientRadius" />
+
+        <attr name="shape_strokeColor" />
+        <attr name="shape_strokePressedColor" />
+        <attr name="shape_strokeDisabledColor" />
+        <attr name="shape_strokeFocusedColor" />
+        <attr name="shape_strokeSelectedColor" />
+        <attr name="shape_strokeGradientStartColor" />
+        <attr name="shape_strokeGradientCenterColor" />
+        <attr name="shape_strokeGradientColor" />
+        <attr name="shape_strokeGradientOrientation" />
+        <attr name="shape_strokeSize" />
+        <attr name="shape_strokeDashSize" />
+        <attr name="shape_strokeDashGap" />
+
+        <attr name="shape_shadowSize" />
+        <attr name="shape_shadowColor" />
+        <attr name="shape_shadowOffsetX" />
+        <attr name="shape_shadowOffsetY" />
+
+        <attr name="shape_ringInnerRadiusRatio" />
+        <attr name="shape_ringInnerRadiusSize" />
+        <attr name="shape_ringThicknessRatio" />
+        <attr name="shape_ringThicknessSize" />
+
+        <attr name="shape_lineGravity" />
+    </declare-styleable>
+
+    <declare-styleable name="ShapeRecyclerView">
+        <attr name="shape_type" />
+        <attr name="shape_width" />
+        <attr name="shape_height" />
+
+        <attr name="shape_radius" />
+        <attr name="shape_radiusInTopLeft" />
+        <attr name="shape_radiusInTopRight" />
+        <attr name="shape_radiusInBottomLeft" />
+        <attr name="shape_radiusInBottomRight" />
+
+        <attr name="shape_solidColor" />
+        <attr name="shape_solidPressedColor" />
+        <attr name="shape_solidDisabledColor" />
+        <attr name="shape_solidFocusedColor" />
+        <attr name="shape_solidSelectedColor" />
+        <attr name="shape_solidGradientStartColor" />
+        <attr name="shape_solidGradientCenterColor" />
+        <attr name="shape_solidGradientEndColor" />
+        <attr name="shape_solidGradientOrientation" />
+        <attr name="shape_solidGradientType" />
+        <attr name="shape_solidGradientCenterX" />
+        <attr name="shape_solidGradientCenterY" />
+        <attr name="shape_solidGradientRadius" />
+
+        <attr name="shape_strokeColor" />
+        <attr name="shape_strokePressedColor" />
+        <attr name="shape_strokeDisabledColor" />
+        <attr name="shape_strokeFocusedColor" />
+        <attr name="shape_strokeSelectedColor" />
+        <attr name="shape_strokeGradientStartColor" />
+        <attr name="shape_strokeGradientCenterColor" />
+        <attr name="shape_strokeGradientColor" />
+        <attr name="shape_strokeGradientOrientation" />
+        <attr name="shape_strokeSize" />
+        <attr name="shape_strokeDashSize" />
+        <attr name="shape_strokeDashGap" />
+
+        <attr name="shape_shadowSize" />
+        <attr name="shape_shadowColor" />
+        <attr name="shape_shadowOffsetX" />
+        <attr name="shape_shadowOffsetY" />
+
+        <attr name="shape_ringInnerRadiusRatio" />
+        <attr name="shape_ringInnerRadiusSize" />
+        <attr name="shape_ringThicknessRatio" />
+        <attr name="shape_ringThicknessSize" />
+
+        <attr name="shape_lineGravity" />
+    </declare-styleable>
+
+    <declare-styleable name="ShapeRadioGroup">
+        <attr name="shape_type" />
+        <attr name="shape_width" />
+        <attr name="shape_height" />
+
+        <attr name="shape_radius" />
+        <attr name="shape_radiusInTopLeft" />
+        <attr name="shape_radiusInTopRight" />
+        <attr name="shape_radiusInBottomLeft" />
+        <attr name="shape_radiusInBottomRight" />
+
+        <attr name="shape_solidColor" />
+        <attr name="shape_solidPressedColor" />
+        <attr name="shape_solidDisabledColor" />
+        <attr name="shape_solidFocusedColor" />
+        <attr name="shape_solidSelectedColor" />
+        <attr name="shape_solidGradientStartColor" />
+        <attr name="shape_solidGradientCenterColor" />
+        <attr name="shape_solidGradientEndColor" />
+        <attr name="shape_solidGradientOrientation" />
+        <attr name="shape_solidGradientType" />
+        <attr name="shape_solidGradientCenterX" />
+        <attr name="shape_solidGradientCenterY" />
+        <attr name="shape_solidGradientRadius" />
+
+        <attr name="shape_strokeColor" />
+        <attr name="shape_strokePressedColor" />
+        <attr name="shape_strokeDisabledColor" />
+        <attr name="shape_strokeFocusedColor" />
+        <attr name="shape_strokeSelectedColor" />
+        <attr name="shape_strokeGradientStartColor" />
+        <attr name="shape_strokeGradientCenterColor" />
+        <attr name="shape_strokeGradientColor" />
+        <attr name="shape_strokeGradientOrientation" />
+        <attr name="shape_strokeSize" />
+        <attr name="shape_strokeDashSize" />
+        <attr name="shape_strokeDashGap" />
+
+        <attr name="shape_shadowSize" />
+        <attr name="shape_shadowColor" />
+        <attr name="shape_shadowOffsetX" />
+        <attr name="shape_shadowOffsetY" />
+
+        <attr name="shape_ringInnerRadiusRatio" />
+        <attr name="shape_ringInnerRadiusSize" />
+        <attr name="shape_ringThicknessRatio" />
+        <attr name="shape_ringThicknessSize" />
+
+        <attr name="shape_lineGravity" />
+    </declare-styleable>
+
+    <declare-styleable name="ClearAbleEditText">
+        <attr name="android:hint" />
+        <attr name="android:text" />
+        <attr name="android:gravity" />
+    </declare-styleable>
+
+    <declare-styleable name="ConsecutiveScrollerLayout_Layout">
+        <attr name="layout_isConsecutive" format="boolean" />
+        <attr name="layout_isNestedScroll" format="boolean" />
+        <attr name="layout_isSticky" format="boolean" />
+        <attr name="layout_isTriggerScroll" format="boolean" />
+        <attr name="layout_isSink" format="boolean" />
+        <attr name="layout_align" format="enum">
+            <enum name="LEFT" value="1" />
+            <enum name="RIGHT" value="2" />
+            <enum name="CENTER" value="3" />
+        </attr>
+        <attr name="layout_scrollChild" format="reference" />
+    </declare-styleable>
+    <declare-styleable name="ConsecutiveScrollerLayout">
+        <attr name="isPermanent" format="boolean" />
+        <attr name="overDragMode" format="boolean" />
+        <attr name="overDragMaxDistanceOfTop" format="dimension" />
+        <attr name="overDragMaxDistanceOfBottom" format="dimension" />
+        <attr name="overDragRate" format="float" />
+        <attr name="stickyOffset" format="dimension" />
+        <attr name="autoAdjustHeightAtBottomView" format="boolean" />
+        <attr name="adjustHeightOffset" format="dimension" />
+        <attr name="disableChildHorizontalScroll" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="FlickerProgressBar">
+        <attr name="textSize" format="dimension"/>
+        <attr name="loadingColor" format="color"/>
+        <attr name="stopColor" format="color"/>
+        <attr name="radius" format="dimension"/>
+        <attr name="borderWidth" format="dimension"/>
+
+    </declare-styleable>
+</resources>

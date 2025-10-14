@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/idp_55"
+        android:background="@drawable/item_click_selector"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/idp_15"
+        android:paddingEnd="@dimen/idp_10">
+
+        <RelativeLayout
+            android:id="@+id/tx_rl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@drawable/item_click_selector"
+            android:orientation="vertical">
+
+            <com.chaoji.im.ui.widget.AvatarImage
+                android:id="@+id/icon"
+                android:layout_width="@dimen/idp_35"
+                android:layout_height="@dimen/idp_35"
+                app:TSize="@dimen/isp_12"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/idp_3" />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/idp_10"
+                android:background="@drawable/group_title_ic_1"
+                android:gravity="center"
+                android:text="我的"
+                android:textColor="@color/white"
+                android:textSize="@dimen/isp_6"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/idp_10"
+            android:layout_toEndOf="@id/tx_rl"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="这是联系人名字"
+                android:textColor="@color/text_default_color"
+                android:textSize="@dimen/isp_14"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/icon"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="人数:12人"
+                android:textColor="@color/text_hit_color"
+                android:textSize="@dimen/isp_12"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/icon"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/checkMember"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="查看成员"
+            android:textColor="#2080F0"
+            android:textSize="@dimen/isp_14"
+            android:visibility="gone" />
+
+        <View
+            style="@style/HorizontalLineStyle"
+            android:layout_alignParentBottom="true" />
+
+    </RelativeLayout>
+</layout>
+

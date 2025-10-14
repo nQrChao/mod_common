@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="@dimen/idp_8">
+
+    <com.chaoji.other.huantansheng.easyphotos.ui.widget.PressedImageView
+        android:id="@+id/iv_photo"
+        android:layout_width="@dimen/idp_55"
+        android:layout_height="@dimen/idp_55"
+        android:scaleType="centerCrop" />
+
+    <View
+        android:id="@+id/v_selector"
+        android:layout_width="@dimen/idp_55"
+        android:layout_height="@dimen/idp_55"
+        android:background="@drawable/easy_photos_bg_selected_frame"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tv_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingBottom="@dimen/idp_3"
+        android:paddingEnd="@dimen/idp_8"
+        android:paddingStart="@dimen/idp_8"
+        android:paddingTop="@dimen/idp_3"
+        android:shadowColor="@color/easy_photos_bar_primary"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="1.2"
+        android:text="@string/gif_easy_photos"
+        android:textColor="@color/easy_photos_fg_primary"
+        android:textSize="@dimen/isp_12"
+        android:textStyle="bold"
+        android:visibility="gone"
+        android:layout_gravity="bottom"  />
+</FrameLayout>
+

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/idp_150"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:padding="@dimen/idp_3"
+    android:orientation="horizontal">
+
+    <androidx.appcompat.widget.AppCompatCheckBox
+        android:visibility="gone"
+        android:id="@+id/checkCache"
+        android:layout_width="@dimen/idp_25"
+        android:layout_height="@dimen/idp_25"
+        android:background="@null"
+        android:checked="true"
+        app:buttonCompat="@drawable/checkbox_selector" />
+
+    <TextView
+        android:gravity="center_vertical"
+        android:layout_marginStart="@dimen/idp_5"
+        android:id="@+id/tvGName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:lines="1"
+        android:singleLine="true"
+        android:textColor="@color/game_cur_text_color2"
+        android:textSize="@dimen/isp_11"
+        tools:text="任务名称" />
+</LinearLayout>

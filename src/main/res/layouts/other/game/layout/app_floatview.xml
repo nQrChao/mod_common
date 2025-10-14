@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data class="ViewFloatBind" />
+
+    <RelativeLayout
+        android:id="@+id/float_view"
+        android:layout_width="@dimen/idp_80"
+        android:layout_height="@dimen/idp_80"
+        android:layout_gravity="start"
+        android:orientation="horizontal"
+        android:tag="FLOAT_VIEW">
+
+        <ImageView
+            android:id="@+id/float_bg"
+            android:layout_width="@dimen/idp_80"
+            android:layout_height="@dimen/idp_80"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/bg_game_float_a" />
+
+        <ImageView
+            android:id="@+id/float_image"
+            android:layout_width="@dimen/idp_40"
+            android:layout_height="@dimen/idp_40"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/idp_17"
+            android:layout_marginTop="@dimen/idp_23"
+            tools:src="@mipmap/xd_icon" />
+
+
+        <ImageView
+            android:id="@+id/float_back"
+            android:layout_width="@dimen/idp_25"
+            android:layout_height="@dimen/idp_25"
+            android:src="@drawable/reback_ic"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+</layout>

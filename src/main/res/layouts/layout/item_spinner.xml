@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="protectQuestion"
+            type="com.chaoji.im.data.model.ProtectQuestionBean" />
+
+    </data>
+
+
+    <TextView
+        android:id="@android:id/text1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/idp_10"
+        android:paddingVertical="@dimen/idp_10"
+        android:text="@{protectQuestion.context}"
+        android:textColor="@color/text_default_color"
+        android:textSize="@dimen/isp_14" />
+
+</layout>
+

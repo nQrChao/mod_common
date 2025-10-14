@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/logcat_item_background_color"
+    android:foreground="?android:attr/selectableItemBackground">
+
+    <HorizontalScrollView
+        android:id="@+id/hcv_log_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none" >
+
+        <TextView
+            android:id="@+id/tv_log_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="@dimen/idp_5"
+            android:paddingHorizontal="@dimen/idp_10"
+            android:paddingVertical="@dimen/idp_5"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/isp_12"
+            tools:text="12:50 Tag 我是打印的日志" />
+    </HorizontalScrollView>
+
+    <View
+        android:id="@+id/v_log_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/idp_0_5"
+        android:layout_gravity="top"
+        android:background="#F5F5F5" />
+
+    <TextView
+        android:id="@+id/tv_log_index"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginTop="@dimen/idp_5"
+        android:layout_marginEnd="@dimen/idp_5"
+        android:background="@drawable/logcat_bg_index"
+        android:gravity="center"
+        android:paddingHorizontal="@dimen/idp_5"
+        android:paddingVertical="@dimen/idp_2"
+        android:textColor="#FFFFFF"
+        android:textSize="@dimen/isp_12"
+        android:visibility="visible"
+        tools:text="100" />
+</FrameLayout>

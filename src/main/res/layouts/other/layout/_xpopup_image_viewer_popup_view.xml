@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.chaoji.other.xpopup.widget.BlankView
+        android:id="@+id/placeholderView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible" />
+
+    <com.chaoji.other.xpopup.widget.PhotoViewContainer
+        android:id="@+id/photoViewContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.chaoji.other.xpopup.widget.HackyViewPager
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.chaoji.other.xpopup.widget.PhotoViewContainer>
+
+    <TextView
+        android:id="@+id/tv_pager_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="@dimen/idp_25"
+        android:layout_marginBottom="@dimen/idp_20"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/isp_15" />
+
+    <TextView
+        android:id="@+id/tv_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_marginEnd="@dimen/idp_25"
+        android:layout_marginBottom="@dimen/idp_20"
+        android:text="@string/xpopup_save"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/isp_15"
+        android:visibility="invisible" />
+
+</FrameLayout>

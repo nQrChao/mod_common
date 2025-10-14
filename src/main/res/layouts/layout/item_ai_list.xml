@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:id="@+id/parentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/idp_35"
+        android:background="@color/transparent"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/idp_10">
+
+        <com.chaoji.im.ui.view.DrawableTextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:drawableStart="@drawable/nav_btn2_white_ic"
+            android:drawablePadding="@dimen/idp_5"
+            android:gravity="center_vertical"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="@dimen/isp_13"
+            app:drawableHeight="@dimen/idp_18"
+            app:drawableWidth="@dimen/idp_18" />
+
+        <ImageView
+            android:id="@+id/edit"
+            android:layout_width="@dimen/idp_18"
+            android:layout_height="@dimen/idp_18"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/idp_10"
+            android:layout_toStartOf="@id/del"
+            android:src="@drawable/edit_white_ic" />
+
+        <ImageView
+            android:id="@+id/del"
+            android:layout_width="@dimen/idp_19"
+            android:layout_height="@dimen/idp_19"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/del_chat_white_ic" />
+
+
+    </RelativeLayout>
+</layout>
+

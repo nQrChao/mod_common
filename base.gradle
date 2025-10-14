@@ -1,0 +1,694 @@
+apply from: '../xdyx_common/commonExt.gradle'
+def keyPropertiesFile = file("../xdyx_common/keystore.properties")
+def keyProperties = new Properties()
+keyProperties.load(new FileInputStream(keyPropertiesFile))
+
+// 所有渠道都会继承此配置，除非在 channelConfigs 中被覆盖
+def defaultConfig = [
+        appName         : "a",
+        appVersionCode  : 85220,
+        appVersionName  : "8.5.2",
+        appPackageName  : "com.chaoji.lc",
+        appIcon         : "@mipmap/mod_icon",
+        defaultTGID     : "\"ga1001090\"",
+        appApiVersion   : "\"20250904\"",
+        appFiling       : "\"\"",
+        appAuthLoginSign: "\"\"",
+        appTencentAppId : "\"\"",
+        appTencentAppKey: "\"\"",
+        appUpdateId     : "\"0\"",
+        appOldTemplate  : "-1",
+        oAppId          : "\"\"",
+        oAppKey         : "\"\"",
+        oAppSecret      : "\"\"",
+        o_ad_id_1       : "\"\"",
+        o_ad_id_2       : "\"\"",
+        o_ad_id_3       : "\"\"",
+        oChannelName    : "\"\"",
+        hasVideo        : false,
+        signing         : null // 默认签名配置，后续会从 signingConfigs 中获取
+]
+
+// key 是 MOD_SRC_DIR 的值，value 是需要覆盖默认值的配置项
+def channelConfigs = [
+        xiaodianyouxi           : [
+                appName       : "小点游戏",
+                appPackageName: "com.xiaodianyx.xdhy",
+                appUpdateId   : "\"1\"",
+                defaultTGID   : "\"ga1001090\"",
+                appFiling     : "\"渝ICP备2025055346号-2A\"",
+                appOldTemplate: "-100",
+                signingName   : "cqxdyx"
+        ],
+        xiaodianqingyou         : [
+                appName       : "小点轻游",
+                appPackageName: "com.xiaodianqy.xdhy",
+                appUpdateId   : "\"31\"",
+                defaultTGID   : "\"ga1001090\"",
+                appFiling     : "\"渝ICP备2025055346号-2A\"",
+                appOldTemplate: "-100",
+                signingName   : "cqxdyx"
+        ],
+        xiaodianyouxi_game      : [
+                appName       : "小点游戏",
+                appPackageName: "com.xiaodianyx.xdhy",
+                appUpdateId   : "\"16\"",
+                defaultTGID   : "\"ga1001090\"",
+                appFiling     : "\"渝ICP备2025055346号-2A\"",
+                appOldTemplate: "9999",
+                signingName   : "cqxdyx"
+        ],
+        mod_moyu                : [
+                appName         : "摸鱼游戏",
+                appPackageName  : "com.moyu.sy",
+                appUpdateId     : "\"1\"",
+                defaultTGID     : "\"ga1001090\"",
+                appFiling       : "\"渝ICP备2025055346号-2A\"",
+                appTencentAppId : "\"1212712054\"",
+                appTencentAppKey: "\"779587344d7793e5544bdba26a72973f\"",
+                appAuthLoginSign: "\"DhTKIKptKkFxpcIryp83PpTGr40MDoIcW+Ixky52R5W7xKep/zS/S2JksD7NvjRpEBF1Dj40h7z6R1W50TfUEF2q+RHEFA/aiIF9pLrShBaW63sOfB2PbPsHl3CJN1DeNtC/NIdCPsQLzZIvBRDKaKLgrZlhascO2ro5M+1pNAJSSuhBkAvLu7oIHpuxaWEtc6df7I4s+WqHJ+9gFTYIi712YhhYyrQO/VlFGpsgc1C1XMJe/QwQxMvYtI62yDQaSecu08XwK/GI8QQ4CK3Q+o6S7ugczWu/zvTxYSiG4NypWlkEoEA+Sg==\"",
+                appOldTemplate  : "1",
+                signingName     : "moyu"
+        ],
+        mod_moyu2               : [
+                appName         : "摸鱼游戏",
+                appPackageName  : "com.moyuyx.xdhy",
+                appUpdateId     : "\"5\"",
+                defaultTGID     : "\"ga1001090\"",
+                appFiling       : "\"渝ICP备2025055346号-6A\"",
+                appAuthLoginSign: "\"seoCxnpbc+j5G5ahR3o35VBVpe3yAG07bbr1Ue042LqQNN5GVEQyqb/UJOFlRRvZfZF9ntXkg6K9G6SyxjOEz+bwgPfAY/+qg29KE9QQsKvIQSgrL1HLlP6FSsNiiOd3Pkxzeno7jN9n9GbXs1qeENmv3b/I54VFUPf6LF/Wgnr5K+t7sRVrxb5f/Yy/QyLRow9l7HIS8+eEMJIPP1Yoyfml+wmGwy9JDS5fr5fKonnlQB3xHJf+jgcOrKZutG5ZJebG596y8zRhRKzmmnPwXrpxfUBk4zFb9Aq2ohMEiyY=\"",
+                appOldTemplate  : "-1",
+                signingName     : "moyu" // mod_moyu2 也使用 moyu 签名
+        ],
+        // 爱上系列共用配置
+        mod_moyu_aishang        : [
+                appName         : "爱上手游",
+                appPackageName  : "com.aishang.sy",
+                appUpdateId     : "\"2\"",
+                appVersionCode  : 85224,
+                appVersionName  : "8.5.4",
+                defaultTGID     : "\"ba4001008\"",
+                appFiling       : "\"鄂ICP备2025099608号-4A\"",
+                appAuthLoginSign: "\"UIirCylqF8ytAur0xw9Ygj6jASOl03QD+K+XXpCPCjcrkAaCoWAp+ySgPo2ghel0AU2MZ8KeCF/VE25GrVpOTKhgC7GQaLvCf0gwCAsYHCyWm2TTrgz9rsV47S1V4LI5irfCYp4iZgGURiIkTwk+wsCVs8h9GqTGSmMoMAQLpnoR2AReY+j1zY9miEj69W4cPeUm0EHf0pJrnTiBE5WH2QN2aaqXiU0NVNM9Q9BYIx2b5U3x1y+iGIXpwIMXscnCNZbBL+rjaEggy9E/ofkTnvvzOUdwIm8XwGCSMLA745M=\"",
+                signingName     : "aishang"
+        ],
+        // 包好玩系列共用配置
+        mod_baohaowan           : [
+                appName         : "包好玩手游",
+                appPackageName  : "com.baohw.sy",
+                appUpdateId     : "\"3\"",
+                appFiling       : "\"鄂ICP备2025104314号-3A\"",
+                appAuthLoginSign: "\"FMBLZLCRit8BQbJ5kIFk1+ncTqL2ezaibWEal3sXnOUIVfs3UHiPbbnMcwKO2zNz5t9Wd3jszI+90fw+HCL2zw/FFYT275n9Z2UZvxIxqv3q+nwnKglPb6YaxkSHeua+QCQK1Cga3Kee3hb1/vGEUU5gzWKaCl5WsfnaVru76N7zq0R0dK1rjTt0c2NvPmk1m6QpBxfnta9DiB0DYRSKkXJvxrpw1XU0eMSoGvwsyLbgChJBF5mshY19ltZWUOA4oR/X5ckbmfuufgVaisy8IvdGWfxR815r++teIv5mVlE=\"",
+                appOldTemplate  : "2",
+                defaultTGID     : "\"ga1001090\"",
+                signingName     : "baohw"
+        ],
+        mod_baohaowan_shandian  : [
+                appName         : "闪电手游",
+                appPackageName  : "com.lightning.sy",
+                appUpdateId     : "\"4\"",
+                appFiling       : "\"鄂ICP备2025104314号-2A\"",
+                appAuthLoginSign: "\"7VNLg1oOKyG/U+dq/9lL247Axd/hcnbx/f4pluvOZJJe1X+WtCSx5loEqpf5taGq6bFzuZwCmFxeldmRkn0pUd+ruMkWh2kAtvKxeMGA4rykhy/tFjLWoNPMPb5PWcj+ziTyQSYckXAwAOgtVAk3H6MKybre9mhvIXHx8ssR2sT4zJPt245lE0Z6EDC7NYrLSaa98RPB7U7TZ61QvtPTiNM+zEXUnJw9gV9h3vAXyS4rFoDROQGawAO+8gFCZGGty0aB2HVVjKinqS9+MLklTYA30DIOQ2Mh6C0uGo7reO8=\"",
+                appOldTemplate  : "2",
+                defaultTGID     : "\"ga1001090\"",
+                signingName     : "lightning"
+        ],
+        mod_moyu2_jiuyao        : [
+                appName         : "九妖",
+                appPackageName  : "com.whcyjy.jy",
+                appUpdateId     : "\"6\"",
+                appFiling       : "\"鄂ICP备2025104314号-4A\"",
+                appAuthLoginSign: "\"OKE2wzkdkwqNDJREc8aKx3Tn23MNJIxqrRz6actr3XpXfKRzSOLwaA4LlJI0ZzUieYlz6FOMNC8OXfzEnfvd1OsjOU0CYk+KgBbeWCqMe7VRf3kPyLqlirh8uvmyUrtn7O7yxaF8E4+ydbcS9GNd3YApuVgTEXjCf5KW1VKJV/immYB3j0qvkmMMDCFcr17NmX6Tue0ZpMPPL5JiAoz7Av60ZIv+M/7e8sGHUP2EUJe8hqfTjF/p2LTvsyk8i3Ret9cZ4vJMC+Oba+dTkz7ldp4Lp+2sHL/yoQkuw3zY7iA=\"",
+                defaultTGID     : "\"ga1001090\"",
+                signingName     : "jiuyao"
+        ],
+        mod_gugu                : [
+                appName         : "咕咕游戏",
+                appPackageName  : "com.guguyx.xdhy",
+                appUpdateId     : "\"7\"",
+                appFiling       : "\"渝ICP备2025055346号-7A\"",
+                appAuthLoginSign: "\"P/CN27tBRMEtKVDQ79/uAnjZzQayicvrbtbkuN/hovZXUTyf4xhFtjqMwwczGqZ77CIbsGQ6bQbJjxo4hmQ2TYFbdRWCUenyoIAqfsaL9YR7hdTYU2nRG+VWUpcODUzbRJUu6azDhCeQBhcQ0WTZNUD7ILBzaS6uF7i4PChWb12/XshFKUNwS5WmlRwrkDFElqqT6dxJ28J6ofhWnrGUU8E4zk9dwpmPJ5B4pQujyqR9J+88ctAbLIhA7M6msBfhV3UN1jnEbwJyxdKhpUXk6wub3eCV3inLmuOELgHUSXE=\"",
+                defaultTGID     : "\"ga1001090\"",
+                signingName     : "gugu"
+        ],
+        // 1元福游共用配置
+        mod_gugu_yiyuan         : [
+                appName         : "1元福游",
+                appPackageName  : "com.yiyuanfuyou.xdhy",
+                appUpdateId     : "\"8\"",
+                appFiling       : "\"渝ICP备2025055346号-5A\"",
+                appAuthLoginSign: "\"OWLx4dekLR7YPfpnMcvZ/OC9vqJ/whZpCFEMuMq4Q6c6N/u+CJTlf/xq6psYtkJ48VJ/ys3rgFYzXyLAQY6ebkCKfp6nhCtM3VKqjzHbbi4IAYoPe/glxjxxflHojVs0q+ypzxq+ipykBBm0n3Kl+G7rAADH0igjM2LAPQcu12rM1XW2aDKW1GY3qfnURQvsfTDD3Xo0QTNpGG6zYPmWqnLbJP9pWrds1CR+vqG3JjioSyXGhHsVcKcRWySG1EFO0b5ynnBACGeKPc9KyFzEMQhhP4aoTDYblGIuwzm+6N5BZODZ+gopjQ==\"",
+                defaultTGID     : "\"ga1001090\"",
+                signingName     : "yyfy"
+        ],
+        mod_gugu_jiuyao         : [
+                appName       : "九妖游戏",
+                appPackageName: "com.jyyx.fuli",
+                appUpdateId   : "\"9\"",
+                appFiling     : "\"鄂ICP备2025099608号-9A\"",
+                defaultTGID   : "\"ga1001090\"",
+                signingName   : "gugu_jiuyaoyouxi"
+        ],
+        mod_taoyoufang          : [
+                appName       : "淘游盒",
+                appVersionCode: 85223,
+                appVersionName: "8.5.3",
+                //appPackageName: "com.taoyoufang.yqbl",
+                appPackageName: "com.taoyoufang.yqbl",
+                appUpdateId   : "\"10\"",
+                defaultTGID   : "\"ga1001091\"",
+                signingName   : "taoyoufang"
+        ],
+        mod_youdianhai          : [
+                appName       : "游点嗨",
+                appPackageName: "com.youdianhai.yqbl",
+                appUpdateId   : "\"13\"",
+                defaultTGID   : "\"ba2003091\"",
+                signingName   : "youdianhai"
+        ],
+        mod_youdianhai_guangmang: [
+                appName       : "光芒游戏助手",
+                appPackageName: "com.youdianhai.yqbl",
+                appUpdateId   : "\"14\"",
+                defaultTGID   : "\"ba2003091\"",
+                signingName   : "youdianhai"
+        ],
+        h5Game_vivo_lsdnx       : [
+                appName       : "螺丝钉逆袭",
+                appVersionCode: 7,
+                appVersionName: "7.0",
+                appPackageName: "com.xdhy.lsdnx.vivo",
+                appUpdateId   : "\"11\"",
+                defaultTGID   : "\"ga1003007\"",
+                oAppId        : "\"105920292\"",
+                oAppKey       : "\"841ce56df874796480f9ea57871b6804\"",
+                o_ad_id_1     : "\"4074620e593a48ed935ac383c9167ec9\"",
+                o_ad_id_2     : "\"8c07a819f36345ae885f07f2cdf4c5ea\"",
+                o_ad_id_3     : "\"19d9d45b1a374217bf5646be00a0f05d\"",
+                oChannelName  : "\"vivo\"",
+                appOldTemplate: "9998",
+                signingName   : "lsdnx"
+        ],
+        h5Game_oppo_lsdnx       : [
+                appName       : "螺丝钉逆袭",
+                appVersionCode: 5,
+                appVersionName: "5.0",
+                appPackageName: "com.lsdnx.xdhy.nearme.gamecenter",
+                appUpdateId   : "\"11\"",
+                oAppId        : "\"88bfe7bc38204688a06b43a3376d8fb5\"",
+                oAppKey       : "\"abb1584784ff4f1d9f8018b4a8a1ec7e\"",
+                oChannelName  : "\"vivo\"",
+                appOldTemplate: "9999",
+                defaultTGID   : "\"ga1001003\"",
+                signingName   : "lsdnx"
+        ],
+        h5Game_huawei_lsdnx     : [
+                appName       : "次云视频编辑器",
+                appVersionCode: 1,
+                appVersionName: "1.0",
+                appPackageName: "com.video.game.huawei",
+                appUpdateId   : "\"11\"",
+                defaultTGID   : "\"ga1001003\"",
+                oAppId        : "\"6917578403800015539\"",
+                oAppKey       : "\"b9ce48fa0670b9e791a700bb6814903a9736c22d007fcfb40e6be5dcac4a447a\"",
+                oAppSecret    : "\"b9ce48fa0670b9e791a700bb6814903a9736c22d007fcfb40e6be5dcac4a447a\"",
+                oChannelName  : "\"huawei\"",
+                appOldTemplate: "9999",
+                signingName   : "lsdnx"
+        ],
+        h5Game_oppo_jiuyao      : [
+                appName       : "九妖",
+                appVersionCode: 1,
+                appVersionName: "1.0",
+                appPackageName: "cqxd.jy.game.nearme.gamecenter",
+                appUpdateId   : "\"11\"",
+                defaultTGID   : "\"ga1002003\"",
+                oAppId        : "\"ff6c07e7f2c34d169483bc954b64ae8a\"",
+                oAppKey       : "9bab5d58b32d4a2d8bcf6a59e5012e34",
+                oChannelName  : "\"vivo\"",
+                appOldTemplate: "9999",
+                signingName   : "jiuyaoguowang"
+        ],
+        h5Game_xiaomi_lsdnx     : [
+                appName       : "螺丝钉逆袭",
+                appVersionCode: 2,
+                appVersionName: "1.2",
+                appPackageName: "com.lsdnx.xdhy.mi",
+                appUpdateId   : "\"11\"",
+                defaultTGID   : "\"ga1003008\"",
+                oAppId        : "\"2882303761520426463\"",
+                oAppKey       : "\"5122042677463\"",
+                oAppSecret    : "\"57b236d189fd22009fcb984ff9a6ad0c\"",
+                o_ad_id_1     : "\"d6df348464bcfeff421949952d160a2c\"",
+                o_ad_id_2     : "\"57b236d189fd22009fcb984ff9a6ad0c\"",
+                o_ad_id_3     : "\"10005503ce20605216ea73f4294d016c\"",
+                oChannelName  : "\"xiaomi\"",
+                appOldTemplate: "9998",
+                signingName   : "lsdnx"
+        ],
+        h5Game_oppo_zdw         : [
+                appName       : "值得玩",
+                appVersionCode: 1,
+                appVersionName: "1.0",
+                appPackageName: "com.zdw.xdhy.nearme.gamecenter",
+                appUpdateId   : "\"12\"",
+                oAppId        : "\"6becebf585714ce0bcca133f7057737b\"",
+                oAppKey       : "\"67371825aa8544babd62173ef8e3e024\"",
+                oChannelName  : "\"oppo\"",
+                signingName   : "zdw"
+        ],
+        mod_shengxinwan         : [
+                appName       : "省心玩游戏助手",
+                appPackageName: "com.shengxinwan.benfeng",
+                appUpdateId   : "\"15\"",
+                oChannelName  : "\"xdmj\"",
+                defaultTGID   : "\"ga1001090\"",
+                signingName   : "shengxinwan"
+        ],
+        mod_game588             : [
+                appName       : "省心玩游戏助手",
+                appVersionCode: 85226,
+                appVersionName: "8.5.6",
+                appPackageName: "com.wbbyxjy.benfeng",
+                appUpdateId   : "\"21\"",
+                oChannelName  : "\"xdmj\"",
+                defaultTGID   : "\"ba4003008\"",
+                signingName   : "game588"
+        ],
+        mod_game588_shengxinwan : [
+                appName       : "省心玩游戏助手",
+                appVersionCode: 85223,
+                appVersionName: "8.5.3",
+                appPackageName: "com.shengxinwan.benfeng",
+                appUpdateId   : "\"15\"",
+                oChannelName  : "\"xdmj\"",
+                defaultTGID   : "\"ga1001090\"",
+                signingName   : "shengxinwan"
+        ],
+        mod_gamezhewan          : [
+                appName       : "折玩游戏助手",
+                appPackageName: "com.zhewan.chuyou",
+                appUpdateId   : "\"18\"",
+                oChannelName  : "\"xdmj\"",
+                defaultTGID   : "\"ga1001090\"",
+                signingName   : "zhewangame"
+        ],
+        mod_gamezhewan_zwyxzs   : [
+                appName       : "折玩游戏助手",
+                appPackageName: "com.zwyxzs.chuyou",
+                appUpdateId   : "\"18\"",
+                oChannelName  : "\"xdmj\"",
+                defaultTGID   : "\"ga1001090\"",
+                signingName   : "zhewangame"
+        ],
+        h5Game_vivo_wanst       : [
+                appName       : "玩上头",
+                appVersionCode: 1,
+                appVersionName: "1.0",
+                appPackageName: "com.wanshangtou.yqbl.vivo",
+                appUpdateId   : "\"19\"",
+                defaultTGID   : "\"ga1002007\"",
+                //defaultTGID   : "\"zw1000001\"",
+                oAppId        : "\"105938040\"",
+                oAppKey       : "\"481f21ef5ee52ff4172b8eef7ba8ff7c\"",
+                o_ad_id_1     : "\"658058380ff84a47b3239accecf6003a\"",
+                o_ad_id_2     : "\"03b855ef382640889e571fc1bd3655a1\"",
+                o_ad_id_3     : "\"37af4539d04a4c7da246111f71106553\"",
+                oChannelName  : "\"vivo\"",
+                appOldTemplate: "9998",
+                signingName   : "wanshangtou"
+        ],
+        mod_wanzhuanhao         : [
+                appName       : "玩转号游戏",
+                appVersionCode: 85225,
+                appVersionName: "8.5.5",
+                appPackageName: "com.wanzhuan.chuyou",
+                appUpdateId   : "\"20\"",
+                defaultTGID   : "\"ba5003007\"",
+                signingName   : "wanzhuanhao"
+        ],
+        mod_youdiansheng        : [
+                appName       : "游点省",
+                appVersionCode: 85225,
+                appVersionName: "8.5.5",
+                appPackageName: "com.youdiansheng.chuyou",
+                appUpdateId   : "\"22\"",
+                defaultTGID   : "\"ga1001090\"",
+                signingName   : "youdiansheng"
+        ],
+        mod_youdiansheng_2      : [
+                appName       : "游点省游戏交易",
+                appVersionCode: 85225,
+                appVersionName: "8.5.5",
+                appPackageName: "com.ydsyxjy.chuyou",
+                appUpdateId   : "\"23\"",
+                defaultTGID   : "\"ga1001090\"",
+                signingName   : "youdiansheng"
+        ],
+        mod_fuyouduo_huawei     : [
+                appName       : "福游多",
+                appPackageName: "com.fuyd.sy",
+                appUpdateId   : "\"24\"",
+                defaultTGID   : "\"ga1001090\"",
+                signingName   : "modfuyouduo"
+        ],
+        mod_game8591            : [
+                appName       : "8591游戏交易",
+                appPackageName: "com.youxijy.benfeng",
+                appUpdateId   : "\"25\"",
+                defaultTGID   : "\"ga1001090\"",
+                signingName   : "game8591"
+        ],
+        mod_game588_bafu        : [
+                appName       : "霸服手游",
+                appVersionCode: 85223,
+                appVersionName: "8.5.3",
+                appPackageName: "com.wbbyxjy.benfeng",
+                appUpdateId   : "\"26\"",
+                oChannelName  : "\"xdmj\"",
+                defaultTGID   : "\"ga1001090\"",
+                signingName   : "game588"
+        ],
+        mod_wanzhuanhao_wuxian  : [
+                appName       : "无限折",
+                appVersionCode: 85222,
+                appVersionName: "8.5.2",
+                appPackageName: "com.wanzhuan.chuyou",
+                appUpdateId   : "\"27\"",
+                defaultTGID   : "\"ga1001090\"",
+                signingName   : "wanzhuanhao"
+        ],
+        h5Game_oppo_wanst       : [
+                appName       : "玩上头",
+                appVersionCode: 1,
+                appVersionName: "1.0",
+                appPackageName: "com.wanshangtou.yqbl.nearme.gamecenter",
+                appUpdateId   : "\"29\"",
+                defaultTGID   : "\"ga1002001\"",
+                oAppId        : "\"e2963d07e7e54ff1bab0a3b19d6acc86\"",
+                oAppKey       : "\"2b5f0500e9ca401d8f2c4752437e0a6d\"",
+                oChannelName  : "\"oppo\"",
+                appOldTemplate: "9998",
+                signingName   : "wanshangtou"
+        ],
+        h5Game_xiaomi_wanst     : [
+                appName       : "玩上头",
+                appVersionCode: 1,
+                appVersionName: "1.0",
+                appPackageName: "com.wanshangtou.yqbl.mi",
+                appUpdateId   : "\"30\"",
+                defaultTGID   : "\"ga1002008\"",
+                oAppId        : "\"2882303761520444548\"",
+                oAppKey       : "\"5422044412548\"",
+                oAppSecret    : "\"c266ac9a9dac8a98bbba6bdee158a61d\"",
+                oChannelName  : "\"xiaomi\"",
+                appOldTemplate: "9998",
+                signingName   : "wanshangtou"
+        ],
+        mod_game588_588         : [
+                appName       : "588游戏",
+                appVersionCode: 85226,
+                appVersionName: "8.5.6",
+                appPackageName: "com.wbbyxjy.benfeng",
+                appUpdateId   : "\"32\"",
+                oChannelName  : "\"xdmj\"",
+                defaultTGID   : "\"ga1001090\"",
+                signingName   : "game588"
+        ],
+        mod_wuxianzhe           : [
+                appName       : "无限折",
+                appVersionCode: 85222,
+                appVersionName: "8.5.2",
+                hasVideo      :  false,
+                appPackageName: "com.wuxianzhe.yqbl",
+                appUpdateId   : "\"33\"",
+                defaultTGID   : "\"ga1001090\"",
+                signingName   : "wuxianzhe"
+        ],
+        mod_haoyouzhekou        : [
+                appName       : "101好游折扣助手",
+                appPackageName: "com.haoyou.fyd",
+                appUpdateId   : "\"34\"",
+                appVersionCode: 85222,
+                appVersionName: "8.5.2",
+                defaultTGID   : "\"ga1001090\"",
+                signingName   : "haoyouzhekou"
+        ],
+        mod_fuyouduo            : [
+                appName       : "福游多",
+                appPackageName: "com.fuyd.sy",
+                appUpdateId   : "\"35\"",
+                defaultTGID   : "\"ga1001090\"",
+                signingName   : "modfuyouduo"
+        ],
+        h5Game_vivo_guowang     : [
+                appName       : "这城有国王",
+                appVersionCode: 1,
+                appVersionName: "1.1",
+                appPackageName: "com.xdhy.zcygw.vivo",
+                appUpdateId   : "\"36\"",
+                defaultTGID   : "\"ga1004007\"",
+                oAppId        : "\"105913290\"",
+                oAppKey       : "\"5e00494e32ee1f6a6658e30d02802285\"",
+                o_ad_id_1     : "\"d5a35727f4984276b6ac366bb4e2ef99\"",
+                o_ad_id_2     : "\"b8f40cee4b944eba84785062d3b2bd9c\"",
+                o_ad_id_3     : "\"c06fe95ae06340daac0aba18c2b9a3d3\"",
+                oChannelName  : "\"vivo\"",
+                appOldTemplate: "9998",
+                signingName   : "kingEscape"
+        ],
+        mod_wuxianzhe_fuyou     : [
+                appName       : "游戏福利圈",
+                appVersionCode: 85222,
+                appVersionName: "8.5.2",
+                appPackageName: "com.youfu.ycxy",
+                appUpdateId   : "\"37\"",
+                defaultTGID   : "\"ga1001090\"",
+                signingName   : "youxifuliquan"
+        ],
+        mod_all                 : [
+                appName       : "游戏MOD",
+                appVersionCode: 1,
+                appVersionName: "1.0.0",
+                appPackageName: "com.xdyx.modall",
+                appUpdateId   : "\"37\"",
+                defaultTGID   : "\"ga1001090\"",
+                signingName   : "youxifuliquan"
+        ],
+        mod_fuwanzkb            : [
+                appName       : "无限折",
+                appVersionCode: 85225,
+                appVersionName: "8.5.5",
+                appPackageName: "com.wuxianzhe.yqbl",
+                appUpdateId   : "\"38\"",
+                hasVideo      :  true,
+                defaultTGID   : "\"zw1000000\"",
+                signingName   : "wuxianzhe"
+        ],
+        mod_taoyoufang_taozheyxh: [
+                appName       : "淘折游戏盒",
+                appVersionCode: 85223,
+                appVersionName: "8.5.3",
+                appPackageName: "com.taoyoufang.yqbl",
+                appUpdateId   : "\"39\"",
+                defaultTGID   : "\"zw1000000\"",
+                signingName   : "taoyoufang"
+        ],
+        mod_fuwanzkb2           : [
+                appName       : "福玩游戏折扣宝",
+                appVersionCode: 85222,
+                appVersionName: "8.5.2",
+                appPackageName: "com.fuwanzkb.youcheng",
+                appUpdateId   : "\"40\"",
+                defaultTGID   : "\"zw1000000\"",
+                signingName   : "fuwanzkb"
+        ],
+        mod_game8591_zhehaihai  : [
+                appName       : "折嗨嗨福利",
+                appPackageName: "com.youxijy.benfeng",
+                appUpdateId   : "\"41\"",
+                defaultTGID   : "\"ga1001090\"",
+                signingName   : "game8591"
+        ],
+        mod_haoyouzhekou2        : [
+                appName       : "101好游折扣助手",
+                appPackageName: "com.haoyou.fyd",
+                appUpdateId   : "\"42\"",
+                appVersionCode: 81111,
+                appVersionName: "8.1.1",
+                hasVideo      :  true,
+                defaultTGID   : "\"ga1001090\"",
+                signingName   : "haoyouzhekou"
+        ],
+        xiaodianyouxi_qingyou : [
+                appName       : "小点轻游",
+                //appPackageName: "com.xiaodian.xdhy",
+                appPackageName: "com.xiaodianqy.xdhy",
+                appUpdateId   : "\"43\"",
+                defaultTGID   : "\"ga1001090\"",
+                appVersionCode: 7,
+                appVersionName: "7.0.1",
+                appFiling     : "\"渝ICP备2025055346号-2A\"",
+                appOldTemplate: "9999",
+                signingName   : "xiaodianqingyou"
+        ],
+        mod_xiaodianqingyoumj : [
+                appName       : "小点轻游",
+                appPackageName: "com.xiaodian.xdhy",
+                appUpdateId   : "\"44\"",
+                defaultTGID   : "\"zw1000000\"",
+                appVersionCode: 1,
+                appVersionName: "1.0.1",
+                appFiling     : "\"渝ICP备2025055346号-2A\"",
+                signingName   : "xiaodianqingyou"
+        ],
+        h5Game_vivo_dae       : [
+                appName       : "大鹅手游",
+                appVersionCode: 1,
+                appVersionName: "1.0",
+                appPackageName: "com.biggoose.sy.vivo",
+                appUpdateId   : "\"45\"",
+                defaultTGID   : "\"ga1008007\"",
+                oAppId        : "\"105970702\"",
+                oAppKey       : "\"b73fdfc7833926a715a3af29a9130719\"",
+                o_ad_id_1     : "\"4c8d0f679df549ffa389b8213813412d\"",
+                o_ad_id_2     : "\"321e1951214a473a99d26123f206e112\"",
+                o_ad_id_3     : "\"d2f864818a49496ca7d762168fcd3a95\"",
+                oChannelName  : "\"vivo\"",
+                appOldTemplate: "9998",
+                signingName   : "gamedae"
+        ],
+        h5Game_vivo_xiaoshe      : [
+                appName       : "开局一条小蛇蛇",
+                appVersionCode: 1,
+                appVersionName: "1.0",
+                appPackageName: "com.cqxd.kjytxss.vivo",
+                appUpdateId   : "\"46\"",
+                defaultTGID   : "\"ga1007007\"",
+                oAppId        : "\"105970750\"",
+                oAppKey       : "\"525f7e37dd193c03e06424ad9e7ca17c\"",
+                o_ad_id_1     : "\"5510774774a2418fb6bc1bbffc388e3d\"",
+                o_ad_id_2     : "\"194ab6909c054922ae5c78c5b7983272\"",
+                o_ad_id_3     : "\"158ebfb4eae2446da45049a87564d2b8\"",
+                oChannelName  : "\"vivo\"",
+                appOldTemplate: "9998",
+                signingName   : "gamexiaoshe"
+        ],
+        h5Game_vivo_zhaocha       : [
+                appName       : "躺赢找茬MVP",
+                appVersionCode: 1,
+                appVersionName: "1.0",
+                appPackageName: "com.tyzcmvp.xdhy.vivo",
+                appUpdateId   : "\"47\"",
+                defaultTGID   : "\"ga1006007\"",
+                oAppId        : "\"105970754\"",
+                oAppKey       : "\"675ea0de6c9eb490654068339101a1e9\"",
+                o_ad_id_1     : "\"0b0059beb8d049839474e818c318801e\"",
+                o_ad_id_2     : "\"cf798b1db03d4394b0a5029873902010\"",
+                o_ad_id_3     : "\"3d2bf486ec094d22ba2d86a2429ec25d\"",
+                oChannelName  : "\"vivo\"",
+                appOldTemplate: "9998",
+                signingName   : "gamezhaocha"
+        ],
+        h5Game_vivo_youdianhai  : [
+                appName       : "游点嗨",
+                appVersionCode: 1,
+                appVersionName: "1.0",
+                appPackageName: "com.youdianhai.yqbl.vivo",
+                appUpdateId   : "\"48\"",
+                defaultTGID   : "\"ga1005007\"",
+                oAppId        : "\"105970756\"",
+                oAppKey       : "\"d64f1b25356a6173a56929584fe9d67d\"",
+                o_ad_id_1     : "\"321c6c86c19647f8ab55b7d974b9bdb4\"",
+                o_ad_id_2     : "\"c8a936854c8b4dd99f067d9fe4a03907\"",
+                o_ad_id_3     : "\"d31ff6ef12fd47cc8bbb8d009de3b0cc\"",
+                oChannelName  : "\"vivo\"",
+                appOldTemplate: "9998",
+                signingName   : "gameyoudianhai"
+        ],
+        mod_game8591_zhehaihai_zhehaihai  : [
+                appName       : "折嗨嗨",
+                appPackageName: "com.youxijy.benfeng",
+                appUpdateId   : "\"49\"",
+                defaultTGID   : "\"ga1001090\"",
+                signingName   : "game8591"
+        ],
+        mod_haoyouzs  : [
+                appName       : "101好游助手",
+                appVersionCode  : 85223,
+                appVersionName  : "8.5.3",
+                appPackageName: "com.haoyouzs.fyd",
+                appUpdateId   : "\"50\"",
+                hasVideo      :  true,
+                defaultTGID   : "\"zw1000000\"",
+                signingName   : "haoyouzs"
+        ],
+        h5Game_vivo_baohaowan  : [
+                appName       : "包好玩",
+                appVersionCode: 1,
+                appVersionName: "1.0",
+                appPackageName: "com.baohw.xyx.vivo",
+                appUpdateId   : "\"51\"",
+                defaultTGID   : "\"ga1009007\"",
+                oAppId        : "\"105979153\"",
+                oAppKey       : "\"d2127e9844a0c0f8b81fbf428247f407\"",
+                o_ad_id_1     : "\"03a9672325fc4a9eb2b16682fd83acf3\"",
+                o_ad_id_2     : "\"d66dcc6a4a6d4beb82f0e00d2258087a\"",
+                o_ad_id_3     : "\"42ec57a89863471a8b7d44999a249c04\"",
+                oChannelName  : "\"vivo\"",
+                appOldTemplate: "9998",
+                signingName   : "vivobaohaowan"
+        ],
+]
+
+// 复制共用的配置
+channelConfigs.mod_moyu_aishang2 = channelConfigs.mod_moyu_aishang3 = channelConfigs.mod_moyu_aishang
+channelConfigs.mod_baohaowan2 = channelConfigs.mod_baohaowan_2 = channelConfigs.mod_baohaowan
+channelConfigs.mod_moyu2_yiyuan = channelConfigs.mod_gugu_yiyuan
+channelConfigs.mod_taoyoufang_2 = channelConfigs.mod_taoyoufang
+
+
+// a. 获取当前渠道的专属配置，如果找不到，则返回一个空 Map
+def currentChannelConfig = channelConfigs.get(MOD_SRC_DIR, [:])
+// b. 使用当前渠道配置覆盖默认配置，得到最终配置
+def finalConfig = defaultConfig + currentChannelConfig
+
+println "================== Final Build Config for [${MOD_SRC_DIR}] =================="
+finalConfig.each { key, value ->
+    println "\u001B[33m${key.padRight(20)}: $value\u001B[0m"
+}
+println "======================================================================="
+
+// 6. 将最终配置应用到项目中
+ext {
+    LOG_ENABLE = log_enable
+    OKHTTP_PROXY_ENABLE = false
+    VERSION_CODE = finalConfig.appVersionCode
+    VERSION_NAME = finalConfig.appVersionName
+    APPLICATION_ID = finalConfig.appPackageName
+
+    MOD_INFO = [
+            MOD_APP_UPDATA_ID = finalConfig.appUpdateId,
+            MOD_APP_NAME = finalConfig.appName,
+            MOD_APP_ICON = finalConfig.appIcon,
+            MOD_APP_FILING = finalConfig.appFiling,
+            MOD_APP_AUTH_LOGIN_SIGN = finalConfig.appAuthLoginSign,
+            MOD_APP_TENCENT_ID = finalConfig.appTencentAppId,
+            MOD_APP_TENCENT_KEY = finalConfig.appTencentAppKey,
+            MOD_APP_DEFAULT_TGID = finalConfig.defaultTGID,
+            MOD_APP_API_VERSION = finalConfig.appApiVersion,
+            MOD_APP_OLD_TEMPLATE = finalConfig.appOldTemplate,
+            MOD_GAME_O_ID = finalConfig.oAppId,
+            MOD_GAME_O_KEY = finalConfig.oAppKey,
+            MOD_GAME_O_SECRET = finalConfig.oAppSecret,
+            MOD_GAME_O_AD_1 = finalConfig.o_ad_id_1,
+            MOD_GAME_O_AD_2 = finalConfig.o_ad_id_2,
+            MOD_GAME_O_AD_3 = finalConfig.o_ad_id_3,
+            MOD_GAME_O_CHANNEL_NAME = finalConfig.oChannelName,
+            MOD_HAS_VIDEO = finalConfig.hasVideo,
+            MOD_SIGNING_NAME = finalConfig.signingName,
+    ]
+
+    KEY_PROPERTIES = keyProperties
+
+}

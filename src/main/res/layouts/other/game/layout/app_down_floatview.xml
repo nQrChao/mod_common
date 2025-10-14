@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data class="DownFloatBind" />
+
+    <RelativeLayout
+        android:id="@+id/float_view"
+        android:layout_width="@dimen/idp_90"
+        android:background="@drawable/bg_dialog_xxx"
+        android:layout_height="@dimen/idp_120"
+        android:layout_gravity="start"
+        android:orientation="horizontal"
+        android:tag="FLOAT_VIEW">
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="@dimen/idp_80"
+            android:layout_height="@dimen/idp_80"
+            android:layout_centerInParent="true"
+            android:max="100"
+            android:progress="50"
+            android:progressDrawable="@drawable/download_progress_drawable" />
+
+        <ImageView
+            android:id="@+id/float_image"
+            android:layout_width="@dimen/idp_40"
+            android:layout_height="@dimen/idp_40"
+            android:layout_centerInParent="true"
+            tools:src="@mipmap/xd_icon" />
+
+
+        <TextView
+            android:paddingVertical="@dimen/idp_7"
+            android:id="@+id/down_text"
+            tools:text="正在下载  50%"
+            android:layout_alignParentBottom="true"
+            android:gravity="center_horizontal"
+            android:textColor="@color/white"
+            android:textSize="@dimen/isp_11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+</layout>

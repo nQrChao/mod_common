@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data class="ViewTaskBind" />
+
+    <LinearLayout
+        android:id="@+id/task_root"
+        android:layout_width="@dimen/idp_130"
+        android:layout_height="wrap_content"
+        android:alpha="1"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:tag="task_root">
+
+        <RelativeLayout
+            android:id="@+id/task_title"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/idp_30"
+            android:background="@drawable/bg_tasklist"
+            android:paddingHorizontal="@dimen/idp_5"
+            android:tag="task_title">
+
+            <ImageView
+                android:id="@+id/task_title_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/float_task_title_sj" />
+
+            <TextView
+                android:id="@+id/task_title_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/task_title_image"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/game_cur_text_color"
+                android:textSize="@dimen/isp_11"
+                tools:text="追踪任务" />
+
+            <TextView
+                android:id="@+id/task_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/idp_5"
+                android:layout_toEndOf="@id/task_title_text"
+                android:gravity="center"
+                android:lines="1"
+                android:textColor="#E7C145"
+                android:textSize="@dimen/isp_12"
+                android:visibility="gone"
+                tools:text="3/10" />
+
+            <ImageView
+                android:id="@+id/task_refresh"
+                android:layout_width="@dimen/idp_15"
+                android:layout_height="@dimen/idp_15"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/refresh_ic" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="@dimen/idp_150"
+            android:layout_height="@dimen/idp_30"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/task_title_text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:ellipsize="end"
+                android:maxLines="3"
+                android:textColor="@android:color/white"
+                android:textSize="12sp"
+                tools:text="当前任务" />
+
+            <ImageView
+                android:id="@+id/task_close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/button_close_white" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/netError"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:background="@drawable/bg_float_task_other"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="加载失败，请重试"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/progress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_float_task_other"
+            android:gravity="center"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:id="@+id/task_details"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/idp_150"
+                android:background="@drawable/bg_float_task_other"
+                android:orientation="vertical"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                android:tag="task_details"
+                android:visibility="gone"
+                app:layout_constraintLeft_toLeftOf="@id/task_title"
+                app:layout_constraintTop_toBottomOf="@id/task_title">
+
+                <View
+                    android:id="@+id/cache_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/idp_1"
+                    android:background="@color/game_cur_text_color" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/task_recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/idp_5"
+                    android:layout_marginBottom="@dimen/idp_5"
+                    android:fadeScrollbars="false"
+                    android:scrollbarFadeDuration="0"
+                    android:scrollbarSize="1dp"
+                    android:scrollbarStyle="insideOverlay"
+                    android:scrollbarThumbVertical="@color/game_cur_text_color"
+                    android:scrollbarTrackVertical="@color/black60"
+                    android:scrollbars="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:spanCount="1"
+                    tools:itemCount="5"
+                    tools:listitem="@layout/item_task" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

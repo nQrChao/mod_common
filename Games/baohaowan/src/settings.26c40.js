@@ -1,0 +1,1 @@
+window._CCSettings={platform:"web-mobile",groupList:["default"],collisionMatrix:[[true]],hasResourcesBundle:true,hasStartSceneBundle:false,remoteBundles:[],subpackages:[],launchScene:"db://assets/ymtScripts/yomitoo/first/FirstLoad.fire",orientation:"portrait",jsList:[],bundleVers:{internal:"d17e2",res:"7b8d3",resources:"7c883",main:"0a813"}};

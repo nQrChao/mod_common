@@ -1,0 +1,5 @@
+{
+  "gameid": "46",
+  "platform": "",
+  "channel": "GEN-desy"
+}

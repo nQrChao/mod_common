@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.chaoji.other.sendtion.xrichtext.DataImageView
+        android:id="@+id/edit_imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="200dp"
+        android:src="@drawable/status_empty_ic" />
+
+    <ImageView
+        android:id="@+id/image_close"
+        android:layout_width="@dimen/idp_50"
+        android:layout_height="@dimen/idp_50"
+        android:layout_alignParentEnd="true"
+        android:paddingStart="@dimen/idp_20"
+        android:paddingTop="@dimen/idp_5"
+        android:paddingEnd="@dimen/idp_5"
+        android:paddingBottom="@dimen/idp_20"
+        android:src="@drawable/close_g_ic" />
+
+</RelativeLayout>

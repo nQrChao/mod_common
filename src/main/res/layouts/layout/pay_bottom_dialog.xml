@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/a_rounded_top_b_10">
+
+        <TextView
+            android:id="@+id/title_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:paddingVertical="@dimen/idp_15"
+            android:text="支付"
+            android:textColor="@color/text_default_color"
+            android:textSize="@dimen/isp_16"
+            android:textStyle="bold" />
+
+
+        <ImageView
+            android:id="@+id/cancel"
+            android:layout_width="@dimen/idp_22"
+            android:layout_height="@dimen/idp_22"
+            android:layout_alignParentEnd="true"
+            android:paddingStart="@dimen/idp_1"
+            android:paddingTop="@dimen/idp_10"
+            android:paddingEnd="@dimen/idp_10"
+            android:src="@drawable/close_g_ic" />
+
+    </RelativeLayout>
+
+    <View style="@style/HorizontalLineStyle2" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingVertical="@dimen/idp_15">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:text="￥"
+                android:textColor="@color/text_default_color"
+                android:textSize="@dimen/isp_16"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:text="10.00"
+                android:textColor="@color/text_default_color"
+                android:textSize="@dimen/isp_28"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <View style="@style/HorizontalLineStyle2" />
+
+        <LinearLayout
+            android:id="@+id/infoLL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.chaoji.im.ui.layout.SettingBar
+                android:id="@+id/payType"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/idp_70"
+                app:bar_leftText="支付方式"
+                app:bar_leftTextSize="@dimen/isp_14"
+                app:bar_leftTextStyle="bold"
+                app:bar_rightDrawable="@drawable/arrows_right_ic"
+                app:bar_rightDrawableTint="@color/text_hit_color"
+                app:bar_rightText=""
+                app:bar_rightTextColor="@color/text_hit_color"
+                app:bar_rightTextSize="@dimen/isp_14" />
+
+            <com.chaoji.im.ui.layout.SettingBar
+                android:id="@+id/payInfo"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/idp_70"
+                app:bar_leftText="订单信息"
+                app:bar_leftTextSize="@dimen/isp_14"
+                app:bar_leftTextStyle="bold"
+                app:bar_rightDrawableTint="@color/text_hit_color"
+                app:bar_rightText=""
+                app:bar_rightTextColor="@color/text_hit_color"
+                app:bar_rightTextSize="@dimen/isp_14" />
+
+        </LinearLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/payRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            tools:itemCount="2"
+            tools:listitem="@layout/item_pay_list_v" />
+
+        <Button
+            android:id="@+id/confirm"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/idp_40"
+            android:layout_marginHorizontal="@dimen/idp_40"
+            android:layout_marginVertical="@dimen/idp_30"
+            android:background="@drawable/button_circle_selector"
+            android:gravity="center"
+            android:text="确定支付"
+            android:textColor="@color/white"
+            android:textSize="@dimen/isp_15"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/reg_password2_ll" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

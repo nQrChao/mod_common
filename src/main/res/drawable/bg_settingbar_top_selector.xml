@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 默认按钮样式 -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 按压状态 -->
+    <item android:state_pressed="true">
+        <shape >
+            <corners
+                android:radius="@dimen/idp_10" />
+            <solid android:color="@color/black" />
+        </shape>
+    </item>
+
+    <!-- 默认状态 -->
+    <item>
+        <shape >
+            <corners
+                android:radius="@dimen/idp_10"/>
+            <solid android:color="@color/white" />
+        </shape>
+    </item>
+
+</selector>

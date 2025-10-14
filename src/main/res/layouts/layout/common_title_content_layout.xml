@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="@dimen/idp_15"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/common_title"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/idp_50"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:text="标题"
+            android:textColor="@color/common_text_color_black"
+            android:textSize="@dimen/isp_14" />
+        <TextView
+            android:id="@+id/red_flag"
+            android:textSize="@dimen/isp_12"
+            android:layout_width="wrap_content"
+            android:text="*"
+            android:visibility="gone"
+            android:layout_marginLeft="@dimen/idp_5"
+            android:layout_marginRight="@dimen/idp_5"
+            android:layout_marginTop="@dimen/idp_10"
+            android:textColor="@android:color/holo_red_dark"
+            android:layout_height="match_parent" />
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/edit_img"
+            android:layout_width="@dimen/idp_16"
+            android:layout_height="@dimen/idp_16"
+            android:scaleType="centerInside"
+            android:src="@drawable/common_edit_selector" />
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/common_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:maxLines="3"
+        android:paddingBottom="@dimen/idp_10"
+        android:paddingLeft="@dimen/idp_15"
+        android:paddingRight="@dimen/idp_15"
+        android:text=""
+        android:textColor="@color/common_text_color_black"
+        android:textSize="@dimen/isp_14" />
+
+    <LinearLayout
+        android:paddingVertical="@dimen/idp_8"
+        android:id="@+id/expand_ctrl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/common_item_bg_selector"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <TextView
+            android:id="@+id/expand_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/idp_10"
+            android:text="展开详情"
+            android:textColor="@color/common_text_color_black"
+            android:textSize="@dimen/isp_12" />
+
+        <ImageView
+            android:id="@+id/expand_icon"
+            android:layout_width="@dimen/idp_16"
+            android:layout_height="@dimen/idp_16"
+            android:scaleType="centerInside"
+            android:src="@drawable/common_expand_shrink_selector" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/under_line"
+        style="@style/common_divider" />
+
+</merge>

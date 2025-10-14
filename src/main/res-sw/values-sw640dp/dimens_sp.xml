@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<dimen name="isp_6">10.6667sp</dimen>
+	<dimen name="isp_7">12.4444sp</dimen>
+	<dimen name="isp_8">14.2222sp</dimen>
+	<dimen name="isp_9">16.0000sp</dimen>
+	<dimen name="isp_10">17.7778sp</dimen>
+	<dimen name="isp_11">19.5556sp</dimen>
+	<dimen name="isp_12">21.3333sp</dimen>
+	<dimen name="isp_13">23.1111sp</dimen>
+	<dimen name="isp_14">24.8889sp</dimen>
+	<dimen name="isp_15">26.6667sp</dimen>
+	<dimen name="isp_16">28.4444sp</dimen>
+	<dimen name="isp_17">30.2222sp</dimen>
+	<dimen name="isp_18">32.0000sp</dimen>
+	<dimen name="isp_19">33.7778sp</dimen>
+	<dimen name="isp_20">35.5556sp</dimen>
+	<dimen name="isp_21">37.3333sp</dimen>
+	<dimen name="isp_22">39.1111sp</dimen>
+	<dimen name="isp_23">40.8889sp</dimen>
+	<dimen name="isp_24">42.6667sp</dimen>
+	<dimen name="isp_25">44.4444sp</dimen>
+	<dimen name="isp_28">49.7778sp</dimen>
+	<dimen name="isp_30">53.3333sp</dimen>
+	<dimen name="isp_32">56.8889sp</dimen>
+	<dimen name="isp_34">60.4444sp</dimen>
+	<dimen name="isp_36">64.0000sp</dimen>
+	<dimen name="isp_38">67.5556sp</dimen>
+	<dimen name="isp_40">71.1111sp</dimen>
+	<dimen name="isp_42">74.6667sp</dimen>
+	<dimen name="isp_48">85.3333sp</dimen>
+</resources>

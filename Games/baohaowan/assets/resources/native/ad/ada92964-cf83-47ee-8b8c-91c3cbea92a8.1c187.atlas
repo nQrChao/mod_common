@@ -1,0 +1,20 @@
+
+skeleton.png
+size: 275,167
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+中等灰色-红色 纯色 1 合成 1_00
+  rotate: false
+  xy: 2, 2
+  size: 173, 163
+  orig: 200, 200
+  offset: 9, 21
+  index: -1
+闪光星星_00
+  rotate: false
+  xy: 177, 69
+  size: 96, 96
+  orig: 128, 128
+  offset: 16, 16
+  index: -1

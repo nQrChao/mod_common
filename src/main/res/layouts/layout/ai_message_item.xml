@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="msg"
+            type="com.chaoji.im.data.model.AiMessage" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/idp_10"
+        android:layout_marginBottom="@dimen/idp_10">
+
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="@dimen/idp_30"
+            android:layout_height="@dimen/idp_30"
+            android:layout_marginStart="@dimen/idp_10"
+            android:visibility="@{msg.type==2?View.VISIBLE:View.GONE}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2"/>
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="@dimen/idp_30"
+            android:layout_height="@dimen/idp_30"
+            android:layout_marginEnd="@dimen/idp_10"
+            app:layout_constraintTop_toBottomOf="@+id/textView9"
+            android:visibility="@{msg.type==1?View.VISIBLE:View.GONE}"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/idp_10"
+            android:text="@{msg.answertimeStr}"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/isp_12"
+            android:visibility="@{msg.type==2?View.VISIBLE:View.GONE}"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="2021-05-09" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/idp_10"
+            android:text="@{msg.questiontimeStr}"
+            android:textColor="@color/common_text_color_gray"
+            android:textSize="@dimen/isp_12"
+            android:visibility="@{msg.type==1?View.VISIBLE:View.GONE}"
+            app:layout_constraintEnd_toStartOf="@+id/imageView2"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="2021-02-03" />
+
+
+        <LinearLayout
+            android:id="@+id/ll_question"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/idp_10"
+            android:gravity="right"
+            app:layout_constraintEnd_toEndOf="@+id/textView9"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView9">
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/sty_radius_unright_30"
+                android:gravity="center_vertical"
+                android:minWidth="@dimen/idp_25"
+                android:minHeight="@dimen/idp_30"
+                android:minEms="1"
+                android:paddingHorizontal="@dimen/idp_10"
+                android:paddingVertical="@dimen/idp_5"
+                android:text="@{msg.question}"
+                android:textSize="@dimen/isp_14"
+                android:visibility="@{msg.type==1?View.VISIBLE:View.GONE}"
+                tools:text="好" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="@dimen/idp_150"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/idp_5"
+            android:gravity="center_vertical|end"
+            app:layout_constraintEnd_toEndOf="@id/ll_question"
+            app:layout_constraintTop_toBottomOf="@id/ll_question">
+
+            <com.chaoji.im.ui.view.DrawableTextView
+                android:id="@+id/ai_message_question"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:drawablePadding="@dimen/idp_1"
+                android:gravity="center"
+                android:text="重新提问"
+                android:textColor="@color/common_text_color_gray"
+                android:textSize="@dimen/isp_12"
+                android:visibility="@{msg.type==1?View.VISIBLE:View.GONE}"
+                app:drawableHeight="@dimen/idp_15"
+                app:drawableWidth="@dimen/idp_15" />
+
+            <com.chaoji.im.ui.view.DrawableTextView
+                android:id="@+id/ai_message_copy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="@dimen/idp_8"
+                android:drawablePadding="@dimen/idp_1"
+                android:gravity="center"
+                android:text="复制"
+                android:textColor="@color/common_text_color_gray"
+                android:textSize="@dimen/isp_12"
+                android:visibility="@{msg.type==1?View.VISIBLE:View.GONE}"
+                app:drawableHeight="@dimen/idp_15"
+                app:drawableWidth="@dimen/idp_15" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_answer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/idp_10"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textView2"
+            app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/sty_radius_unleft_30"
+                android:gravity="center_vertical"
+                android:hint="正在思考中..."
+                android:minWidth="@dimen/idp_25"
+                android:minHeight="@dimen/idp_30"
+                android:minEms="1"
+                android:paddingHorizontal="@dimen/idp_10"
+                android:paddingVertical="@dimen/idp_5"
+                android:text="@{msg.answer}"
+                android:textColorHint="@color/common_text_color_gray"
+                android:textSize="@dimen/isp_14"
+                android:visibility="@{msg.type==2?View.VISIBLE:View.GONE}"
+                tools:text="好" />
+
+            <com.chaoji.im.ui.view.DrawableTextView
+                android:id="@+id/ai_message_copy_ai"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/idp_5"
+                android:drawablePadding="@dimen/idp_1"
+                android:gravity="center"
+                android:text="复制"
+                android:textColor="@color/common_text_color_gray"
+                android:textSize="@dimen/isp_12"
+                android:visibility="@{(msg.type==2&amp;msg.complete==1) ?View.VISIBLE:View.GONE}"
+                app:drawableHeight="@dimen/idp_15"
+                app:drawableWidth="@dimen/idp_15" />
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

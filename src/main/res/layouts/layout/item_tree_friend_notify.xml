@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/item_click_selector"
+    android:orientation="horizontal">
+
+    <androidx.appcompat.widget.AppCompatCheckBox
+        android:id="@+id/apply_check"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/idp_20"
+        android:background="@null"
+        android:checked="true"
+        android:visibility="gone"
+        app:buttonCompat="@drawable/checkbox_around_selector"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.chaoji.im.ui.widget.AvatarImage
+        android:id="@+id/apply_icon"
+        android:layout_width="@dimen/idp_30"
+        android:layout_height="@dimen/idp_30"
+        app:TSize="@dimen/isp_11"
+        android:layout_marginVertical="@dimen/idp_10"
+        android:layout_marginStart="@dimen/idp_20"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/apply_check"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/item_friend_apply_text_ll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/apply_icon"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/apply_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/idp_10"
+            android:maxLength="15"
+            android:text="这是联系人名字"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textColor="@color/tab_default_color"
+            android:textSize="@dimen/isp_13" />
+
+        <TextView
+            android:id="@+id/apply_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/idp_10"
+            android:maxLength="15"
+            android:text="这是联系人名字"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textColor="@color/text_hit_color"
+            android:textSize="@dimen/isp_11" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/apply_btn"
+        android:layout_width="@dimen/idp_60"
+        android:layout_height="@dimen/idp_30"
+        android:layout_marginEnd="@dimen/idp_80"
+        android:background="@drawable/button_apply_selector"
+        android:gravity="center"
+        android:text="通过"
+        android:textColor="@color/white"
+        android:textSize="@dimen/isp_12"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/refuse_btn"
+        android:layout_width="@dimen/idp_60"
+        android:layout_height="@dimen/idp_30"
+        android:layout_marginEnd="@dimen/idp_10"
+        android:background="@drawable/button_around_selector"
+        android:gravity="center"
+        android:text="拒绝"
+        android:textColor="@color/white"
+        android:textSize="@dimen/isp_12"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/apply_btn"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/processed_btn"
+        android:layout_width="@dimen/idp_60"
+        android:layout_height="@dimen/idp_30"
+        android:layout_marginEnd="@dimen/idp_10"
+        android:background="@drawable/common_btn_cancel_background"
+        android:gravity="center"
+        android:text="已添加"
+        android:textColor="@color/black50"
+        android:textSize="@dimen/isp_12"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"  />
+
+    <View
+        style="@style/HorizontalLineStyle"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

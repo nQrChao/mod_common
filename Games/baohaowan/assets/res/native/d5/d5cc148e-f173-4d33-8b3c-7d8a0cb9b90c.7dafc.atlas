@@ -1,0 +1,153 @@
+
+skeleton.png
+size: 2008,1158
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+lh01
+  rotate: false
+  xy: 408, 737
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+lh02
+  rotate: true
+  xy: 1182, 350
+  size: 33, 69
+  orig: 512, 512
+  offset: 0, 2
+  index: -1
+lh03
+  rotate: false
+  xy: 1725, 3
+  size: 137, 175
+  orig: 512, 512
+  offset: 0, 19
+  index: -1
+lh04
+  rotate: false
+  xy: 1788, 918
+  size: 208, 238
+  orig: 512, 512
+  offset: 7, 39
+  index: -1
+lh05
+  rotate: false
+  xy: 1539, 875
+  size: 247, 281
+  orig: 512, 512
+  offset: 24, 55
+  index: -1
+lh06
+  rotate: false
+  xy: 696, 13
+  size: 276, 313
+  orig: 512, 512
+  offset: 37, 67
+  index: -1
+lh07
+  rotate: true
+  xy: 358, 21
+  size: 299, 336
+  orig: 512, 512
+  offset: 47, 76
+  index: -1
+lh08
+  rotate: true
+  xy: 2, 2
+  size: 318, 354
+  orig: 512, 512
+  offset: 54, 82
+  index: -1
+lh09
+  rotate: false
+  xy: 1389, 14
+  size: 334, 369
+  orig: 512, 512
+  offset: 60, 86
+  index: -1
+lh10
+  rotate: false
+  xy: 1182, 385
+  size: 348, 380
+  orig: 512, 512
+  offset: 64, 89
+  index: -1
+lh11
+  rotate: false
+  xy: 1178, 767
+  size: 359, 389
+  orig: 512, 512
+  offset: 68, 90
+  index: -1
+lh12
+  rotate: false
+  xy: 806, 759
+  size: 370, 397
+  orig: 512, 512
+  offset: 71, 90
+  index: -1
+lh13
+  rotate: false
+  xy: 801, 334
+  size: 379, 404
+  orig: 512, 512
+  offset: 74, 89
+  index: -1
+lh14
+  rotate: false
+  xy: 411, 328
+  size: 388, 410
+  orig: 512, 512
+  offset: 77, 87
+  index: -1
+lh15
+  rotate: false
+  xy: 408, 740
+  size: 396, 416
+  orig: 512, 512
+  offset: 80, 85
+  index: -1
+lh16
+  rotate: false
+  xy: 2, 735
+  size: 404, 421
+  orig: 512, 512
+  offset: 82, 81
+  index: -1
+lh17
+  rotate: true
+  xy: 2, 322
+  size: 411, 407
+  orig: 512, 512
+  offset: 84, 76
+  index: -1
+lh18
+  rotate: true
+  xy: 974, 3
+  size: 329, 413
+  orig: 512, 512
+  offset: 119, 71
+  index: -1
+lh19
+  rotate: true
+  xy: 1532, 431
+  size: 334, 329
+  orig: 512, 512
+  offset: 120, 154
+  index: -1
+lh20
+  rotate: false
+  xy: 1725, 180
+  size: 281, 249
+  orig: 512, 512
+  offset: 121, 146
+  index: -1
+pao
+  rotate: false
+  xy: 1864, 53
+  size: 126, 125
+  orig: 126, 125
+  offset: 0, 0
+  index: -1

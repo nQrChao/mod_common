@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="vm"
+            type="com.chaoji.base.base.viewmodel.BaseViewModel" />
+
+    </data>
+
+    <LinearLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <com.chaoji.other.hjq.titlebar.TitleBar
+            android:id="@+id/titleBar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/idp_50"
+            android:visibility="@{vm.showHeader?View.VISIBLE:View.GONE}"
+            app:lineVisible="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:leftIcon="@drawable/arrows_left_b_ic"
+            app:rightBackground="@null"
+            app:rightTitleColor="#6493FA"
+            app:titleSize="@dimen/isp_16"
+            app:titleStyle="bold"
+            app:rightTitleSize="@dimen/isp_14"
+            app:titleColor="@color/text_default_color"
+            app:titleOverflowMode="end" />
+
+        <FrameLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+    </LinearLayout>
+</layout>

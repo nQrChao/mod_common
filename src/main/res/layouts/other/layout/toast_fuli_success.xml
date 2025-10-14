@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@android:id/background"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_fuli_dialog"
+    android:gravity="center_vertical"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/idp_25"
+        android:gravity="center"
+        android:text="任务完成"
+        android:paddingHorizontal="@dimen/idp_20"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/isp_14"
+        tools:text="任务完成" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/idp_6"
+        android:layout_marginBottom="@dimen/idp_25"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/idp_20">
+
+        <ImageView
+            android:layout_width="@dimen/idp_20"
+            android:layout_height="@dimen/idp_20"
+            android:src="@drawable/toast_fuli_icon" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/idp_5"
+            android:text="+"
+            android:textColor="#FFF105"
+            android:textSize="@dimen/isp_15"
+            android:textStyle="bold"
+            tools:text="+" />
+
+        <TextView
+            android:id="@android:id/message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/idp_2"
+            android:textColor="#FFF105"
+            android:textSize="@dimen/isp_16"
+            android:textStyle="bold"
+            tools:text="0.5" />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/idp_2"
+            android:text="元"
+            android:textColor="#FFF105"
+            android:textSize="@dimen/isp_10"
+            android:textStyle="bold"
+            tools:text="元" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

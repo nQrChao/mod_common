@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorDarkOrange">#d84315</color>
+    <color name="colorPrimary">#2196F3</color>
+    <color name="colorPrimaryDark">#2196F3</color>
+    <color name="colorAccent">#2196F3</color>
+    <color name="colorGray">#F5F5F5</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="common_divider">#cecece</color>
+    <color name="common_bg_color">#eeeeee</color>
+    <color name="common_loading_bg_color">#7dffffff</color>
+    <color name="common_white">#FFFFFF</color>
+    <color name="common_transparent">@android:color/transparent</color>
+    <color name="common_blue">#117AE0</color>
+    <color name="common_red">#ed1c24</color>
+    <color name="common_black">#000000</color>
+    <color name="common_header_bg">@color/colorPrimary</color>
+    <color name="game_title_yellow">#e59721</color>
+    <color name="tag_bg_color">#e3f7f0</color>
+    <color name="tag_text_color">#58cbc6</color>
+    <color name="common_color_orange">#FF9722</color>
+    <color name="common_color_orange_dark">#fb6e0b</color>
+    <color name="common_color_green">#0baf74</color>
+
+    <color name="common_text_color_50white">#80ffffff</color>
+
+    <color name="common_text_color_black">#333333</color>
+    <color name="common_text_color_second_black">#4d4d4d</color>
+    <color name="common_text_color_gray">#7f7f7f</color>
+    <color name="common_text_color_sec_gray">#999999</color>
+    <color name="common_text_color_third_gray">#b3b3b3</color>
+    <color name="common_text_color_brown">#603813</color>
+    <color name="common_text_color_red">#ed1c24</color>
+    <color name="common_text_color_light_gold">#af855f</color>
+    <color name="common_text_color_yellow">#ffff00</color>
+    <color name="common_text_color_primary">@color/colorPrimary</color>
+    <color name="common_text_color_green">#0baf74</color>
+    <color name="vip_level_title_bg">#FCF9F0</color>
+    <color name="vip_level_text_color">#C3AA84</color>
+    <color name="tab_text_selected">#6972FF</color>
+
+    <color name="home_bg_color">#61E3F7</color>
+    <color name="home_navigation_color">#F7FF00</color>
+    <color name="home_game_red_bg_color">#C54836</color>
+    <color name="home_game_green_bg_color">#39C9C0</color>
+
+
+    <color name="f2_tab_color">#2196F3</color>
+
+    <color name="main_black_color">#020202</color>
+    <color name="card_black_color">#4d000000</color>
+    <color name="category_normal_bg">#F1F1F1</color>
+    <color name="category_normal_text">#A3A3AC</color>
+
+
+    <color name="bubble2">#F4F5F7</color>
+    <color name="bubble">#CCE7FE</color>
+    <color name="txt_grey">#E8EAEF</color>
+    <color name="txt_bg_left">#EBF1F6</color>
+    <color name="xpop_image_n_color">#000000</color>
+    <color name="xpop_shadow_color">#7F000000</color>
+    <color name="xpop_call_bg_color">#292A2A</color>
+    <color name="xpop_call_nv_color">#343025</color>
+
+
+    <!-- 透明色 -->
+    <color name="transparent">#00000000</color>
+    <color name="item_ai_chat_bg">#15803D</color>
+    <!-- 熊猫色（黑白背景通吃） -->
+    <color name="panda">#FF757575</color>
+    <color name="white_pressed_color">#AAFFFFFF</color>
+    <!-- 白色 -->
+    <color name="white">#FFFFFFFF</color>
+    <color name="white95">#F2FFFFFF</color>
+    <color name="white90">#E6FFFFFF</color>
+    <color name="white85">#D9FFFFFF</color>
+    <color name="white80">#CCFFFFFF</color>
+    <color name="white75">#BFFFFFFF</color>
+    <color name="white70">#B3FFFFFF</color>
+    <color name="white65">#A6FFFFFF</color>
+    <color name="white60">#99FFFFFF</color>
+    <color name="white55">#8CFFFFFF</color>
+    <color name="white50">#80FFFFFF</color>
+    <color name="white45">#73FFFFFF</color>
+    <color name="white40">#66FFFFFF</color>
+    <color name="white35">#59FFFFFF</color>
+    <color name="white30">#4DFFFFFF</color>
+    <color name="white25">#40FFFFFF</color>
+    <color name="white20">#33FFFFFF</color>
+    <color name="white15">#26FFFFFF</color>
+    <color name="white10">#1AFFFFFF</color>
+    <color name="white5">#0DFFFFFF</color>
+
+    <!-- 黑色 -->
+    <color name="black">#FF000000</color>
+    <color name="black95">#F2000000</color>
+    <color name="black90">#E6000000</color>
+    <color name="black85">#D9000000</color>
+    <color name="black80">#CC000000</color>
+    <color name="black75">#B000000F</color>
+    <color name="black70">#B3000000</color>
+    <color name="black65">#A6000000</color>
+    <color name="black60">#99000000</color>
+    <color name="black55">#8C000000</color>
+    <color name="black50">#80000000</color>
+    <color name="black45">#73000000</color>
+    <color name="black40">#66000000</color>
+    <color name="black35">#59000000</color>
+    <color name="black30">#4D000000</color>
+    <color name="black25">#40000000</color>
+    <color name="black20">#33000000</color>
+    <color name="black15">#26000000</color>
+    <color name="black10">#1A000000</color>
+    <color name="black5">#0D000000</color>
+
+    <!-- 灰色 -->
+    <color name="gray">#FF808080</color>
+    <!-- 红色 -->
+    <color name="red">#FFFF0000</color>
+    <!-- 金色 -->
+    <color name="gold">#FFFFD700</color>
+    <!-- 黄色 -->
+    <color name="yellow">#FFFFFF00</color>
+    <!-- 绿色 -->
+    <color name="green">#FF008000</color>
+    <!-- 蓝色 -->
+    <color name="blue">#FF0000FF</color>
+    <!-- 紫色 -->
+    <color name="purple">#FF800080</color>
+    <!-- 粉色 -->
+    <color name="pink">#FFFFC0CB</color>
+    <!-- 橙色 -->
+    <color name="orange">#FFFFA500</color>
+
+    <color name="dark_color">#333333</color>
+
+    <color name="tab_select_color">#3E6AF1</color>
+    <color name="tab_default_color">#666666</color>
+
+    <color name="text_hit_color">#96A5BA</color>
+    <color name="text_default_color">#303132</color>
+    <color name="mod_tab_text_select_color">#1628FF</color>
+    <color name="text_more_dialog_color">#616A75</color>
+
+    <color name="mod_dianzan_1">#D5D5D5</color>
+    <color name="mod_dianzan_2">#2494F1</color>
+
+    <!-- 状态颜色 -->
+    <color name="around_left_white_color">#FFFFFF</color>
+    <!-- 按压时的颜色 -->
+    <color name="around_left_white_pressed_color">#26000000</color>
+
+    <!-- 状态颜色 -->
+    <color name="common_apply_color">#FFA500</color>
+    <!-- 按压时的颜色 -->
+    <color name="common_apply_pressed_color">#AAFFA500</color>
+
+    <!-- 默认状态颜色 -->
+    <color name="common_accent_color">#6493FA</color>
+    <!-- 按钮按压时的颜色 -->
+    <color name="common_button_pressed_color">#AA6493FA</color>
+    <!-- 按钮禁用时的颜色 -->
+    <color name="common_button_disable_color">#BBBBBB</color>
+    <!-- 分割线的颜色 -->
+    <color name="common_line_color">#EBF0F6</color>
+    <!-- 分割线的颜色 -->
+    <color name="common_line_color2">#DDDDDD</color>
+    <!-- 矢量图标的颜色 -->
+    <color name="common_icon_color">#7C7C7C</color>
+    <!-- 对话框确认按钮的文本颜色 -->
+    <color name="common_confirm_text_color">#007AFF</color>
+    <!-- 对话框取消按钮的文本颜色 -->
+    <color name="common_cancel_text_color">#B6BFC8</color>
+    <!-- 对话框取消按钮按压的文本颜色 -->
+    <color name="common_cancel_text_pressed_color">#AAB6BFC8</color>
+
+    <color name="button_gray_color">#7C7C7C</color>
+    <color name="button_gray_pressed_color">#AA7C7C7C</color>
+
+    <color name="button_blue_color">#3E6AF1</color>
+    <color name="button_blue_pressed_color">#AA3E6AF1</color>
+
+
+    <color name="button_around_green_color">#18A058</color>
+    <color name="button_around_green_pressed_color">#AA18A058</color>
+
+    <color name="button_around_green2_color">#15803D</color>
+    <color name="button_around_green2_pressed_color">#AA15803D</color>
+
+
+    <!-- 对话框取消按钮的文本颜色 -->
+    <color name="nav_btn_disable">#96A5BA</color>
+    <!-- 对话框取消按钮的文本颜色 -->
+    <color name="nav_btn_checked">#3E6AF1</color>
+
+    <color name="xpop_shadow">#7F000000</color>
+
+    <color name="bbl_999999">#999999</color>
+    <color name="bbl_ff0000">#ff0000</color>
+    <color name="selector_grey">#DDDDDD</color>
+
+    <color name="tab_gb">#F3F5F4</color>
+    <color name="tab_normal_color">#515051</color>
+    <color name="tab_selected_color">#D33D3C</color>
+
+    <color name="unreadTextColor">#00ff00</color>
+    <color name="msgTextColor">#00ff00</color>
+    <color name="logcat_window_background_color">#FF3C3F41</color>
+    <color name="logcat_item_background_color">#FF2B2B2B</color>
+    <color name="logcat_scrollbar_thumb_color">#FFFFFFFF</color>
+
+    <color name="logcat_level_verbose_color">#FFBBBBBB</color>
+    <color name="logcat_level_debug_color">#FF33B5E5</color>
+    <color name="logcat_level_info_color">#FF99CC00</color>
+    <color name="logcat_level_warn_color">#FFFFBB33</color>
+    <color name="logcat_level_error_color">#FFFF4444</color>
+    <color name="logcat_level_other_color">#FFFFFFFF</color>
+
+    <color name="transparent_easy_photos">#00000000</color>
+    <color name="white_easy_photos">#FFFFFF</color>
+    <color name="menu_text_easy_photos">#FFFFFF</color>//按钮上的文字颜色，选择器上的文字颜色，选择器的边框颜色
+
+    <!--专辑项目列表-->
+    <color name="album_items_background_easy_photos">#FFFFFF</color>//专辑项目列表的背景颜色
+    <color name="album_item_name_easy_photos">#3e4145</color>//专辑项目列表中专辑名称的字体颜色
+    <color name="album_item_count_easy_photos">#4f5555</color>//专辑项目列表中包含图片张数的字体颜色
+
+    <!--加载框-->
+    <color name="easy_photos_bg_dialog_loading">#33FFFFFF</color>加载框背景颜色
+
+    <!--文字贴纸-->
+    <color name="text_sticker_red_easy_photos">#d0021b</color>//编辑字体颜色为红色
+    <color name="text_sticker_orange_easy_photos">#f5a623</color>//编辑字体颜色为橙色
+    <color name="text_sticker_yellow_easy_photos">#f8e71c</color>//编辑字体颜色为黄色
+    <color name="text_sticker_green_easy_photos">#7ed321</color>//编辑字体颜色为绿色
+    <color name="text_sticker_cyan_easy_photos">#50e3c2</color>//编辑字体颜色为青色
+    <color name="text_sticker_blue_easy_photos">#4a90e2</color>//编辑字体颜色为蓝色
+    <color name="text_sticker_purple_easy_photos">#9013fe</color>//编辑字体颜色为紫色
+    <color name="text_sticker_black_easy_photos">#000000</color>//编辑字体颜色为黑色
+    <color name="text_sticker_gray_easy_photos">#4a4a4a</color>//编辑字体颜色为灰色
+    <color name="text_sticker_white_easy_photos">#ffffff</color>//编辑字体颜色为白色
+    <color name="text_sticker_editor_fragment_bg_easy_photos">#2c2e30</color>//编辑界面背景色
+    <color name="text_sticker_editor_fragment_bar_easy_photos">#393a3f</color>//编辑界面操作栏颜色
+
+    <!--前景色-->
+    <color name="easy_photos_fg_primary">#ffffff</color>//3e4145 前景主色，如字体颜色、icon颜色
+    <color name="easy_photos_fg_primary_dark">#9b9b9b</color>//前景偏暗色，如不可用状态的字体颜色
+    <color name="easy_photos_fg_accent">#00AA00</color>//578fff 前景突出色，如发送按钮的背景色，选中状态的颜色
+
+    <!--背景色-->
+    <color name="easy_photos_bg_primary">#000000</color>//f9f9f9 背景色，如每个activity的背景色，相册的图片间隔线颜色
+
+    <!--操作栏颜色-->
+    <color name="easy_photos_bar_primary">#393a3f</color>//ffffff 操作栏主色，如相册页顶部和底部操作栏
+    <color name="easy_photos_bar_primary_dark">#303135</color>//f9f9f9 操作栏偏暗色，操作栏间隔线颜色，如相册页返回按钮右边的竖线
+    <color name="easy_photos_bar_primary_translation">#eb212123</color>//b4ffffff 操作栏带透明的色值，如预览页的底部操作栏颜色，相册页的相机按钮背景颜色。
+
+    <color name="_xpopup_list_divider">#EEEEEE</color>
+    <color name="_xpopup_title_color">#444444</color>
+    <color name="_xpopup_content_color">#333333</color>
+    <color name="_xpopup_white_color">#f1f1f1</color>
+    <color name="_xpopup_dark_color">#232323</color>
+    <color name="_xpopup_light_color">#FFFFFF</color>
+    <color name="_xpopup_list_dark_divider">#444444</color>
+
+    <!--状态栏-->
+    <color name="easy_photos_status_bar">#393a3f</color>
+    <color name="dialog_bottom_bg">#F7F9FC</color>
+    <color name="common_bg">#F8FAFF</color>
+
+
+    <!-- 矢量图标的颜色 -->
+    <color name="mod_navigation_a_color">#7C7C7C</color>
+    <!-- 默认状态颜色 -->
+    <color name="mod_navigation_d_color">#000000</color>
+
+    <color name="game_cur_text_color">#F1CB39</color>
+    <color name="game_cur_text_color2">#E9D68C</color>
+
+    <color name="mod_url_text_color">#007BFF</color>
+
+</resources>

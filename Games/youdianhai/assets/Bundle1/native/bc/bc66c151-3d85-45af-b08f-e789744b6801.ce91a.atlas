@@ -1,0 +1,20 @@
+
+bg.png
+size: 750,547
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+15
+  rotate: false
+  xy: 1, 1
+  size: 584, 544
+  orig: 584, 544
+  offset: 0, 0
+  index: -1
+16
+  rotate: false
+  xy: 587, 1
+  size: 161, 159
+  orig: 161, 159
+  offset: 0, 0
+  index: -1

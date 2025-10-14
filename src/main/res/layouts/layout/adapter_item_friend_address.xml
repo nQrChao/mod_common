@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/item_click_selector"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/parentLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.chaoji.im.ui.widget.AvatarImage
+                android:id="@+id/item_friend_icon"
+                android:layout_width="@dimen/idp_30"
+                android:layout_height="@dimen/idp_30"
+                app:TSize="@dimen/isp_11"
+                android:layout_marginVertical="@dimen/idp_10"
+                android:layout_marginStart="@dimen/idp_10"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/item_friend_check"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:visibility="invisible"
+                android:id="@+id/red_dot"
+                android:layout_width="@dimen/idp_7"
+                android:layout_height="@dimen/idp_7"
+                android:layout_marginTop="@dimen/idp_5"
+                android:src="@drawable/reddot_" />
+
+            <TextView
+                android:id="@+id/item_friend_name"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/idp_5"
+                android:gravity="center_vertical"
+                android:maxLength="16"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:text="这是联系人备注"
+                android:textColor="@color/text_default_color"
+                android:textSize="@dimen/isp_14"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/item_friend_icon"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/item_friend_nick"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/idp_10"
+                android:gravity="center_vertical"
+                android:maxLength="16"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:text=""
+                android:textColor="@color/text_default_color"
+                android:textSize="@dimen/isp_14"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/item_friend_name"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view3"
+            style="@style/HorizontalLineStyle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/item_friend_name" />
+    </LinearLayout>
+
+</layout>
+

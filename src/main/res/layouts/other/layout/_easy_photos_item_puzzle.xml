@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/idp_50"
+    android:layout_height="@dimen/idp_50"
+    android:orientation="vertical"
+    android:padding="@dimen/idp_5">
+
+    <com.chaoji.other.huantansheng.easyphotos.models.puzzle.SquarePuzzleView
+        android:id="@+id/puzzle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <View
+        android:id="@+id/m_selector"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/easy_photos_bg_selected_frame_puzzle" />
+
+</FrameLayout>

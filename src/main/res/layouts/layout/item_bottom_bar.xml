@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/idp_5">
+
+        <ImageView
+            android:id="@+id/iv_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/nav_btn1_off_ic" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottieView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+
+        <TextView
+            android:id="@+id/tv_unred_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="@dimen/idp_14"
+            android:background="@drawable/shape_unread"
+            android:gravity="center"
+            android:minWidth="@dimen/idp_15"
+            android:text="99+"
+            android:textColor="@color/white"
+            android:textSize="@dimen/isp_10"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="@dimen/idp_14"
+            android:background="@drawable/shape_msg"
+            android:gravity="center"
+            android:text="NEW"
+            android:textColor="@color/white"
+            android:textSize="@dimen/isp_6"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_point"
+            android:layout_width="@dimen/idp_10"
+            android:layout_height="@dimen/idp_10"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="@dimen/idp_10"
+            android:background="@drawable/shape_notify_point"
+            android:gravity="center"
+            android:textSize="@dimen/isp_6"
+            android:visibility="gone" />
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tv_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/idp_5"
+        android:text="A" />
+
+</LinearLayout>

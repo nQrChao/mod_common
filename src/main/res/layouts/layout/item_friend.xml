@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/parentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/item_click_selector"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/item_friend_check"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/idp_10"
+            android:background="@null"
+            android:checked="false"
+            android:clickable="false"
+            android:visibility="gone"
+            app:buttonCompat="@drawable/checkbox_around_selector"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.chaoji.im.ui.widget.AvatarImage
+            android:id="@+id/item_friend_icon"
+            android:layout_width="@dimen/idp_30"
+            android:layout_height="@dimen/idp_30"
+            android:layout_marginVertical="@dimen/idp_10"
+            android:layout_marginStart="@dimen/idp_10"
+            app:TSize="@dimen/isp_11"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/item_friend_check"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--    <com.chaoji.im.ui.widget.AvatarImage-->
+        <!--        android:id="@+id/avatar2"-->
+        <!--        android:layout_width="@dimen/idp_40"-->
+        <!--        android:layout_height="@dimen/idp_40"-->
+        <!--        app:layout_constraintTop_toBottomOf="@id/nickName2"-->
+        <!--        app:layout_constraintStart_toStartOf="parent"-->
+        <!--        app:loadUserInfo="@{msg}"-->
+        <!--        android:src="@mipmap/ic_my_friend" />-->
+
+        <TextView
+            android:id="@+id/item_friend_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/idp_10"
+            android:text="这是联系人备注"
+            android:textColor="@color/text_default_color"
+            android:textSize="@dimen/isp_14"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/item_friend_icon"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/item_friend_nick"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/idp_12"
+            android:text="(这是联系人名字)"
+            android:textColor="@color/text_default_color"
+            android:textSize="@dimen/isp_14"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/item_friend_name"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.515" />
+
+        <TextView
+            android:id="@+id/right_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/idp_15"
+            android:background="@drawable/common_btn_sure_background"
+            android:paddingStart="@dimen/idp_10"
+            android:paddingTop="@dimen/idp_5"
+            android:paddingEnd="@dimen/idp_10"
+            android:paddingBottom="@dimen/idp_5"
+            android:text="移除"
+            android:textColor="@color/white"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/item_friend_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/item_friend_name" />
+
+        <View
+            android:id="@+id/view3"
+            style="@style/HorizontalLineStyle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/item_friend_name" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+

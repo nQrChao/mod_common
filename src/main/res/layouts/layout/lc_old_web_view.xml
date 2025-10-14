@@ -1,0 +1,64 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#FFFFFF"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:paddingVertical="@dimen/idp_10"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/idp_60"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <ImageView
+            android:paddingVertical="@dimen/idp_5"
+            android:id="@+id/title_left"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1.5"
+            android:src="@drawable/arrows_left_ic" />
+
+        <TextView
+            android:id="@+id/title_center"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="7"
+            android:gravity="center"
+            android:text=""
+            android:lines="1"
+            android:textColor="@color/black50"
+            android:ellipsize="end"
+            android:textSize="@dimen/isp_17"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/title_right"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1.5" />
+    </LinearLayout>
+
+
+    <WebView
+        android:id="@+id/web_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/btn_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="0dp"
+            android:layout_y="0dp"
+            android:text="关闭"
+            android:visibility="gone" />
+    </WebView>
+
+</LinearLayout>

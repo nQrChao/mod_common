@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/item_click_selector">
+
+    <com.chaoji.im.ui.layout.SettingBar
+        android:id="@+id/item_group_apply_check"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:bar_leftDrawable="@drawable/user_info_ic_2"
+        app:bar_leftText="xxx公司"
+        app:bar_rightDrawable="@drawable/arrows_right_ic"
+        app:buttonCompat="@drawable/checkbox_around_selector"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

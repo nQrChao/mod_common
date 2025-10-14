@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/a_rounded_top_white_10"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/idp_15"
+        android:paddingVertical="@dimen/idp_10">
+
+        <ImageView
+            android:layout_width="@dimen/idp_30"
+            android:layout_height="@dimen/idp_30"/>
+
+        <TextView
+            android:id="@+id/title_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/idp_20"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:text="小程序"
+            android:textColor="@color/text_default_color"
+            android:textSize="@dimen/isp_16"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <View style="@style/HorizontalLineStyle2" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/dialog_bottom_bg"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/share_title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:paddingHorizontal="@dimen/idp_15"
+            android:paddingVertical="@dimen/idp_8"
+            android:text="分享给好友"
+            android:textColor="@color/text_default_color"
+            android:textSize="@dimen/isp_14"
+            android:textStyle="bold" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/userRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/idp_15"
+            tools:itemCount="1"
+            tools:listitem="@layout/item_applets_user_list_h" />
+
+
+        <View style="@style/HorizontalLineStyle2" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/shareRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:itemCount="1"
+            tools:listitem="@layout/item_applets_tool_list_h" />
+
+        <View style="@style/HorizontalLineStyle2" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/toolRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:itemCount="1"
+            tools:listitem="@layout/item_applets_tool_list_h" />
+
+        <View style="@style/HorizontalLineStyle2" />
+
+        <TextView
+            android:id="@+id/cancel"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/idp_50"
+            android:gravity="center"
+            android:paddingVertical="@dimen/idp_10"
+            android:text="取消"
+            android:textColor="@color/text_more_dialog_color"
+            android:textSize="@dimen/isp_15" />
+
+    </LinearLayout>
+
+</LinearLayout>

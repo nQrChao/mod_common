@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/idp_12"
+        android:background="@drawable/easy_photos_bg_dialog_loading">
+
+        <ProgressBar
+            android:layout_gravity="center"
+            android:layout_width="@dimen/idp_30"
+            android:layout_height="@dimen/idp_30"
+            android:indeterminateDrawable="@drawable/easy_photos_progress_bar"
+            android:indeterminate="true" />
+    </FrameLayout>
+</FrameLayout>

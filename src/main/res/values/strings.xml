@@ -1,0 +1,766 @@
+<?xml  version="1.0" encoding="utf-8"?>
+<resources  tools:ignore="MissingTranslation" xmlns:tools="http://schemas.android.com/tools" >
+    <string name="string_app_opinion">感谢168位提出宝贵建议的用户</string>
+
+    <string name="common_code_input_hint">请输入验证码</string>
+    <string name="common_code_send">获取验证码</string>
+    <string name="common_code_send_hint">验证码已发送，请注意查收</string>
+    <string name="common_code_error_hint">验证码错误，请检查输入</string>
+
+    <string name="common_password_input_hint">请输入密码</string>
+    <string name="common_password_input_hint2">确认密码</string>
+    <string name="common_password_input_length_error">密码长度应不少于8位数</string>
+    <string name="common_password_input_length_error2">密码长度应不大于16位数</string>
+    <string name="common_password_input_length_error3">密码必须包含数字及字母</string>
+    <string name="common_password_input_unlike">两次密码输入不一致，请重新输入</string>
+
+
+    <string name="common_loading">加载中&#8230;</string>
+    <string name="common_unknown_error">未知错误</string>
+    <string name="image_crop_error_not_support">裁剪失败，当前手机不支持裁剪图片</string>
+    <string name="image_select_title">图片选择</string>
+    <string name="image_select_all">所有图片</string>
+    <string name="image_select_total">共 %d 张</string>
+    <string name="image_select_max_hint">本次最多只能选择 %d 张图片</string>
+    <string name="image_select_error">无法选中，该图片已经被删除</string>
+    <string name="camera_launch_fail">无法启动相机</string>
+    <string name="camera_image_error">目标地址错误</string>
+
+    <string name="font_resize_standard">标准</string>
+    <string name="bottom_name1">AI对话</string>
+    <string name="bottom_name2">IM聊天</string>
+    <string name="bottom_name3">私人助理</string>
+    <string name="bottom_name4">我的</string>
+    <string name="bar_string_placeholder">""</string>
+
+
+
+    <string name="group_bulletin" >群公告</string>
+    <string name="search_by_id">通过手机号/ID号/搜索添加</string>
+    <string name="send_succ">发送成功</string>
+
+    <string name="sunday">星期日</string>
+    <string name="monday">星期一</string>
+    <string name="tuesday">星期二</string>
+    <string name="wednesday">星期三</string>
+    <string name="thursday">星期四</string>
+    <string name="friday">星期五</string>
+    <string name="saturday">星期六</string>
+    <string name="send">发送</string>
+    <string name="network_unavailable_tips">请检查网络是否可用！</string>
+
+    <string name="group_notice">群通知</string>
+    <string name="apply__join">申请加入</string>
+    <string name="reason">申请理由：</string>
+    <string name="agree">同意</string>
+    <string name="agreeed">已通过</string>
+    <string name="rejected">未通过</string>
+    <string name="album">相册</string>
+    <string name="shoot">拍摄</string>
+    <string name="camera_punch_failed">相机打开失败</string>
+    <string name="camera_permission_failed">无法获取摄像头权限</string>
+    <string name="file">文件</string>
+    <string name="new_friend">新的好友</string>
+    <string name="new_friend_request">新的好友请求</string>
+    <string name="accept">接受</string>
+    <string name="hil">打招呼</string>
+    <string name="create_group">发起群聊</string>
+    <string name="create_group_tips">取个群名称方便后续搜索</string>
+    <string name="location">位置</string>
+    <string name="sure">确定</string>
+    <string name="my_location">我的位置</string>
+    <string name="picture">图片</string>
+    <string name="voice">语音</string>
+    <string name="voice_call">语音通话</string>
+    <string name="video">视频</string>
+    <string name="san_it">扫一扫</string>
+    <string name="quit_group">退出群聊</string>
+    <string name="lord">群主</string>
+    <string name="add_member">添加成员</string>
+    <string name="remove_member">删除成员</string>
+    <string name="Invite_to_the_group">邀请入群</string>
+    <string name="Invitation_succeeded">邀请成功</string>
+    <string name="remove_group">移除群聊</string>
+    <string name="kicked_out">踢出成功</string>
+
+    <string name="cancel">取消</string>
+    <string name="eidt">编辑</string>
+    <string name="finish">完成</string>
+    <string name="group_name">群聊名称</string>
+    <string name="group_transfer_permissions">群主管理权转让</string>
+    <string name="in_group_name">我在群里的昵称</string>
+    <string name="group_qrcode">群二维码</string>
+    <string name="copy_group_id">复制团队ID</string>
+    <string name="copy_succ">复制成功</string>
+    <string name="share_group_tips1">搜索群聊ID号，立刻加入该群。</string>
+    <string name="share_group_tips2">扫一扫群二维码，立刻加入该群。</string>
+    <string name="my_good_friend">我的好友</string>
+    <string name="delete_friend">已删除此好友</string>
+    <string name="delete_friend_tips">确定删除此好友吗</string>
+    <string name="apply_join">申请加入该群</string>
+    <string name="withdraw">撤回</string>
+    <string name="delete">删除</string>
+    <string name="revoke_tips">%1$s 撤回了一条消息</string>
+    <string name="revoke_tips2">%1$s 撤回了 %2$s 的消息</string>
+    <string name="forward">转发</string>
+    <string name="multiple_choice">多选</string>
+    <string name="merge_forward">合并转发</string>
+    <string name="group_chat_history">群聊天记录</string>
+    <string name="and">和</string>
+    <string name="chat_history">的聊天记录</string>
+    <string name="chat_history2">聊天记录</string>
+    <string name="my_group">我的群组</string>
+    <string name="search_group">搜索：群组</string>
+    <string name="i_created">我创建的</string>
+    <string name="i_joined">我加入的</string>
+    <string name="my">我的</string>
+    <string name="qr_tips2">扫一扫下面的二维码，添加我为好友</string>
+    <string name="qr_code">二维码</string>
+    <string name="quit_tips">您确定要退出登陆吗？</string>
+    <string name="Invite_a_video_call">邀请你进行视频通话</string>
+    <string name="hang_up">挂断</string>
+    <string name="answer">接听</string>
+    <string name="microphone_on">麦克风已开启</string>
+    <string name="speaker_on">扬声器已开启</string>
+    <string name="microphone_off">麦克风已关闭</string>
+    <string name="speaker_off">扬声器已关闭</string>
+    <string name="voice_calls">语音通话</string>
+    <string name="video_calls">视频通话</string>
+    <string name="waiting_tips">正在等待对方接受邀请</string>
+    <string name="Invite_a_audio_call">邀请你进行语音通话</string>
+    <string name="selete_member">选择成员</string>
+    <string name="invite_audio_call">邀请你语音通话</string>
+    <string name="invite_video_call">邀请你视频通话</string>
+    <string name="calling">正在通话中...</string>
+    <string name="audio_video_service">音视频服务</string>
+    <string name="audio_video_service_tips1">OpenIM音视频服务</string>
+    <string name="audio_video_service_tips2">关闭应用自启动将无法接收音视频请求</string>
+    <string name="start_chat">开始聊天</string>
+    <string name="dissolve_group">解散群聊</string>
+    <string name="dissolve_tips">解散群聊后，将失去群成员的联系</string>
+    <string name="quit_group_tips">退出群聊后，将不再接收群聊消息</string>
+    <string name="dissolve_tips2">群已解散</string>
+    <string name="quit_group_tips2">已退出</string>
+    <string name="avatar">头像</string>
+    <string name="gender">性别</string>
+    <string name="birthday">生日</string>
+    <string name="my_info">我的信息</string>
+    <string name="save">保存</string>
+    <string name="NickName">昵称</string>
+    <string name="male">男</string>
+    <string name="girl">女</string>
+    <string name="chat_setting">聊天设置</string>
+    <string name="search">搜索</string>
+    <string name="person_info">个人资料</string>
+    <string name="remark">备注</string>
+    <string name="join_the_blacklist">加入黑名单</string>
+    <string name="clear_chat_record">清空聊天记录</string>
+    <string name="clear_chat_tips">确认清空所有聊天记录？</string>
+    <string name="clear_succ">清理成功</string>
+    <string name="business_card">名片</string>
+    <string name="card">名片</string>
+    <string name="more_data">更多资料</string>
+    <string name="call_history">通话记录</string>
+    <string name="all_call">所有通话</string>
+    <string name="ont_answer_call">未接通话</string>
+    <string name="inbound">呼入</string>
+    <string name="outbound">呼出</string>
+    <string name="select_from_album">从相册选择</string>
+    <string name="take_picture">拍照</string>
+    <string name="reduction">还原</string>
+    <string name="set_succ">设置成功</string>
+    <string name="search_tips">搜索指定内容</string>
+    <string name="view_chat_history">查看聊天记录</string>
+    <string name="not_find">没有找到</string>
+    <string name="result">相关结果</string>
+    <string name="in_week">本周内</string>
+    <string name="in_month">本月内</string>
+    <string name="cancel_top">取消置顶</string>
+    <string name="msg_dont_disturb">消息免打扰</string>
+    <string name="top_chat">置顶聊天</string>
+    <string name="person_unRead">人未读</string>
+    <string name="friend_add">你们已成为好友，可以开始聊天了</string>
+    <string name="created_group">%1$s 创建了群聊</string>
+    <string name="change_group_data">%1$s 修改了群资料</string>
+    <string name="quit_group2">%1$s 退出了群聊</string>
+    <string name="invited_tips">[新会话]%1$s 邀请 %2$s 加入群聊</string>
+    <string name="kicked_group_tips">%1$s 被 %2$s 踢出群聊</string>
+    <string name="join_group2">%1$s 加入了群聊</string>
+    <string name="dismiss_group">%1$s 解散了群聊</string>
+    <string name="transferred_group">%1$s 将群转让给了 %2$s</string>
+    <string name="Muted_group">%1$s 被 %2$s 禁言%3$s</string>
+    <string name="Muted_group1">%1$s 被 %2$s 禁言</string>
+    <string name="cancel_muted">%1$s 被 %2$s 取消了禁言</string>
+    <string name="start_muted">%1$s 开起了群禁言</string>
+    <string name="close_muted">%1$s 关闭了群禁言</string>
+    <string name="edit_data">%1$s 编辑了自己的群成员资料</string>
+    <string name="start_burn_after_read">已开启阅后即焚</string>
+    <string name="stop_burn_after_read">已关闭阅后即焚</string>
+    <string name="readed">已读 %1$s</string>
+    <string name="unread">未读 %1$s</string>
+    <string name="offline">离线</string>
+    <string name="online">%1$s在线</string>
+    <string name="mobile_phone">手机</string>
+    <string name="pc">PC</string>
+    <string name="Web">Web</string>
+    <string name="webMiniOnline">小程序</string>
+    <string name="synthesis">综合</string>
+    <string name="group">群组</string>
+    <string name="contact">联系人</string>
+    <string name="two_related_chats">%1$s条相关聊天记录</string>
+    <string name="say_more">查看更多</string>
+    <string name="sender">发送者</string>
+    <string name="kicked_offline_tips">账号已在其他地方登录，当前设备被踢下线！</string>
+    <string name="token_expired">登录票据已经过期,请重新登录！</string>
+    <string name="repeat_group_manager">你已经是群主了</string>
+    <string name="transfer_permission">确定将群主转让给：%1$s?</string>
+    <string name="transfer_succ">转让成功</string>
+    <string name="msg_notification">消息通知</string>
+    <string name="a_message_is_received">您收到一条消息</string>
+    <string name="administrator">管理员</string>
+    <string name="about_us">关于我们</string>
+    <string name="check_the_new">检查新版本</string>
+    <string name="reply">回复</string>
+    <string name="total_silence">全员禁言</string>
+    <string name="join_validation">进群验证</string>
+    <string name="needVerification">需要发送验证信息</string>
+    <string name="allowAnyoneJoinGroup">允许任何人加群</string>
+    <string name="inviteNotVerification">群成员邀请无需验证</string>
+    <string name="memberPermissions">群成员权限</string>
+    <string name="notViewMemberProfiles">不允许查看其他群成员资料</string>
+    <string name="notAddMemberToFriend">不允许添加群成员为好友</string>
+    <string name="super_group">工作群</string>
+    <string name="ordinary_group">普通群</string>
+    <string name="group_type">群类型</string>
+    <string name="copy">复制</string>
+    <string name="recommend_to_friend">把他推荐给朋友</string>
+    <string name="recommend_who">确定推荐给%1$s吗？</string>
+    <string name="send_card_confirm">确定将该名片发送到本聊天？</string>
+    <string name="bulletin_edit_tips">只有群主或管理员可以编辑</string>
+    <string name="mark_read">标记已读</string>
+    <string name="start_download">开始下载</string>
+    <string name="save_succ">保存成功</string>
+    <string name="save_failure">保存失败</string>
+    <string name="search_friends">搜索好友</string>
+    <string name="group_nickName">群昵称</string>
+    <string name="join_group_time">入群时间</string>
+    <string name="you">你</string>
+    <string name="server_config">服务器配置</string>
+    <string name="read_vanish">阅后即焚</string>
+    <string name="general_group">普通群</string>
+    <string name="work_group">工作群</string>
+    <string name="create_word_group">创建工作群</string>
+    <string name="my_qr">我的二维码</string>
+    <string name="scan_qr_card">扫描二维码名片</string>
+    <string name="account_setting">账号设置</string>
+    <string name="not_disturb">勿扰模式</string>
+    <string name="clear_chat_all_record">确认清空所有聊天记录</string>
+    <string name="cleared">已清理</string>
+    <string name="blackList">通讯黑名单</string>
+    <string name="select_tips">最多选择 %1$d 个人</string>
+    <string name="selected_tips">已选择：%1$d人</string>
+    <string name="selected_tips2">已选择（%1$d）</string>
+    <string name="selected_group_tips">已选择：%1$d个群</string>
+    <string name="save_photo_album">图片已保存至相册</string>
+    <string name="vc_login">用短信验证码登录</string>
+    <string name="vc">验证码</string>
+    <string name="password_login">密码登录</string>
+    <string name="get_vc">获取验证码</string>
+    <string name="set_password">请设置新的密码</string>
+    <string name="login_tips">登录密码用于登陆OpenIM账号</string>
+    <string name="login_tips2">需6～20位字符</string>
+    <string name="confirm_modification">确认修改</string>
+    <string name="login_tips3">密码长度在6~20个字符之间</string>
+    <string name="group_call_tips">发起群视频自己必须参与</string>
+    <string name="group_call_tips2">至少选择一个成员</string>
+    <string name="group_call_tips3">不能和自己群视频</string>
+    <string name="call_time">通话时长\t</string>
+    <string name="conn_failed">连接失败</string>
+    <string name="ot_refuses">对方已拒绝</string>
+    <string name="cancelled">已取消</string>
+    <string name="label">标签</string>
+    <string name="remove">移除</string>
+    <string name="cretate_label">新建标签</string>
+    <string name="label_name">标签名字</string>
+    <string name="label_member">标签成员</string>
+    <string name="create_label_tips">请输入标签名称</string>
+    <string name="create_label_tips2">请填写标签名</string>
+    <string name="create_succ">创建成功</string>
+    <string name="create_label_tips3">请选择成员</string>
+    <string name="waiting_tips2">等待接受</string>
+    <string name="waiting_tips3">邀请你通话</string>
+    <string name="word_circle">工作圈</string>
+    <string name="star">赞</string>
+    <string name="comment">评论</string>
+    <string name="new_msg_tips">%1$s条新消息</string>
+    <string name="coments_null_tips">评论内容不能为空...</string>
+    <string name="moments">朋友圈</string>
+    <string name="to_user_moments">%1$s的动态</string>
+    <string name="msg">消息</string>
+    <string name="star_tips">点赞了</string>
+    <string name="star_tips2">评论了</string>
+    <string name="about_you">提到了</string>
+    <string name="clear_null">清空</string>
+    <string name="push_photo">发布图文</string>
+    <string name="who_see">谁可以看</string>
+    <string name="reminder_who_see">提醒谁看</string>
+    <string name="str_public">公开</string>
+    <string name="public_tips">所有人可见</string>
+    <string name="str_private">私密</string>
+    <string name="str_private_tips">仅自己可见</string>
+    <string name="part_see">部分可见</string>
+    <string name="part_see_tips">选中的人可见</string>
+    <string name="select_group">从群组选择</string>
+    <string name="who_invisible">不给谁看</string>
+    <string name="who_invisible_tips">选中的人不可见</string>
+    <string name="select_user">从通讯录选择</string>
+    <string name="upload_err">上传出错</string>
+    <string name="delete_moments_tips">确定删除此条朋友圈？</string>
+    <string name="part_see_tips2">部分好友可见</string>
+    <string name="push_video">发布视频</string>
+    <string name="about_who">提到了：%1$s</string>
+    <string name="say_more2">说点什么...</string>
+    <string name="s_person_audio_calling">%1$d人正在语音通话</string>
+    <string name="s_person_video_calling">%1$d人正在视频通话</string>
+    <string name="join">加入</string>
+    <string name="group_calling_tips">当前群正在通话中，确定加入当前通话？</string>
+    <string name="group_calling_tips2">通话人数已满</string>
+    <string name="not_err">未知错误</string>
+    <string name="video_meeting">视频会议</string>
+    <string name="join_meeting">加入会议</string>
+    <string name="timely_meeting">快速会议</string>
+    <string name="timing_meeting">预约会议</string>
+    <string name="end">结束</string>
+    <string name="download">下载</string>
+    <string name="emcee">主持人</string>
+    <string name="cancel_mute">取消静音</string>
+    <string name="start_camera">开启相机</string>
+    <string name="shared_screen">共享屏幕</string>
+    <string name="setting">设置</string>
+    <string name="v_member">成员</string>
+    <string name="meeting_initiator">%1$s发起的视频会议</string>
+    <string name="share_screen">开始投屏中...</string>
+    <string name="initiator">发起人：%1$s</string>
+    <string name="have_begun">已开始</string>
+    <string name="not_started">未开始</string>
+    <string name="meeting_num">会议号</string>
+    <string name="please_input_meeting_num">请输入会议号</string>
+    <string name="mute">静音</string>
+    <string name="close_camera">关闭相机</string>
+    <string name="invite">邀请</string>
+    <string name="all_mute">全员静音</string>
+    <string name="Select_friends">按好友选</string>
+    <string name="Select_group">按群聊选</string>
+    <string name="Invite_you_join">邀请你加入视频会议</string>
+    <string name="meeting_theme">会议主题</string>
+    <string name="start_time">开始时间</string>
+    <string name="meeting_duration">会议时长</string>
+    <string name="hour">小时</string>
+    <string name="msg_tap_tips">点击此消息可直接加入会议</string>
+    <string name="meeting_has_ended">会议已结束或房间不存在</string>
+    <string name="cancle_all_mute">取消全员禁音</string>
+    <string name="meeting_setting">会议设置</string>
+    <string name="allow_cancel_mute">允许成员自我解除静音</string>
+    <string name="allow_open_camera">允许成员开启视频</string>
+    <string name="only_host_share">仅主持人可以共享屏幕</string>
+    <string name="only_host_invite">仅主持人可邀请会议成员</string>
+    <string name="join_mute">成员入会静音</string>
+    <string name="exit_meeting_tips">确认离开该会议吗？</string>
+    <string name="exit_meeting_tips2">确定结束该会议吗？</string>
+    <string name="meeting_finish">会议已结束</string>
+    <string name="exit_meeting">离开会议</string>
+    <string name="finish_meeting">结束会议</string>
+    <string name="double_tap_tips">双击屏幕中间可全屏</string>
+    <string name="please_input_meeting_theme">请输入会议主题</string>
+    <string name="successful_agreement">预约成功</string>
+    <string name="timing_tips1">请输入主题</string>
+    <string name="timing_tips2">请选择开始时间</string>
+    <string name="timing_tips3">请选择时长</string>
+    <string name="meeting_detail">会议详情</string>
+    <string name="enter_meeting">进入会议</string>
+    <string name="update_meeting_info">修改会议信息</string>
+    <string name="cancel_meeting">取消会议</string>
+    <string name="edit_succ">修改成功</string>
+    <string name="confirm_send_who">确认发送给：</string>
+    <string name="join_group_method">入群方式</string>
+    <string name="set_manager">设为管理员</string>
+    <string name="set_mute">设置禁言</string>
+    <string name="inviter_join">邀请进群</string>
+    <string name="search_id_join">搜索群ID</string>
+    <string name="group_qr_join">群二维码</string>
+    <string name="_10_minutes">10分钟</string>
+    <string name="_1_hour">1小时</string>
+    <string name="_12_hour">12小时</string>
+    <string name="_1_day">1天</string>
+    <string name="cancel_mute2">取消禁言</string>
+    <string name="customize">自定义</string>
+    <string name="day">天</string>
+    <string name="mute_tips">输入或选择禁言时间</string>
+    <string name="recent_contact">最近会话</string>
+    <string name="account">账号</string>
+    <string name="please_input_account">请输入账号</string>
+    <string name="organizational_structure">组织架构</string>
+
+    <string name="who_talk">%1$s讲话中...</string>
+    <string name="meeting">会议中...</string>
+    <string name="syncing">同步中...</string>
+    <string name="connecting">连接中...</string>
+    <string name="sync_err">同步失败</string>
+    <string name="all_select">全选</string>
+    <string name="chat_record_tips1">松开发送，上划取消</string>
+    <string name="chat_record_tips2">松开手指，取消发送</string>
+    <string name="audio_too_short">语音太短了</string>
+    <string name="chat_record_tips3">松开发送</string>
+    <string name="add">添加</string>
+    <string name="add_success">添加成功</string>
+    <string name="favorite_emoji">收藏表情</string>
+    <string name="manage">管理</string>
+    <string name="file_not_find">文件不存在</string>
+    <string name="start_chat_tips">你们已经成为好友，可以开始聊天了</string>
+    <string name="logout">退出登录</string>
+    <string name="new_group_chat">新的群聊</string>
+    <string name="find">发现</string>
+    <string name="null_applet">暂无小程序</string>
+    <string name="leave_word">留言</string>
+    <string name="send_who">发送给：</string>
+    <string name="multiple_send">分别发送给：</string>
+    <string name="media_call">音视频通话</string>
+    <string name="edit_group_name">%1$s 修改了群名称</string>
+    <string name="view_all_member">查看全部群成员(%1$d)</string>
+    <string name="group_manage">群管理</string>
+    <string name="re_edit">重新编辑</string>
+    <string name="clear_msg_sure">确定清空消息？</string>
+    <string name="tal_num_photo">共%1$d张</string>
+    <string name="audio_calling">语音通话中...</string>
+    <string name="now_calling">当前正在通话中...</string>
+
+    <string name="set_top" >置顶该成员</string>
+    <string name="all_see_the" >全部看他</string>
+    <string name="time_set">时间设置</string>
+    <string name="read_vanish_tips">在此之后发送的消息，好友已读后会在 选择的时间之后自动删除</string>
+    <string name="seconds">秒</string>
+    <string name="minute">分钟</string>
+    <string name="password_valid_tips">密码请输入6-20位包含数字与字母</string>
+    <string name="periodic_deletion">定期删除消息记录</string>
+    <string name="week">周</string>
+    <string name="month">月</string>
+    <string name="period_deletion_tips1">定期删除消息记录</string>
+    <string name="period_deletion_tips2">在此之后发送的消息会在选择的时间之后自动删除</string>
+    <string name="language_setting">语言设置</string>
+    <string name="with_system">跟随系统</string>
+    <string name="chinese">简体中文</string>
+    <string name="english">英语</string>
+    <string name="switch_language_tips">确定切换为</string>
+
+
+
+    <string name="read">我已阅读并同意：</string>
+    <string name="protocol">《服务协议》，《隐私权政策》</string>
+    <string name="input_phone">请输入手机号码</string>
+    <string name="password">密码</string>
+    <string name="phone_num">手机号码</string>
+    <string name="mail">邮箱</string>
+    <string name="input_password">请输入密码</string>
+    <string name="forgot_password">忘记密码</string>
+    <string name="phone_register">手机号注册</string>
+    <string name="input_mail">请输入邮箱</string>
+    <string name="mail_register">邮箱注册</string>
+    <string name="new_user">新用户注册</string>
+    <string name="register">注册</string>
+    <string name="not_find_user">无法找到该用户</string>
+    <string name="id">ID号</string>
+    <string name="send_msg">发消息</string>
+    <string name="openim_call">OpenIM电话</string>
+    <string name="add_friend">添加好友</string>
+    <string name="disassociate">解除好友关系</string>
+    <string name="detail">详情</string>
+    <string name="friend_verify">好友验证</string>
+    <string name="group_verify">群聊验证</string>
+    <string name="verification_code_send_mail">验证码已发送至邮箱</string>
+    <string name="verification_code_send_phone">验证码已发送至手机</string>
+    <string name="input_verification_code">请输入验证码</string>
+    <string name="resend_verification_code">重发验证码</string>
+    <string name="after">后</string>
+
+    <string name="name">你的姓名</string>
+    <string name="input_name">请填写真实姓名</string>
+    <string name="input_nick_name">请输入您的昵称</string>
+    <string name="welcome">欢迎使用OpenIM</string>
+    <string name="join_im">进入OpenIM</string>
+    <string name="add_group">添加群聊</string>
+    <string name="search_group_by_id">通过群ID号搜索添加</string>
+    <string name="not_find_group">未找到该群聊</string>
+    <string name="send_friend_apply">发送添加好友申请</string>
+    <string name="send_join_group_apply">发送入群申请</string>
+    <string name="address_book">通讯录</string>
+    <string name="nickname">昵称</string>
+    <string name="invite_add_friends">邀请对方扫码，添加好友</string>
+    <string name="login">登录</string>
+
+    <string name="pass">通过入群申请</string>
+    <string name="Fail">拒绝入群申请</string>
+
+
+    <string name="top">置顶</string>
+    <string name="typing">正在输入…</string>
+    <string name="unsupported_type">暂不支持的消息类型</string>
+    <string name="touch_say">按住说话</string>
+    <string name="let_go">松开取消</string>
+    <string name="speech_to_txt">转文字</string>
+    <string name="let_send">松手发送</string>
+    <string name="msg_read_status">消息阅读状态</string>
+
+
+    <string name="group_id">群ID号</string>
+    <string name="member">群成员</string>
+    <string name="complete_creation">完成创建</string>
+    <string name="group_set">群聊设置</string>
+    <string name="not_disturb_tips">开启后不接收离线推送消息</string>
+    <string name="setting_chat_bg">设置聊天背景</string>
+    <string name="change_password">修改密码</string>
+    <string name="old_password">原密码：</string>
+    <string name="new_password">新密码：</string>
+    <string name="sure_password">确认密码：</string>
+    <string name="sure_password2">确认密码</string>
+    <string name="please_input_complete">请填写完整</string>
+    <string name="password_valid_tips2">新密码与确认密码不匹配</string>
+    <string name="do_not_account">还没有账号？</string>
+    <string name="next">下一步</string>
+    <string name="setting_info">设置信息</string>
+    <string name="sure_password_tips">请再次确认您的密码</string>
+    <string name="host_exit_tips">主持人已结束会议，是否离开？</string>
+    <string name="declined">已拒绝</string>
+    <string name="timing_meeting_tips">不能选择已过去的时间</string>
+    <string name="cancle_see_he">取消看他</string>
+    <string name="recover">" 回复 "</string>
+    <string name="edit_group_name2">修改群聊名称</string>
+    <string name="edit_group_name_tips">修改群聊名称后，将在群内通知其他成员。</string>
+    <string name="in_group_name_tips">昵称修改后，只会在此群内显示，群内成员都可以看见。</string>
+    <string name="create_group_tips2">创建群聊，全面使用OpenIM</string>
+    <string name="add_group_tips">向管理员或群聊成员询问ID</string>
+    <string name="delete_conversiton">删除会话</string>
+    <string name="android">Android</string>
+    <string name="ios">ios</string>
+    <string name="start_group_mute">已开启群禁言</string>
+    <string name="group_ban">群已被禁</string>
+    <string name="you_mute">你已被禁言</string>
+    <string name="file_download">文件下载中请稍后...</string>
+    <string name="message_tone">新消息提示音</string>
+    <string name="vibration">新消息震动</string>
+    <string name="not_be_added">禁止添加我为好友</string>
+    <string name="a_person_at_you">有人@你</string>
+    <string name="draft">草稿</string>
+    <string name="workbench">发现</string>
+
+    <string name="common_network_hint">当前没有网络连接，请检查网络设置</string>
+    <string name="common_no_more_data">没有更多数据了</string>
+    <string name="qrcode_string">{"system":"AIServer","type":"PersonalQRcode","content":"%d"}</string>
+
+    <item name="type_header" type="integer"/>
+    <item name="type_footer" type="integer"/>
+    <item name="type_diy" type="integer"/>
+    <item name="type_child" type="integer"/>
+    <item name="type_empty" type="integer"/>
+
+    <string name="status_layout_no_data">空空如也</string>
+    <string name="status_layout_error_request">请求出错，请重试</string>
+    <string name="status_layout_error_network">网络错误，请重试</string>
+    <string name="status_layout_retry">重试</string>
+
+    <string name="str_recorder_normal">按住 说话</string>
+    <string name="str_recorder_recording">松开结束</string>
+    <string name="str_recorder_want_cancel">松开手指，取消发送</string>
+    <string name="str_recorder_swip_cancel">手指上滑，取消发送</string>
+    <string name="str_recorder_too_short"  >录音时间过短</string>
+    <string name="time_remaining">还可以再录制%d秒</string>
+    <string name="ai_text_hint2">AI正在回答您的问题，请稍等</string>
+    <string name="ai_text_hint1"> </string>
+
+    <string name="log_off_img1_text">若会员服务已开通未到期剩余天数将作废</string>
+    <string name="log_off_img2_text">会员自动续费功能将会自动关闭，App Store自动续费用户需要自行取消后再进行注销</string>
+    <string name="log_off_img3_text">当前群聊等级和响应的权益作废，确认您已退出所有群组，属于您的群已解散或转让。</string>
+    <string name="log_off_img4_text">账号注销后，无法找回或处理该账号任何内容、信息，包括但不限于：身份信息、账号信息、头像、昵称，已发布动态、点赞、评论、收藏、聊天等互动信息</string>
+    <string name="log_off_img5_text">注销后，将保留账号的违规数据。违规行为将不会影响您的正常注销。</string>
+    <string name="logcat_launch_error">参数错误，无法启动 Logcat</string>
+
+    <string name="logcat_notify_title">Logcat</string>
+    <string name="logcat_notify_content">点击进入《 %s 》日志调试界面</string>
+    <string name="logcat_notify_channel_name">Logcat 通知</string>
+    <string name="logcat_notify_channel_description">可用于查看当前应用程序的日志</string>
+
+    <string name="logcat_search_hint">请输入要查找的内容</string>
+
+    <string name="logcat_options_copy">复制日志</string>
+    <string name="logcat_options_share">分享日志</string>
+    <string name="logcat_options_delete">删除日志</string>
+    <string name="logcat_options_shield">屏蔽日志</string>
+
+    <string name="logcat_copy_succeed">日志复制成功</string>
+    <string name="logcat_copy_fail">日志复制失败</string>
+
+    <string name="logcat_capture">日志捕获开关</string>
+    <string name="logcat_save">保存日志</string>
+    <string name="logcat_level">日志等级过滤</string>
+    <string name="logcat_empty">清空日志</string>
+    <string name="logcat_close">关闭显示</string>
+
+    <string name="logcat_capture_pause">日志捕捉已暂停</string>
+
+    <string name="logcat_read_config_fail">读取屏蔽配置失败</string>
+
+    <string name="logcat_shield_succeed">添加屏蔽成功：</string>
+    <string name="logcat_shield_fail">添加屏蔽失败</string>
+
+    <string name="logcat_save_succeed">保存成功：</string>
+    <string name="logcat_save_fail">保存失败</string>
+
+    <string-array name="logcat_filter_list" />
+
+
+    <string name="selector_folder_all_easy_photos">所有图片</string>
+
+    <string name="selector_folder_all_video_photo_easy_photos">图片和视频</string>
+
+    <string name="selector_folder_video_easy_photos">所有视频</string>
+
+    <string name="selector_easy_photos">选择</string>
+
+    <!--http://stackoverflow.com/questions/17502824/whats-wrong-with-this-format-string-->
+    <string name="selector_action_done_easy_photos">完成(%1$d/%2$d)</string>
+
+    <string name="selector_preview_easy_photos">预览</string>
+
+    <string name="selector_reach_max_hint_easy_photos">超出最大选择数</string>
+
+    <string name="selector_reach_max_image_hint_easy_photos">最多只能选择%d张图片</string>
+
+    <string name="selector_reach_max_video_hint_easy_photos">最多只能选择%d个视频</string>
+
+    <string name="selector_single_type_hint_easy_photos">需要选择同种类型的文件</string>
+
+    <string name="msg_no_camera_easy_photos">无法启动相机！</string>
+
+    <string name="camera_temp_file_error_easy_photos">图片错误</string>
+
+    <string name="selector_permission_error_easy_photos">权限错误，无法正常工作！</string>
+
+    <string name="selector_image_size_error_easy_photos">图片的宽度必须大于%1$d,高度必须大于%2$d</string>
+
+    <string name="selector_image_type_error_easy_photos">不支持此图片格式</string>
+
+    <string name="edit_easy_photos">编辑</string>
+
+    <string name="empty_easy_photos">清空</string>
+
+    <string name="no_photos_easy_photos">没有符合要求的图片，拍一张吧</string>
+
+    <string name="no_videos_easy_photos">没有符合要求的视频</string>
+
+    <string name="permissions_again_easy_photos">请点击并允许相关权限</string>
+
+    <string name="permissions_die_easy_photos">请点击并在设置中允许相关权限</string>
+
+    <string name="original_easy_photos">原图</string>
+
+    <string name="preview_current_number_easy_photos">%1$d/%2$d</string>
+
+    <string name="done_easy_photos">完成</string>
+
+    <string name="cancel_easy_photos">取消</string>
+
+    <string name="template_easy_photos">模板</string>
+
+    <string name="text_sticker_easy_photos">文字</string>
+
+    <string name="text_sticker_date_easy_photos">日期</string>
+
+    <string name="text_sticker_hint_easy_photos">双击编辑</string>
+
+    <string name="text_sticker_hint_name_easy_photos">自定义</string>
+
+    <string name="picture_selection_easy_photos">选择</string>
+
+    <string name="video_selection_easy_photos">视频选择</string>
+
+    <string name="puzzle_easy_photos">拼一张</string>
+
+    <string name="select_puzzle_photos">请选择2 \- 9张照片</string>
+
+    <string name="gif_easy_photos">动图</string>
+
+    <string name="video_easy_photos">视频</string>
+
+    <string name="isSetting">已设置</string>
+    <string name="noSetting">未设置</string>
+
+    <string name="common_web_ssl_error_title">当前网站安全证书已过期或不可信\n是否继续浏览</string>
+    <string name="common_web_ssl_error_allow">继续浏览</string>
+    <string name="common_web_ssl_error_reject">返回上一页</string>
+    <string name="common_web_location_permission_title">当前网站需要获取您的地理位置</string>
+    <string name="common_web_location_permission_allow">授予</string>
+    <string name="common_web_location_permission_reject">拒绝</string>
+    <string name="common_web_call_phone_title">当前号码 %s</string>
+    <string name="common_web_call_phone_allow">拨打</string>
+    <string name="common_web_call_phone_reject">取消</string>
+
+    <string name="common_permission_alert">授权提醒</string>
+    <string name="common_permission_fail_1">授权失败，请正确授予权限</string>
+    <string name="common_permission_fail_2">获取权限失败，请手动授予权限</string>
+    <string name="common_permission_fail_3">获取权限失败，请手动授予%s</string>
+    <string name="common_permission_fail_4">没有授予后台定位权限，请您选择"始终允许"</string>
+    <string name="common_permission_goto">前往授权</string>
+    <string name="common_permission_calendar">日历权限</string>
+    <string name="common_permission_camera">相机权限</string>
+    <string name="common_permission_contacts">通讯录权限</string>
+    <string name="common_permission_location">定位权限</string>
+    <string name="common_permission_location_background">后台定位权限</string>
+    <string name="common_permission_microphone">麦克风权限</string>
+    <string name="common_permission_phone">电话权限</string>
+    <string name="common_permission_call_log">通话记录权限</string>
+    <string name="common_permission_sensors">身体传感器权限</string>
+    <string name="common_permission_activity_recognition">健身运动权限</string>
+    <string name="common_permission_sms">短信权限</string>
+    <string name="common_permission_storage">存储权限</string>
+    <string name="common_permission_install">安装应用权限</string>
+    <string name="common_permission_notification">通知栏权限</string>
+    <string name="common_permission_window">悬浮窗权限</string>
+    <string name="common_permission_setting">系统设置权限</string>
+
+    <string name="xpopup_cancel">取消</string>
+    <string name="xpopup_ok">确定</string>
+    <string name="xpopup_save">保存</string>
+    <string name="xpopup_saved_to_gallery">已保存到相册</string>
+    <string name="xpopup_image_not_exist">图片不存在</string>
+    <string name="xpopup_saved_fail">图片保存失败</string>
+
+    <string name="loading_title">健 康 游 戏 忠 告</string>
+    <string name="loading_center_msg">抵制不良游戏 拒绝盗版游戏\n注意自我保护 谨防受骗上当\n适度游戏益脑 沉迷游戏伤身\n合格安排时间 享受健康生活</string>
+    <string name="loading_bottom">正在加载中…</string>
+    <string name="loading">加载中…</string>
+    <string name="login_loading">加载登录中</string>
+
+    <string name="srl_content_empty">SmartRefreshLayout中没有找到内容视图。您是否忘记在xml布局文件中添加？</string>
+    <string name="srl_component_falsify" formatted="false">%s 虚假区域\n代表运行时拖动的高度【%.1fdp】 \n而不会显示任何东西</string>
+
+    <string name="srl_header_pulling">下拉可以刷新</string>
+    <string name="srl_header_refreshing">正在刷新…</string>
+    <string name="srl_header_loading">等待底部加载完成…</string>
+    <string name="srl_header_release">释放立即刷新</string>
+    <string name="srl_header_finish">刷新完成</string>
+    <string name="srl_header_failed">刷新失败</string>
+    <string name="srl_header_update">上次更新 M-d HH:mm</string>
+    <string name="srl_header_secondary">释放进入二楼</string>
+
+    <string name="srl_footer_pulling">上拉加载更多</string>
+    <string name="srl_footer_release">释放立即加载</string>
+    <string name="srl_footer_loading">正在加载…</string>
+    <string name="srl_footer_refreshing">等待头部刷新完成…</string>
+    <string name="srl_footer_finish">加载完成</string>
+    <string name="srl_footer_failed">加载失败</string>
+    <string name="srl_footer_nothing">没有更多数据了</string>
+
+    <string name="mod_login_edit_name">请输入用户名/手机号</string>
+    <string name="mod_login_edit_phone">请输入手机号</string>
+
+
+</resources>

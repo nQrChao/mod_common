@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="vertical"
+    app:cardBackgroundColor="@color/black85"
+    app:cardCornerRadius="@dimen/idp_15"
+    app:cardElevation="0px">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:minWidth="@dimen/idp_110"
+        android:minHeight="@dimen/idp_110"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/idp_10"
+        android:paddingTop="@dimen/idp_20"
+        android:paddingBottom="@dimen/idp_10">
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="@dimen/idp_70"
+            android:layout_height="@dimen/idp_70"
+            android:layout_gravity="center"
+            android:indeterminate="false"
+            android:progress="0"
+            android:progressDrawable="@drawable/custom_progress_drawable"
+            android:max="100" />
+
+        <com.chaoji.im.ui.view.SmartTextView
+            android:id="@+id/tv_wait_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/idp_35"
+            android:layout_marginTop="@dimen/idp_5"
+            android:maxLines="3"
+            android:text="@string/common_loading"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_14" />
+
+        <Button
+            android:id="@+id/down_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/idp_20"
+            android:layout_marginTop="@dimen/idp_5"
+            android:background="@drawable/button_cancel_selector"
+            android:text="取消"
+            android:textColor="@color/white90"
+            android:textSize="@dimen/isp_12"
+            android:visibility="invisible" />
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

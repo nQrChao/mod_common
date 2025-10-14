@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data class="ViewTestBind" />
+
+    <LinearLayout
+        android:id="@+id/float_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/idp_250"
+        android:layout_gravity="start"
+        android:background="@drawable/bg_dialog"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="@dimen/idp_5"
+        android:tag="FLOAT_VIEW">
+
+        <Button
+            android:id="@+id/testBtn"
+            android:layout_width="@dimen/idp_20"
+            android:layout_height="match_parent"
+            android:background="@color/red"
+            android:gravity="center"
+            android:lines="5"
+            android:maxEms="1"
+            android:padding="@dimen/idp_5"
+            android:text="详情"
+            android:textColor="@color/black95"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/ll_log_info"
+            android:layout_width="@dimen/idp_350"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/idp_5"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/ll_crash_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="0px"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:lineSpacingExtra="5dp"
+                    android:text="详细信息"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/isp_15"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/iv_send"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginTop="2dp"
+                    android:gravity="center"
+                    android:src="@drawable/lc_ic_send"
+                    android:textColor="@color/white90"
+                    android:textSize="@dimen/isp_11"
+                    tools:ignore="UseCompatTextViewDrawableXml" />
+            </LinearLayout>
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="15dp"
+                android:lineSpacingExtra="5dp"
+                android:textColor="@color/red"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</layout>

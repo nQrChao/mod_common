@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/idp_5"
+    android:layout_marginTop="@dimen/idp_5"
+    android:layout_marginEnd="@dimen/idp_5"
+    android:layout_marginBottom="@dimen/idp_5">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/nb_noti_shape_color_fafafa_corner_8"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/idp_25"
+            android:background="@drawable/nb_noti_shape_color_ffffff_corner_tl_tr__8">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_icon"
+                android:layout_width="@dimen/idp_15"
+                android:layout_height="@dimen/idp_15"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/idp_10" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_app_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/idp_30"
+                android:layout_marginEnd="@dimen/idp_40"
+                android:maxLines="1"
+                android:text=""
+                android:textColor="#717482"
+                android:textSize="@dimen/isp_12" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/idp_10"
+                android:text="现在"
+                android:textColor="#717482"
+                android:textSize="@dimen/isp_12" />
+
+        </RelativeLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/idp_10"
+            android:layout_marginTop="@dimen/idp_10"
+            android:layout_marginEnd="@dimen/idp_10"
+            android:maxLines="1"
+            android:text="提示"
+            android:textColor="#34384D"
+            android:textSize="@dimen/isp_12"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/idp_10"
+            android:layout_marginTop="@dimen/idp_10"
+            android:layout_marginEnd="@dimen/idp_10"
+            android:layout_marginBottom="@dimen/idp_10"
+            android:text=""
+            android:textColor="#34384D"
+            android:textSize="@dimen/isp_12" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

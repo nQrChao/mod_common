@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/idp_140"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="@dimen/idp_10"
+    app:cardElevation="@dimen/idp_5">
+
+    <LinearLayout
+        android:layout_margin="@dimen/idp_10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/ass_item_icon"
+                android:layout_width="@dimen/idp_30"
+                android:layout_height="@dimen/idp_30"
+                android:src="@drawable/nav_btn1_off_ic" />
+
+            <TextView
+                android:gravity="center"
+                android:id="@+id/ass_item_title"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/idp_5"
+                android:text="法律咨询"
+                android:textColor="@color/text_default_color"
+                android:textSize="@dimen/isp_14"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/ass_item_content"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/idp_10"
+            android:maxLines="4"
+            android:ellipsize="end"
+            android:text="为您提供任何法律相关问题的咨询，为您提供任何法律相关问题的咨询，为您提供任何法律相关问题的咨询"
+            android:textColor="@color/text_default_color"
+            android:textSize="@dimen/isp_12" />
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/idp_5"
+        android:background="@drawable/item_click_selector"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/sub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="武汉市"
+            android:textSize="@dimen/isp_14"
+            android:textColor="@color/text_default_color"
+            app:buttonCompat="@drawable/checkbox_around_selector"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="100m内 | 湖北省武汉市"
+            android:textColor="@color/text_hit_color"
+            android:textSize="@dimen/isp_14"
+            app:layout_constraintStart_toStartOf="@+id/sub"
+            app:layout_constraintTop_toBottomOf="@+id/sub" />
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/check"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/idp_10"
+            android:background="@null"
+            android:checked="false"
+            android:clickable="false"
+            app:buttonCompat="@drawable/checkbox_around_selector"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"  />
+
+
+        <View
+            style="@style/HorizontalLineStyle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/name" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+

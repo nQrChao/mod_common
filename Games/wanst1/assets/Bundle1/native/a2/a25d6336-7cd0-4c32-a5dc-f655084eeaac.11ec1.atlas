@@ -1,0 +1,41 @@
+
+role.png
+size: 789,922
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+图层 1 拷贝
+  rotate: false
+  xy: 386, 614
+  size: 241, 262
+  orig: 241, 262
+  offset: 0, 0
+  index: -1
+role/图层_1_拷贝_2
+  rotate: false
+  xy: 1, 614
+  size: 383, 266
+  orig: 383, 266
+  offset: 0, 0
+  index: -1
+role/图层_1_拷贝_4
+  rotate: false
+  xy: 1, 1
+  size: 583, 611
+  orig: 583, 611
+  offset: 0, 0
+  index: -1
+role/图层_1_拷贝_3
+  rotate: false
+  xy: 629, 614
+  size: 158, 164
+  orig: 158, 164
+  offset: 0, 0
+  index: -1
+role/图层_3
+  rotate: false
+  xy: 386, 878
+  size: 76, 42
+  orig: 76, 42
+  offset: 0, 0
+  index: -1

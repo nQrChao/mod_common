@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#CC000000"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:id="@+id/ll_audio"
+                android:layout_width="@dimen/idp_200"
+                android:layout_height="wrap_content"
+                android:background="@drawable/common_audio_background"
+                android:gravity="center"
+                android:padding="@dimen/idp_10"
+                android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@id/left_c"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.chaoji.im.ui.widget.ViewAudioRect
+                    android:id="@+id/v"
+                    android:layout_width="@dimen/idp_150"
+                    android:layout_height="@dimen/idp_50" />
+            </LinearLayout>
+
+
+            <View
+                android:id="@+id/left_c"
+                android:layout_width="@dimen/idp_45"
+                android:layout_height="@dimen/idp_45"
+                android:layout_marginStart="@dimen/idp_30"
+                android:layout_marginBottom="@dimen/idp_30"
+                android:background="@drawable/audio_circle"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/audio_circle"
+                android:text="取消"
+                android:textSize="@dimen/isp_12"
+                app:layout_constraintBottom_toBottomOf="@+id/left_c"
+                app:layout_constraintEnd_toEndOf="@+id/left_c"
+                app:layout_constraintStart_toStartOf="@+id/left_c"
+                app:layout_constraintTop_toTopOf="@+id/left_c" />
+
+
+            <View
+                android:id="@+id/right_c"
+                android:layout_width="@dimen/idp_45"
+                android:layout_height="@dimen/idp_45"
+                android:layout_marginEnd="@dimen/idp_30"
+                android:layout_marginBottom="@dimen/idp_30"
+                android:background="@drawable/audio_circle"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="文字"
+                android:textSize="@dimen/isp_12"
+                app:layout_constraintBottom_toBottomOf="@+id/right_c"
+                app:layout_constraintEnd_toEndOf="@+id/right_c"
+                app:layout_constraintStart_toStartOf="@+id/right_c"
+                app:layout_constraintTop_toTopOf="@+id/right_c" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/idp_10"
+            android:gravity="center"
+            android:text="按住说话"
+            android:textColor="@color/white"
+            android:textSize="@dimen/isp_14" />
+
+        <com.chaoji.im.ui.widget.ViewAudio
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>

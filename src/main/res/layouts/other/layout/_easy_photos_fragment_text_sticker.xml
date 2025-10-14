@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/text_sticker_editor_fragment_bg_easy_photos">
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.25" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.75" />
+    <TextView
+        android:id="@+id/tv_sample"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/idp_50"
+        android:gravity="center"
+        android:textSize="@dimen/isp_15"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toRightOf="@+id/guideline2"
+        app:layout_constraintRight_toLeftOf="@+id/guideline3"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/text_sticker_editor_fragment_bar_easy_photos"
+        android:paddingBottom="@dimen/idp_8"
+        android:paddingTop="@dimen/idp_15"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <SeekBar
+            android:id="@+id/m_seek_bar"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/idp_18"
+            android:layout_marginBottom="@dimen/idp_15"
+            android:max="255"
+            android:maxHeight="@dimen/idp_3"
+            android:minHeight="@dimen/idp_3"
+            android:progressDrawable="@drawable/easy_photos_bg_seek_bar_alpha"
+            android:thumb="@drawable/easy_photos_thumb_seek_bar_alpha"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_done"
+            android:layout_width="@dimen/idp_70"
+            android:layout_height="@dimen/idp_40"
+            android:layout_marginTop="@dimen/idp_15"
+            android:gravity="center"
+            android:text="@string/done_easy_photos"
+            android:textColor="@color/easy_photos_fg_accent"
+            android:textStyle="bold"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/m_seek_bar" />
+
+        <EditText
+            android:id="@+id/et"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/idp_15"
+            android:background="@drawable/easy_photos_bg_text_sticker_editor"
+            android:paddingBottom="@dimen/idp_8"
+            android:paddingEnd="@dimen/idp_25"
+            android:paddingStart="@dimen/idp_8"
+            android:paddingTop="@dimen/idp_8"
+            android:textColor="@color/easy_photos_fg_accent"
+            android:textSize="@dimen/isp_14"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_done"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/tv_done"
+            app:layout_constraintTop_toTopOf="@+id/tv_done" />
+
+        <ImageView
+            android:id="@+id/iv_clear"
+            android:layout_width="@dimen/idp_15"
+            android:layout_height="@dimen/idp_15"
+            android:layout_marginEnd="@dimen/idp_8"
+            app:layout_constraintBottom_toBottomOf="@+id/et"
+            app:layout_constraintRight_toRightOf="@+id/et"
+            app:layout_constraintTop_toTopOf="@+id/et"
+            app:srcCompat="@drawable/easy_photos_ic_clear" />
+
+
+        <LinearLayout
+            android:id="@+id/ll_color"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/idp_30"
+            android:layout_marginTop="@dimen/idp_8"
+            android:orientation="horizontal"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_done">
+
+            <ImageView
+                android:id="@+id/iv_red"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="@dimen/idp_8"
+                android:scaleType="centerInside"
+                android:src="@drawable/easy_photos_ic_red" />
+
+            <ImageView
+                android:id="@+id/iv_orange"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="@dimen/idp_8"
+                android:scaleType="centerInside"
+                android:src="@drawable/easy_photos_ic_orange" />
+
+            <ImageView
+                android:id="@+id/iv_yellow"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="@dimen/idp_8"
+                android:scaleType="centerInside"
+                android:src="@drawable/easy_photos_ic_yelow" />
+
+            <ImageView
+                android:id="@+id/iv_green"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="@dimen/idp_8"
+                android:scaleType="centerInside"
+                android:src="@drawable/easy_photos_ic_green" />
+
+            <ImageView
+                android:id="@+id/iv_cyan"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="@dimen/idp_8"
+                android:scaleType="centerInside"
+                android:src="@drawable/easy_photos_ic_cyan" />
+
+            <ImageView
+                android:id="@+id/iv_blue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="@dimen/idp_8"
+                android:scaleType="centerInside"
+                android:src="@drawable/easy_photos_ic_blue" />
+
+            <ImageView
+                android:id="@+id/iv_purple"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="@dimen/idp_8"
+                android:scaleType="centerInside"
+                android:src="@drawable/easy_photos_ic_purple" />
+
+            <ImageView
+                android:id="@+id/iv_black"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="@dimen/idp_8"
+                android:scaleType="centerInside"
+                android:src="@drawable/easy_photos_ic_black" />
+
+            <ImageView
+                android:id="@+id/iv_gray"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="@dimen/idp_8"
+                android:scaleType="centerInside"
+                android:src="@drawable/easy_photos_ic_gray" />
+
+            <ImageView
+                android:id="@+id/iv_white"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="@dimen/idp_8"
+                android:scaleType="centerInside"
+                android:src="@drawable/easy_photos_ic_white" />
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,62 @@
+
+win_fail.png
+size: 957,1152
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+win/g
+  rotate: false
+  xy: 1, 1
+  size: 598, 597
+  orig: 598, 597
+  offset: 0, 0
+  index: -1
+win/d2
+  rotate: false
+  xy: 601, 1
+  size: 354, 295
+  orig: 354, 295
+  offset: 0, 0
+  index: -1
+win/d1
+  rotate: false
+  xy: 1, 946
+  size: 366, 190
+  orig: 366, 190
+  offset: 0, 0
+  index: -1
+win/hg3
+  rotate: false
+  xy: 631, 587
+  size: 313, 287
+  orig: 313, 287
+  offset: 0, 0
+  index: -1
+win/hg1
+  rotate: false
+  xy: 601, 298
+  size: 319, 287
+  orig: 319, 287
+  offset: 0, 0
+  index: -1
+win/hg2
+  rotate: false
+  xy: 631, 876
+  size: 305, 274
+  orig: 305, 274
+  offset: 0, 0
+  index: -1
+win/bt2
+  rotate: false
+  xy: 1, 600
+  size: 628, 171
+  orig: 628, 171
+  offset: 0, 0
+  index: -1
+win/bt1
+  rotate: false
+  xy: 1, 773
+  size: 628, 171
+  orig: 628, 171
+  offset: 0, 0
+  index: -1

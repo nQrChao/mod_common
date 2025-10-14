@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:paddingHorizontal="@dimen/idp_10">
+
+    <com.chaoji.other.hjq.shape.view.ShapeTextView
+        android:id="@+id/tv_tab_design_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/idp_10"
+        android:textSize="@dimen/isp_15"
+        app:shape_textColor="@color/tab_default_color"
+        app:shape_textSelectedColor="@color/tab_select_color"
+        tools:text="消息" />
+
+    <View
+        android:visibility="gone"
+        android:id="@+id/tab_red"
+        android:layout_width="@dimen/idp_7"
+        android:layout_height="@dimen/idp_7"
+        android:layout_marginStart="-5dp"
+        android:layout_marginTop="@dimen/idp_7"
+        android:layout_toEndOf="@+id/tv_tab_design_title"
+        android:background="@drawable/red_circle" />
+
+    <View
+        android:visibility="gone"
+        android:id="@+id/v_tab_design_line"
+        android:layout_width="@dimen/idp_15"
+        android:layout_height="@dimen/idp_4"
+        android:layout_alignStart="@id/tv_tab_design_title"
+        android:layout_alignEnd="@id/tv_tab_design_title"
+        android:layout_alignBottom="@id/tv_tab_design_title"
+        android:layout_marginHorizontal="5dp"
+        android:background="@drawable/tab_line" />
+
+</RelativeLayout>

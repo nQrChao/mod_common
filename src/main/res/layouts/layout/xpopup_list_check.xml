@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <com.chaoji.other.hjq.titlebar.TitleBar
+            android:id="@+id/titleBar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/idp_50"
+            app:lineVisible="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:leftIcon="@drawable/arrows_left_b_ic"
+            app:rightBackground="@null"
+            app:rightTitleColor="#6493FA"
+            app:titleSize="@dimen/isp_16"
+            app:titleStyle="bold"
+            app:rightTitleSize="@dimen/isp_14"
+            app:titleColor="@color/text_default_color"
+            app:titleOverflowMode="end" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/idp_10"
+            android:gravity="center_vertical"
+            android:weightSum="10"
+            android:orientation="horizontal">
+
+            <com.chaoji.im.ui.view.ClearEditText
+                android:id="@+id/search_edit"
+                android:layout_width="0dp"
+                android:layout_weight="8"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/idp_10"
+                android:background="@drawable/bg_search"
+                android:drawableStart="@drawable/search_ic"
+                android:drawablePadding="@dimen/idp_8"
+                android:hint="请输入搜索内容"
+                android:inputType="text"
+                android:lines="1"
+                android:paddingHorizontal="@dimen/idp_15"
+                android:paddingVertical="@dimen/idp_5"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textColorHint="@color/text_hit_color"
+                android:textSize="@dimen/isp_13"
+                app:bar_rightTextColor="@color/tab_default_color" />
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/idp_20"
+                android:text="搜索"
+                android:textColor="#6493FA"
+                android:textSize="@dimen/isp_14"
+                app:layout_constraintBottom_toBottomOf="@+id/search_edit"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/search_edit"
+                app:layout_constraintTop_toTopOf="@+id/search_edit" />
+
+
+        </LinearLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/tab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/search_edit"
+            tools:itemCount="2"
+            tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            tools:listitem="@layout/tab_item_design"
+            tools:spanCount="2" />
+
+        <View
+            style="@style/HorizontalLineStyle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tab" />
+
+        <com.chaoji.im.ui.view.NestedViewPager
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/idp_10"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tab" />
+
+
+    </LinearLayout>
+</layout>

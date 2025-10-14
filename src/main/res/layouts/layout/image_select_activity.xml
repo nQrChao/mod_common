@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.chaoji.other.hjq.titlebar.TitleBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="@string/image_select_title" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.chaoji.im.ui.layout.StatusLayout
+            android:id="@+id/hl_image_select_hint"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_image_select_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:itemCount="20"
+                tools:layoutManager="GridLayoutManager"
+                tools:listitem="@layout/image_select_item"
+                tools:spanCount="3" />
+
+        </com.chaoji.im.ui.layout.StatusLayout>
+
+        <com.chaoji.im.ui.widget.ViewImageViewFloatAction
+            android:visibility="gone"
+            android:id="@+id/fab_image_select_floating"
+            android:layout_width="@dimen/idp_60"
+            android:layout_height="@dimen/idp_60"
+            android:layout_gravity="end|bottom"
+            android:layout_marginEnd="@dimen/idp_15"
+            android:layout_marginBottom="@dimen/idp_20"
+            android:background="@drawable/roll_accent_bg"
+            android:padding="@dimen/idp_20"
+            android:src="@drawable/camera_ic" />
+    </FrameLayout>
+
+</LinearLayout>

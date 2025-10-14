@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.chaoji.other.tablayout.DslTabLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/tab_layout"
+    android:layout_width="60dp"
+    android:layout_height="wrap_content"
+    android:background="#666466"
+    app:tab_draw_badge="true"
+    app:tab_indicator_drawable="@drawable/_dsl_indicator_bottom_line"
+    app:tab_orientation="VERTICAL">
+
+    <TextView
+        style="@style/_Dsl_TabItemStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="R" />
+
+    <TextView
+        style="@style/_Dsl_TabItemStyle"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="最新" />
+
+    <ImageView
+        style="@style/_Dsl_TabItemStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:src="@drawable/add_ic" />
+
+    <TextView
+        style="@style/_Dsl_TabItemStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="排行榜3" />
+
+    <TextView
+        style="@style/_Dsl_TabItemStyle"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:drawableLeft="@drawable/add_ic"
+        android:text="Android" />
+
+    <LinearLayout
+        style="@style/_Dsl_TabItemStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/_Dsl_TabItemStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="0dp"
+            android:text="组合" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/add_ic" />
+
+        <TextView
+            style="@style/_Dsl_TabItemStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="0dp"
+            android:text="Swift" />
+
+    </LinearLayout>
+
+    <TextView
+        style="@style/_Dsl_TabItemStyle"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:text="Vue" />
+
+    <TextView
+        style="@style/_Dsl_TabItemStyle"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="前->端" />
+
+    <TextView
+        style="@style/_Dsl_TabItemStyle"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:text="设计" />
+
+    <TextView
+        style="@style/_Dsl_TabItemStyle"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="其他资源" />
+
+    <TextView
+        style="@style/_Dsl_TabItemStyle"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:text="其他资源2" />
+
+    <TextView
+        style="@style/_Dsl_TabItemStyle"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="其他资源3" />
+
+    <TextView
+        style="@style/_Dsl_TabItemStyle"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:text="其他资源4" />
+
+    <TextView
+        style="@style/_Dsl_TabItemStyle"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="其他资源5" />
+
+</com.chaoji.other.tablayout.DslTabLayout>

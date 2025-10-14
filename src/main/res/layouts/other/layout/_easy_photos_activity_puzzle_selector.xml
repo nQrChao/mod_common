@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/easy_photos_bg_primary"
+    tools:context="com.chaoji.other.huantansheng.easyphotos.ui.PuzzleSelectorActivity">
+
+    <View
+        android:id="@+id/m_tool_bar"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/idp_40"
+        android:background="@color/easy_photos_bar_primary"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_photos"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/m_selector_root"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/m_tool_bar_bottom_line" />
+
+    <RelativeLayout
+        android:id="@+id/m_selector_root"
+        android:layout_width="0dp"
+        android:paddingTop="@dimen/idp_8"
+        android:layout_height="wrap_content"
+        android:background="@color/easy_photos_bar_primary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <TextView
+            android:id="@+id/tv_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:padding="@dimen/idp_8"
+            android:textSize="@dimen/isp_12"
+            android:textColor="@color/easy_photos_fg_primary"
+            android:layout_alignParentTop="true"
+            android:text="@string/select_puzzle_photos" />
+
+        <com.chaoji.other.huantansheng.easyphotos.ui.widget.PressedTextView
+            android:id="@+id/tv_done"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="@dimen/idp_8"
+            android:background="@drawable/easy_photos_bg_menu_done"
+            android:gravity="center"
+            android:padding="@dimen/idp_5"
+            android:textColor="@color/menu_text_easy_photos"
+            android:textSize="@dimen/isp_12"
+            android:textStyle="bold"
+            android:visibility="invisible" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_preview_selected_photos"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/idp_110"
+            android:layout_below="@+id/tv_message" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/root_view_album_items"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/easy_photos_bar_primary_translation"
+        android:paddingEnd="@dimen/idp_8"
+        android:paddingStart="@dimen/idp_8"
+        android:paddingTop="@dimen/idp_50"
+        android:visibility="gone"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/m_tool_bar_bottom_line"
+        app:layout_constraintBottom_toTopOf="@+id/m_selector_root">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_album_items"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/easy_photos_bg_dialog_album_items_background"
+            android:scrollbars="vertical" />
+    </RelativeLayout>
+
+
+    <com.chaoji.other.huantansheng.easyphotos.ui.widget.PressedTextView
+        android:id="@+id/tv_album_items"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:minWidth="@dimen/idp_70"
+        android:paddingEnd="@dimen/idp_5"
+        android:paddingStart="@dimen/idp_15"
+        android:textColor="@color/easy_photos_fg_primary"
+        app:layout_constraintBottom_toBottomOf="@+id/m_tool_bar"
+        app:layout_constraintLeft_toRightOf="@+id/m_back_line"
+        app:layout_constraintTop_toTopOf="@+id/m_tool_bar" />
+
+    <com.chaoji.other.huantansheng.easyphotos.ui.widget.PressedImageView
+        android:id="@+id/iv_album_items"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:paddingTop="@dimen/idp_8"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_album_items"
+        app:layout_constraintLeft_toRightOf="@+id/tv_album_items"
+        app:layout_constraintTop_toTopOf="@+id/tv_album_items"
+        app:srcCompat="@drawable/easy_photos_ic_album_items_name" />
+
+
+    <View
+        android:id="@+id/m_back_line"
+        android:layout_width="@dimen/idp_1"
+        android:layout_height="@dimen/idp_18"
+        android:background="@color/easy_photos_bar_primary_dark"
+        app:layout_constraintBottom_toBottomOf="@+id/m_tool_bar"
+        app:layout_constraintLeft_toRightOf="@+id/iv_back"
+        app:layout_constraintTop_toTopOf="@+id/m_tool_bar" />
+
+    <View
+        android:id="@+id/m_tool_bar_bottom_line"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/idp_1"
+        android:background="@color/easy_photos_bar_primary_dark"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/m_tool_bar" />
+
+    <ImageView
+        android:id="@+id/iv_back"
+        android:layout_width="@dimen/idp_40"
+        android:layout_height="@dimen/idp_40"
+        android:padding="@dimen/idp_10"
+        app:layout_constraintLeft_toLeftOf="@+id/m_tool_bar"
+        app:layout_constraintTop_toTopOf="@+id/m_tool_bar"
+        app:srcCompat="@drawable/easy_photos_ic_arrow_back" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

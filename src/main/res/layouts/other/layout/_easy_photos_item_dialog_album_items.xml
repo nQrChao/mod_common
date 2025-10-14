@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/m_root_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/idp_15">
+
+    <ImageView
+        android:id="@+id/iv_album_cover"
+        android:layout_width="@dimen/idp_70"
+        android:layout_height="@dimen/idp_70"
+        android:layout_marginTop="@dimen/idp_8"
+        android:scaleType="centerCrop"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.55" />
+
+    <TextView
+        android:id="@+id/tv_album_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/idp_25"
+        android:textColor="@color/album_item_name_easy_photos"
+        android:textSize="@dimen/isp_15"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintLeft_toRightOf="@+id/iv_album_cover" />
+
+    <TextView
+        android:id="@+id/tv_album_photos_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/idp_25"
+        android:layout_marginTop="@dimen/idp_2"
+        android:textColor="@color/album_item_count_easy_photos"
+        android:textSize="@dimen/isp_12"
+        app:layout_constraintLeft_toRightOf="@+id/iv_album_cover"
+        app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+    <ImageView
+        android:id="@+id/iv_selected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/idp_8"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/easy_photos_ic_album_item_choose" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

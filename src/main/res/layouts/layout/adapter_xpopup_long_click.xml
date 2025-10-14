@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/idp_35"
+        android:background="@drawable/bg_message_pop">
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="@dimen/idp_20"
+            android:layout_height="@dimen/idp_20"
+            android:layout_marginStart="@dimen/idp_10"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/idp_5"
+            android:layout_marginEnd="@dimen/idp_10"
+            android:singleLine="true"
+            android:textSize="@dimen/isp_14"
+            android:textColor="@color/white90"
+            app:layout_constraintBottom_toBottomOf="@id/icon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/icon"
+            app:layout_constraintTop_toTopOf="@+id/icon"
+            tools:text="11111" />
+
+
+        <TextView
+            android:id="@+id/text2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/idp_5"
+            android:layout_marginEnd="@dimen/idp_10"
+            android:gravity="center"
+            android:singleLine="true"
+            android:textColor="@color/white90"
+            android:textSize="@dimen/isp_14"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="11111" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
