@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.chaoji.im.ui.layout.NestedLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.box.common.ui.layout.NestedLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -22,7 +22,7 @@
         app:lottie_loop="true"
         tools:src="@drawable/status_network_ic" />
 
-    <com.chaoji.im.ui.view.SmartTextView
+    <com.box.common.ui.view.SmartTextView
         android:id="@+id/iv_status_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -31,7 +31,7 @@
         android:textSize="@dimen/isp_14"
         tools:text="@string/status_layout_error_network" />
 
-    <com.chaoji.other.hjq.shape.view.ShapeButton
+    <com.box.other.hjq.shape.view.ShapeButton
         android:id="@+id/iv_status_retry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -53,4 +53,4 @@
         android:layout_height="0px"
         android:layout_weight="1.5" />
 
-</com.chaoji.im.ui.layout.NestedLinearLayout>
+</com.box.common.ui.layout.NestedLinearLayout>

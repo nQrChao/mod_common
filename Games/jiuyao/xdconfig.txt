@@ -1,5 +1,0 @@
-{
-  "gameid": "2",
-  "platform": "oppo",
-  "channel": "jiuyao_luosiding_oppo"
-}

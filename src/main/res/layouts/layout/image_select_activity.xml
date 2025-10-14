@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.chaoji.other.hjq.titlebar.TitleBar
+    <com.box.other.hjq.titlebar.TitleBar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:title="@string/image_select_title" />
@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.chaoji.im.ui.layout.StatusLayout
+        <com.box.common.ui.layout.StatusLayout
             android:id="@+id/hl_image_select_hint"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -29,9 +29,9 @@
                 tools:listitem="@layout/image_select_item"
                 tools:spanCount="3" />
 
-        </com.chaoji.im.ui.layout.StatusLayout>
+        </com.box.common.ui.layout.StatusLayout>
 
-        <com.chaoji.im.ui.widget.ViewImageViewFloatAction
+        <com.box.common.ui.widget.ViewImageViewFloatAction
             android:visibility="gone"
             android:id="@+id/fab_image_select_floating"
             android:layout_width="@dimen/idp_60"

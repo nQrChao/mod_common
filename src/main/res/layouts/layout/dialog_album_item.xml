@@ -10,7 +10,7 @@
     android:paddingTop="@dimen/dp_10"
     android:paddingBottom="@dimen/idp_5">
 
-    <com.chaoji.im.ui.widget.ViewImageViewScale
+    <com.box.common.ui.widget.ViewImageViewScale
         android:id="@+id/iv_album_icon"
         android:layout_width="@dimen/idp_80"
         android:layout_height="@dimen/idp_80"

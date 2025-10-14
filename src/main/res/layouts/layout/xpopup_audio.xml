@@ -29,7 +29,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <com.chaoji.im.ui.widget.ViewAudioRect
+                <com.box.common.ui.widget.ViewAudioRect
                     android:id="@+id/v"
                     android:layout_width="@dimen/idp_150"
                     android:layout_height="@dimen/idp_50" />
@@ -91,7 +91,7 @@
             android:textColor="@color/white"
             android:textSize="@dimen/isp_14" />
 
-        <com.chaoji.im.ui.widget.ViewAudio
+        <com.box.common.ui.widget.ViewAudio
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>

@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <com.chaoji.im.ui.widget.AvatarImage
+            <com.box.common.ui.widget.AvatarImage
                 android:id="@+id/item_friend_icon"
                 android:layout_width="@dimen/idp_30"
                 android:layout_height="@dimen/idp_30"

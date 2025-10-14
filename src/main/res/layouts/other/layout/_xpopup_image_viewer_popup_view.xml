@@ -4,23 +4,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.chaoji.other.xpopup.widget.BlankView
+    <com.box.other.xpopup.widget.BlankView
         android:id="@+id/placeholderView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="invisible" />
 
-    <com.chaoji.other.xpopup.widget.PhotoViewContainer
+    <com.box.other.xpopup.widget.PhotoViewContainer
         android:id="@+id/photoViewContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.chaoji.other.xpopup.widget.HackyViewPager
+        <com.box.other.xpopup.widget.HackyViewPager
             android:id="@+id/pager"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-    </com.chaoji.other.xpopup.widget.PhotoViewContainer>
+    </com.box.other.xpopup.widget.PhotoViewContainer>
 
     <TextView
         android:id="@+id/tv_pager_indicator"

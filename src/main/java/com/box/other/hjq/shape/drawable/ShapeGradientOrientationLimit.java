@@ -1,0 +1,17 @@
+package com.box.other.hjq.shape.drawable;
+
+import androidx.annotation.IntDef;
+
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+
+/**
+ *    desc   : Shape 渐变方向赋值限制
+ */
+@IntDef({ShapeGradientOrientation.LEFT_TO_RIGHT, ShapeGradientOrientation.RIGHT_TO_LEFT,
+        ShapeGradientOrientation.BOTTOM_TO_TOP, ShapeGradientOrientation.TOP_TO_BOTTOM,
+        ShapeGradientOrientation.TOP_LEFT_TO_BOTTOM_RIGHT, ShapeGradientOrientation.BOTTOM_LEFT_TO_TOP_RIGHT,
+        ShapeGradientOrientation.TOP_RIGHT_TO_BOTTOM_LEFT, ShapeGradientOrientation.BOTTOM_RIGHT_TO_TOP_LEFT})
+@Retention(RetentionPolicy.SOURCE)
+public @interface ShapeGradientOrientationLimit {}

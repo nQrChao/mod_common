@@ -1,5 +1,0 @@
-{
-  "gameid": "48",
-  "platform": "",
-  "channel": "GEN-tyzcMVP"
-}

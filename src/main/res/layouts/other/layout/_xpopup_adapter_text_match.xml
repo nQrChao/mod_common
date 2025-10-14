@@ -29,7 +29,7 @@
             android:textColor="@color/_xpopup_title_color"
             android:textSize="@dimen/isp_14" />
 
-        <com.chaoji.other.xpopup.widget.CheckView
+        <com.box.other.xpopup.widget.CheckView
             android:id="@+id/check_view"
             android:layout_width="@dimen/idp_22"
             android:layout_height="@dimen/idp_20"

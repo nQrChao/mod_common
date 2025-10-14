@@ -19,7 +19,7 @@
         android:layout_gravity="bottom|center_horizontal"
         android:layout_marginBottom="@dimen/idp_20">
 
-        <com.chaoji.other.relex.circleindicator.CircleIndicator3
+        <com.box.other.relex.circleindicator.CircleIndicator3
             android:id="@+id/ci_image_preview_indicator"
             android:layout_width="match_parent"
             android:layout_height="@dimen/idp_50"

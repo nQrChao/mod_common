@@ -58,7 +58,7 @@
         </LinearLayout>
 
 
-        <com.chaoji.im.ui.view.ClearEditText
+        <com.box.common.ui.view.ClearEditText
             android:id="@+id/editText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/easy_photos_bg_primary"
-    tools:context="com.chaoji.other.huantansheng.easyphotos.ui.PuzzleSelectorActivity">
+    tools:context="com.box.other.huantansheng.easyphotos.ui.PuzzleSelectorActivity">
 
     <View
         android:id="@+id/m_tool_bar"
@@ -48,7 +48,7 @@
             android:layout_alignParentTop="true"
             android:text="@string/select_puzzle_photos" />
 
-        <com.chaoji.other.huantansheng.easyphotos.ui.widget.PressedTextView
+        <com.box.other.huantansheng.easyphotos.ui.widget.PressedTextView
             android:id="@+id/tv_done"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -96,7 +96,7 @@
     </RelativeLayout>
 
 
-    <com.chaoji.other.huantansheng.easyphotos.ui.widget.PressedTextView
+    <com.box.other.huantansheng.easyphotos.ui.widget.PressedTextView
         android:id="@+id/tv_album_items"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
@@ -109,7 +109,7 @@
         app:layout_constraintLeft_toRightOf="@+id/m_back_line"
         app:layout_constraintTop_toTopOf="@+id/m_tool_bar" />
 
-    <com.chaoji.other.huantansheng.easyphotos.ui.widget.PressedImageView
+    <com.box.other.huantansheng.easyphotos.ui.widget.PressedImageView
         android:id="@+id/iv_album_items"
         android:layout_width="wrap_content"
         android:layout_height="0dp"

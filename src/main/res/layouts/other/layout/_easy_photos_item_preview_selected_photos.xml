@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:layout_marginEnd="@dimen/idp_8">
 
-    <com.chaoji.other.huantansheng.easyphotos.ui.widget.PressedImageView
+    <com.box.other.huantansheng.easyphotos.ui.widget.PressedImageView
         android:id="@+id/iv_photo"
         android:layout_width="@dimen/idp_55"
         android:layout_height="@dimen/idp_55"

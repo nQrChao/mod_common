@@ -1,5 +1,0 @@
-{
-  "gameid": "50",
-  "platform": "",
-  "channel": "GEN-ydh"
-}

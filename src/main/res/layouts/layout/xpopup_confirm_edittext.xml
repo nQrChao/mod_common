@@ -45,7 +45,7 @@
                 android:textSize="@dimen/isp_14"
                 android:visibility="gone" />
 
-            <com.chaoji.im.ui.view.ClearEditText
+            <com.box.common.ui.view.ClearEditText
                 android:id="@+id/et_input"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/idp_40"

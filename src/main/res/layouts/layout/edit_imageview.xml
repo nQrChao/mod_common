@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <com.chaoji.other.sendtion.xrichtext.DataImageView
+    <com.box.other.sendtion.xrichtext.DataImageView
         android:id="@+id/edit_imageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

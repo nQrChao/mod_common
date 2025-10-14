@@ -11,7 +11,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <com.chaoji.im.ui.view.ClearEditText
+            <com.box.common.ui.view.ClearEditText
                 android:id="@+id/search_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -43,7 +43,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
         </LinearLayout>
 
-        <com.chaoji.im.ui.widget.ViewWaveSideBar
+        <com.box.common.ui.widget.ViewWaveSideBar
             android:id="@+id/side_bar"
             android:layout_width="@dimen/idp_30"
             android:layout_height="match_parent"

@@ -53,55 +53,55 @@
         tools:targetApi="31">
 
         <activity
-            android:name="com.chaoji.im.ui.activity.CommonActivityBrowser"
+            android:name="com.box.common.ui.activity.CommonActivityBrowser"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
 
         <activity
-            android:name="com.chaoji.im.ui.activity.CommonActivityBrowserCanGoBack"
+            android:name="com.box.common.ui.activity.CommonActivityBrowserCanGoBack"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
 
         <activity
-            android:name="com.chaoji.im.ui.activity.CommonActivityCrash"
+            android:name="com.box.common.ui.activity.CommonActivityCrash"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden" />
 
         <activity
-            android:name="com.chaoji.other.huantansheng.easyphotos.ui.EasyPhotosActivity"
+            android:name="com.box.other.huantansheng.easyphotos.ui.EasyPhotosActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
             android:screenOrientation="portrait"
             android:theme="@style/EasyPhotosTheme" />
 
         <activity
-            android:name="com.chaoji.other.huantansheng.easyphotos.ui.PreviewActivity"
+            android:name="com.box.other.huantansheng.easyphotos.ui.PreviewActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
             android:screenOrientation="portrait"
             android:theme="@style/EasyPhotosFullscreenTheme" />
 
         <activity
-            android:name="com.chaoji.other.huantansheng.easyphotos.ui.PuzzleActivity"
+            android:name="com.box.other.huantansheng.easyphotos.ui.PuzzleActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
             android:screenOrientation="portrait"
             android:theme="@style/EasyPhotosTheme"
             android:windowSoftInputMode="adjustPan" />
 
         <activity
-            android:name="com.chaoji.other.huantansheng.easyphotos.ui.PuzzleSelectorActivity"
+            android:name="com.box.other.huantansheng.easyphotos.ui.PuzzleSelectorActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
             android:screenOrientation="portrait"
             android:theme="@style/EasyPhotosTheme" />
         
 
         <activity
-            android:name="com.chaoji.other.blankj.utilcode.util.UtilsTransActivity4MainProcess"
+            android:name="com.box.other.blankj.utilcode.util.UtilsTransActivity4MainProcess"
             android:exported="false"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@style/ActivityTranslucent"
             android:windowSoftInputMode="stateHidden|stateAlwaysHidden" />
 
         <activity
-            android:name="com.chaoji.other.blankj.utilcode.util.UtilsTransActivity"
+            android:name="com.box.other.blankj.utilcode.util.UtilsTransActivity"
             android:exported="false"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:multiprocess="true"
@@ -114,7 +114,7 @@
             android:value="2.4" />
 
         <provider
-            android:name="com.chaoji.im.Ktx"
+            android:name="com.box.common.Ktx"
             android:authorities="${applicationId}.KtxInstaller"
             android:exported="false" />
 

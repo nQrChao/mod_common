@@ -87,7 +87,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <com.chaoji.im.ui.layout.SettingBar
+            <com.box.common.ui.layout.SettingBar
                 android:id="@+id/payType"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/idp_70"
@@ -100,7 +100,7 @@
                 app:bar_rightTextColor="@color/text_hit_color"
                 app:bar_rightTextSize="@dimen/isp_14" />
 
-            <com.chaoji.im.ui.layout.SettingBar
+            <com.box.common.ui.layout.SettingBar
                 android:id="@+id/payInfo"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/idp_70"

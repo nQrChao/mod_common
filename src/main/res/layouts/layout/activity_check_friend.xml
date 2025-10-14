@@ -3,7 +3,7 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.chaoji.base.base.viewmodel.BaseViewModel" />
+            type="com.box.base.base.viewmodel.BaseViewModel" />
     </data>
     <LinearLayout
         android:layout_width="fill_parent"

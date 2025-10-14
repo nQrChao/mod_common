@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <com.chaoji.other.huantansheng.easyphotos.ui.widget.PressedImageView
+    <com.box.other.huantansheng.easyphotos.ui.widget.PressedImageView
         android:id="@+id/iv_photo"
         android:layout_width="0dp"
         android:layout_height="0dp"

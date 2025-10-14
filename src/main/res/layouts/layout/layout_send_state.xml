@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:gravity="center">
 
-    <com.chaoji.other.wang.avi.AVLoadingIndicatorView
+    <com.box.other.wang.avi.AVLoadingIndicatorView
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/loading"
         style="@style/AVLoadingIndicatorView.Small3"

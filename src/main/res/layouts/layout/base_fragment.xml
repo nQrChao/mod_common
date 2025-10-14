@@ -7,7 +7,7 @@
 
         <variable
             name="vm"
-            type="com.chaoji.base.base.viewmodel.BaseViewModel" />
+            type="com.box.base.base.viewmodel.BaseViewModel" />
 
     </data>
 
@@ -18,7 +18,7 @@
         android:background="@color/white"
         android:orientation="vertical">
 
-        <com.chaoji.other.hjq.titlebar.TitleBar
+        <com.box.other.hjq.titlebar.TitleBar
             android:id="@+id/titleBar"
             android:layout_width="match_parent"
             android:layout_height="@dimen/idp_50"

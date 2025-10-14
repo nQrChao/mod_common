@@ -19,7 +19,7 @@
 
     <include layout="@layout/_xpopup_divider" />
 
-    <com.chaoji.other.xpopup.widget.VerticalRecyclerView
+    <com.box.other.xpopup.widget.VerticalRecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

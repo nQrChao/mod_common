@@ -9,7 +9,7 @@
     android:paddingTop="@dimen/idp_20"
     android:paddingBottom="@dimen/idp_20">
 
-    <com.chaoji.im.ui.view.ClearEditText
+    <com.box.common.ui.view.ClearEditText
         android:id="@+id/search_edit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -11,7 +11,7 @@
         android:orientation="horizontal"
         android:paddingHorizontal="@dimen/idp_10">
 
-        <com.chaoji.im.ui.view.DrawableTextView
+        <com.box.common.ui.view.DrawableTextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"

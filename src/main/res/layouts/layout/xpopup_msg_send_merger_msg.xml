@@ -53,7 +53,7 @@
                 android:text="消息内容"
                 android:textSize="@dimen/isp_14" />
 
-            <com.chaoji.im.ui.view.ClearEditText
+            <com.box.common.ui.view.ClearEditText
                 android:id="@+id/editText"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/idp_30"

@@ -1,5 +1,0 @@
-{
-  "gameid": "2",
-  "platform": "",
-  "channel": "luosiding"
-}

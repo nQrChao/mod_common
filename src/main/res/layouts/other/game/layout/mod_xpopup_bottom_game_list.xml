@@ -86,7 +86,7 @@
                     android:layout_gravity="center_vertical"
                     android:src="@drawable/horn_ic" />
 
-                <com.chaoji.im.ui.widget.marqueeview.MarqueeView
+                <com.box.common.ui.widget.marqueeview.MarqueeView
                     android:id="@+id/marqueeview"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

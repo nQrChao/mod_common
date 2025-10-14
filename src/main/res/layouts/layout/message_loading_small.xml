@@ -7,7 +7,7 @@
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
-        <com.chaoji.other.wang.avi.AVLoadingIndicatorView xmlns:app="http://schemas.android.com/apk/res-auto"
+        <com.box.other.wang.avi.AVLoadingIndicatorView xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/indicator"
             style="@style/AVLoadingIndicatorView.Small2"
             android:layout_width="wrap_content"

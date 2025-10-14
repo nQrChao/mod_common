@@ -18,7 +18,7 @@
             android:background="@drawable/item_click_selector"
             android:orientation="vertical">
 
-            <com.chaoji.im.ui.widget.AvatarImage
+            <com.box.common.ui.widget.AvatarImage
                 android:id="@+id/icon"
                 android:layout_width="@dimen/idp_35"
                 android:layout_height="@dimen/idp_35"

@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/easy_photos_bg_primary"
-        tools:context="com.chaoji.other.huantansheng.easyphotos.ui.EasyPhotosActivity">
+        tools:context="com.box.other.huantansheng.easyphotos.ui.EasyPhotosActivity">
 
         <View
             android:id="@+id/m_tool_bar"
@@ -123,7 +123,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent" />
 
-        <com.chaoji.other.huantansheng.easyphotos.ui.widget.PressedTextView
+        <com.box.other.huantansheng.easyphotos.ui.widget.PressedTextView
             android:id="@+id/tv_album_items"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
@@ -137,7 +137,7 @@
             app:layout_constraintLeft_toLeftOf="@+id/m_bottom_bar"
             app:layout_constraintTop_toTopOf="@+id/m_bottom_bar" />
 
-        <com.chaoji.other.huantansheng.easyphotos.ui.widget.PressedImageView
+        <com.box.other.huantansheng.easyphotos.ui.widget.PressedImageView
             android:id="@+id/iv_album_items"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
@@ -158,7 +158,7 @@
             app:layout_constraintTop_toTopOf="@+id/m_bottom_bar"
             app:srcCompat="@drawable/easy_photos_ic_edit" />
 
-        <com.chaoji.other.huantansheng.easyphotos.ui.widget.PressedTextView
+        <com.box.other.huantansheng.easyphotos.ui.widget.PressedTextView
             android:id="@+id/tv_preview"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
@@ -215,7 +215,7 @@
             app:layout_constraintLeft_toLeftOf="@+id/m_back_line"
             app:layout_constraintTop_toTopOf="@+id/m_tool_bar" />
 
-        <com.chaoji.other.huantansheng.easyphotos.ui.widget.PressedTextView
+        <com.box.other.huantansheng.easyphotos.ui.widget.PressedTextView
             android:id="@+id/tv_done"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

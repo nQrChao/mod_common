@@ -1,5 +1,0 @@
-{
-  "gameid": "49",
-  "platform": "",
-  "channel": "GEN-kjytxss"
-}

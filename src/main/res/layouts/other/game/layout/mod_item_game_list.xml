@@ -8,7 +8,7 @@
 
         <variable
             name="gameApplet"
-            type="com.chaoji.im.data.model.ModGameAppletsInfo" />
+            type="com.box.common.data.model.ModGameAppletsInfo" />
 
     </data>
 

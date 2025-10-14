@@ -14,7 +14,7 @@
         android:layout_height="@dimen/idp_35"
         android:visibility="gone" />
 
-    <com.chaoji.other.xpopup.widget.LoadingView
+    <com.box.other.xpopup.widget.LoadingView
         android:id="@+id/loadview"
         android:layout_width="@dimen/idp_35"
         android:layout_height="@dimen/idp_35" />

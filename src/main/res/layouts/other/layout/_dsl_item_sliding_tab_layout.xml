@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.chaoji.other.tablayout.DslTabLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.box.other.tablayout.DslTabLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/tab_layout"
     android:layout_width="wrap_content"
@@ -56,4 +56,4 @@
         style="@style/_Dsl_TabSlidingItemStyle"
         android:text="其他资源" />
 
-</com.chaoji.other.tablayout.DslTabLayout>
+</com.box.other.tablayout.DslTabLayout>

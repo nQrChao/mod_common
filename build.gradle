@@ -8,7 +8,7 @@ plugins {
 apply from: 'base.gradle'
 
 android {
-    namespace "com.chaoji.common"
+    namespace "com.box.common"
     compileSdk 34
     defaultConfig {
         minSdkVersion 21
@@ -90,7 +90,6 @@ dependencies {
     }
 
     //api 'com.tbuonomo:dotsindicator:4.3'
-    //api project(':xdyx_app_lib:mvvm')
     //embed project(path: ':ModAAR:cloud')
     api libs.androidx.multidex
     api libs.androidx.core.ktx

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.chaoji.other.tablayout.DslTabLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.box.other.tablayout.DslTabLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/tab_layout"
@@ -38,4 +38,4 @@
         style="@style/_Dsl_TabCommonItemStyle"
         android:text="更多" />
 
-</com.chaoji.other.tablayout.DslTabLayout>
+</com.box.other.tablayout.DslTabLayout>

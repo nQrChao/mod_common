@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context="com.chaoji.other.huantansheng.easyphotos.ui.PreviewFragment">
+    tools:context="com.box.other.huantansheng.easyphotos.ui.PreviewFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_preview_selected_photos"

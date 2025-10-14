@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.chaoji.other.chrisbanes.photoview.PhotoView
+        <com.box.other.chrisbanes.photoview.PhotoView
             android:id="@+id/photo_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

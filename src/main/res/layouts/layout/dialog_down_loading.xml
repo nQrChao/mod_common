@@ -34,7 +34,7 @@
             android:progressDrawable="@drawable/custom_progress_drawable"
             android:max="100" />
 
-        <com.chaoji.im.ui.view.SmartTextView
+        <com.box.common.ui.view.SmartTextView
             android:id="@+id/tv_wait_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

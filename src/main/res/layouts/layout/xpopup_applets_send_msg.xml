@@ -44,7 +44,7 @@
                 tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 tools:listitem="@layout/item_user_simple" />
 
-            <com.chaoji.im.ui.widget.ViewLinearLayoutIntercept
+            <com.box.common.ui.widget.ViewLinearLayoutIntercept
                 android:id="@+id/content2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -108,9 +108,9 @@
 
                 </LinearLayout>
 
-            </com.chaoji.im.ui.widget.ViewLinearLayoutIntercept>
+            </com.box.common.ui.widget.ViewLinearLayoutIntercept>
 
-            <com.chaoji.im.ui.view.ClearEditText
+            <com.box.common.ui.view.ClearEditText
                 android:id="@+id/editText"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/idp_30"

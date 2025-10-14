@@ -9,7 +9,7 @@
         android:background="@color/white"
         android:orientation="vertical">
 
-        <com.chaoji.other.hjq.titlebar.TitleBar
+        <com.box.other.hjq.titlebar.TitleBar
             android:id="@+id/titleBar"
             android:layout_width="match_parent"
             android:layout_height="@dimen/idp_50"
@@ -34,7 +34,7 @@
             android:weightSum="10"
             android:orientation="horizontal">
 
-            <com.chaoji.im.ui.view.ClearEditText
+            <com.box.common.ui.view.ClearEditText
                 android:id="@+id/search_edit"
                 android:layout_width="0dp"
                 android:layout_weight="8"
@@ -90,7 +90,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tab" />
 
-        <com.chaoji.im.ui.view.NestedViewPager
+        <com.box.common.ui.view.NestedViewPager
             android:id="@+id/pager"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

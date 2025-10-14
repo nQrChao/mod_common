@@ -7,7 +7,7 @@
     android:gravity="center_horizontal"
     android:paddingHorizontal="@dimen/idp_10">
 
-    <com.chaoji.other.hjq.shape.view.ShapeTextView
+    <com.box.other.hjq.shape.view.ShapeTextView
         android:id="@+id/tv_tab_design_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

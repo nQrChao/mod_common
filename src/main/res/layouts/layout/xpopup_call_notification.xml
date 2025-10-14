@@ -13,7 +13,7 @@
         android:paddingTop="@dimen/idp_45"
         android:paddingBottom="@dimen/idp_15">
 
-        <com.chaoji.im.ui.widget.AvatarImage
+        <com.box.common.ui.widget.AvatarImage
             android:id="@+id/user_icon"
             android:layout_width="@dimen/idp_45"
             android:layout_height="@dimen/idp_45"

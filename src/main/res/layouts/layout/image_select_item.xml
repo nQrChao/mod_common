@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.chaoji.im.ui.widget.ViewFrameLayoutRatio xmlns:android="http://schemas.android.com/apk/res/android"
+<com.box.common.ui.widget.ViewFrameLayoutRatio xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:sizeRatio="1:1">
 
-    <com.chaoji.im.ui.widget.ViewImageViewScale
+    <com.box.common.ui.widget.ViewImageViewScale
         android:id="@+id/iv_image_select_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -36,4 +36,4 @@
 
     </FrameLayout>
 
-</com.chaoji.im.ui.widget.ViewFrameLayoutRatio>
+</com.box.common.ui.widget.ViewFrameLayoutRatio>

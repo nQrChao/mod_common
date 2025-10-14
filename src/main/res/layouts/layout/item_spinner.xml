@@ -7,7 +7,7 @@
 
         <variable
             name="protectQuestion"
-            type="com.chaoji.im.data.model.ProtectQuestionBean" />
+            type="com.box.common.data.model.ProtectQuestionBean" />
 
     </data>
 

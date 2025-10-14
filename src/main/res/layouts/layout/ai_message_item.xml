@@ -9,7 +9,7 @@
 
         <variable
             name="msg"
-            type="com.chaoji.im.data.model.AiMessage" />
+            type="com.box.common.data.model.AiMessage" />
 
     </data>
 
@@ -100,7 +100,7 @@
             app:layout_constraintEnd_toEndOf="@id/ll_question"
             app:layout_constraintTop_toBottomOf="@id/ll_question">
 
-            <com.chaoji.im.ui.view.DrawableTextView
+            <com.box.common.ui.view.DrawableTextView
                 android:id="@+id/ai_message_question"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -114,7 +114,7 @@
                 app:drawableHeight="@dimen/idp_15"
                 app:drawableWidth="@dimen/idp_15" />
 
-            <com.chaoji.im.ui.view.DrawableTextView
+            <com.box.common.ui.view.DrawableTextView
                 android:id="@+id/ai_message_copy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -159,7 +159,7 @@
                 android:visibility="@{msg.type==2?View.VISIBLE:View.GONE}"
                 tools:text="好" />
 
-            <com.chaoji.im.ui.view.DrawableTextView
+            <com.box.common.ui.view.DrawableTextView
                 android:id="@+id/ai_message_copy_ai"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

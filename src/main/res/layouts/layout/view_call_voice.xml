@@ -7,7 +7,7 @@
 
         <variable
             name="vm"
-            type="com.chaoji.im.ui.view.ViewCallVoiceModel" />
+            type="com.box.common.ui.view.ViewCallVoiceModel" />
 
     </data>
 
@@ -22,7 +22,7 @@
             android:layout_centerInParent="true"
             android:orientation="vertical">
 
-            <com.chaoji.im.ui.widget.AvatarImage
+            <com.box.common.ui.widget.AvatarImage
                 app:TSize="@dimen/isp_30"
                 android:layout_width="@dimen/idp_100"
                 android:layout_height="@dimen/idp_100"

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <com.chaoji.other.tablayout.DslTabLayout
+    <com.box.other.tablayout.DslTabLayout
         android:id="@+id/tab_layout"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
@@ -28,6 +28,6 @@
             style="@style/_Dsl_TabCommonItemStyle"
             android:text="消息" />
 
-    </com.chaoji.other.tablayout.DslTabLayout>
+    </com.box.other.tablayout.DslTabLayout>
 
 </FrameLayout>

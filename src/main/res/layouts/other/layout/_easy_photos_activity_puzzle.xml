@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.chaoji.other.huantansheng.easyphotos.models.puzzle.PuzzleView
+        <com.box.other.huantansheng.easyphotos.models.puzzle.PuzzleView
             android:id="@+id/puzzle_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -23,7 +23,7 @@
             android:layout_alignParentBottom="true"
             android:background="@color/easy_photos_bar_primary_translation">
 
-            <com.chaoji.other.huantansheng.easyphotos.models.puzzle.DegreeSeekBar
+            <com.box.other.huantansheng.easyphotos.models.puzzle.DegreeSeekBar
                 android:id="@+id/degree_seek_bar"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/idp_40"
@@ -152,7 +152,7 @@
         android:layout_height="@dimen/idp_40"
         android:layout_alignParentTop="true">
 
-        <com.chaoji.other.huantansheng.easyphotos.ui.widget.PressedTextView
+        <com.box.other.huantansheng.easyphotos.ui.widget.PressedTextView
             android:id="@+id/tv_back"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"

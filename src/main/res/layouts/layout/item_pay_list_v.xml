@@ -8,7 +8,7 @@
 
         <variable
             name="payInfo"
-            type="com.chaoji.im.data.model.PayInfo" />
+            type="com.box.common.data.model.PayInfo" />
 
     </data>
 

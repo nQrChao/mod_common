@@ -1,21 +1,21 @@
--keep class com.chaoji.base.** { *; }
--keepclassmembers class com.chaoji.base.** { *; }
--keep class com.chaoji.im.data.** { *; }
--keepclassmembers class com.chaoji.im.data.** { *; }
--keep class com.chaoji.im.ui.fragment.** { *; }
--keepclassmembers class com.chaoji.im.ui.fragment.** { *; }
--keep class com.chaoji.im.event.** { *; }
--keepclassmembers class com.chaoji.im.event.** { *; }
--keep class com.chaoji.im.sdk.ImSDK { *; }
--keepclassmembers class com.chaoji.im.sdk.ImSDK { *; }
--keepnames class * implements com.chaoji.base.ext.BaseViewModelExtKt
--keepnames class * implements com.chaoji.base.base.viewmodel.BaseViewModel
--keepnames class * implements com.chaoji.base.base.activity.BaseVmDbActivity
--keep class com.chaoji.imcore.** { *; }
--keepclassmembers class com.chaoji.imcore.** { *; }
--keep class com.chaoji.other.** { *; }
--keepclassmembers class com.chaoji.other.** { *; }
--dontwarn com.chaoji.other.**
+-keep class com.box.base.** { *; }
+-keepclassmembers class com.box.base.** { *; }
+-keep class com.box.common.data.** { *; }
+-keepclassmembers class com.box.common.data.** { *; }
+-keep class com.box.common.ui.fragment.** { *; }
+-keepclassmembers class com.box.common.ui.fragment.** { *; }
+-keep class com.box.common.event.** { *; }
+-keepclassmembers class com.box.common.event.** { *; }
+-keep class com.box.common.sdk.ImSDK { *; }
+-keepclassmembers class com.box.common.sdk.ImSDK { *; }
+-keepnames class * implements com.box.base.ext.BaseViewModelExtKt
+-keepnames class * implements com.box.base.base.viewmodel.BaseViewModel
+-keepnames class * implements com.box.base.base.activity.BaseVmDbActivity
+-keep class com.box.imcore.** { *; }
+-keepclassmembers class com.box.imcore.** { *; }
+-keep class com.box.other.** { *; }
+-keepclassmembers class com.box.other.** { *; }
+-dontwarn com.box.other.**
 -keep class org.webrtc.** { *; }
 -dontwarn org.webrtc.**
 -keep class com.alibaba.** { *; }
@@ -32,30 +32,30 @@
 -keepclassmembers class com.zqhy.app.youpackage.view.adapter.LocalGamesAdapter$*ViewHolder { *; }
 
 # 保留你的 ApiService 接口定义 (假设 apiService 是这个接口的一个实例)
--keep interface com.chaoji.im.network.ApiService { *; }
+-keep interface com.box.common.network.ApiService { *; }
 # 保留你的 BaseResponse 类
--keep class com.chaoji.base.network.BaseResponse { *; }
--keepclassmembers class com.chaoji.base.network.BaseResponse { *; }
+-keep class com.box.base.network.BaseResponse { *; }
+-keepclassmembers class com.box.base.network.BaseResponse { *; }
 
 # 保留 marketInit 方法的签名
--keepclassmembers interface com.chaoji.im.network.ApiService {
+-keepclassmembers interface com.box.common.network.ApiService {
         *;
 }
 # 保留 AppletsApiResponse 类
--keep class com.chaoji.im.network.AppletsApiResponse { *; }
--keepclassmembers class com.chaoji.im.network.AppletsApiResponse { *; }
+-keep class com.box.common.network.AppletsApiResponse { *; }
+-keepclassmembers class com.box.common.network.AppletsApiResponse { *; }
 
 # 保留 MarketInit 类及其成员
--keep class com.chaoji.im.data.model.MarketInit { *; }
--keepclassmembers class com.chaoji.im.data.model.MarketInit { *; }
+-keep class com.box.common.data.model.MarketInit { *; }
+-keepclassmembers class com.box.common.data.model.MarketInit { *; }
 #-keep interface com.zqhy.app.network.IApiService { *; } # 如果适用，也为你的其他 ApiService 添加
 
 # 保留你的 ApiService 接口中 marketInit 的特定方法签名
 #-keep interface com.zqhy.app.network.IApiService {}
 
 # 同样，确保 marketInit 的返回类型被保留。如果它使用了泛型，也保留它们。
--keep class com.chaoji.im.data.model.MarketInit { *; }
--keepclassmembers class com.chaoji.im.data.model.MarketInit { *; }
+-keep class com.box.common.data.model.MarketInit { *; }
+-keepclassmembers class com.box.common.data.model.MarketInit { *; }
 
 -keep class com.amap.api.maps.**{*;}
 -keep class com.autonavi.**{*;}
@@ -106,14 +106,14 @@
 -keepattributes EnclosingMethod
 #-keep class com.chaoji.other.blankj.subutil.** { *; }
 #-keepclassmembers class com.chaoji.other.blankj.subutil.** { *; }
--dontwarn com.chaoji.other.blankj.subutil.**
+-dontwarn com.box.other.blankj.subutil.**
 
--dontwarn com.chaoji.other.blankj.utilcode.**
+-dontwarn com.box.other.blankj.utilcode.**
 -keepclassmembers class * {
-    @com.chaoji.other.blankj.utilcode.util.BusUtils$Bus <methods>;
+    @com.box.other.blankj.utilcode.util.BusUtils$Bus <methods>;
 }
--keep public class * extends com.chaoji.other.blankj.utilcode.util.ApiUtils$BaseApi
--keep @com.chaoji.other.blankj.utilcode.util.ApiUtils$Api class *
+-keep public class * extends com.box.other.blankj.utilcode.util.ApiUtils$BaseApi
+-keep @com.box.other.blankj.utilcode.util.ApiUtils$Api class *
 -keep class com.shuyu.gsyvideoplayer.video.** { *; }
 -dontwarn com.shuyu.gsyvideoplayer.video.**
 -keep class com.shuyu.gsyvideoplayer.video.base.** { *; }

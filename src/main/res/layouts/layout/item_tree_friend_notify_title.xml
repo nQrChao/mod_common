@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <com.chaoji.im.ui.widget.AvatarImage
+    <com.box.common.ui.widget.AvatarImage
         android:visibility="gone"
         android:id="@+id/head_icon"
         android:layout_width="@dimen/idp_40"
