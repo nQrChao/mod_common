@@ -6,7 +6,7 @@ keyProperties.load(new FileInputStream(keyPropertiesFile))
 // 所有渠道都会继承此配置，除非在 channelConfigs 中被覆盖
 def defaultConfig = [
         appName         : "a",
-        appVersionCode  : 85220,
+        appVersionCode  : 85222,
         appVersionName  : "8.5.2",
         appPackageName  : "com.chaoji.lc",
         appIcon         : "@mipmap/mod_icon",
@@ -52,11 +52,7 @@ def channelConfigs = [
 ]
 
 // 复制共用的配置
-channelConfigs.mod_moyu_aishang2 = channelConfigs.mod_moyu_aishang3 = channelConfigs.mod_moyu_aishang
-channelConfigs.mod_baohaowan2 = channelConfigs.mod_baohaowan_2 = channelConfigs.mod_baohaowan
-channelConfigs.mod_moyu2_yiyuan = channelConfigs.mod_gugu_yiyuan
-channelConfigs.mod_taoyoufang_2 = channelConfigs.mod_taoyoufang
-
+channelConfigs.mod_baohaowan2 = channelConfigs.mod_baohaowan_2
 
 // a. 获取当前渠道的专属配置，如果找不到，则返回一个空 Map
 def currentChannelConfig = channelConfigs.get(MOD_SRC_DIR, [:])

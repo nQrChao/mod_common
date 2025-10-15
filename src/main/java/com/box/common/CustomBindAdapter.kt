@@ -31,7 +31,7 @@ import com.box.other.blankj.utilcode.util.ResourceUtils
 import com.box.other.blankj.utilcode.util.StringUtils
 import com.box.other.blankj.utilcode.util.TimeUtils
 import com.box.other.hjq.titlebar.TitleBar
-import com.box.common.R as RC
+import com.box.com.R as RC
 
 
 object CustomBindAdapter {
@@ -138,15 +138,15 @@ object CustomBindAdapter {
     fun loadRoundImage(view: ImageView, url: String) {
         if (url == "add") {
             GlideApp.with(appContext)
-                .load(com.box.common.R.drawable.add_white_ic)
+                .load(com.box.com.R.drawable.add_white_ic)
                 .transform(RoundedCorners(ResourceUtils.getDimenIdByName("idp_15")))
-                .error(com.box.common.R.drawable.status_error_ic)
+                .error(com.box.com.R.drawable.status_error_ic)
                 .into(view)
         } else {
             GlideApp.with(appContext)
                 .load(url)
                 .transform(RoundedCorners(ResourceUtils.getDimenIdByName("idp_15")))
-                .error(com.box.common.R.drawable.status_error_ic)
+                .error(com.box.com.R.drawable.status_error_ic)
                 .into(view)
         }
     }
@@ -169,13 +169,13 @@ object CustomBindAdapter {
     fun loadImage1(view: ImageView, url: String) {
         if (url == "add") {
             GlideApp.with(appContext)
-                .load(com.box.common.R.drawable.add_white_ic)
-                .error(com.box.common.R.drawable.status_error_ic)
+                .load(com.box.com.R.drawable.add_white_ic)
+                .error(com.box.com.R.drawable.status_error_ic)
                 .into(view)
         } else {
             GlideApp.with(appContext)
                 .load(url)
-                .error(com.box.common.R.drawable.status_error_ic)
+                .error(com.box.com.R.drawable.status_error_ic)
                 .into(view)
         }
     }
@@ -187,7 +187,7 @@ object CustomBindAdapter {
         GlideApp.with(appContext)
             .load(url)
             .apply(requestOptions)
-            .error(com.box.common.R.drawable.status_error_ic)
+            .error(com.box.com.R.drawable.status_error_ic)
             .into(view)
     }
 
@@ -201,7 +201,7 @@ object CustomBindAdapter {
         GlideApp.with(appContext)
             .load(resId)
             .transform(CenterCrop(), RoundedCorners(radiusInPixels))
-            .error(com.box.common.R.drawable.status_error_ic)
+            .error(com.box.com.R.drawable.status_error_ic)
             .into(view)
     }
 
@@ -209,7 +209,7 @@ object CustomBindAdapter {
     @JvmStatic
     fun loadRound10Image(view: ImageView, url: String?) {
         if (url.isNullOrEmpty()) {
-            view.setImageResource(com.box.common.R.drawable.status_error_ic)
+            view.setImageResource(com.box.com.R.drawable.status_error_ic)
         } else {
             val radiusInDp = 5
             val density = appContext.resources.displayMetrics.density
@@ -218,7 +218,7 @@ object CustomBindAdapter {
             GlideApp.with(appContext)
                 .load(url)
                 .transform(CenterCrop(), RoundedCorners(radiusInPixels))
-                .error(com.box.common.R.drawable.status_error_ic)
+                .error(com.box.com.R.drawable.status_error_ic)
                 .into(view)
         }
     }
@@ -233,7 +233,7 @@ object CustomBindAdapter {
         GlideApp.with(appContext)
             .load(drawable)
             .transform(CenterCrop(), RoundedCorners(radiusInPixels))
-            .error(com.box.common.R.drawable.image_loading_ic)
+            .error(com.box.com.R.drawable.image_loading_ic)
             .into(view)
     }
 
@@ -247,7 +247,7 @@ object CustomBindAdapter {
         GlideApp.with(appContext)
             .load(resId)
             .transform(CenterCrop(), RoundedCorners(radiusInPixels))
-            .error(com.box.common.R.drawable.image_loading_ic)
+            .error(com.box.com.R.drawable.image_loading_ic)
             .into(view)
     }
 
@@ -255,7 +255,7 @@ object CustomBindAdapter {
     @JvmStatic
     fun loadRound11Image(view: ImageView, url: String?) {
         if (url.isNullOrEmpty()) {
-            view.setImageResource(com.box.common.R.drawable.status_error_ic)
+            view.setImageResource(com.box.com.R.drawable.status_error_ic)
         } else {
             val radiusInDp = 10
             val density = appContext.resources.displayMetrics.density
@@ -264,7 +264,7 @@ object CustomBindAdapter {
             GlideApp.with(appContext)
                 .load(url)
                 .transform(CenterCrop(), RoundedCorners(radiusInPixels))
-                .error(com.box.common.R.drawable.status_error_ic)
+                .error(com.box.com.R.drawable.status_error_ic)
                 .into(view)
         }
     }
@@ -273,7 +273,7 @@ object CustomBindAdapter {
     @JvmStatic
     fun loadResNameImage(view: ImageView, resName: String?) {
         if (resName.isNullOrEmpty()) {
-            view.setImageResource(com.box.common.R.drawable.status_error_ic)
+            view.setImageResource(com.box.com.R.drawable.status_error_ic)
         } else {
             val radiusInDp = 10
             val density = appContext.resources.displayMetrics.density
@@ -281,7 +281,7 @@ object CustomBindAdapter {
             GlideApp.with(appContext)
                 .load(ResourceUtils.getDrawableIdByName(resName))
                 .transform(CenterCrop(), RoundedCorners(radiusInPixels))
-                .error(com.box.common.R.drawable.status_error_ic)
+                .error(com.box.com.R.drawable.status_error_ic)
                 .into(view)
         }
     }
@@ -296,7 +296,7 @@ object CustomBindAdapter {
         GlideApp.with(appContext)
             .load(resId)
             .transform(CenterCrop(), RoundedCorners(radiusInPixels))
-            .error(com.box.common.R.drawable.image_loading_ic)
+            .error(com.box.com.R.drawable.image_loading_ic)
             .into(view)
     }
 
@@ -304,7 +304,7 @@ object CustomBindAdapter {
     @JvmStatic
     fun loadRound999Image(view: ImageView, url: String?) {
         if (url.isNullOrEmpty()) {
-            view.setImageResource(com.box.common.R.drawable.status_error_ic)
+            view.setImageResource(com.box.com.R.drawable.status_error_ic)
         } else {
             val radiusInDp = 999
             val density = appContext.resources.displayMetrics.density
@@ -313,7 +313,7 @@ object CustomBindAdapter {
             GlideApp.with(appContext)
                 .load(url)
                 .transform(CenterCrop(), RoundedCorners(radiusInPixels))
-                .error(com.box.common.R.drawable.status_error_ic)
+                .error(com.box.com.R.drawable.status_error_ic)
                 .into(view)
         }
     }
@@ -333,7 +333,7 @@ object CustomBindAdapter {
         GlideApp.with(appContext)
             .load(resId)
             .apply(options) // options中已包含所有样式
-            .error(com.box.common.R.drawable.image_loading_ic)
+            .error(com.box.com.R.drawable.image_loading_ic)
             .into(view)
     }
 
@@ -341,7 +341,7 @@ object CustomBindAdapter {
     @JvmStatic
     fun loadRound11UrlImage(view: ImageView, url: String?) {
         if (url.isNullOrEmpty()) {
-            view.setImageResource(com.box.common.R.drawable.status_error_ic)
+            view.setImageResource(com.box.com.R.drawable.status_error_ic)
         } else {
             val thumbUrl = "https://images.cqxiayou.com/imagethumb.php?thumb=w75h75&imgurl=$url"
             val radiusInDp = 5
@@ -352,7 +352,7 @@ object CustomBindAdapter {
             GlideApp.with(appContext)
                 .load(thumbUrl)
                 .apply(options)
-                .error(com.box.common.R.drawable.image_loading_ic)
+                .error(com.box.com.R.drawable.image_loading_ic)
                 .into(view)
         }
     }
@@ -368,7 +368,7 @@ object CustomBindAdapter {
         GlideApp.with(appContext)
             .load(resId)
             .transform(CenterCrop(), RoundedCorners(radiusInPixels))
-            .error(com.box.common.R.drawable.image_loading_ic)
+            .error(com.box.com.R.drawable.image_loading_ic)
             .into(view)
     }
 
@@ -385,7 +385,7 @@ object CustomBindAdapter {
             GlideApp.with(appContext)
                 .load(url)
                 .transform(CenterCrop(), RoundedCorners(radiusInPixels))
-                .error(com.box.common.R.drawable.status_error_ic)
+                .error(com.box.com.R.drawable.status_error_ic)
                 .into(view)
         }
     }
@@ -395,7 +395,7 @@ object CustomBindAdapter {
     fun loadImage(view: ImageView, url: String) {
         GlideApp.with(appContext)
             .load(url)
-            .error(com.box.common.R.drawable.image_loading_ic)
+            .error(com.box.com.R.drawable.image_loading_ic)
             .into(view)
     }
 
@@ -405,7 +405,7 @@ object CustomBindAdapter {
         GlideApp.with(appContext)
             .load(resId)
             .transform(CenterCrop())
-            .error(com.box.common.R.drawable.image_loading_ic)
+            .error(com.box.com.R.drawable.image_loading_ic)
             .into(view)
     }
 
@@ -419,7 +419,7 @@ object CustomBindAdapter {
             GlideApp.with(appContext)
                 .load(thumbUrl)
                 .transform(CenterCrop())
-                .error(com.box.common.R.drawable.status_error_ic)
+                .error(com.box.com.R.drawable.status_error_ic)
                 .into(view)
         }
     }
@@ -435,7 +435,7 @@ object CustomBindAdapter {
         GlideApp.with(appContext)
             .load(resId)
             .transform(CenterCrop(), RoundedCorners(radiusInPixels))
-            .error(com.box.common.R.drawable.status_error_ic)
+            .error(com.box.com.R.drawable.status_error_ic)
             .into(view)
     }
 
@@ -443,7 +443,7 @@ object CustomBindAdapter {
     @JvmStatic
     fun loadRoundSizeImage(view: ImageView, url: String?) {
         if (url.isNullOrEmpty()) {
-            view.setImageResource(com.box.common.R.drawable.status_error_ic)
+            view.setImageResource(com.box.com.R.drawable.status_error_ic)
         } else {
             val radiusInDp = 15
             val density = appContext.resources.displayMetrics.density
@@ -452,7 +452,7 @@ object CustomBindAdapter {
             GlideApp.with(appContext)
                 .load(url)
                 .transform(CenterCrop(), RoundedCorners(radiusInPixels))
-                .error(com.box.common.R.drawable.status_error_ic)
+                .error(com.box.com.R.drawable.status_error_ic)
                 .into(view)
         }
     }
@@ -468,7 +468,7 @@ object CustomBindAdapter {
         GlideApp.with(appContext)
             .load(resId)
             .transform(CenterCrop(), CustomCornersTransformation(radiusInPixels.toFloat(), CustomCornersTransformation.CornerType.TOP))
-            .error(com.box.common.R.drawable.status_error_ic)
+            .error(com.box.com.R.drawable.status_error_ic)
             .into(view)
 
     }
@@ -477,7 +477,7 @@ object CustomBindAdapter {
     @JvmStatic
     fun loadRoundSizeImageTopRounded(view: ImageView, url: String?) {
         if (url.isNullOrEmpty()) {
-            view.setImageResource(com.box.common.R.drawable.status_error_ic)
+            view.setImageResource(com.box.com.R.drawable.status_error_ic)
         } else {
             val radiusInDp = 15
             val density = appContext.resources.displayMetrics.density
@@ -486,7 +486,7 @@ object CustomBindAdapter {
             GlideApp.with(appContext)
                 .load(url)
                 .transform(CenterCrop(), CustomCornersTransformation(radiusInPixels.toFloat(), CustomCornersTransformation.CornerType.TOP))
-                .error(com.box.common.R.drawable.status_error_ic)
+                .error(com.box.com.R.drawable.status_error_ic)
                 .into(view)
 
         }
@@ -503,7 +503,7 @@ object CustomBindAdapter {
                 .error(RC.drawable.image_error_ic)       // 加载失败的占位图
                 .into(imageView)
         } else {
-            imageView.setImageResource(com.box.common.R.drawable.mod_goods_plus)
+            imageView.setImageResource(com.box.com.R.drawable.mod_goods_plus)
         }
     }
 
@@ -517,7 +517,7 @@ object CustomBindAdapter {
             GlideApp.with(appContext)
                 .load(url)
                 .transform(CenterCrop(), RoundedCorners(15))
-                .error(com.box.common.R.drawable.status_error_ic)
+                .error(com.box.com.R.drawable.status_error_ic)
                 .into(view)
         }
     }
@@ -529,7 +529,7 @@ object CustomBindAdapter {
         GlideApp.with(appContext)
             .load(drawable)
             .apply(requestOptions)
-            .error(com.box.common.R.drawable.status_error_ic)
+            .error(com.box.com.R.drawable.status_error_ic)
             .into(view)
     }
 
@@ -539,7 +539,7 @@ object CustomBindAdapter {
         GlideApp.with(appContext)
             .load(resId)
             //.transform(RoundedCorners(ResourceUtils.getDimenIdByName("idp_15")))
-            .error(com.box.common.R.drawable.status_error_ic)
+            .error(com.box.com.R.drawable.status_error_ic)
             .into(view)
     }
 
@@ -656,8 +656,8 @@ object CustomBindAdapter {
         }
         val glideRequest = GlideApp.with(view)
             .load(url)
-            .placeholder(com.box.common.R.drawable.image_loading_ic)
-            .error(error ?: com.box.common.R.drawable.status_error_ic)
+            .placeholder(com.box.com.R.drawable.image_loading_ic)
+            .error(error ?: com.box.com.R.drawable.status_error_ic)
             .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
 
         when {

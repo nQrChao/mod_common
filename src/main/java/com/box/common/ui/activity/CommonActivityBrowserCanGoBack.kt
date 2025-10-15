@@ -19,7 +19,7 @@ import com.box.common.sdk.ImSDK
 import com.box.common.ui.layout.StatusLayout
 import com.box.common.ui.view.BrowserView
 import com.box.common.utils.MMKVUtil
-import com.box.common.R as RC
+import com.box.com.R as RC
 import com.box.other.blankj.utilcode.util.ActivityUtils
 import com.box.other.blankj.utilcode.util.Logs
 import com.box.other.blankj.utilcode.util.StringUtils

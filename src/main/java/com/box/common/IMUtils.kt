@@ -633,7 +633,7 @@ fun loadRoundImage(view: ImageView, resId: Int?, radiusInDp: Int) {
     GlideApp.with(appContext)
         .load(resId)
         .transform(CenterCrop(), RoundedCorners(radiusInPixels))
-        .error(com.box.common.R.drawable.status_error_ic)
+        .error(com.box.com.R.drawable.status_error_ic)
         .into(view)
 }
 

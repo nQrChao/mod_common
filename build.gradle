@@ -8,7 +8,7 @@ plugins {
 apply from: 'base.gradle'
 
 android {
-    namespace "com.box.common"
+    namespace "com.box.com"
     compileSdk 34
     defaultConfig {
         minSdkVersion 21
