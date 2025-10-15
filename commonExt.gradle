@@ -1,0 +1,18 @@
+ext {
+    APP = [
+            APP_MASTER = "master",
+            APP_BRANCH = "master"
+    ]
+    MOD_master = [
+            master = "master",
+    ]
+    MOD_ALL = [
+            mod_all = "mod_all",
+    ]
+}
+
+ext.mod_name = master
+ext.mod_type = ""
+ext.log_enable = true
+
+ext.MOD_SRC_DIR = mod_name + mod_type
