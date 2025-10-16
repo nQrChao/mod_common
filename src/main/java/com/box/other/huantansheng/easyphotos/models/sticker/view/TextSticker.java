@@ -23,7 +23,7 @@ import android.view.View;
 
 import androidx.core.content.ContextCompat;
 
-import com.box.common.R;
+import com.box.com;
 import com.box.other.huantansheng.easyphotos.EasyPhotos;
 import com.box.other.huantansheng.easyphotos.models.sticker.listener.OnStickerClickListener;
 

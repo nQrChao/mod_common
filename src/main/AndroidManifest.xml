@@ -57,13 +57,9 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
 
-        <activity
-            android:name="com.box.common.ui.activity.CommonActivityBrowserCanGoBack"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize" />
 
         <activity
-            android:name="com.box.common.ui.activity.CommonActivityCrash"
+            android:name="com.box.common.ui.activity.crash.CommonActivityCrash"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden" />
 
@@ -114,9 +110,23 @@
             android:value="2.4" />
 
         <provider
-            android:name="com.box.common.Ktx"
-            android:authorities="${applicationId}.KtxInstaller"
-            android:exported="false" />
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            android:exported="false"
+            tools:node="merge">
+            <meta-data
+                android:name="com.box.common.KtxInitializer"
+                android:value="androidx.startup" />
+
+            <meta-data
+                android:name="watchAppLife"
+                android:value="false" />
+
+            <meta-data
+                android:name="watchActivityLife"
+                android:value="false" />
+
+        </provider>
 
         <!--适配华为（huawei）刘海屏-->
         <meta-data

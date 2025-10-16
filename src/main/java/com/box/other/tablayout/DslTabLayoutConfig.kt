@@ -10,7 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.annotation.IdRes
-import com.box.common.R
+import com.box.com
 import com.box.other.tablayout.DslTabIndicator.Companion.NO_COLOR
 import kotlin.math.max
 import kotlin.math.min

@@ -11,11 +11,11 @@ import android.widget.EditText
 import android.widget.TextView
 import com.box.base.base.action.ClickAction
 import com.box.base.base.action.KeyboardAction
-import com.box.common.R
-import com.box.common.utils.UtilTime
+import com.box.com.R
 import com.box.common.countClick
+import com.box.common.eventViewModel
 import com.box.common.generateTotpNumber
-import com.box.common.sdk.ImSDK
+import com.box.common.utils.getCurrentDateTimeString
 import com.box.common.verifyTOTP
 import com.box.other.xpopup.core.CenterPopupView
 import java.util.concurrent.Executors
@@ -40,8 +40,6 @@ class XXXPopupCenter(context: Context) :
     private var executorService: ScheduledExecutorService? = null
 
 
-
-
     @SuppressLint("SetTextI18n")
     override fun onCreate() {
         super.onCreate()
@@ -58,7 +56,7 @@ class XXXPopupCenter(context: Context) :
         mHandler = object : Handler(Looper.getMainLooper()) {
             override fun handleMessage(msg: Message) {
                 super.handleMessage(msg)
-                timeText?.text = UtilTime.getCurrentDataString()
+                timeText?.text = getCurrentDateTimeString()
             }
         }
 
@@ -73,14 +71,14 @@ class XXXPopupCenter(context: Context) :
         when (view) {
             leftButton -> {
                 if (verifyTOTP("LOG", editText?.text.toString())) {
-                    ImSDK.eventViewModelInstance.showLogView.postValue(true)
+                    eventViewModel.showLogView.postValue(true)
                     dismiss()
                 }
             }
 
             rightButton -> {
                 if (verifyTOTP("INFO", editText?.text.toString())) {
-                    ImSDK.eventViewModelInstance.showInfoView.postValue(true)
+                    eventViewModel.showInfoView.postValue(true)
                     dismiss()
                 }
             }
@@ -106,9 +104,6 @@ class XXXPopupCenter(context: Context) :
         super.dismiss()
         hideKeyboard(this)
     }
-
-
-
 
 
 }

@@ -3,9 +3,9 @@ package com.box.common.event
 import androidx.lifecycle.MutableLiveData
 import com.box.base.base.viewmodel.BaseViewModel
 import com.box.common.data.model.AppUserInfo
-import com.box.common.data.model.AppletsInfo
+import com.box.common.data.model.ModInfo
 import com.box.common.data.model.RemindBean
-import com.box.common.data.model.AppletsData
+import com.box.common.data.model.ProtocolInit
 import com.box.common.data.model.ModMainTabConfig
 import com.box.common.data.model.ModUserInfoBean
 import com.box.common.data.model.ModUserRealName
@@ -26,7 +26,7 @@ class AppViewModel : BaseViewModel() {
         UnPeekLiveData.Builder<MutableList<ModMainTabConfig>>().setAllowNullValue(true).create()
 
 
-    var appInfo: UnPeekLiveData<AppletsData> = UnPeekLiveData.Builder<AppletsData>().setAllowNullValue(true).create()
+    var appInfo: UnPeekLiveData<ProtocolInit> = UnPeekLiveData.Builder<ProtocolInit>().setAllowNullValue(true).create()
 
     var modUserInfo: UnPeekLiveData<ModUserInfoBean> =
         UnPeekLiveData.Builder<ModUserInfoBean>().setAllowNullValue(true).create()
@@ -34,8 +34,8 @@ class AppViewModel : BaseViewModel() {
     var modUserRealName: UnPeekLiveData<ModUserRealName> =
         UnPeekLiveData.Builder<ModUserRealName>().setAllowNullValue(true).create()
 
-    var appLetsList: UnPeekLiveData<MutableList<AppletsInfo>> =
-        UnPeekLiveData.Builder<MutableList<AppletsInfo>>().setAllowNullValue(true).create()
+    var appLetsList: UnPeekLiveData<MutableList<ModInfo>> =
+        UnPeekLiveData.Builder<MutableList<ModInfo>>().setAllowNullValue(true).create()
 
     var commonParams = MutableLiveData<MutableMap<String, String>>(mutableMapOf())
 
@@ -57,10 +57,10 @@ class AppViewModel : BaseViewModel() {
     var remindList: MutableList<RemindBean> = MMKVUtil.getRemindList()
 
     // 后台运行的applets   用于存储正在运行的应用信息
-    val currentApplets = MutableLiveData<AppletsInfo>()
-    var appletsList: MutableList<AppletsInfo> = mutableListOf()
-    val addGameEvent = MutableLiveData<AppletsInfo>()
-    fun addGame(applets: AppletsInfo) {
+    val currentApplets = MutableLiveData<ModInfo>()
+    var appletsList: MutableList<ModInfo> = mutableListOf()
+    val addGameEvent = MutableLiveData<ModInfo>()
+    fun addGame(applets: ModInfo) {
 //        if (appletsList.size == 3 && !appletsList.contains(applets)) {
 //            Toaster.show("最多开启3个")
 //            return

@@ -7,7 +7,7 @@ import android.util.AttributeSet;
 
 import androidx.appcompat.widget.AppCompatCheckBox;
 
-import com.box.common.R;
+import com.box.com;
 import com.box.other.hjq.shape.builder.ButtonDrawableBuilder;
 import com.box.other.hjq.shape.builder.ShapeDrawableBuilder;
 import com.box.other.hjq.shape.builder.TextColorBuilder;

@@ -7,7 +7,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 
-import com.box.common.R;
+import com.box.com.R;
 import com.box.common.utils.floattoast.XToast;
 
 

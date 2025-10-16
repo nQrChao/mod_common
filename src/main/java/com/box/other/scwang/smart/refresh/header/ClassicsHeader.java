@@ -21,7 +21,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 
-import com.box.common.R;
+import com.box.com;
 import com.box.other.scwang.smart.refresh.classics.ArrowDrawable;
 import com.box.other.scwang.smart.refresh.classics.ClassicsAbstract;
 import com.box.other.scwang.smart.refresh.layout.api.RefreshHeader;

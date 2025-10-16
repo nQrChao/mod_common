@@ -1,78 +1,65 @@
 package com.box.base.base.fragment
 
+import android.os.Bundle
+import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
-
-import com.box.base.base.action.HandlerAction
-import com.box.base.base.action.KeyboardAction
 import com.box.base.base.action.TitleBarAction
 import com.box.base.base.viewmodel.BaseViewModel
+import com.box.com.R
 import com.box.other.hjq.titlebar.TitleBar
-import com.box.common.R
-import com.box.common.sdk.eventViewModel
 import com.box.other.immersionbar.ImmersionBar
 
-abstract class BaseTitleBarFragment<VM : BaseViewModel, DB : ViewDataBinding> : BaseVmDbFragment<VM, DB>(), TitleBarAction, HandlerAction, KeyboardAction {
+abstract class BaseTitleBarFragment<VM : BaseViewModel, DB : ViewDataBinding> :
+    BaseVmDbFragment<VM, DB>(), TitleBarAction {
 
-    private var titleBar: TitleBar? = null
-    private var immersionBar: ImmersionBar? = null
+    private val titleBar: TitleBar? by lazy {
+        obtainTitleBar(view as? ViewGroup)
+    }
 
-    override fun initTitle() {
-        val titleBar = getTitleBar()
+    private val immersionBar: ImmersionBar by lazy {
+        createStatusBarConfig()
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupStatusBar()
+    }
+
+    override fun initBaseObservers() {
+        super.initBaseObservers()
         titleBar?.setOnTitleBarListener(this)
-        if (titleBar != null) {
-            titleBar.title = mViewModel.titleT.value
-            titleBar.leftTitle = mViewModel.leftTitleT.value
-            titleBar.rightTitle = mViewModel.rightTitleT.value
-        }
-        if (isStatusBarEnabled()) {
-            getStatusBarConfig().init()
-            if (titleBar != null) {
-                ImmersionBar.setTitleBar(this, titleBar)
-            }
-        }
+        mViewModel.titleT.observe(viewLifecycleOwner) { titleBar?.title = it }
+        mViewModel.leftTitleT.observe(viewLifecycleOwner) { titleBar?.leftTitle = it }
+        mViewModel.rightTitleT.observe(viewLifecycleOwner) { titleBar?.rightTitle = it }
     }
-    fun isLogin(): Boolean {
-        return eventViewModel.isLogin.value ?: false
-    }
+
     override fun onResume() {
         super.onResume()
         if (isStatusBarEnabled()) {
-            getStatusBarConfig().init()
+            immersionBar.init()
         }
     }
 
+    protected open fun isStatusBarEnabled(): Boolean = mViewModel.isStatusBarEnabled
+    protected open fun isStatusBarDarkFont(): Boolean = true
 
-    open fun isStatusBarEnabled(): Boolean {
-        return mViewModel.isStatusBarEnabled
-    }
-
-    open fun getStatusBarConfig(): ImmersionBar {
-        if (immersionBar == null) {
-            immersionBar = createStatusBarConfig()
+    private fun setupStatusBar() {
+        if (isStatusBarEnabled()) {
+            immersionBar.init()
+            titleBar?.let { ImmersionBar.setTitleBar(this, it) }
         }
-        return immersionBar!!
     }
 
     private fun createStatusBarConfig(): ImmersionBar {
         return ImmersionBar.with(this)
             .hideBar(mViewModel.barHidT.value)
+            .statusBarDarkFont(isStatusBarDarkFont())
             .navigationBarColor(R.color.white)
             .autoDarkModeEnable(true, 0.2f)
     }
 
-
-    open fun isStatusBarDarkFont(): Boolean {
-        return true
-    }
-
-
     override fun getTitleBar(): TitleBar? {
-        if (titleBar == null) {
-            titleBar = obtainTitleBar(view as ViewGroup)
-        }
         return titleBar
     }
-
-
 }

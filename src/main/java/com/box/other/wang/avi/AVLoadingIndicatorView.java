@@ -15,7 +15,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 
-import com.box.common.R;
+import com.box.com;
 import com.box.other.wang.avi.indicators.BallPulseIndicator;
 
 

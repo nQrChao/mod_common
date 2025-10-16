@@ -7,7 +7,7 @@ import android.widget.*
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.box.base.base.BaseAdapter
-import com.box.common.R
+import com.box.com.R
 
 class NavigationAdapter constructor(context: Context) :
     AppAdapter<NavigationAdapter.MenuItem>(context), BaseAdapter.OnItemClickListener {

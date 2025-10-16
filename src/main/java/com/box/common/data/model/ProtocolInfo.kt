@@ -2,7 +2,7 @@ package com.box.common.data.model
 
 import java.io.Serializable
 
-class AppletsDataMarketJson(
+class ProtocolInfo(
     val xieyitanchuang_biaoti: String = "",
     val xieyitanchuang_neirong: String = "",
     val xieyitanchuang_url_fuwu: String = "",
@@ -17,5 +17,5 @@ class AppletsDataMarketJson(
     val app_beianhao: String = "",
     val app_beianhao_url: String = "",
     val AUTH_LOGIN_SIGN_INFO: String = "",
-    val list_data: MutableList<AppletsInfo> = mutableListOf()
+    val list_data: MutableList<ModInfo> = mutableListOf()
 ) : Serializable

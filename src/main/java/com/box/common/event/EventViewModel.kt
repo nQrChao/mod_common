@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import com.box.base.base.viewmodel.BaseViewModel
 import com.box.common.data.model.AIChat
 import com.box.common.data.model.ImError
-import com.box.common.data.model.AppletsInfo
+import com.box.common.data.model.ModInfo
 import com.kunminx.architecture.ui.callback.UnPeekLiveData
 
 class EventViewModel : BaseViewModel() {
@@ -63,7 +63,7 @@ class EventViewModel : BaseViewModel() {
 
     val setDefaultGameId = UnPeekLiveData<Int>()
 
-    val setNavigation2Info = UnPeekLiveData<AppletsInfo>()
+    val setNavigation2Info = UnPeekLiveData<ModInfo>()
     val setNavigation2InfoIndex = UnPeekLiveData<Int>()
 
     val showMainCurrentItem = UnPeekLiveData<Boolean>()

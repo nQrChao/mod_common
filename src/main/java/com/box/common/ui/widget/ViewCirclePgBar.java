@@ -9,7 +9,7 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.box.common.R;
+import com.box.com.R;
 
 public class ViewCirclePgBar extends View {
 

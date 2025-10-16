@@ -1,7 +1,7 @@
 package com.box.common.data.model
 
 import android.graphics.drawable.Drawable
-import com.box.common.R
+import com.box.com.R
 import com.box.other.blankj.utilcode.util.ResourceUtils
 import java.io.Serializable
 

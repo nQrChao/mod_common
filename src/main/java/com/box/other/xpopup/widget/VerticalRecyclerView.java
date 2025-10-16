@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.box.common.R;
+import com.box.com;
 import com.box.other.xpopup.util.XPopupUtils;
 
 /**

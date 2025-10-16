@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import androidx.annotation.IdRes;
 
-import com.box.common.R;
+import com.box.com.R;
 
 
 public class ViewLinearLayoutCommonTitleContent extends LinearLayout {

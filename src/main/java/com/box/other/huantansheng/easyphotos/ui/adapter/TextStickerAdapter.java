@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.box.common.R;
+import com.box.com;
 import com.box.other.huantansheng.easyphotos.models.sticker.StickerModel;
 import com.box.other.huantansheng.easyphotos.models.sticker.entity.TextStickerData;
 

@@ -1,6 +1,6 @@
 package com.box.other.immersionbar;
 
-import com.box.common.R;
+import com.box.com;
 
 class Constants {
     /**

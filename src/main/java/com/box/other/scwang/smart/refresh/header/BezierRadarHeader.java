@@ -20,7 +20,7 @@ import androidx.annotation.ColorRes;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 
-import com.box.common.R;
+import com.box.com;
 import com.box.other.scwang.smart.refresh.layout.api.RefreshHeader;
 import com.box.other.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.box.other.scwang.smart.refresh.layout.constant.RefreshState;

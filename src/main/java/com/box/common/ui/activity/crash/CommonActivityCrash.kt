@@ -1,4 +1,4 @@
-package com.box.common.ui.activity
+package com.box.common.ui.activity.crash
 
 import android.Manifest
 import android.app.Application
@@ -14,6 +14,7 @@ import android.text.TextUtils
 import android.text.style.ForegroundColorSpan
 import android.text.style.UnderlineSpan
 import android.util.DisplayMetrics
+import androidx.activity.viewModels
 import androidx.core.view.GravityCompat
 import androidx.lifecycle.lifecycleScope
 import com.box.other.blankj.utilcode.util.AppUtils
@@ -21,12 +22,13 @@ import com.box.other.blankj.utilcode.util.ColorUtils
 import com.box.other.blankj.utilcode.util.DeviceUtils.isTablet
 import com.box.other.blankj.utilcode.util.ResourceUtils
 import com.box.base.base.action.BundleAction
-import com.box.base.base.activity.BaseVmDbActivity
+import com.box.base.base.activity.BaseModVmDbActivity
 import com.box.base.base.viewmodel.BaseViewModel
 import com.box.base.network.NetState
+import com.box.com.R
+import com.box.com.databinding.CommonActivityCrashBinding
+import com.box.common.ui.activity.ademo.ActivityDemoModel
 import com.box.other.hjq.titlebar.TitleBar
-import com.box.common.R
-import com.box.common.databinding.CommonActivityCrashBinding
 import com.box.other.immersionbar.BarHide
 import com.hjq.permissions.Permission
 import com.hjq.permissions.XXPermissions
@@ -43,7 +45,8 @@ import java.util.regex.Matcher
 import java.util.regex.Pattern
 import kotlin.math.min
 
-class CommonActivityCrash : BaseVmDbActivity<CommonActivityCrash.Model, CommonActivityCrashBinding>(), BundleAction {
+class CommonActivityCrash : BaseModVmDbActivity<CommonActivityCrash.Model, CommonActivityCrashBinding>(), BundleAction {
+    override val mViewModel: Model by viewModels()
     override fun layoutId(): Int = R.layout.common_activity_crash
 
     private var stackTrace: String? = null
@@ -267,6 +270,8 @@ class CommonActivityCrash : BaseVmDbActivity<CommonActivityCrash.Model, CommonAc
     }
 
 
+
+    /**********************************************Model**************************************************/
     class Model: BaseViewModel(barHid = BarHide.FLAG_HIDE_BAR,title = "发现异常",isStatusBarEnabled = true) {
 
     }

@@ -9,7 +9,7 @@ import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.graphics.withSave
-import com.box.common.R
+import com.box.com
 import java.util.*
 import kotlin.math.absoluteValue
 import kotlin.math.max

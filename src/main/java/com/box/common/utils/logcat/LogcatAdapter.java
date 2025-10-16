@@ -26,8 +26,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
-
-import com.box.common.R;
+import com.box.com.R;
 
 import java.util.ArrayList;
 import java.util.List;

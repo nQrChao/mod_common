@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 
 import androidx.appcompat.widget.AppCompatTextView;
 
-import com.box.common.R;
+import com.box.com;
 import com.box.other.hjq.shape.builder.ShapeDrawableBuilder;
 import com.box.other.hjq.shape.builder.TextColorBuilder;
 import com.box.other.hjq.shape.config.IGetShapeDrawableBuilder;

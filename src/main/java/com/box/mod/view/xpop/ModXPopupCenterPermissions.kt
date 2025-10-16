@@ -7,7 +7,7 @@ import android.widget.TextView
 import com.box.other.blankj.utilcode.util.IntentUtils
 import com.box.base.base.action.ClickAction
 import com.box.base.base.action.KeyboardAction
-import com.box.common.R
+import com.box.com
 import com.box.common.countClick
 import com.box.common.sdk.ImSDK
 import com.box.other.blankj.utilcode.util.AppUtils

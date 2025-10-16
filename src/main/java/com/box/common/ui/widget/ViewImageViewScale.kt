@@ -4,7 +4,7 @@ import android.content.*
 import android.content.res.TypedArray
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatImageView
-import com.box.common.R
+import com.box.com.R
 
 class ViewImageViewScale @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :

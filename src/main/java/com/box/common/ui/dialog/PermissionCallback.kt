@@ -4,7 +4,7 @@ import android.app.Activity
 import android.content.*
 import android.os.*
 import com.box.base.base.manager.CommonActivityManager
-import com.box.common.R
+import com.box.com.R
 import com.box.other.hjq.toast.Toaster
 import com.hjq.permissions.OnPermissionCallback
 import com.hjq.permissions.Permission

@@ -1,10 +1,10 @@
 package com.box.common.ui.adapter
 
+import com.box.com.R
+import com.box.com.databinding.ItemAiListBinding
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder
 import com.box.common.data.model.AIChat
-import com.box.common.R
-import com.box.common.databinding.ItemAiListBinding
 
 /**
  *    desc   : 数据列表

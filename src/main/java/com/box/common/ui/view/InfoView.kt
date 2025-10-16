@@ -9,11 +9,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.box.base.base.action.ActivityAction
 import com.box.base.base.action.ClickAction
+import com.box.com.R
+import com.box.com.databinding.ViewTestBind
 import com.box.common.appContext
+import com.box.common.eventViewModel
 import com.box.common.getDetailedInformation
-import com.box.common.sdk.ImSDK
-import com.box.common.R
-import com.box.common.databinding.ViewTestBind
 import com.box.other.blankj.utilcode.util.ActivityUtils
 import com.box.other.blankj.utilcode.util.ClipboardUtils
 import com.box.other.blankj.utilcode.util.IntentUtils
@@ -63,7 +63,7 @@ class InfoView(activity: AppCompatActivity) : LinearLayout(activity), ClickActio
         } else if (view === testBind.ivSend) {
             ClipboardUtils.copyText(builder.toString())
             Toaster.show("信息已复制")
-            ImSDK.eventViewModelInstance.showInfoView.postValue(false)
+            eventViewModel.showInfoView.postValue(false)
             if (testBind.ivSend.isClickable) {
                 ActivityUtils.startActivity(IntentUtils.getShareTextIntent(builder.toString()))
             }

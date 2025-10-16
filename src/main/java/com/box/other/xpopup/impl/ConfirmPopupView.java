@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
-import com.box.common.R;
+import com.box.com;
 import com.box.other.xpopup.XPopup;
 import com.box.other.xpopup.core.CenterPopupView;
 import com.box.other.xpopup.interfaces.OnCancelListener;

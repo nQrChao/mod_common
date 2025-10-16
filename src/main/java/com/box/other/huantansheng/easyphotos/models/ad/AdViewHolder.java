@@ -5,7 +5,7 @@ import android.widget.FrameLayout;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.box.common.R;
+import com.box.com;
 
 public class AdViewHolder extends RecyclerView.ViewHolder {
     public FrameLayout adFrame;

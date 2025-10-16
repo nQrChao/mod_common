@@ -7,7 +7,7 @@ import android.text.method.LinkMovementMethod
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
-import com.box.common.R
+import com.box.com.R
 import com.box.other.xpopup.core.CenterPopupView
 import com.box.other.xpopup.interfaces.OnCancelListener
 import com.box.other.xpopup.interfaces.OnConfirmListener

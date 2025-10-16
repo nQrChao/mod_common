@@ -7,7 +7,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 
-import com.box.common.R;
+import com.box.com.R;
 
 import java.util.List;
 

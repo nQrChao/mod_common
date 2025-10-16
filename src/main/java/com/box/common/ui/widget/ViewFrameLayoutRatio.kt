@@ -5,7 +5,7 @@ import android.content.res.TypedArray
 import android.text.TextUtils
 import android.util.AttributeSet
 import android.widget.FrameLayout
-import com.box.common.R
+import com.box.com.R
 
 class ViewFrameLayoutRatio @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null,

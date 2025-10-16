@@ -27,7 +27,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import com.box.common.R;
+import com.box.com.R;
 import com.box.other.hjq.toast.Toaster;
 
 import java.io.File;

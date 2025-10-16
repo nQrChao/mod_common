@@ -5,7 +5,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.res.Resources;
 import android.widget.Toast;
 
-import com.box.common.R;
+import com.box.com;
 import com.box.other.hjq.toast.config.IToastInterceptor;
 import com.box.other.hjq.toast.config.IToastStrategy;
 import com.box.other.hjq.toast.config.IToastStyle;

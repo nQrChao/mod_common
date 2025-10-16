@@ -5,7 +5,7 @@ import android.content.Context
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.box.base.base.action.ClickAction
-import com.box.common.R
+import com.box.com.R
 import com.box.common.impl.CommonSelect
 import com.box.other.xpopup.core.AttachPopupView
 

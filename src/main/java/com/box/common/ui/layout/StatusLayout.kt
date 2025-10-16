@@ -12,7 +12,7 @@ import androidx.annotation.RawRes
 import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 import com.airbnb.lottie.LottieAnimationView
-import com.box.common.R
+import com.box.com.R
 
 class StatusLayout @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null,

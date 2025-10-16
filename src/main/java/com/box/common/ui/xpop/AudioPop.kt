@@ -9,9 +9,9 @@ import android.widget.TextView
 import com.box.other.blankj.utilcode.util.PathUtils
 import com.box.other.blankj.utilcode.util.ScreenUtils
 import com.box.base.utils.ImLog
+import com.box.com.R
 import com.box.common.audio.AudioManager2
-import com.box.common.R
-import com.box.common.utils.Common
+import com.box.other.blankj.utilcode.util.SizeUtils
 import com.box.other.xpopup.core.BasePopupView
 import java.io.File
 
@@ -47,7 +47,7 @@ class AudioPop(context: Context, var completeCall: (path: String, time: Long) ->
             when (it.action) {
                 MotionEvent.ACTION_DOWN -> {
                     val y = event.y
-                    if (y >= (ScreenUtils.getScreenHeight() - Common.dp2px(100f))) {
+                    if (y >= (ScreenUtils.getScreenHeight() - SizeUtils.dp2px(100f))) {
                         state = 1
                         audio.prepareAudio()
                         time = System.currentTimeMillis()
@@ -69,7 +69,7 @@ class AudioPop(context: Context, var completeCall: (path: String, time: Long) ->
 //                    }
                     if (start) {
 
-                        if (y <= (ScreenUtils.getScreenHeight() - Common.dp2px(100f))) {
+                        if (y <= (ScreenUtils.getScreenHeight() - SizeUtils.dp2px(100f))) {
                             tip.text = "取消发送"
                             state = 2
                         }  else {

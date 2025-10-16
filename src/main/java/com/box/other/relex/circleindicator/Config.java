@@ -5,7 +5,7 @@ import android.widget.LinearLayout;
 import androidx.annotation.AnimatorRes;
 import androidx.annotation.DrawableRes;
 
-import com.box.common.R;
+import com.box.com;
 
 public class Config {
 

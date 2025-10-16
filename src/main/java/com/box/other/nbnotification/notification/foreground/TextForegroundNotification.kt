@@ -10,7 +10,7 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import com.box.other.blankj.utilcode.util.ActivityUtils
 import com.box.other.blankj.utilcode.util.AppUtils
-import com.box.common.R
+import com.box.com
 import com.box.other.nbnotification.base.foreground.ForegroundNotification
 
 class TextForegroundNotification : ForegroundNotification() {

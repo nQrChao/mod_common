@@ -7,7 +7,7 @@ import android.graphics.drawable.Drawable;
 
 import com.box.other.hjq.titlebar.SelectorDrawable;
 import com.box.other.hjq.titlebar.TitleBarSupport;
-import com.box.common.R;
+import com.box.com;
 
 public class NightBarStyle extends CommonBarStyle {
 

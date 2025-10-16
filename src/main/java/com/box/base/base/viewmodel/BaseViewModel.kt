@@ -16,7 +16,7 @@ import com.box.common.data.model.RefundGames
 import com.box.common.getOAIDWithCoroutines
 import com.box.common.network.NetworkApi
 import com.box.common.network.apiService
-import com.box.common.sdk.appViewModel
+import com.box.mod.game.ModComService
 import com.box.other.blankj.utilcode.util.Logs
 import com.box.other.immersionbar.BarHide
 import kotlinx.coroutines.NonCancellable
@@ -34,6 +34,8 @@ open class BaseViewModel(
     barHid: BarHide = BarHide.FLAG_SHOW_BAR,
     val isStatusBarEnabled: Boolean = true
 ) : ViewModel() {
+    protected val appViewModel by lazy { ModComService.get().getAppViewModel() }
+    protected val eventViewModel by lazy { ModComService.get().getEventViewModel() }
 
     val leftClick = BooleanLiveData()
     fun leftClick() {

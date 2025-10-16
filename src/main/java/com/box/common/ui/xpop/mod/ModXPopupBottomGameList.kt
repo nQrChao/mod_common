@@ -10,7 +10,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.box.base.base.action.ClickAction
 import com.box.base.base.action.KeyboardAction
-import com.box.common.R
+import com.box.com.R
 import com.box.common.appContext
 import com.box.common.data.model.ModGameAppletsInfo
 import com.box.common.glide.GlideApp

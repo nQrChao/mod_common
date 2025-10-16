@@ -1,6 +1,6 @@
 package com.box.other.hjq.shape.styleable;
 
-import com.box.common.R;
+import com.box.com;
 import com.box.other.hjq.shape.config.IShapeDrawableStyleable;
 
 /**

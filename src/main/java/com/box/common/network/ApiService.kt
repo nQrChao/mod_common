@@ -17,10 +17,10 @@ import com.box.common.data.model.NewLoginInfo
 import com.box.common.data.model.RefreshAiTokenInfo
 import com.box.common.data.model.RefreshTokenInfo
 import com.box.common.data.model.UserUseCountResult
-import com.box.common.data.model.AppletsData
+import com.box.common.data.model.ProtocolInit
 import com.box.common.data.model.AppletsFuLiLingQu
 import com.box.common.data.model.AppletsGoodBeanList
-import com.box.common.data.model.AppletsInfo
+import com.box.common.data.model.ModInfo
 import com.box.common.data.model.AppletsLaBa
 import com.box.common.data.model.AppletsLeYuan
 import com.box.common.data.model.AppletsLunTan
@@ -97,7 +97,7 @@ interface ApiService {
 
     @FormUrlEncoded
     @POST("App/index/api=market_data_appapi")
-    suspend fun postDataAppApi(@Field("data") data: String): ModApiResponse<AppletsData>
+    suspend fun postDataAppApi(@Field("data") data: String): ModApiResponse<ProtocolInit>
 
     @FormUrlEncoded
     @POST("App/index/api=coupon_record")
@@ -213,7 +213,7 @@ interface ApiService {
 
     @FormUrlEncoded
     @POST("App/index/api=market_data_appapi")
-    suspend fun postInfoAppApi(@Field("data") data: String): ModApiResponse<AppletsInfo>
+    suspend fun postInfoAppApi(@Field("data") data: String): ModApiResponse<ModInfo>
     @FormUrlEncoded
     @POST("App/index/api=xgame_get_reward")
     suspend fun postLingJiangTimeApi(@Field("data") data: String): ModApiResponse<Any>
@@ -304,7 +304,7 @@ interface ApiService {
 
     @Headers("Domain-Name: SERVER_URL")
     @POST("/api/getProgramRecommendList")
-    suspend fun getProgramRecommendList(): ModApiResponse<MutableList<AppletsInfo>>
+    suspend fun getProgramRecommendList(): ModApiResponse<MutableList<ModInfo>>
 
     @Headers("Domain-Name: SERVER_URL")
     @POST("api/v1/refreshtoken")

@@ -9,7 +9,7 @@ import android.util.AttributeSet
 import android.view.animation.AccelerateDecelerateInterpolator
 import androidx.annotation.ColorInt
 import androidx.core.graphics.ColorUtils
-import com.box.common.R
+import com.box.com.R
 import com.box.other.scwang.smart.refresh.layout.api.RefreshFooter
 import com.box.other.scwang.smart.refresh.layout.api.RefreshLayout
 import com.box.other.scwang.smart.refresh.layout.constant.SpinnerStyle

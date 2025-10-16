@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.box.common.R;
+import com.box.com;
 import com.box.other.hjq.toast.Toaster;
 import com.box.other.huantansheng.easyphotos.constant.Type;
 import com.box.other.huantansheng.easyphotos.models.ad.AdViewHolder;

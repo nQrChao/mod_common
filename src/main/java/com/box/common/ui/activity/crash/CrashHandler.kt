@@ -2,7 +2,6 @@ package com.box.common.ui.activity.crash
 
 import android.app.*
 import android.os.Process
-import com.box.common.ui.activity.CommonActivityCrash
 import kotlin.system.exitProcess
 
 class CrashHandler private constructor(private val application: Application) : Thread.UncaughtExceptionHandler {

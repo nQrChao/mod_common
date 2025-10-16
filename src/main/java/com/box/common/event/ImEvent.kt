@@ -6,7 +6,7 @@ import com.box.other.blankj.utilcode.util.ColorUtils
 
 import com.box.common.event.ImEvent.Companion.Instance
 
-import com.box.common.R
+import com.box.com.R
 
 import com.box.other.xpopup.XPopup
 import com.box.other.xpopup.core.BasePopupView

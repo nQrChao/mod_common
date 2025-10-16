@@ -3,6 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id 'kotlin-parcelize'
+    id 'com.google.dagger.hilt.android'
 }
 
 apply from: 'base.gradle'
@@ -11,7 +12,7 @@ android {
     namespace "com.box.com"
     compileSdk 34
     defaultConfig {
-        minSdkVersion 21
+        minSdkVersion 24
         targetSdkVersion 31
         multiDexEnabled true
         consumerProguardFiles 'proguard-sdk.pro'
@@ -91,6 +92,9 @@ dependencies {
 
     //api 'com.tbuonomo:dotsindicator:4.3'
     //embed project(path: ':ModAAR:cloud')
+    api("androidx.startup:startup-runtime:1.2.0")
+    // 对于 Activity
+    api "androidx.activity:activity-ktx:1.8.0"
     api libs.androidx.multidex
     api libs.androidx.core.ktx
     api libs.androidx.appcompat
@@ -126,6 +130,8 @@ dependencies {
     api libs.umeng.common// oaid
     api 'com.github.angcyo:DslAdapter:6.0.4'
     api 'com.github.lihangleo2:SmartViewPager2Adapter:3.1.3'
+    api "com.google.dagger:hilt-android:2.48"
+    kapt "com.google.dagger:hilt-compiler:2.48"
 //    if (MOD_SRC_DIR.contains("oppo")){
 //        api (libs.android.cn.oaid)
 //        //implementation 'com.huawei.hms:ads-identifier:3.4.65.300'
@@ -154,6 +160,9 @@ dependencies {
 //    implementation  libs.refresh.footer.classics    //经典加载
 }
 
+kapt {
+    correctErrorTypes true
+}
 //task modify() {
 //    project.printlnInfo()
 //}

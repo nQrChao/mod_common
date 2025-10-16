@@ -7,8 +7,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import com.box.com.R;
 import com.box.other.blankj.utilcode.util.ColorUtils;
-import com.box.common.R;
 import com.box.other.xpopup.core.BubbleHorizontalAttachPopupView;
 import com.box.other.xpopup.util.XPopupUtils;
 

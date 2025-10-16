@@ -4,13 +4,15 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.viewModels
+import com.box.base.base.activity.BaseModVmDbActivity
 import com.box.other.blankj.utilcode.util.ActivityUtils
-import com.box.base.base.activity.BaseVmDbActivity
 import com.box.base.network.NetState
-import com.box.common.R
-import com.box.common.databinding.ActivityDemoBinding
+import com.box.com.R
+import com.box.com.databinding.ActivityDemoBinding
 
-class ActivityDemo : BaseVmDbActivity<ActivityDemoModel, ActivityDemoBinding>() {
+class ActivityDemo : BaseModVmDbActivity<ActivityDemoModel, ActivityDemoBinding>() {
+    override val mViewModel: ActivityDemoModel by viewModels()
     override fun layoutId(): Int = R.layout._activity_demo
 
     companion object {

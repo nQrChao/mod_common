@@ -13,7 +13,7 @@ import com.bumptech.glide.load.model.GlideUrl
 import com.bumptech.glide.module.AppGlideModule
 import com.bumptech.glide.request.RequestOptions
 import com.box.base.network.SSLSocketClient
-import com.box.common.R
+import com.box.com.R
 import okhttp3.OkHttpClient
 import java.io.File
 import java.io.InputStream

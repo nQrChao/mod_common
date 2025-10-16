@@ -10,18 +10,8 @@ const val GAME_CHENGYUCAICAICAI = "file:///android_asset/game/chengyucaicaicai/i
 const val GAME_KAIXINYIXIA = "file:///android_asset/game/kaixinyixia/index.html"
 const val GAME_JIANFENGCHAZHEN = "file:///android_asset/game/jianfengchazhen/index.html"
 const val GAME_CAICAIDIANYINGMING = "file:///android_asset/game/caicaidianyingming/index.html"
-const val GAME_XIAOCHENGYU = "file:///android_asset/game/xiaochengyu/index.html"
-const val GAME_CAIDIANYING = "file:///android_asset/game/caidianying/index.html"
-const val GAME_CAICHENGYU = "file:///android_asset/game/caichengyu/index.html"
-const val GAME_CAIDONGWU = "file:///android_asset/game/caidongwu/index.html"
-const val GAME_CAIZHIWU = "file:///android_asset/game/caizhiwu/index.html"
-const val GAME_CAIRENWU = "file:///android_asset/game/cairenwu/index.html"
-const val GAME_CAIZIMI = "file:///android_asset/game/caizimi/index.html"
 const val GAME_CAIMIYU = "file:///android_asset/game/caimiyu/index.html"
-const val GAME_NAOJINJIZHUANWAN = "file:///android_asset/game/naojinjizhuanwan/index.html"
-const val GAME_JZCP = "file:///android_asset/game/jczp/index.html"
 
-const val GAME_CAIDIANSHI = "file:///android_asset/game/caidianshi/index.html"
 //支付订单自动查询次数
 const val COUNT_ORDER_QUERY = 10
 //HTTP 读取耗时,秒
@@ -48,10 +38,8 @@ const val APK_CHANNEL_INFO = "apkChannel"
 //语言
 const val K_LANGUAGE_SP = "language_sp"
 
-
 //自定义消息类型
 const val K_CUSTOM_TYPE = "customType"
-
 
 const val LOADING = 201
 

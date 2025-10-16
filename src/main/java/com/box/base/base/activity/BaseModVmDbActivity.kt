@@ -1,9 +1,13 @@
 package com.box.base.base.activity
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.ViewGroup
 import android.view.Window
+import androidx.activity.viewModels
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -16,120 +20,148 @@ import com.box.base.base.action.HandlerAction
 import com.box.base.base.action.KeyboardAction
 import com.box.base.base.action.TitleBarAction
 import com.box.base.base.viewmodel.BaseViewModel
-import com.box.base.ext.getVmClazz
 import com.box.base.network.NetState
 import com.box.base.network.NetworkStateManager
 import com.box.other.hjq.titlebar.TitleBar
-import com.box.common.R
-import com.box.common.databinding.BaseFragmentBinding
-import com.box.common.sdk.dismissLoadingExt
-import com.box.common.sdk.showLoadingExt
-import com.box.other.blankj.utilcode.util.Logs
+import com.box.com.R
+import com.box.mod.game.ModComService
 import com.box.other.immersionbar.ImmersionBar
+import com.box.other.xpopup.XPopup
+import com.box.other.xpopup.impl.LoadingPopupView
 
 abstract class BaseModVmDbActivity<VM : BaseViewModel, DB : ViewDataBinding> : AppCompatActivity(), KeyboardAction, HandlerAction, TitleBarAction, BundleAction {
-    lateinit var mViewModel: VM
-    lateinit var mDataBinding: DB
-    private var immersionBar: ImmersionBar? = null
-    private var titleBar: TitleBar? = null
-    open fun showLoading(message: String) {
-        showLoadingExt(message)
-    }
-    open fun dismissLoading() {
-        dismissLoadingExt()
-    }
-    abstract fun layoutId(): Int
+    protected abstract val mViewModel: VM
+    protected lateinit var mDataBinding: DB
 
-    private lateinit var baseBinding: BaseFragmentBinding
+    private val immersionBar: ImmersionBar by lazy {
+        createStatusBarConfig()
+    }
+    private val titleBar: TitleBar? by lazy {
+        obtainTitleBar(findViewById(Window.ID_ANDROID_CONTENT))
+    }
+
+    //内置 LoadingDialog 管理
+    private var loadingPopup: LoadingPopupView? = null
+    private val mHandler by lazy { Handler(Looper.getMainLooper()) }
+    private val showLoadingRunnable = Runnable {
+        if (loadingPopup == null) {
+            loadingPopup = XPopup.Builder(this)
+                .dismissOnTouchOutside(false)
+                .isDestroyOnDismiss(true)
+                .asLoading("请求网络中...")
+                .show() as LoadingPopupView
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // 使用DataBinding标准API加载基础容器布局
-        baseBinding = DataBindingUtil.setContentView(this, R.layout.base_fragment)
-        val childLayoutId = layoutId()
-        Logs.e("BaseActivity", "Child Layout ID: $childLayoutId") // 添加这行
-        // 动态加载子类布局并绑定
-        mDataBinding = DataBindingUtil.inflate(
-            layoutInflater,
-            layoutId(),
-            baseBinding.content,
-            false
-        )
-        if (mDataBinding?.root != null) {
-            baseBinding.content.addView(mDataBinding.root)
-        } else {
-            Logs.e("BaseActivity", "mDataBinding.root is null after inflation!")
-        }
-        // 绑定生命周期
-        baseBinding.content.post {
-            mDataBinding.lifecycleOwner = this
-            baseBinding.lifecycleOwner = this
-        }
-        init(savedInstanceState)
-    }
-    private fun validateDataBinding() {
-        // 强制检查布局标记
-        if (!::mDataBinding.isInitialized) {
-            throw IllegalStateException("DataBinding未正确初始化，请检查布局文件是否包含<layout>标签")
-        }
-    }
-    private fun init(savedInstanceState: Bundle?) {
-//        mViewModel = createViewModel()
-//        baseBinding.vm = mViewModel
-        mViewModel = ViewModelProvider(this)[getVmClazz(this)]
-        baseBinding.vm = mViewModel
-
-        titleBar = getTitleBar()
-        titleBar?.setOnTitleBarListener(this)
-
-        setupImmersionBar()
-
-        mViewModel.titleT.observe(this){
-            titleBar?.title=it
-        }
-        mViewModel.leftTitleT.observe(this){
-            titleBar?.leftTitle=it
-        }
-        mViewModel.rightTitleT.observe(this){
-            titleBar?.rightTitle=it
-        }
-
-        mViewModel.titleLine.observe(this){
-            titleBar?.setLineVisible(it)
-        }
-
-        registerUiChange()
+        initDataBinding()
+        initBaseObservers()
         initView(savedInstanceState)
-        KeyboardUtils.fixAndroidBug5497(this)
         createObserver()
-        mViewModel.leftClick.observe(this){
-            if (it){
-                finish()
-            }
-        }
-
-        NetworkStateManager.instance.mNetworkStateCallback.observe(this, Observer {
-            onNetworkStateChanged(it)
-        })
-
+        // 修复软键盘相关的 Bug
+        KeyboardUtils.fixAndroidBug5497(this)
+    }
+    /**
+     * 初始化 DataBinding。
+     * - 将视图绑定和 ViewModel 绑定集中在此方法中。
+     */
+    private fun initDataBinding() {
+        //    - 直接设置子类的布局，可以减少视图层级，提升渲染性能。
+        //    - 如果确实需要一个公共容器，建议通过 <include> 标签在子布局中实现。
+        mDataBinding = DataBindingUtil.setContentView(this, layoutId())
+        // 将 ViewModel 和生命周期所有者绑定到 DataBinding
+        mDataBinding.lifecycleOwner = this
+        // 假设布局文件中有一个名为 "vm" 的变量
+        //mDataBinding.setVariable(BR.vm, mViewModel)
     }
 
-    abstract fun onNetworkStateChanged(it: NetState)
+    /**
+     * 注册基础的 UI 变化监听。
+     * - 将加载弹窗、标题栏更新、网络状态等公共逻辑的观察者放在一起。
+     */
+    private fun initBaseObservers() {
+        // 标题栏相关监听
+        titleBar?.setOnTitleBarListener(this)
+        mViewModel.titleT.observe(this) { titleBar?.title = it }
+        mViewModel.leftTitleT.observe(this) { titleBar?.leftTitle = it }
+        mViewModel.rightTitleT.observe(this) { titleBar?.rightTitle = it }
+        mViewModel.titleLine.observe(this) { titleBar?.setLineVisible(it) }
+        mViewModel.leftClick.observe(this) { if (it) finish() }
 
+        // 加载弹窗监听
+        mViewModel.loadingChange.showDialog.observe(this) { showLoading(it) }
+        mViewModel.loadingChange.dismissDialog.observe(this) { dismissLoading() }
+
+        // 网络状态变化监听
+        NetworkStateManager.instance.mNetworkStateCallback.observe(this) {
+            onNetworkStateChanged(it)
+        }
+
+        // 沉浸式状态栏初始化
+        if (isStatusBarEnabled()) {
+            setupImmersionBar()
+        }
+    }
+
+    /**
+     * 指定子类的布局资源 ID。
+     * @return 布局 ID
+     */
+    abstract fun layoutId(): Int
+
+    /**
+     * 初始化视图。在 `onCreate` 中被调用，用于替代原有的 `initView`。
+     * @param savedInstanceState 状态保存实例
+     */
     abstract fun initView(savedInstanceState: Bundle?)
 
+    /**
+     * 订阅 ViewModel 中的 LiveData。在 `onCreate` 中被调用，用于替代原有的 `createObserver`。
+     */
+    abstract fun createObserver()
+
+    /**
+     * 当网络状态发生变化时调用。
+     * @param netState 网络状态对象
+     */
+    abstract fun onNetworkStateChanged(netState: NetState)
+
+
+    // --- 公共方法封装 ---
+
+    // 【改造】2. 重写 showLoading 方法，实现内置管理
+    open fun showLoading(message: String) {
+        mHandler.removeCallbacks(showLoadingRunnable)
+        mHandler.postDelayed(showLoadingRunnable, 300)
+    }
+
+    // 【改造】3. 重写 dismissLoading 方法，实现内置管理
+    open fun dismissLoading() {
+        mHandler.removeCallbacks(showLoadingRunnable)
+        loadingPopup?.dismiss()
+        loadingPopup = null
+    }
+
+    // 【新增】4. 在 onDestroy 中确保资源被释放
+    override fun onDestroy() {
+        super.onDestroy()
+        dismissLoading() // 确保 Activity 销毁时弹窗关闭
+        mHandler.removeCallbacksAndMessages(null)
+    }
+
+
     override fun setTitle(@StringRes id: Int) {
-        title = getString(id)
+        setTitle(getString(id))
     }
 
     override fun setTitle(title: CharSequence?) {
-        setTitle(title)
-        getTitleBar()?.title = title
+        titleBar?.title = title
     }
 
+    // --- TitleBarAction 实现 ---
+
     override fun getTitleBar(): TitleBar? {
-        if (titleBar == null) {
-            titleBar = obtainTitleBar(getContentView())
-        }
         return titleBar
     }
 
@@ -137,104 +169,80 @@ abstract class BaseModVmDbActivity<VM : BaseViewModel, DB : ViewDataBinding> : A
         finish()
     }
 
-    override fun onRightClick(view: TitleBar) {
-        super.onRightClick(view)
-    }
-
-    private fun createViewModel(): VM {
-        return ViewModelProvider(this)[getVmClazz(this)]
-    }
-
-    abstract fun createObserver()
-
-    private fun registerUiChange() {
-        mViewModel.loadingChange.showDialog.observe(this, Observer {
-            showLoading(it)
-        })
-        mViewModel.loadingChange.dismissDialog.observe(this, Observer {
-            dismissLoading()
-        })
-    }
+    // --- 转场动画 ---
 
     override fun startActivityForResult(intent: Intent, requestCode: Int, options: Bundle?) {
         super.startActivityForResult(intent, requestCode, options)
-        overridePendingTransition(R.anim.right_in_activity, R.anim.right_out_activity)
+        // 【修正】进行版本判断
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+            overrideActivityTransition(OVERRIDE_TRANSITION_OPEN, R.anim.right_in_activity, R.anim.right_out_activity)
+        } else {
+            @Suppress("DEPRECATION")
+            overridePendingTransition(R.anim.right_in_activity, R.anim.right_out_activity)
+        }
     }
 
     override fun finish() {
         super.finish()
-        overridePendingTransition(R.anim.left_in_activity, R.anim.left_out_activity)
-    }
-
-
-    protected open fun initSoftKeyboard() {
-        getContentView()?.setOnClickListener {
-            hideKeyboard(currentFocus)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+            overrideActivityTransition(OVERRIDE_TRANSITION_CLOSE, R.anim.left_in_activity, R.anim.left_out_activity)
+        } else {
+            @Suppress("DEPRECATION")
+            overridePendingTransition(R.anim.left_in_activity, R.anim.left_out_activity)
         }
     }
 
-    open fun getContentView(): ViewGroup? {
-        return findViewById(Window.ID_ANDROID_CONTENT)
-    }
 
-    override fun startActivity(intent: Intent) {
-        return super<AppCompatActivity>.startActivity(intent)
-    }
+    // --- 沉浸式状态栏配置 ---
 
+    /**
+     * 是否启用沉浸式状态栏。
+     */
+    protected open fun isStatusBarEnabled(): Boolean = mViewModel.isStatusBarEnabled
 
-    protected open fun isStatusBarEnabled(): Boolean {
-        return mViewModel.isStatusBarEnabled
-    }
+    /**
+     * 状态栏文字是否为深色。
+     */
+    open fun isStatusBarDarkFont(): Boolean = true
 
-    open fun isStatusBarDarkFont(): Boolean {
-        return true
-    }
-
-    open fun getStatusBarConfig(): ImmersionBar {
-        if (immersionBar == null) {
-            immersionBar = createStatusBarConfig()
-        }
-        return immersionBar!!
-    }
-
-    open fun setStatusBarWhite(): ImmersionBar {
-        getStatusBarConfig().statusBarColor(R.color.white)
-        getTitleBar()?.setBackgroundResource(R.color.white)
-        return immersionBar!!
-    }
-
-    open fun setStatusBarDark(): ImmersionBar {
-        getStatusBarConfig().statusBarColor(R.color.dark_color)
-        getTitleBar()?.setBackgroundResource(R.color.dark_color)
-        return immersionBar!!
-    }
-    open fun setStatusBarTransparent(): ImmersionBar {
-        getStatusBarConfig().statusBarColor(R.color.transparent)
-        getTitleBar()?.setBackgroundResource(R.color.transparent)
-        return immersionBar!!
-    }
-
-
+    /**
+     * 创建状态栏配置。
+     */
     protected open fun createStatusBarConfig(): ImmersionBar {
         return ImmersionBar.with(this)
-            .hideBar(mViewModel.barHidT.value)
+            .hideBar(mViewModel.barHidT.value) // 根据 ViewModel 状态隐藏或显示
             .statusBarDarkFont(isStatusBarDarkFont())
             .navigationBarColor(R.color.home_navigation_color)
             .autoDarkModeEnable(true, 0.2f)
     }
 
-    override fun getBundle(): Bundle? {
-        return intent.extras
+    /**
+     * 应用沉浸式状态栏配置。
+     */
+    protected open fun setupImmersionBar() {
+        immersionBar.init()
+        // 将标题栏与状态栏关联，解决状态栏与标题栏重叠问题
+        titleBar?.let { ImmersionBar.setTitleBar(this, it) }
     }
 
-    protected open fun setupImmersionBar() {
-        if (isStatusBarEnabled()) {
-            getStatusBarConfig().init()
-            if (titleBar != null) {
-                // 这是默认的行为，适用于大部分简单页面
-                ImmersionBar.setTitleBar(this, titleBar)
-            }
-        }
+    // 辅助方法，用于快速设置状态栏颜色
+    open fun setStatusBarWhite() {
+        immersionBar.statusBarColor(R.color.white).init()
+        titleBar?.setBackgroundResource(R.color.white)
     }
+
+    open fun setStatusBarDark() {
+        immersionBar.statusBarColor(R.color.dark_color).init()
+        titleBar?.setBackgroundResource(R.color.dark_color)
+    }
+
+    open fun setStatusBarTransparent() {
+        immersionBar.statusBarColor(R.color.transparent).init()
+        titleBar?.setBackgroundResource(R.color.transparent)
+    }
+
+    // --- 其他接口实现 ---
+
+    override fun getBundle(): Bundle? = intent.extras
 
 }

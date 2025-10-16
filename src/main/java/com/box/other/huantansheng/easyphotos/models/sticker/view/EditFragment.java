@@ -21,7 +21,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 
-import com.box.common.R;
+import com.box.com;
 
 
 public class EditFragment extends DialogFragment implements View.OnClickListener {

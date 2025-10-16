@@ -19,7 +19,7 @@ import android.view.View;
 import androidx.core.content.ContextCompat;
 
 
-import com.box.common.R;
+import com.box.com;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,6 @@
 package com.box.base.base.action
 
-import com.box.common.R
+import com.box.com.R
 
 interface AnimAction {
 

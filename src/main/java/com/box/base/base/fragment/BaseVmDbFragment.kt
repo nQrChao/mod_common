@@ -11,134 +11,109 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.box.base.base.action.HandlerAction
 import com.box.base.base.action.KeyboardAction
 import com.box.base.base.viewmodel.BaseViewModel
-import com.box.base.ext.dismissLoadingExt
-import com.box.base.ext.getVmClazz
-import com.box.base.ext.showLoadingExt
 import com.box.base.network.NetState
 import com.box.base.network.NetworkStateManager
+import com.box.common.sdk.dismissLoadingExt
+import com.box.common.sdk.showLoadingExt
+import com.box.other.xpopup.XPopup
+import com.box.other.xpopup.impl.LoadingPopupView
 
 abstract class BaseVmDbFragment<VM : BaseViewModel, DB : ViewDataBinding> : Fragment(), HandlerAction, KeyboardAction {
-
-    private val handler = Handler(Looper.getMainLooper())
-
-    private var isFirst = true
-
-    lateinit var mViewModel: VM
-
-    lateinit var mActivity: AppCompatActivity
-
-    open fun showLoading(message: String) {
-        showLoadingExt(message)
-    }
-
-    open fun dismissLoading() {
-        dismissLoadingExt()
-    }
-
     private var _binding: DB? = null
+    protected val mDataBinding: DB get() = _binding!!
+    protected abstract val mViewModel: VM
 
-    val mDataBinding: DB get() = _binding!!
+    protected lateinit var mActivity: AppCompatActivity
+
+    private var isFirstLoad = true
+    private val handler by lazy { Handler(Looper.getMainLooper()) }
+
+    // 内置 LoadingDialog 管理
+    private var loadingPopup: LoadingPopupView? = null
+    private val showLoadingRunnable = Runnable {
+        if (loadingPopup == null) {
+            loadingPopup = XPopup.Builder(requireActivity())
+                .dismissOnTouchOutside(false)
+                .isDestroyOnDismiss(true)
+                .asLoading("请求网络中...")
+                .show() as LoadingPopupView
+        }
+    }
 
     abstract fun layoutId(): Int
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        _binding = DataBindingUtil.inflate(inflater, layoutId(), null, false)
-        mDataBinding.lifecycleOwner = this
-        return mDataBinding.root
-    }
+    abstract fun initView(savedInstanceState: Bundle?)
+    abstract fun createObserver()
+    abstract fun lazyLoadData()
+    abstract fun onNetworkStateChanged(netState: NetState)
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
         mActivity = context as AppCompatActivity
     }
 
-    abstract fun createObserver()
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        _binding = DataBindingUtil.inflate(inflater, layoutId(), container, false)
+        mDataBinding.lifecycleOwner = viewLifecycleOwner
+        return mDataBinding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        isFirst = true
-        mViewModel = createViewModel()
         initView(savedInstanceState)
-        initTitle()
+        initBaseObservers()
         createObserver()
-        registerUIChange()
-        initData()
     }
 
     override fun onResume() {
         super.onResume()
-        onVisible()
-    }
-
-    open fun initData() {
-    }
-
-    open fun initTitle() {
-    }
-
-    abstract fun lazyLoadData()
-
-
-    private fun onVisible() {
-        if (lifecycle.currentState == Lifecycle.State.STARTED && isFirst) {
-            // 延迟加载 防止 切换动画还没执行完毕时数据就已经加载好了，这时页面会有渲染卡顿
+        if (isFirstLoad) {
             handler.postDelayed({
                 lazyLoadData()
-                //在Fragment中，只有懒加载过了才能开启网络变化监听
-                NetworkStateManager.instance.mNetworkStateCallback.observe(
-                    this,
-                    Observer {
-                        //不是首次订阅时调用方法，防止数据第一次监听错误
-                        if (!isFirst) {
-                            onNetworkStateChanged(it)
-                        }
-                    })
-                isFirst = false
             }, lazyLoadTime())
+            isFirstLoad = false
         }
     }
 
-    open fun lazyLoadTime(): Long {
-        return 300
+    /**
+     * - 以便子类可以重写此方法，添加自己的观察者
+     */
+    protected open fun initBaseObservers() {
+        // 加载弹窗监听
+        mViewModel.loadingChange.showDialog.observe(viewLifecycleOwner) { showLoading(it) }
+        mViewModel.loadingChange.dismissDialog.observe(viewLifecycleOwner) { dismissLoading() }
+
+        // 网络状态监听
+        NetworkStateManager.instance.mNetworkStateCallback.observe(viewLifecycleOwner) {
+            onNetworkStateChanged(it)
+        }
     }
 
-    abstract fun onNetworkStateChanged(it: NetState)
-
-    private fun registerUIChange() {
-        mViewModel.loadingChange.showDialog.observe(this, Observer {
-            showLoading(it)
-        })
-        mViewModel.loadingChange.dismissDialog.observe(this, Observer {
-            dismissLoading()
-        })
+    open fun showLoading(message: String) {
+        handler.removeCallbacks(showLoadingRunnable)
+        handler.postDelayed(showLoadingRunnable, 300)
     }
+
+    open fun dismissLoading() {
+        handler.removeCallbacks(showLoadingRunnable)
+        loadingPopup?.dismiss()
+        loadingPopup = null
+    }
+
+    open fun lazyLoadTime(): Long = 200L
 
     override fun onDestroyView() {
         super.onDestroyView()
+        dismissLoading() // 确保 Fragment 视图销毁时弹窗关闭
+        handler.removeCallbacksAndMessages(null)
         _binding = null
     }
 
-    abstract fun initView(savedInstanceState: Bundle?)
-
-    private fun createViewModel(): VM {
-        return ViewModelProvider(this)[getVmClazz(this)]
-    }
 
     override fun onDestroy() {
         super.onDestroy()
         handler.removeCallbacksAndMessages(null)
     }
-
-
-
 }

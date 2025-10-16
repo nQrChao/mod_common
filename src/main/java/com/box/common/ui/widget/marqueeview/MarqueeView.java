@@ -18,7 +18,8 @@ import androidx.annotation.AnimRes;
 import androidx.annotation.FontRes;
 import androidx.core.content.res.ResourcesCompat;
 
-import com.box.common.R;
+
+import com.box.com.R;
 
 import java.util.ArrayList;
 import java.util.List;

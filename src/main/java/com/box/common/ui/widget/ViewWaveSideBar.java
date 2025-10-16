@@ -11,8 +11,7 @@ import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
-
-import com.box.common.R;
+import com.box.com.R;
 
 import java.util.Arrays;
 

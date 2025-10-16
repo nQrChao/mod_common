@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.AdapterDataObserver
 import com.box.base.base.BaseAdapter
-import com.box.common.R
+import com.box.com.R
 
 /**
  *    desc   : Tab 适配器

@@ -15,7 +15,7 @@ import android.view.ViewGroup
 import androidx.annotation.CallSuper
 import androidx.core.view.forEach
 import com.box.other.blankj.utilcode.util.ActivityUtils
-import com.box.common.R
+import com.box.com
 import com.box.other.nbnotification.utils.action.ActionManager
 import com.box.other.nbnotification.utils.action.chained.SequenceActionBuild
 import com.box.other.nbnotification.utils.action.extend.createAction

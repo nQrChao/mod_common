@@ -16,7 +16,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 
-import com.box.common.R;
+import com.box.com.R;
 
 public class ViewFontResize extends View {
     private static final int DEFAULT_LINE_COLOR = Color.parseColor("#222222");

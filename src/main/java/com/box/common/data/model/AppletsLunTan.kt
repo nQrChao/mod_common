@@ -2,7 +2,7 @@ package com.box.common.data.model
 
 import android.content.res.ColorStateList
 import com.chad.library.adapter.base.entity.MultiItemEntity
-import com.box.common.R
+import com.box.com.R
 import com.smart.adapter.interf.SmartFragmentTypeExEntity
 
 data class AppletsLunTan(

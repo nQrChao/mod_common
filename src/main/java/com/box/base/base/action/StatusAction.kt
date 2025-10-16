@@ -7,7 +7,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.RawRes
 import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
-import com.box.common.R
+import com.box.com.R
 import com.box.common.ui.layout.StatusLayout
 
 interface StatusAction {

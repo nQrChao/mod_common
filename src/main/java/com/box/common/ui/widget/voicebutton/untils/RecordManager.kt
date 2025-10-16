@@ -8,7 +8,7 @@ import java.util.*
 import kotlin.math.log10
 
 /**
- * @Description: 音频录制管理类
+ * 音频录制管理类
  */
 class RecordManager(private val recordFileDir: String) {  //音频文件存储目录
 

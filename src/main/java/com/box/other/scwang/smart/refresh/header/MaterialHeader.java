@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.box.common.R;
+import com.box.com;
 import com.box.other.scwang.smart.refresh.header.material.CircleImageView;
 import com.box.other.scwang.smart.refresh.header.material.MaterialProgressDrawable;
 import com.box.other.scwang.smart.refresh.layout.api.RefreshHeader;

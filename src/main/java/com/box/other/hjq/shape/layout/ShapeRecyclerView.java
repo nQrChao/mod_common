@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.box.common.R;
+import com.box.com;
 import com.box.other.hjq.shape.builder.ShapeDrawableBuilder;
 import com.box.other.hjq.shape.config.IGetShapeDrawableBuilder;
 import com.box.other.hjq.shape.styleable.ShapeRecyclerViewStyleable;

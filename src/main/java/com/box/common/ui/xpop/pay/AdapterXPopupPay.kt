@@ -1,12 +1,12 @@
 package com.box.common.ui.xpop.pay
 
 import androidx.appcompat.widget.AppCompatCheckBox
+import com.box.com.R
+import com.box.com.databinding.ItemPayListVBinding
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder
 import com.box.common.data.model.PayInfo
-import com.box.common.BR
-import com.box.common.R
-import com.box.common.databinding.ItemPayListVBinding
+import com.box.com.BR
 
 class AdapterXPopupPay constructor(list: MutableList<PayInfo>) : BaseQuickAdapter<PayInfo, BaseDataBindingHolder<ItemPayListVBinding>>(
     R.layout.item_pay_list_v, list) {

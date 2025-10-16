@@ -26,7 +26,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 
-import com.box.common.R;
+import com.box.com;
 
 import java.util.ArrayList;
 import java.util.List;

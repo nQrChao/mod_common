@@ -7,7 +7,7 @@ import android.view.MotionEvent
 import android.view.View
 import com.box.other.blankj.utilcode.util.ScreenUtils
 import com.box.base.utils.ImLog
-import com.box.common.utils.Common
+import com.box.other.blankj.utilcode.util.SizeUtils
 
 class ViewAudio(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0, defStyleRes: Int = 0):View(context, attrs, defStyleAttr, defStyleRes) {
     constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : this(context, attrs, defStyleAttr, 0)
@@ -26,19 +26,19 @@ class ViewAudio(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
-        setMeasuredDimension(ScreenUtils.getScreenWidth(),Common.dp2px(130f))
+        setMeasuredDimension(ScreenUtils.getScreenWidth(),SizeUtils.dp2px(130f))
     }
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         paint.style=Paint.Style.FILL
         paint.color=Color.GRAY
-        canvas.drawArc( RectF(0f,0f,ScreenUtils.getScreenWidth().toFloat(),Common.dp2px(80f).toFloat()), -180f, 180f, false, paint)
+        canvas.drawArc( RectF(0f,0f,ScreenUtils.getScreenWidth().toFloat(), SizeUtils.dp2px(80f).toFloat()), -180f, 180f, false, paint)
 
         paint.style=Paint.Style.STROKE
         paint.strokeWidth=10f
         paint.color=Color.WHITE
-        canvas.drawArc( RectF(0f,0f,ScreenUtils.getScreenWidth().toFloat(),Common.dp2px(80f).toFloat()), -180f, 180f, false, paint);
+        canvas.drawArc( RectF(0f,0f,ScreenUtils.getScreenWidth().toFloat(),SizeUtils.dp2px(80f).toFloat()), -180f, 180f, false, paint);
 
 //        paint.color=Color.BLUE
 //        paint.style=Paint.Style.STROKE
@@ -49,7 +49,7 @@ class ViewAudio(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int
 //        canvas?.drawArc( RectF(0f,0f,ScreenUtils.getScreenWidth().toFloat(),Common.dp2px(60f).toFloat()), -180f, 180f, false, paint);
         paint.style=Paint.Style.FILL
         paint.color=Color.GRAY
-        canvas?.drawRect(Rect(0,Common.dp2px(40f),ScreenUtils.getScreenWidth(),Common.dp2px(130f)),paint)
+        canvas?.drawRect(Rect(0,SizeUtils.dp2px(40f),ScreenUtils.getScreenWidth(),SizeUtils.dp2px(130f)),paint)
     }
 
     override fun onTouchEvent(event: MotionEvent?): Boolean {

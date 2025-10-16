@@ -5,7 +5,7 @@ import android.content.res.TypedArray
 import android.text.*
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatEditText
-import com.box.common.R
+import com.box.com.R
 import java.util.regex.Pattern
 
 open class RegexEditText @JvmOverloads constructor(

@@ -4,8 +4,8 @@ import android.content.*
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import com.box.com.R
 import com.box.other.blankj.utilcode.util.ResourceUtils
-import com.box.common.R
 import com.box.common.data.model.AssItemInfo
 
 class NotifyMessageAdapter constructor(context: Context) : AppAdapter<AssItemInfo?>(context) {

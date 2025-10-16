@@ -4,6 +4,8 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import androidx.activity.result.ActivityResultLauncher
+import com.box.common.event.AppViewModel
+import com.box.common.event.EventViewModel
 
 /**
  * 应用服务提供者接口
@@ -70,4 +72,27 @@ interface ModProvider {
     fun openPay(activity: Activity, price: String)
 
     fun startCurrencyFragment()
+
+}
+
+/**
+ * 服务持有者，作为 library 模块访问 Provider 的唯一入口
+ */
+object ModComService {
+    private lateinit var provider: ModProvider
+    /**
+     * 这个方法将由 app 模块在启动时调用，完成“注入”
+     */
+    fun init(provider: ModProvider) {
+        this.provider = provider
+    }
+    /**
+     * library 模块中的代码通过这个方法来获取 Provider 实例
+     */
+    fun get(): ModProvider {
+        if (!::provider.isInitialized) {
+            throw IllegalStateException("ModProvider has not been initialized. Please call ModService.init() in your Application class.")
+        }
+        return provider
+    }
 }

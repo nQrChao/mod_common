@@ -6,7 +6,7 @@ import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
 import android.view.ViewGroup
-import com.box.common.R
+import com.box.com
 
 open class DslTabHighlight(val tabLayout: DslTabLayout) : DslGradientDrawable() {
 

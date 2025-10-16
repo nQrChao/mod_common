@@ -16,7 +16,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 
-import com.box.common.R;
+import com.box.com.R;
 
 
 public class CircleProgress extends View {

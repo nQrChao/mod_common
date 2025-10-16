@@ -5,7 +5,7 @@ import android.content.Context
 import android.view.View
 import com.box.base.base.action.ClickAction
 import com.box.base.base.action.KeyboardAction
-import com.box.common.R
+import com.box.com.R
 import com.box.other.xpopup.core.BottomPopupView
 
 @SuppressLint("ViewConstructor")

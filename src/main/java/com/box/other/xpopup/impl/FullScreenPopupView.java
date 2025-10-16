@@ -13,7 +13,7 @@ import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 
-import com.box.common.R;
+import com.box.com;
 import com.box.other.xpopup.animator.PopupAnimator;
 import com.box.other.xpopup.animator.TranslateAnimator;
 import com.box.other.xpopup.core.BasePopupView;

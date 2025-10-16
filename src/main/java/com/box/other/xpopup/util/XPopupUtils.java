@@ -46,7 +46,7 @@ import androidx.annotation.FloatRange;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.interpolator.view.animation.LinearOutSlowInInterpolator;
 
-import com.box.common.R;
+import com.box.com;
 import com.box.other.xpopup.core.AttachPopupView;
 import com.box.other.xpopup.core.BasePopupView;
 import com.box.other.xpopup.core.BottomPopupView;

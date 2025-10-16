@@ -17,8 +17,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.airbnb.lottie.LottieAnimationView;
-import com.box.common.R;
-import com.box.common.utils.UtilUI;
+import com.box.com.R;
+import com.box.other.blankj.utilcode.util.ColorUtils;
+import com.box.other.blankj.utilcode.util.ResourceUtils;
+import com.box.other.blankj.utilcode.util.SizeUtils;
 
 import java.util.Locale;
 
@@ -87,12 +89,12 @@ public class BottomBarItem extends LinearLayout {
 
         title = ta.getString(R.styleable.BottomBarItem_itemText);
         titleTextBold = ta.getBoolean(R.styleable.BottomBarItem_itemTextBold, titleTextBold);
-        titleTextSize = ta.getDimensionPixelSize(R.styleable.BottomBarItem_itemTextSize, UtilUI.sp2px(context, titleTextSize));
+        titleTextSize = ta.getDimensionPixelSize(R.styleable.BottomBarItem_itemTextSize, SizeUtils.sp2px(titleTextSize));
 
-        titleNormalColor = ta.getColor(R.styleable.BottomBarItem_textColorNormal, UtilUI.getColor(context, R.color.bbl_999999));
-        titleSelectedColor = ta.getColor(R.styleable.BottomBarItem_textColorSelected, UtilUI.getColor(context, R.color.bbl_ff0000));
+        titleNormalColor = ta.getColor(R.styleable.BottomBarItem_textColorNormal, ColorUtils.getColor(R.color.bbl_999999));
+        titleSelectedColor = ta.getColor(R.styleable.BottomBarItem_textColorSelected,  ColorUtils.getColor( R.color.bbl_ff0000));
 
-        marginTop = ta.getDimensionPixelSize(R.styleable.BottomBarItem_itemMarginTop, UtilUI.dip2Px(context, marginTop));
+        marginTop = ta.getDimensionPixelSize(R.styleable.BottomBarItem_itemMarginTop, SizeUtils.dp2px( marginTop));
 
         openTouchBg = ta.getBoolean(R.styleable.BottomBarItem_openTouchBg, openTouchBg);
         touchDrawable = ta.getDrawable(R.styleable.BottomBarItem_touchDrawable);
@@ -101,12 +103,12 @@ public class BottomBarItem extends LinearLayout {
         iconHeight = ta.getDimensionPixelSize(R.styleable.BottomBarItem_iconHeight, 0);
         itemPadding = ta.getDimensionPixelSize(R.styleable.BottomBarItem_itemPadding, 0);
 
-        unreadTextSize = ta.getDimensionPixelSize(R.styleable.BottomBarItem_unreadTextSize, UtilUI.sp2px(context, unreadTextSize));
-        unreadTextColor = ta.getColor(R.styleable.BottomBarItem_unreadTextColor, UtilUI.getColor(context, R.color.white));
+        unreadTextSize = ta.getDimensionPixelSize(R.styleable.BottomBarItem_unreadTextSize, SizeUtils.sp2px( unreadTextSize));
+        unreadTextColor = ta.getColor(R.styleable.BottomBarItem_unreadTextColor,  ColorUtils.getColor( R.color.white));
         unreadTextBg = ta.getDrawable(R.styleable.BottomBarItem_unreadTextBg);
 
-        msgTextSize = ta.getDimensionPixelSize(R.styleable.BottomBarItem_msgTextSize, UtilUI.sp2px(context, msgTextSize));
-        msgTextColor = ta.getColor(R.styleable.BottomBarItem_msgTextColor, UtilUI.getColor(context, R.color.white));
+        msgTextSize = ta.getDimensionPixelSize(R.styleable.BottomBarItem_msgTextSize, SizeUtils.sp2px( msgTextSize));
+        msgTextColor = ta.getColor(R.styleable.BottomBarItem_msgTextColor,  ColorUtils.getColor( R.color.white));
         msgTextBg = ta.getDrawable(R.styleable.BottomBarItem_msgTextBg);
 
         notifyPointBg = ta.getDrawable(R.styleable.BottomBarItem_notifyPointBg);
@@ -230,7 +232,7 @@ public class BottomBarItem extends LinearLayout {
     }
 
     public void setNormalIcon(int resId) {
-        setNormalIcon(UtilUI.getDrawable(context, resId));
+        setNormalIcon(ResourceUtils.getDrawable(resId));
     }
 
     public void setSelectedIcon(Drawable selectedIcon) {
@@ -239,7 +241,7 @@ public class BottomBarItem extends LinearLayout {
     }
 
     public void setSelectedIcon(int resId) {
-        setSelectedIcon(UtilUI.getDrawable(context, resId));
+        setSelectedIcon(ResourceUtils.getDrawable(resId));
     }
 
     public void refreshTab(boolean isSelected) {
@@ -367,11 +369,11 @@ public class BottomBarItem extends LinearLayout {
         public Builder(Context context) {
             this.context = context;
             titleTextBold = false;
-            titleTextSize = UtilUI.sp2px(context, 12);
+            titleTextSize = SizeUtils.sp2px( 12);
             titleNormalColor = getColor(R.color.bbl_999999);
             titleSelectedColor = getColor(R.color.bbl_ff0000);
-            unreadTextSize = UtilUI.sp2px(context, 10);
-            msgTextSize = UtilUI.sp2px(context, 6);
+            unreadTextSize = SizeUtils.sp2px( 10);
+            msgTextSize = SizeUtils.sp2px( 6);
             unreadTextColor = getColor(R.color.white);
             unreadNumThreshold = 99;
             msgTextColor = getColor(R.color.white);
@@ -421,7 +423,7 @@ public class BottomBarItem extends LinearLayout {
          * Sets the title's text size
          */
         public Builder titleTextSize(int titleTextSize) {
-            this.titleTextSize = UtilUI.sp2px(context, titleTextSize);
+            this.titleTextSize = SizeUtils.sp2px( titleTextSize);
             return this;
         }
 
@@ -494,7 +496,7 @@ public class BottomBarItem extends LinearLayout {
          * Sets unread font size
          */
         public Builder unreadTextSize(int unreadTextSize) {
-            this.unreadTextSize = UtilUI.sp2px(context, unreadTextSize);
+            this.unreadTextSize = SizeUtils.sp2px( unreadTextSize);
             return this;
         }
 
@@ -510,7 +512,7 @@ public class BottomBarItem extends LinearLayout {
          * Sets the message font size
          */
         public Builder msgTextSize(int msgTextSize) {
-            this.msgTextSize = UtilUI.sp2px(context, msgTextSize);
+            this.msgTextSize = SizeUtils.sp2px( msgTextSize);
             return this;
         }
 
@@ -575,7 +577,7 @@ public class BottomBarItem extends LinearLayout {
         }
 
         public BottomBarItem create(int normalIconId, int selectedIconId, String text) {
-            return create(UtilUI.getDrawable(context, normalIconId), UtilUI.getDrawable(context, selectedIconId), text);
+            return create(ResourceUtils.getDrawable(normalIconId), ResourceUtils.getDrawable(selectedIconId), text);
         }
 
         private int getColor(int colorId) {

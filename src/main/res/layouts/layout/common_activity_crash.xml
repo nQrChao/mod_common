@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.box.common.ui.activity.CommonActivityCrash" />
+            type="com.box.common.ui.activity.crash.CommonActivityCrash" />
     </data>
 
     <androidx.drawerlayout.widget.DrawerLayout
@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#333333"
-        tools:context="com.box.common.ui.activity.CommonActivityCrash">
+        tools:context="com.box.common.ui.activity.crash.CommonActivityCrash">
 
         <LinearLayout
             android:layout_width="match_parent"

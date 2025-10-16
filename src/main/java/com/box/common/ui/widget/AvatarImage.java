@@ -17,11 +17,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.content.res.AppCompatResources;
 
+import com.box.com.R;
 import com.box.other.blankj.utilcode.util.RegexUtils;
 import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.box.common.glide.GlideApp;
-import com.box.common.R;
 import com.box.other.raphets.roundimageview.RoundImageView;
 
 public class AvatarImage extends FrameLayout {

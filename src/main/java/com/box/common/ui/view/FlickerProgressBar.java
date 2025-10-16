@@ -16,7 +16,7 @@ import android.graphics.Shader;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.box.common.R;
+import com.box.com.R;
 
 public class FlickerProgressBar extends View implements Runnable{
     private PorterDuffXfermode xfermode = new PorterDuffXfermode(PorterDuff.Mode.SRC_ATOP);

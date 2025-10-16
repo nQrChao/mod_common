@@ -13,8 +13,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.box.base.base.action.ActivityAction
 import com.box.base.base.action.ClickAction
-import com.box.common.R
-import com.box.common.databinding.DownFloatBind
+import com.box.com.R
+import com.box.com.databinding.DownFloatBind
 import com.box.common.appContext
 import com.box.common.glide.GlideApp
 import com.box.common.utils.floattoast.draggable.SpringScaleDraggable

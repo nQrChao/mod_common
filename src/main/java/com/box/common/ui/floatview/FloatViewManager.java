@@ -7,7 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.view.Gravity;
 import android.widget.ImageView;
 
-import com.box.common.R;
+import com.box.com.R;
 import com.box.common.glide.GlideApp;
 import com.box.common.utils.floattoast.XToast;
 import com.box.common.utils.floattoast.draggable.SpringScaleDraggable;
@@ -54,7 +54,7 @@ public class FloatViewManager {
         if (mGameFloat != null) {
             return;
         }
-        // 步骤1: 懒加载，仅在对象为 null 时创建一次
+        // 懒加载，仅在对象为 null 时创建一次
         mGameFloat = new XToast<>(application)
                 .setContentView(R.layout.item_floatview) // 设置自定义布局
                 .setGravity(Gravity.END | Gravity.TOP) // 设置初始位置在右上角
@@ -64,7 +64,7 @@ public class FloatViewManager {
                     Toaster.show("你点击了图标");
                 });
 
-        // 步骤2: 如果浮窗当前未显示，则调用 show() 方法显示它
+        // 如果浮窗当前未显示，则调用 show() 方法显示它
         mGameFloat.show();
     }
 

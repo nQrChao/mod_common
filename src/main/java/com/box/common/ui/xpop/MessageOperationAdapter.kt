@@ -1,9 +1,9 @@
 package com.box.common.ui.xpop
 
+import com.box.com.R
+import com.box.com.databinding.AdapterXpopupMessageOperationBinding
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder
-import com.box.common.R
-import com.box.common.databinding.AdapterXpopupMessageOperationBinding
 import com.box.common.impl.CommonSelect
 
 class MessageOperationAdapter(list: MutableList<CommonSelect>):BaseQuickAdapter<CommonSelect,BaseDataBindingHolder<AdapterXpopupMessageOperationBinding>>(

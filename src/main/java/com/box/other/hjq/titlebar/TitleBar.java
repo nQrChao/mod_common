@@ -21,7 +21,7 @@ import com.box.other.hjq.titlebar.style.LightBarStyle;
 import com.box.other.hjq.titlebar.style.NightBarStyle;
 import com.box.other.hjq.titlebar.style.RippleBarStyle;
 import com.box.other.hjq.titlebar.style.TransparentBarStyle;
-import com.box.common.R;
+import com.box.com;
 
 
 @SuppressWarnings({"unused", "UnusedReturnValue"})

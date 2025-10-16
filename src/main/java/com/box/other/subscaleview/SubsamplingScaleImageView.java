@@ -34,7 +34,7 @@ import androidx.annotation.NonNull;
 import androidx.exifinterface.media.ExifInterface;
 
 
-import com.box.common.R;
+import com.box.com;
 import com.box.other.blankj.utilcode.util.Logs;
 import com.box.other.subscaleview.decoder.CompatDecoderFactory;
 import com.box.other.subscaleview.decoder.DecoderFactory;

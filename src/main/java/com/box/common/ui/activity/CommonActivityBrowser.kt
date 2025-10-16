@@ -9,16 +9,20 @@ import android.text.TextUtils
 import android.view.KeyEvent
 import android.view.View
 import android.webkit.WebView
+import androidx.activity.viewModels
 import androidx.lifecycle.viewModelScope
-import com.box.base.base.activity.BaseVmDbActivity
 import com.box.base.network.NetState
 import com.box.base.base.action.StatusAction
-import com.box.common.databinding.CommonActivityBrowserBinding
+import com.box.base.base.activity.BaseModVmDbActivity
+import com.box.base.base.viewmodel.BaseViewModel
+import com.box.base.callback.databind.BooleanObservableField
+import com.box.com.databinding.CommonActivityBrowserBinding
+import com.box.common.eventViewModel
 import com.box.common.getDetailedInformation
-import com.box.common.sdk.ImSDK
 import com.box.common.ui.layout.StatusLayout
 import com.box.common.ui.view.BrowserView
 import com.box.common.utils.MMKVUtil
+import com.box.common.utils.loge
 import com.box.com.R as RC
 import com.box.other.blankj.utilcode.util.ActivityUtils
 import com.box.other.blankj.utilcode.util.Logs
@@ -29,22 +33,24 @@ import com.box.other.scwang.smart.refresh.layout.api.RefreshLayout
 import com.box.other.scwang.smart.refresh.layout.listener.OnRefreshListener
 import kotlinx.coroutines.launch
 
-class CommonActivityBrowser : BaseVmDbActivity<CommonActivityBrowserModel, CommonActivityBrowserBinding>(), StatusAction, OnRefreshListener {
+class CommonActivityBrowser : BaseModVmDbActivity<CommonActivityBrowser.Model, CommonActivityBrowserBinding>(), StatusAction, OnRefreshListener {
+    override val mViewModel: Model by viewModels()
     override fun layoutId(): Int = RC.layout.common_activity_browser
 
     companion object {
-        const val INTENT_KEY_IN_URL: String = "url"
+        const val INTENT_KEY_URL: String = "url"
         fun start(context: Context, url: String) {
             if (TextUtils.isEmpty(url)) {
                 return
             }
             val intent = Intent(context, CommonActivityBrowser::class.java)
-            intent.putExtra(INTENT_KEY_IN_URL, url)
+            intent.putExtra(INTENT_KEY_URL, url)
             if (context !is Activity) {
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             }
             ActivityUtils.startActivity(intent)
         }
+
     }
 
     override fun initView(savedInstanceState: Bundle?) {
@@ -60,7 +66,7 @@ class CommonActivityBrowser : BaseVmDbActivity<CommonActivityBrowserModel, Commo
         mDataBinding.wvBrowserView.apply {
             setBrowserViewClient(AppBrowserViewClient())
             setBrowserChromeClient(AppBrowserChromeClient(this))
-            loadUrl(intent.getStringExtra(INTENT_KEY_IN_URL) ?: "")
+            loadUrl(intent.getStringExtra(INTENT_KEY_URL) ?: "")
         }
 
         getTitleBar()?.rightView?.setOnLongClickListener {
@@ -69,16 +75,16 @@ class CommonActivityBrowser : BaseVmDbActivity<CommonActivityBrowserModel, Commo
             mDataBinding.nestedScrollView.visibility = View.VISIBLE
             mDataBinding.textLayout.visibility = View.VISIBLE
             mDataBinding.textView.visibility = View.VISIBLE
-            ImSDK.eventViewModelInstance.viewModelScope.launch {
+            eventViewModel.viewModelScope.launch {
                 val text = getDetailedInformation(this@CommonActivityBrowser, true)
                 val marketInitStr = MMKVUtil.getMarketInit()
                 if (!StringUtils.isEmpty(marketInitStr)) {
                     text.append("\n\nMarketInit:${marketInitStr}")
-                    Logs.e("marketInitStr:", text.toString())
+                    loge("marketInitStr:${text}")
                 } else {
                     text.append("\n\nNO-MarketInit")
                 }
-                Logs.e("text.toString():", text.toString())
+                loge( "text.toString():${text}")
                 mDataBinding.textView.text = text.toString()
 
             }
@@ -91,12 +97,10 @@ class CommonActivityBrowser : BaseVmDbActivity<CommonActivityBrowserModel, Commo
         }
 
         getTitleBar()?.leftView?.setOnClickListener {
-            mDataBinding.wvBrowserView.apply {
-                if (canGoBack()) {
-                    goBack()
-                } else {
-                    finish()
-                }
+            if (mDataBinding.wvBrowserView.canGoBack()) {
+                mDataBinding.wvBrowserView.goBack()
+            } else {
+                finish()
             }
         }
 
@@ -110,16 +114,12 @@ class CommonActivityBrowser : BaseVmDbActivity<CommonActivityBrowserModel, Commo
     }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
-        mDataBinding.wvBrowserView.apply {
-            if (keyCode == KeyEvent.KEYCODE_BACK && canGoBack()) {
-                if (canGoBack()) {
-                    goBack()
-                } else {
-                    finish()
-                }
-                return true
-            }
+        // 只有在按下返回键且 WebView 可以返回时才处理
+        if (keyCode == KeyEvent.KEYCODE_BACK && mDataBinding.wvBrowserView.canGoBack()) {
+            mDataBinding.wvBrowserView.goBack()
+            return true
         }
+        // 其他情况，或 WebView 无法返回，调用父类方法
         return super.onKeyDown(keyCode, event)
     }
 
@@ -185,6 +185,14 @@ class CommonActivityBrowser : BaseVmDbActivity<CommonActivityBrowserModel, Commo
 
     /**********************************************Click**************************************************/
     inner class ProxyClick {
+
+    }
+
+
+    /**********************************************Model**************************************************/
+    class Model : BaseViewModel(title = "　　　", rightTitle = "　　　") {
+        var canGoBack = BooleanObservableField(true)
+
 
     }
 

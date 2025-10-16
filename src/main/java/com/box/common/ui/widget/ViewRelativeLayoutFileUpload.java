@@ -5,7 +5,7 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.box.common.R;
+import com.box.com.R;
 import com.box.common.utils.GetFilePathFromUri;
 import com.box.common.utils.UtilMediaFile;
 import com.box.other.blankj.utilcode.util.AppUtils;

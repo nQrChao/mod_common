@@ -23,7 +23,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import com.box.common.R;
+import com.box.com.R;
 import com.box.other.blankj.utilcode.util.AppUtils;
 import com.box.other.blankj.utilcode.util.Logs;
 import com.box.other.blankj.utilcode.util.ScreenUtils;

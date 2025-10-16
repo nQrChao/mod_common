@@ -6,7 +6,7 @@ import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.View
 import androidx.core.view.ViewCompat
-import com.box.common.R
+import com.box.com
 
 /**
  * 边框绘制, 支持首尾圆角中间不圆角的样式

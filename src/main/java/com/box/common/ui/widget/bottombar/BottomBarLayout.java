@@ -9,7 +9,8 @@ import android.widget.LinearLayout;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import com.box.common.R;
+
+import com.box.com.R;
 
 import java.util.ArrayList;
 import java.util.List;

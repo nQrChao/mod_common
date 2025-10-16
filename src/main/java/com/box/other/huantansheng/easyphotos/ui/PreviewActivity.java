@@ -27,7 +27,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.box.common.R;
+import com.box.com;
 import com.box.other.hjq.toast.Toaster;
 import com.box.other.huantansheng.easyphotos.constant.Code;
 import com.box.other.huantansheng.easyphotos.constant.Key;

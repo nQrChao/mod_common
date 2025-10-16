@@ -9,7 +9,7 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import android.view.animation.AccelerateInterpolator
-import com.box.common.R
+import com.box.com.R
 
 class SwitchButton @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null,

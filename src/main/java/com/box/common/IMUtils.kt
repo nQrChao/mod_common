@@ -41,13 +41,12 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.target.Target
 import com.bumptech.glide.request.transition.Transition
-import com.box.common.BuildConfig
+import com.box.com.BuildConfig
+import com.box.com.R
 import com.box.common.data.PictureElem
 import com.box.common.data.model.ModTradeGoodDetailBean
 import com.box.common.glide.GlideApp
 import com.box.common.sdk.ApkUtils
-import com.box.common.sdk.ImSDK
-import com.box.common.sdk.appViewModel
 import com.box.common.utils.GetFilePathFromUri
 import com.box.common.utils.MMKVUtil
 import com.box.common.utils.totp.PasscodeGenerator

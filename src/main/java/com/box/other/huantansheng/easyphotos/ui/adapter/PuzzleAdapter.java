@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.box.common.R;
+import com.box.com;
 import com.box.other.huantansheng.easyphotos.models.puzzle.PuzzleLayout;
 import com.box.other.huantansheng.easyphotos.models.puzzle.SquarePuzzleView;
 import com.box.other.huantansheng.easyphotos.models.puzzle.template.slant.NumberSlantLayout;

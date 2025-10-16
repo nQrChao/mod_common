@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import com.box.com.R
 import com.box.other.blankj.utilcode.util.ColorUtils
-import com.box.common.R
 import com.box.common.data.model.AssistantInfo
 
 class AssListAdapter constructor(context: Context) : AppAdapter<AssistantInfo?>(context) {

@@ -1,6 +1,6 @@
 package com.box.common.data.model
 
-import com.box.common.R
+import com.box.com.R
 import java.io.Serializable
 
 

@@ -23,7 +23,7 @@ import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
-import com.box.common.R;
+import com.box.com;
 import com.box.other.scwang.smart.refresh.layout.api.RefreshComponent;
 
 /**

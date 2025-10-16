@@ -1,7 +1,8 @@
 package com.box.common.utils
 
 import android.annotation.SuppressLint
-import com.box.common.R
+import com.box.com
+import com.box.com.R
 import com.box.other.blankj.utilcode.util.Logs
 import com.box.other.blankj.utilcode.util.StringUtils
 import java.text.SimpleDateFormat
@@ -21,7 +22,6 @@ object UtilTime {
     const val YEAR_MONTH_DAY_FORMAT = "yyyy/MM/dd"
     // 新增的完整日期时间格式
     const val FULL_DATE_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss"
-
 
     /**
      * 【新增】一个安全的、不会崩溃的重载方法，用于处理字符串时间戳。

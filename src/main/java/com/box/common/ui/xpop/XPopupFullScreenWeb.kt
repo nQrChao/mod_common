@@ -13,7 +13,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.box.base.base.action.ClickAction
 import com.box.base.base.action.KeyboardAction
-import com.box.common.R
+import com.box.com.R
 import com.box.other.xpopup.impl.FullScreenPopupView
 
 @SuppressLint("ViewConstructor")

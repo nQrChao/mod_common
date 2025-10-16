@@ -23,7 +23,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SimpleItemAnimator;
 
-import com.box.common.R;
+import com.box.com;
 import com.box.other.huantansheng.easyphotos.constant.Code;
 import com.box.other.huantansheng.easyphotos.models.album.AlbumModel;
 import com.box.other.huantansheng.easyphotos.models.album.entity.Photo;

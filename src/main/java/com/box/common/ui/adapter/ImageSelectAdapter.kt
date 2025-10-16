@@ -6,7 +6,7 @@ import android.widget.CheckBox
 import android.widget.ImageView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.box.common.R
+import com.box.com.R
 import com.box.common.glide.GlideApp
 
 class ImageSelectAdapter constructor(context: Context, private val mSelectImages: MutableList<String>) : AppAdapter<String>(context) {

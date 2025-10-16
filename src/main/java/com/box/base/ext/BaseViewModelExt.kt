@@ -3,7 +3,7 @@ package com.box.base.ext
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.box.base.base.activity.BaseVmDbActivity
+import com.box.base.base.activity.BaseModVmDbActivity
 import com.box.base.base.fragment.BaseVmDbFragment
 import com.box.base.base.viewmodel.BaseViewModel
 import com.box.mod.modnetwork.ModAppException
@@ -39,7 +39,7 @@ import kotlin.coroutines.resumeWithException
 /**
  * [UI辅助] 在 Activity 中解析并处理 ResultState 的状态。
  */
-fun <T> BaseVmDbActivity<*, *>.parseState(
+fun <T> BaseModVmDbActivity<*, *>.parseState(
     resultState: ResultState<T>,
     onSuccess: (T?) -> Unit,
     onError: ((AppException) -> Unit)? = null,
@@ -64,9 +64,9 @@ fun <T> BaseVmDbActivity<*, *>.parseState(
 }
 
 /**
- * [UI辅助] 在 Activity 中解析并处理 ModResultState 的状态。
+ * 在 Activity 中解析并处理 ModResultState 的状态。
  */
-fun <T> BaseVmDbActivity<*, *>.parseModState(
+fun <T> BaseModVmDbActivity<*, *>.parseModState(
     resultState: ModResultState<T>,
     onSuccess: (T?) -> Unit,
     onError: ((ModAppException) -> Unit)? = null,
@@ -119,7 +119,7 @@ fun <T> BaseVmDbFragment<*, *>.parseModState(
  * [UI辅助] 在 Activity 中解析并处理 ModResultStateWithMsg 的状态。
  * 成功回调同时返回 data 和 message。
  */
-fun <T> BaseVmDbActivity<*, *>.parseModStateWithMsg(
+fun <T> BaseModVmDbActivity<*, *>.parseModStateWithMsg(
     resultState: ModResultStateWithMsg<T>,
     onSuccess: (data: T?, msg: String?) -> Unit,
     onError: ((ModAppException) -> Unit)? = null,

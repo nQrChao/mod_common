@@ -9,7 +9,7 @@
 
         <variable
             name="vm"
-            type="com.box.common.ui.activity.CommonActivityBrowserModel" />
+            type="com.box.common.ui.activity.CommonActivityBrowser.Model" />
 
         <variable
             name="click"

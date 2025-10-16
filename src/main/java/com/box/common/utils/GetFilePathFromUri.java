@@ -16,7 +16,7 @@ import android.text.TextUtils;
 
 import androidx.annotation.RequiresApi;
 
-import com.box.common.R;
+import com.box.com.R;
 import com.box.other.hjq.toast.Toaster;
 
 import java.io.BufferedInputStream;

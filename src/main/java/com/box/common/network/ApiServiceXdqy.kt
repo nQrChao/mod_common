@@ -17,9 +17,9 @@ import com.box.common.data.model.NewLoginInfo
 import com.box.common.data.model.RefreshAiTokenInfo
 import com.box.common.data.model.RefreshTokenInfo
 import com.box.common.data.model.UserUseCountResult
-import com.box.common.data.model.AppletsData
+import com.box.common.data.model.ProtocolInit
 import com.box.common.data.model.AppletsGoodBeanList
-import com.box.common.data.model.AppletsInfo
+import com.box.common.data.model.ModInfo
 import com.box.common.data.model.AppletsLeYuan
 import com.box.common.data.model.AppletsLunTan
 import com.box.common.data.model.AppletsRank
@@ -78,7 +78,7 @@ interface ApiServiceXdqy {
 
     @FormUrlEncoded
     @POST("App/index/api=market_data_appapi")
-    suspend fun postDataAppApi(@Field("data") data: String): ModApiResponse<AppletsData>
+    suspend fun postDataAppApi(@Field("data") data: String): ModApiResponse<ProtocolInit>
 
     @FormUrlEncoded
     @POST("/index.php/App/index")
@@ -149,7 +149,7 @@ interface ApiServiceXdqy {
 
     @FormUrlEncoded
     @POST("App/index/api=market_data_appapi")
-    suspend fun postInfoAppApi(@Field("data") data: String): ModApiResponse<AppletsInfo>
+    suspend fun postInfoAppApi(@Field("data") data: String): ModApiResponse<ModInfo>
 
     @FormUrlEncoded
     @POST("App/index/api=market_data_appapi")
@@ -215,7 +215,7 @@ interface ApiServiceXdqy {
 
     @Headers("Domain-Name: SERVER_URL")
     @POST("/api/getProgramRecommendList")
-    suspend fun getProgramRecommendList(): ModApiResponse<MutableList<AppletsInfo>>
+    suspend fun getProgramRecommendList(): ModApiResponse<MutableList<ModInfo>>
 
     @Headers("Domain-Name: SERVER_URL")
     @POST("api/v1/refreshtoken")

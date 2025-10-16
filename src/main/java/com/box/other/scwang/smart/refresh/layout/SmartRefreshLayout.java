@@ -49,7 +49,7 @@ import androidx.core.view.NestedScrollingParent;
 import androidx.core.view.NestedScrollingParentHelper;
 import androidx.core.view.ViewCompat;
 
-import com.box.common.R;
+import com.box.com;
 import com.box.other.blankj.utilcode.util.ScreenUtils;
 import com.box.other.scwang.smart.refresh.layout.api.RefreshComponent;
 import com.box.other.scwang.smart.refresh.layout.api.RefreshContent;

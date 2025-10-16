@@ -11,7 +11,7 @@ import android.widget.ImageView
 import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
 import androidx.core.content.ContextCompat
-import com.box.common.R
+import com.box.com.R
 import com.box.other.scwang.smart.refresh.header.material.CircleImageView
 import com.box.other.scwang.smart.refresh.header.material.MaterialProgressDrawable
 import com.box.other.scwang.smart.refresh.layout.api.RefreshHeader

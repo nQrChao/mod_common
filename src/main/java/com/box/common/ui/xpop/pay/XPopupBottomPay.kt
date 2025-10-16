@@ -10,9 +10,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.box.base.base.action.ClickAction
 import com.box.base.base.action.KeyboardAction
+import com.box.com.R
 import com.box.common.ui.layout.SettingBar
 import com.box.common.data.model.PayInfo
-import com.box.common.R
 import com.box.common.ui.xpop.pay.AdapterXPopupPay.Companion.ITEM_CHOICE
 import com.box.other.xpopup.core.BottomPopupView
 

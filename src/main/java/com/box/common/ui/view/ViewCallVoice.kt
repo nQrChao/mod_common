@@ -9,8 +9,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
 import com.box.base.base.action.ActivityAction
 import com.box.base.base.action.ClickAction
-import com.box.common.R
-import com.box.common.databinding.ViewCallVoiceBind
+import com.box.com.R
+import com.box.com.databinding.ViewCallVoiceBind
 
 
 class ViewCallVoice(context: Context?) : LinearLayout(context), ClickAction, ActivityAction {

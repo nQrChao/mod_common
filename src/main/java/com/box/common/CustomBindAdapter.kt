@@ -24,15 +24,14 @@ import com.box.common.glide.GlideApp
 import com.box.common.ui.layout.SettingBar
 import com.box.common.ui.view.SwitchButton
 import com.box.common.ui.widget.ViewLinearLayoutCommonTitleContent
-import com.box.common.utils.Common
 import com.box.common.utils.CustomCornersTransformation
 import com.box.other.blankj.utilcode.util.Logs
 import com.box.other.blankj.utilcode.util.ResourceUtils
+import com.box.other.blankj.utilcode.util.SizeUtils
 import com.box.other.blankj.utilcode.util.StringUtils
 import com.box.other.blankj.utilcode.util.TimeUtils
 import com.box.other.hjq.titlebar.TitleBar
 import com.box.com.R as RC
-
 
 object CustomBindAdapter {
     @BindingAdapter(value = ["checkChange"])
@@ -95,7 +94,7 @@ object CustomBindAdapter {
     fun scale(img: ImageView, sourceW: Int, sourceH: Int, baseDPW: Int) {
         var sourceW = sourceW
         var sourceH = sourceH
-        val pictureWidth: Int = Common.dp2px(baseDPW.toFloat())
+        val pictureWidth: Int = SizeUtils.dp2px(baseDPW.toFloat())
 
 
         val _trulyWidth: Int

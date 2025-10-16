@@ -11,7 +11,7 @@ import android.widget.RelativeLayout
 import androidx.databinding.BindingAdapter
 import androidx.databinding.InverseBindingAdapter
 import androidx.databinding.InverseBindingListener
-import com.box.common.R
+import com.box.com.R
 
 class ClearAbleEditText @JvmOverloads constructor(
     context: Context,

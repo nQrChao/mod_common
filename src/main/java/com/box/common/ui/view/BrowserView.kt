@@ -12,7 +12,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
 import com.box.base.base.action.ActivityAction
-import com.box.base.base.activity.BaseVmDbActivity
+import com.box.base.base.activity.BaseModVmDbActivity
 
 @Suppress("SetJavaScriptEnabled")
 class BrowserView  @JvmOverloads constructor(
@@ -172,7 +172,7 @@ class BrowserView  @JvmOverloads constructor(
             return true
         }
 
-        private fun openSystemFileChooser(activity: BaseVmDbActivity<*, *>, params: FileChooserParams, callback: ValueCallback<Array<Uri>>) {
+        private fun openSystemFileChooser(activity: BaseModVmDbActivity<*, *>, params: FileChooserParams, callback: ValueCallback<Array<Uri>>) {
             val intent: Intent = params.createIntent()
             val mimeTypes: Array<String>? = params.acceptTypes
             val multipleSelect: Boolean = params.mode == FileChooserParams.MODE_OPEN_MULTIPLE
