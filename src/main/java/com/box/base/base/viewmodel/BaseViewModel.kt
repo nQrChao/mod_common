@@ -11,6 +11,7 @@ import com.box.base.ext.modAppRequest
 import com.box.base.ext.modRequest
 import com.box.base.state.ModResultState
 import com.box.common.appContext
+import com.box.common.appViewModel
 import com.box.common.data.model.AppletsLunTan
 import com.box.common.data.model.RefundGames
 import com.box.common.getOAIDWithCoroutines
@@ -34,8 +35,6 @@ open class BaseViewModel(
     barHid: BarHide = BarHide.FLAG_SHOW_BAR,
     val isStatusBarEnabled: Boolean = true
 ) : ViewModel() {
-    protected val appViewModel by lazy { ModComService.get().getAppViewModel() }
-    protected val eventViewModel by lazy { ModComService.get().getEventViewModel() }
 
     val leftClick = BooleanLiveData()
     fun leftClick() {

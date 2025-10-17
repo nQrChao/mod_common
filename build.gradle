@@ -12,7 +12,7 @@ android {
     namespace "com.box.com"
     compileSdk 34
     defaultConfig {
-        minSdkVersion 24
+        minSdkVersion 21
         targetSdkVersion 31
         multiDexEnabled true
         consumerProguardFiles 'proguard-sdk.pro'
