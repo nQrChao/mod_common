@@ -21,7 +21,7 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.box.com;
+import com.box.com.R;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;

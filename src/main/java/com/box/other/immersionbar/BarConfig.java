@@ -20,7 +20,7 @@ import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
 
-import com.box.com;
+import com.box.com.R;
 
 class BarConfig {
 

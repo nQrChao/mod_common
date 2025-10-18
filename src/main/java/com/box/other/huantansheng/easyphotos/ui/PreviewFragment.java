@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.box.com;
+import com.box.com.R;
 import com.box.other.huantansheng.easyphotos.ui.adapter.PreviewPhotosFragmentAdapter;
 
 public class PreviewFragment extends Fragment implements PreviewPhotosFragmentAdapter.OnClickListener {

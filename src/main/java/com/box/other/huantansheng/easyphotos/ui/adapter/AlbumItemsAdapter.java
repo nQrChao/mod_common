@@ -11,7 +11,7 @@ import android.widget.TextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.box.com;
+import com.box.com.R;
 import com.box.other.huantansheng.easyphotos.models.ad.AdViewHolder;
 import com.box.other.huantansheng.easyphotos.models.album.entity.AlbumItem;
 import com.box.other.huantansheng.easyphotos.setting.Setting;

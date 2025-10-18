@@ -19,7 +19,7 @@ import android.widget.TextView
 import androidx.core.view.GestureDetectorCompat
 import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
-import com.box.com
+import com.box.com.R
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min

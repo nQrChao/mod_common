@@ -23,7 +23,7 @@ import androidx.core.view.NestedScrollingChild;
 import androidx.core.view.NestedScrollingParent;
 import androidx.viewpager.widget.ViewPager;
 
-import com.box.com;
+import com.box.com.R;
 import com.box.other.scwang.smart.refresh.layout.api.RefreshContent;
 import com.box.other.scwang.smart.refresh.layout.api.RefreshKernel;
 import com.box.other.scwang.smart.refresh.layout.listener.CoordinatorLayoutListener;

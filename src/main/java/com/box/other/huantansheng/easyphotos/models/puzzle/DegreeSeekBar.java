@@ -14,7 +14,7 @@ import android.view.View;
 
 import androidx.core.content.ContextCompat;
 
-import com.box.com;
+import com.box.com.R;
 
 public class DegreeSeekBar extends View {
     private static final String TAG = "DegreeSeekBar";

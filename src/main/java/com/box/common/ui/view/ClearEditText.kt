@@ -12,7 +12,7 @@ import android.view.View.OnFocusChangeListener
 import android.view.View.OnTouchListener
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
-import com.box.com
+import com.box.com.R
 
 @Suppress("ClickableViewAccessibility")
 class ClearEditText @JvmOverloads constructor(

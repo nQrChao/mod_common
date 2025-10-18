@@ -12,7 +12,7 @@ import androidx.transition.Fade;
 import androidx.transition.TransitionManager;
 import androidx.transition.TransitionSet;
 
-import com.box.com;
+import com.box.com.R;
 import com.box.other.xpopup.core.CenterPopupView;
 import com.box.other.xpopup.util.XPopupUtils;
 

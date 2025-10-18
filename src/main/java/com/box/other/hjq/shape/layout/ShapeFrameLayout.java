@@ -8,7 +8,7 @@ import android.widget.FrameLayout;
 import com.box.other.hjq.shape.builder.ShapeDrawableBuilder;
 import com.box.other.hjq.shape.config.IGetShapeDrawableBuilder;
 import com.box.other.hjq.shape.styleable.ShapeFrameLayoutStyleable;
-import com.box.com;
+import com.box.com.R;
 
 /**
  *    desc   : 支持直接定义 Shape 背景的 FrameLayout

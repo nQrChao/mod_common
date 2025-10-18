@@ -17,7 +17,7 @@ import android.view.View;
 
 import androidx.core.content.ContextCompat;
 
-import com.box.com;
+import com.box.com.R;
 import com.box.other.huantansheng.easyphotos.models.sticker.cache.StickerCache;
 import com.box.other.huantansheng.easyphotos.models.sticker.listener.OnStickerClickListener;
 

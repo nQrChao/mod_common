@@ -328,7 +328,7 @@ fun loadAssetFileAsString(context: Context, fileName: String): String {
 
 fun loadPicture(url: String, onError: (() -> Unit)? = null, onReady: (() -> Unit)? = null): RequestBuilder<*> {
 
-    return GlideApp.with(ImSDK.instance.getContext())
+    return GlideApp.with(appContext)
         .load(url)
         .listener(object : RequestListener<Drawable> {
             override fun onLoadFailed(
@@ -360,7 +360,7 @@ fun loadPicture(url: String, onError: (() -> Unit)? = null, onReady: (() -> Unit
 }
 
 fun loadPicture(pic: ModTradeGoodDetailBean.PicList, onError: (() -> Unit)? = null, onReady: (() -> Unit)? = null): RequestBuilder<*> {
-    return GlideApp.with(ImSDK.instance.getContext())
+    return GlideApp.with(appContext)
         .load(pic.pic_path)
         .listener(object : RequestListener<Drawable> {
             override fun onLoadFailed(
@@ -398,15 +398,15 @@ fun loadPicture(elem: PictureElem, onError: (() -> Unit)? = null, onReady: (() -
 
     if (TextUtils.isEmpty(url)) {
         elem.snapshotPicture?.let {
-            url = it.url + "?key=" + ImSDK.appViewModelInstance.userInfo.value
+            url = it.url + "?key=" + appViewModel.userInfo.value
         }
     }
     if (TextUtils.isEmpty(url)) {
         elem.sourcePicture?.let {
-            url = it.url + "?key=" + ImSDK.appViewModelInstance.userInfo.value
+            url = it.url + "?key=" + appViewModel.userInfo.value
         }
     }
-    return GlideApp.with(ImSDK.instance.getContext())
+    return GlideApp.with(appContext)
         .load(url)
         .listener(object : RequestListener<Drawable> {
             override fun onLoadFailed(
@@ -509,7 +509,7 @@ suspend fun getDetailedInformation(context: Context, type: Boolean): StringBuild
     if (type) {
         var oaid = appViewModel.oaid
         if (StringUtils.isEmpty(oaid)) {
-            ImSDK.instance.initCNOAID()
+            AppInit.initCNOAID()
             oaid = getOAIDWithCoroutines(appContext)
         }
         builder.append("\nOAID???：\t").append(oaid)

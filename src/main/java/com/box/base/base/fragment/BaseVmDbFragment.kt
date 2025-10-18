@@ -16,8 +16,6 @@ import com.box.base.base.action.KeyboardAction
 import com.box.base.base.viewmodel.BaseViewModel
 import com.box.base.network.NetState
 import com.box.base.network.NetworkStateManager
-import com.box.common.sdk.dismissLoadingExt
-import com.box.common.sdk.showLoadingExt
 import com.box.other.xpopup.XPopup
 import com.box.other.xpopup.impl.LoadingPopupView
 
@@ -29,7 +27,7 @@ abstract class BaseVmDbFragment<VM : BaseViewModel, DB : ViewDataBinding> : Frag
     protected lateinit var mActivity: AppCompatActivity
 
     private var isFirstLoad = true
-    private val handler by lazy { Handler(Looper.getMainLooper()) }
+    private val mHandler by lazy { Handler(Looper.getMainLooper()) }
 
     // 内置 LoadingDialog 管理
     private var loadingPopup: LoadingPopupView? = null
@@ -70,7 +68,7 @@ abstract class BaseVmDbFragment<VM : BaseViewModel, DB : ViewDataBinding> : Frag
     override fun onResume() {
         super.onResume()
         if (isFirstLoad) {
-            handler.postDelayed({
+            mHandler.postDelayed({
                 lazyLoadData()
             }, lazyLoadTime())
             isFirstLoad = false
@@ -92,12 +90,12 @@ abstract class BaseVmDbFragment<VM : BaseViewModel, DB : ViewDataBinding> : Frag
     }
 
     open fun showLoading(message: String) {
-        handler.removeCallbacks(showLoadingRunnable)
-        handler.postDelayed(showLoadingRunnable, 300)
+        mHandler.removeCallbacks(showLoadingRunnable)
+        mHandler.postDelayed(showLoadingRunnable, 300)
     }
 
     open fun dismissLoading() {
-        handler.removeCallbacks(showLoadingRunnable)
+        mHandler.removeCallbacks(showLoadingRunnable)
         loadingPopup?.dismiss()
         loadingPopup = null
     }
@@ -107,13 +105,13 @@ abstract class BaseVmDbFragment<VM : BaseViewModel, DB : ViewDataBinding> : Frag
     override fun onDestroyView() {
         super.onDestroyView()
         dismissLoading() // 确保 Fragment 视图销毁时弹窗关闭
-        handler.removeCallbacksAndMessages(null)
+        mHandler.removeCallbacksAndMessages(null)
         _binding = null
     }
 
 
     override fun onDestroy() {
         super.onDestroy()
-        handler.removeCallbacksAndMessages(null)
+        mHandler.removeCallbacksAndMessages(null)
     }
 }

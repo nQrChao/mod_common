@@ -7,7 +7,7 @@ import android.content.pm.PackageManager;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.box.common.BuildConfig;
+import com.box.com.BuildConfig;
 import com.box.common.network.Des;
 import com.box.common.utils.subpackage.Base64;
 import com.box.common.utils.subpackage.ChannelReaderUtil;

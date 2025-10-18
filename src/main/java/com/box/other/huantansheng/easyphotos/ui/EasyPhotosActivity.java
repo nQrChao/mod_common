@@ -45,7 +45,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SimpleItemAnimator;
 
-import com.box.com;
+import com.box.com.R;
 import com.box.other.huantansheng.easyphotos.EasyPhotos;
 import com.box.other.huantansheng.easyphotos.constant.Code;
 import com.box.other.huantansheng.easyphotos.constant.Key;

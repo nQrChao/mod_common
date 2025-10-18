@@ -20,7 +20,7 @@ import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 
-import com.box.com;
+import com.box.com.R;
 import com.box.other.scwang.smart.drawable.PaintDrawable;
 import com.box.other.scwang.smart.refresh.layout.api.RefreshComponent;
 import com.box.other.scwang.smart.refresh.layout.api.RefreshKernel;

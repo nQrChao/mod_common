@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
-import com.box.com;
+import com.box.com.R;
 import com.box.other.hjq.shape.builder.ShapeDrawableBuilder;
 import com.box.other.hjq.shape.config.IGetShapeDrawableBuilder;
 import com.box.other.hjq.shape.styleable.ShapeRelativeLayoutStyleable;

@@ -6,7 +6,7 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 
 import androidx.appcompat.widget.AppCompatRadioButton;
-import com.box.com;
+import com.box.com.R;
 import com.box.other.hjq.shape.builder.ButtonDrawableBuilder;
 import com.box.other.hjq.shape.builder.ShapeDrawableBuilder;
 import com.box.other.hjq.shape.builder.TextColorBuilder;

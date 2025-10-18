@@ -21,7 +21,7 @@ import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.core.view.ViewCompat;
 
-import com.box.com;
+import com.box.com.R;
 
 class BaseCircleIndicator extends LinearLayout {
 

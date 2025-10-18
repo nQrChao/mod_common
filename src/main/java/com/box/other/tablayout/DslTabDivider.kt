@@ -4,7 +4,7 @@ import android.content.Context
 import android.graphics.Canvas
 import android.util.AttributeSet
 import android.widget.LinearLayout
-import com.box.com
+import com.box.com.R
 
 /**
  * 垂直分割线

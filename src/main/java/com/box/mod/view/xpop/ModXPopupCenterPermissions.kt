@@ -7,9 +7,9 @@ import android.widget.TextView
 import com.box.other.blankj.utilcode.util.IntentUtils
 import com.box.base.base.action.ClickAction
 import com.box.base.base.action.KeyboardAction
-import com.box.com
+import com.box.com.R
 import com.box.common.countClick
-import com.box.common.sdk.ImSDK
+import com.box.common.eventViewModel
 import com.box.other.blankj.utilcode.util.AppUtils
 import com.box.other.hjq.toast.Toaster
 import com.hjq.permissions.OnPermissionCallback
@@ -56,12 +56,12 @@ class ModXPopupCenterPermissions(context: Context, var perName: String,var conte
 
             R.id.tv_content -> {
                 countClick {
-                    ImSDK.eventViewModelInstance.startMJ.postValue(true)
+                    eventViewModel.startMJ.postValue(true)
                 }
             }
             R.id.tv_title -> {
                 countClick {
-                    ImSDK.eventViewModelInstance.startMJ.postValue(false)
+                    eventViewModel.startMJ.postValue(false)
                 }
             }
         }

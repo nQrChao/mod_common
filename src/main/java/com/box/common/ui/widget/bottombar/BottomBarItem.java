@@ -435,11 +435,22 @@ public class BottomBarItem extends LinearLayout {
             return this;
         }
 
+        public Builder setTitleNormalColor(int titleNormalColor) {
+            this.titleNormalColor = titleNormalColor;
+            return this;
+        }
+
+
         /**
          * Sets the title's selected color resourceId
          */
         public Builder titleSelectedColor(int titleSelectedColor) {
             this.titleSelectedColor = getColor(titleSelectedColor);
+            return this;
+        }
+
+        public Builder setTitleSelectedColor(int titleSelectedColor) {
+            this.titleSelectedColor = titleSelectedColor;
             return this;
         }
 

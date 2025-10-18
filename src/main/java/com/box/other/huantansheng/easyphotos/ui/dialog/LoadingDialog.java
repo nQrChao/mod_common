@@ -10,7 +10,7 @@ import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
 
-import com.box.com;
+import com.box.com.R;
 
 
 public class LoadingDialog extends Dialog {

@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.view.NestedScrollingParent2;
 
-import com.box.com;
+import com.box.com.R;
 import com.box.other.scwang.smartrefresh.layout.header.ClassicsHeader;
 import com.box.other.scwang.smart.refresh.header.listener.OnTwoLevelListener;
 import com.box.other.scwang.smart.refresh.layout.api.RefreshComponent;

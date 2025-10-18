@@ -13,7 +13,7 @@ import android.text.TextUtils;
 import androidx.core.content.PermissionChecker;
 
 
-import com.box.com;
+import com.box.com.R;
 import com.box.other.huantansheng.easyphotos.constant.Type;
 import com.box.other.huantansheng.easyphotos.models.album.entity.Album;
 import com.box.other.huantansheng.easyphotos.models.album.entity.AlbumItem;

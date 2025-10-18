@@ -20,6 +20,7 @@ import androidx.annotation.ColorInt
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
+import com.box.com.R
 import com.box.other.hjq.titlebar.TitleBarSupport
 
 class SettingBar @JvmOverloads constructor(

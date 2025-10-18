@@ -6,8 +6,8 @@ import android.net.Uri;
 
 import androidx.core.content.FileProvider;
 
+import com.box.common.AppInit;
 import com.box.other.blankj.utilcode.util.AppUtils;
-import com.box.common.sdk.ImSDK;
 
 import java.io.File;
 
@@ -241,7 +241,7 @@ public class UtilOpenFile {
     public static Uri getUri(String UrlStr) {
         File file = new File(UrlStr);
         Uri uri;
-        uri = FileProvider.getUriForFile(ImSDK.Companion.getInstance().getContext(), AppUtils.getAppPackageName() + ".fileProvider", file);
+        uri = FileProvider.getUriForFile(AppInit.INSTANCE.getApplication(), AppUtils.getAppPackageName() + ".fileProvider", file);
         return uri;
     }
 

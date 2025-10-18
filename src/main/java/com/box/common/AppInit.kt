@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStore
 import androidx.lifecycle.ViewModelStoreOwner
 import com.box.com.R
-import com.box.common.BuildConfig
+import com.box.com.BuildConfig
 import com.box.common.event.AppViewModel
 import com.box.common.event.EventViewModel
 import com.box.common.event.imEvent

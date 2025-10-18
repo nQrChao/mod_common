@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 
 import androidx.appcompat.widget.AppCompatImageView;
 
-import com.box.com;
+import com.box.com.R;
 import com.box.other.hjq.shape.builder.ShapeDrawableBuilder;
 import com.box.other.hjq.shape.config.IGetShapeDrawableBuilder;
 import com.box.other.hjq.shape.styleable.ShapeImageViewStyleable;

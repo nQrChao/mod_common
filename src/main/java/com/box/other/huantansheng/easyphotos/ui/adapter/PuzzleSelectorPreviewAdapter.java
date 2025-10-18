@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.box.com;
+import com.box.com.R;
 import com.box.other.huantansheng.easyphotos.constant.Type;
 import com.box.other.huantansheng.easyphotos.models.album.entity.Photo;
 import com.box.other.huantansheng.easyphotos.setting.Setting;

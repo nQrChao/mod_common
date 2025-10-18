@@ -36,7 +36,7 @@ abstract class BaseModVmDbActivity<VM : BaseViewModel, DB : ViewDataBinding> : A
     private val immersionBar: ImmersionBar by lazy {
         createStatusBarConfig()
     }
-    private val titleBar: TitleBar? by lazy {
+    private val internalTitleBar: TitleBar? by lazy {
         obtainTitleBar(findViewById(Window.ID_ANDROID_CONTENT))
     }
 
@@ -82,11 +82,11 @@ abstract class BaseModVmDbActivity<VM : BaseViewModel, DB : ViewDataBinding> : A
      */
     private fun initBaseObservers() {
         // 标题栏相关监听
-        titleBar?.setOnTitleBarListener(this)
-        mViewModel.titleT.observe(this) { titleBar?.title = it }
-        mViewModel.leftTitleT.observe(this) { titleBar?.leftTitle = it }
-        mViewModel.rightTitleT.observe(this) { titleBar?.rightTitle = it }
-        mViewModel.titleLine.observe(this) { titleBar?.setLineVisible(it) }
+        internalTitleBar?.setOnTitleBarListener(this)
+        mViewModel.titleT.observe(this) { internalTitleBar?.title = it }
+        mViewModel.leftTitleT.observe(this) { internalTitleBar?.leftTitle = it }
+        mViewModel.rightTitleT.observe(this) { internalTitleBar?.rightTitle = it }
+        mViewModel.titleLine.observe(this) { internalTitleBar?.setLineVisible(it) }
         mViewModel.leftClick.observe(this) { if (it) finish() }
 
         // 加载弹窗监听
@@ -156,13 +156,13 @@ abstract class BaseModVmDbActivity<VM : BaseViewModel, DB : ViewDataBinding> : A
     }
 
     override fun setTitle(title: CharSequence?) {
-        titleBar?.title = title
+        internalTitleBar?.title = title
     }
 
     // --- TitleBarAction 实现 ---
 
     override fun getTitleBar(): TitleBar? {
-        return titleBar
+        return internalTitleBar
     }
 
     override fun onLeftClick(view: TitleBar) {
@@ -222,23 +222,23 @@ abstract class BaseModVmDbActivity<VM : BaseViewModel, DB : ViewDataBinding> : A
     protected open fun setupImmersionBar() {
         immersionBar.init()
         // 将标题栏与状态栏关联，解决状态栏与标题栏重叠问题
-        titleBar?.let { ImmersionBar.setTitleBar(this, it) }
+        internalTitleBar?.let { ImmersionBar.setTitleBar(this, it) }
     }
 
     // 辅助方法，用于快速设置状态栏颜色
     open fun setStatusBarWhite() {
         immersionBar.statusBarColor(R.color.white).init()
-        titleBar?.setBackgroundResource(R.color.white)
+        internalTitleBar?.setBackgroundResource(R.color.white)
     }
 
     open fun setStatusBarDark() {
         immersionBar.statusBarColor(R.color.dark_color).init()
-        titleBar?.setBackgroundResource(R.color.dark_color)
+        internalTitleBar?.setBackgroundResource(R.color.dark_color)
     }
 
     open fun setStatusBarTransparent() {
         immersionBar.statusBarColor(R.color.transparent).init()
-        titleBar?.setBackgroundResource(R.color.transparent)
+        internalTitleBar?.setBackgroundResource(R.color.transparent)
     }
 
     // --- 其他接口实现 ---

@@ -14,7 +14,7 @@ import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 
-import com.box.com;
+import com.box.com.R;
 import com.box.other.xpopup.animator.PopupAnimator;
 import com.box.other.xpopup.enums.PopupPosition;
 import com.box.other.xpopup.enums.PopupStatus;

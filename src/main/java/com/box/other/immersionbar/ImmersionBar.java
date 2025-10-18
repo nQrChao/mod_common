@@ -41,7 +41,7 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
 
-import com.box.com;
+import com.box.com.R;
 
 import java.util.HashMap;
 import java.util.Map;

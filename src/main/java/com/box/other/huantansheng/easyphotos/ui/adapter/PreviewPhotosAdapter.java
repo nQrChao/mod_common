@@ -16,7 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.core.content.FileProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.box.com;
+import com.box.com.R;
 import com.box.other.chrisbanes.photoview.OnScaleChangedListener;
 import com.box.other.chrisbanes.photoview.PhotoView;
 import com.box.other.subscaleview.ImageSource;

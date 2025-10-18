@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.box.com;
+import com.box.com.R;
 import com.box.other.xpopup.easyadapter.EasyAdapter;
 import com.box.other.xpopup.XPopup;
 import com.box.other.xpopup.core.BottomPopupView;

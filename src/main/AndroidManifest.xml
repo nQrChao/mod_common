@@ -117,16 +117,15 @@
             <meta-data
                 android:name="com.box.common.KtxInitializer"
                 android:value="androidx.startup" />
-
-            <meta-data
-                android:name="watchAppLife"
-                android:value="false" />
-
-            <meta-data
-                android:name="watchActivityLife"
-                android:value="false" />
-
         </provider>
+
+        <meta-data
+            android:name="watchAppLife"
+            android:value="false" />
+
+        <meta-data
+            android:name="watchActivityLife"
+            android:value="false" />
 
         <!--适配华为（huawei）刘海屏-->
         <meta-data

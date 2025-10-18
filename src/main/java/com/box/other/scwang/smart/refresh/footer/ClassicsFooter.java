@@ -10,7 +10,7 @@ import android.widget.RelativeLayout;
 import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 
-import com.box.com;
+import com.box.com.R;
 
 import com.box.other.scwang.smart.drawable.ProgressDrawable;
 import com.box.other.scwang.smart.refresh.classics.ArrowDrawable;

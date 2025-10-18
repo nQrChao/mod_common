@@ -2,7 +2,7 @@ package com.box.mod.game
 
 import android.webkit.JavascriptInterface
 import com.box.base.base.AppScope
-import com.box.common.Ktx
+import com.box.common.appContext
 import com.box.common.data.model.MarketInit
 import com.box.common.getOAIDWithCoroutines
 import com.box.other.blankj.utilcode.util.GsonUtils
@@ -104,7 +104,7 @@ class ModGameUnifiedJsBridge(
         Logs.e("${TAG}:getDeviceId:$msg")
         AppScope.applicationScope.launch {
             try {
-                val oaid = getOAIDWithCoroutines(Ktx.app)
+                val oaid = getOAIDWithCoroutines(appContext)
                 host.setOaid(oaid)
                 takeDeviceId(oaid) // 将获取到的ID传给H5
             } catch (e: Throwable) {

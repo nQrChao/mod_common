@@ -11,7 +11,7 @@ import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 
-import com.box.com;
+import com.box.com.R;
 import com.box.other.xpopup.XPopup;
 import com.box.other.xpopup.animator.PopupAnimator;
 import com.box.other.xpopup.animator.ScrollScaleAnimator;

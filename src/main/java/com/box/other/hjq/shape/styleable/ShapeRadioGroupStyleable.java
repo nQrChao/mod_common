@@ -1,7 +1,7 @@
 package com.box.other.hjq.shape.styleable;
 
 import com.box.other.hjq.shape.config.IShapeDrawableStyleable;
-import com.box.com;
+import com.box.com.R;
 /**
  *    desc   : RadioGroup 的 Shape 属性值
  */

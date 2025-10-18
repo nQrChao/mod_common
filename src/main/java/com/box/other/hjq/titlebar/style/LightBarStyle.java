@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import com.box.com;
+import com.box.com.R;
 import com.box.other.hjq.titlebar.SelectorDrawable;
 import com.box.other.hjq.titlebar.TitleBarSupport;
 

@@ -16,7 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.graphics.ColorUtils;
 
-import com.box.com;
+import com.box.com.R;
 import com.box.other.scwang.smart.refresh.layout.api.RefreshFooter;
 import com.box.other.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.box.other.scwang.smart.refresh.layout.constant.SpinnerStyle;

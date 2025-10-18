@@ -9,7 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 
-import com.box.com;
+import com.box.com.R;
 import com.box.common.utils.floattoast.XToast;
 
 import java.util.ArrayList;

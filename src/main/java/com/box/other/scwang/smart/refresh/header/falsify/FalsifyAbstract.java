@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
-import com.box.com;
+import com.box.com.R;
 import com.box.other.scwang.smart.refresh.layout.api.RefreshHeader;
 import com.box.other.scwang.smart.refresh.layout.api.RefreshKernel;
 import com.box.other.scwang.smart.refresh.layout.api.RefreshLayout;

@@ -1,7 +1,6 @@
 package com.box.common.utils
 
 import android.annotation.SuppressLint
-import com.box.com
 import com.box.com.R
 import com.box.other.blankj.utilcode.util.Logs
 import com.box.other.blankj.utilcode.util.StringUtils

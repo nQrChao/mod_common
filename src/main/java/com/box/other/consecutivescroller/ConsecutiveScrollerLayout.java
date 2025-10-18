@@ -32,7 +32,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.widget.EdgeEffectCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.box.com;
+import com.box.com.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;

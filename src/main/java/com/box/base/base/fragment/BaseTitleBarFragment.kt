@@ -13,10 +13,9 @@ import com.box.other.immersionbar.ImmersionBar
 abstract class BaseTitleBarFragment<VM : BaseViewModel, DB : ViewDataBinding> :
     BaseVmDbFragment<VM, DB>(), TitleBarAction {
 
-    private val titleBar: TitleBar? by lazy {
+    private val internalTitleBar: TitleBar? by lazy {
         obtainTitleBar(view as? ViewGroup)
     }
-
     private val immersionBar: ImmersionBar by lazy {
         createStatusBarConfig()
     }
@@ -28,10 +27,10 @@ abstract class BaseTitleBarFragment<VM : BaseViewModel, DB : ViewDataBinding> :
 
     override fun initBaseObservers() {
         super.initBaseObservers()
-        titleBar?.setOnTitleBarListener(this)
-        mViewModel.titleT.observe(viewLifecycleOwner) { titleBar?.title = it }
-        mViewModel.leftTitleT.observe(viewLifecycleOwner) { titleBar?.leftTitle = it }
-        mViewModel.rightTitleT.observe(viewLifecycleOwner) { titleBar?.rightTitle = it }
+        internalTitleBar?.setOnTitleBarListener(this)
+        mViewModel.titleT.observe(viewLifecycleOwner) { internalTitleBar?.title = it }
+        mViewModel.leftTitleT.observe(viewLifecycleOwner) { internalTitleBar?.leftTitle = it }
+        mViewModel.rightTitleT.observe(viewLifecycleOwner) { internalTitleBar?.rightTitle = it }
     }
 
     override fun onResume() {
@@ -47,7 +46,7 @@ abstract class BaseTitleBarFragment<VM : BaseViewModel, DB : ViewDataBinding> :
     private fun setupStatusBar() {
         if (isStatusBarEnabled()) {
             immersionBar.init()
-            titleBar?.let { ImmersionBar.setTitleBar(this, it) }
+            internalTitleBar?.let { ImmersionBar.setTitleBar(this, it) }
         }
     }
 
@@ -60,6 +59,6 @@ abstract class BaseTitleBarFragment<VM : BaseViewModel, DB : ViewDataBinding> :
     }
 
     override fun getTitleBar(): TitleBar? {
-        return titleBar
+        return internalTitleBar
     }
 }

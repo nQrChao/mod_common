@@ -18,7 +18,7 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.widget.ImageView;
 
-import com.box.com;
+import com.box.com.R;
 @SuppressLint("AppCompatCustomView")
 public class RoundImageView extends ImageView {
     /**

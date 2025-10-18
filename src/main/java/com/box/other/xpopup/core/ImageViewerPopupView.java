@@ -30,7 +30,7 @@ import androidx.transition.TransitionSet;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import com.box.com;
+import com.box.com.R;
 import com.box.other.xpopup.enums.PopupStatus;
 import com.box.other.xpopup.interfaces.OnDragChangeListener;
 import com.box.other.xpopup.interfaces.OnImageViewerLongPressListener;

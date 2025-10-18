@@ -7,7 +7,7 @@ import android.widget.CompoundButton;
 
 import androidx.core.widget.CompoundButtonCompat;
 
-import com.box.com;
+import com.box.com.R;
 import com.box.other.hjq.shape.config.ICompoundButtonStyleable;
 
 /**

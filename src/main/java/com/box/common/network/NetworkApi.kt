@@ -6,12 +6,12 @@ import android.text.TextUtils
 import com.box.base.network.BaseNetworkApi
 import com.box.base.network.CacheInterceptor
 import com.box.base.network.LogInterceptor
-import com.box.common.BuildConfig
+import com.box.com.BuildConfig
 import com.box.common.appContext
+import com.box.common.appViewModel
 import com.box.common.network.Des.signKey
 import com.box.common.network.Des.signKeyXdqy
 import com.box.common.sdk.ApkUtils
-import com.box.common.sdk.appViewModel
 import com.box.common.utils.MMKVUtil
 import com.box.other.blankj.utilcode.util.AppUtils
 import com.box.other.blankj.utilcode.util.DeviceUtils
