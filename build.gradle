@@ -97,9 +97,10 @@ dependencies {
     api "androidx.activity:activity-ktx:1.8.0"
     api libs.androidx.multidex
     api libs.androidx.core.ktx
+    api libs.androidx.fragment
     api libs.androidx.appcompat
-    api libs.androidx.recyclerview
     api libs.androidx.viewpager2
+    api libs.androidx.recyclerview
     api libs.androidx.navigation.ui.ktx
     api libs.androidx.navigation.fragment.ktx
     api libs.androidx.lifecycle.runtime.ktx
@@ -117,8 +118,9 @@ dependencies {
     kapt libs.databinding.compiler
     implementation libs.mmkv
 
-    api libs.xxPermissions
+    api libs.banner
     api libs.lottie
+    api libs.xxPermissions
     api libs.unpeek.livedata
     api libs.baseRecyclerViewAdapterHelper
     api libs.retrofit2.retrofit
@@ -128,6 +130,7 @@ dependencies {
     api libs.eventbus
     api libs.umeng.asms// 必选
     api libs.umeng.common// oaid
+    api libs.bannerviewpager
     api 'com.github.angcyo:DslAdapter:6.0.4'
     api 'com.github.lihangleo2:SmartViewPager2Adapter:3.1.3'
     api "com.google.dagger:hilt-android:2.48"

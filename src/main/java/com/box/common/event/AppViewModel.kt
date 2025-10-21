@@ -25,7 +25,6 @@ class AppViewModel : BaseViewModel() {
     var modMainTabConfig: UnPeekLiveData<MutableList<ModMainTabConfig>> =
         UnPeekLiveData.Builder<MutableList<ModMainTabConfig>>().setAllowNullValue(true).create()
 
-
     var appInfo: UnPeekLiveData<ProtocolInit> = UnPeekLiveData.Builder<ProtocolInit>().setAllowNullValue(true).create()
 
     var modUserInfo: UnPeekLiveData<ModUserInfoBean> =
