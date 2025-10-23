@@ -9,6 +9,8 @@ object MMKVConfig {
     var modInit: ModUserInfoBean? by mmkv("USER_INFO", null)
     // 授权状态，默认为 false
     var shouQuan: Boolean by mmkv("SHOU_QUAN", false)
+    //  设备OAID
+    var modelOAID: String by mmkv("model_OAID", "")
     // 存储授权状态，默认为 false
     var EXTERNAL_STORAGE: Boolean by mmkv("EXTERNAL_STORAGE", false)
     // 用户信息，默认为 null。可以是可空类型
