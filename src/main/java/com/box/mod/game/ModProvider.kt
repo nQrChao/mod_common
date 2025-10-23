@@ -4,9 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import androidx.activity.result.ActivityResultLauncher
-import com.box.common.event.AppViewModel
-import com.box.common.event.EventViewModel
-import com.box.other.blankj.utilcode.util.DeviceUtils
+import com.box.common.data.model.ModInfosBean
 
 /**
  * 应用服务提供者接口
@@ -74,7 +72,7 @@ interface ModProvider {
 
     fun startCurrencyFragment()
 
-    fun getDeviceInfo()
+    fun getModInfos(): ModInfosBean
 
 }
 

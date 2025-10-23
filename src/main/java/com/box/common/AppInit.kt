@@ -3,6 +3,7 @@ package com.box.common
 import android.app.Activity
 import android.app.Application
 import android.content.Context
+import android.os.Build
 import android.util.Log
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
@@ -11,6 +12,7 @@ import androidx.lifecycle.ViewModelStoreOwner
 import com.box.base.base.AppScope
 import com.box.com.R
 import com.box.com.BuildConfig
+import com.box.common.data.model.ModInfosBean
 import com.box.common.event.AppViewModel
 import com.box.common.event.EventViewModel
 import com.box.common.event.modEvent
@@ -26,6 +28,7 @@ import com.box.other.blankj.utilcode.util.ColorUtils
 import com.box.other.blankj.utilcode.util.DeviceUtils
 import com.box.other.blankj.utilcode.util.Logs
 import com.box.other.blankj.utilcode.util.PathUtils
+import com.box.other.cnoaid.oaid.DeviceIdentifier
 import com.box.other.hjq.toast.Toaster
 import com.box.other.scwang.smart.refresh.layout.SmartRefreshLayout
 import com.box.other.scwang.smart.refresh.layout.api.RefreshLayout
@@ -202,13 +205,14 @@ object AppInit {
         // ... 友盟初始化代码 ...
     }
 
-    fun getOAID(){
+    private fun getOAID(){
         AppScope.applicationScope.launch {
             try {
                 //getCommonParams()
                 val oaid = getOAIDWithCoroutines()
                 appViewModel.oaid = oaid
                 MMKVConfig.modelOAID = oaid
+                getModInfos()
                 Logs.e("getOAIDWithCoroutines---getOAID:$oaid")
             } catch (e: CancellationException) {
                 Logs.e("Coroutine was cancelled. This is why adActive() was not called.", e)
@@ -217,10 +221,38 @@ object AppInit {
                 Logs.e("getOAID process failed with a non-cancellation error", e)
             } finally {
                 withContext(NonCancellable) {
-                    postGetData()
                     Logs.d("Running final, non-cancellable actions.")
                 }
             }
         }
+    }
+
+    private fun getModInfos(): ModInfosBean{
+        val modInfosBean= ModInfosBean()
+        modInfosBean.deviceModel = DeviceUtils.getModel()
+        modInfosBean.deviceBRAND = Build.BRAND
+        modInfosBean.deviceVersionRelease = Build.VERSION.RELEASE
+        modInfosBean.deviceVersionSDKInt = Build.VERSION.SDK_INT.toString()
+        modInfosBean.deviceSupportedABIS0 = Build.SUPPORTED_ABIS[0]
+        modInfosBean.deviceIMEI = DeviceIdentifier.getIMEI(appContext) ?: ""
+        modInfosBean.deviceGUID = DeviceIdentifier.getGUID(application) ?: ""
+        modInfosBean.deviceCanvas = DeviceIdentifier.getCanvasFingerprint() ?: ""
+        modInfosBean.deviceUniqueDeviceId = DeviceUtils.getUniqueDeviceId()
+        modInfosBean.deviceAndroidID = DeviceUtils.getAndroidID()
+        modInfosBean.deviceMacAddress = DeviceUtils.getMacAddress()
+        modInfosBean.deviceManufacturer = DeviceUtils.getManufacturer()
+        modInfosBean.deviceSDKVersionName = DeviceUtils.getSDKVersionName()
+        modInfosBean.deviceSDKVersionCode = DeviceUtils.getSDKVersionCode().toString()
+        modInfosBean.devicePseudoID =DeviceIdentifier.getPseudoID()
+        modInfosBean.deviceOAID = MMKVConfig.modelOAID
+        modInfosBean. appName = AppUtils.getAppName()
+        modInfosBean. appPackageName  = AppUtils.getAppPackageName()
+        modInfosBean. appSignaturesSHA1 = AppUtils.getAppSignaturesSHA1()[0]
+        modInfosBean. modId = ""
+        modInfosBean. modName = ""
+        modInfosBean. modTencentId  = ""
+        modInfosBean. modAPIVersion = BuildConfig.API_VERSION
+        MMKVConfig.modInfos = modInfosBean
+        return modInfosBean
     }
 }
