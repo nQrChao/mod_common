@@ -2,7 +2,6 @@ package com.box.common.event
 
 import androidx.lifecycle.MutableLiveData
 import com.box.base.base.viewmodel.BaseViewModel
-import com.box.common.data.model.AIChat
 import com.box.common.data.model.ImError
 import com.box.common.data.model.ModInfo
 import com.kunminx.architecture.ui.callback.UnPeekLiveData
@@ -35,7 +34,6 @@ class EventViewModel : BaseViewModel() {
 
     val getAiChatCount = UnPeekLiveData<String>()
 
-    val updateAiChatFragment = UnPeekLiveData<AIChat>()
 
     val deleteAllAiChat = UnPeekLiveData<String>()
 

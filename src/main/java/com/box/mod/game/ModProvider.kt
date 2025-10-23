@@ -6,10 +6,11 @@ import android.content.Intent
 import androidx.activity.result.ActivityResultLauncher
 import com.box.common.event.AppViewModel
 import com.box.common.event.EventViewModel
+import com.box.other.blankj.utilcode.util.DeviceUtils
 
 /**
  * 应用服务提供者接口
- * ModActivityGameBrowser 依赖的所有 app 模块功能都在此声明
+ * ModActivity 依赖的所有 app 模块功能都在此声明
  */
 interface ModProvider {
 
@@ -72,6 +73,8 @@ interface ModProvider {
     fun openPay(activity: Activity, price: String)
 
     fun startCurrencyFragment()
+
+    fun getDeviceInfo()
 
 }
 

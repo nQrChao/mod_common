@@ -1,16 +1,16 @@
 package com.box.common
 
+import com.box.common.data.model.ModInfo
 import com.box.common.data.model.ModUserInfoBean
 import com.box.common.utils.mmkv.MMKVDelegate
 import com.box.common.utils.mmkv.mmkv
 
 object MMKVConfig {
     // 用户信息，默认为 null。可以是可空类型
-    var modInit: ModUserInfoBean? by mmkv("USER_INFO", null)
+    var modInit: ModInfo? by mmkv("mod_Init", null)
     // 授权状态，默认为 false
     var shouQuan: Boolean by mmkv("SHOU_QUAN", false)
-    //  设备OAID
-    var modelOAID: String by mmkv("model_OAID", "")
+
     // 存储授权状态，默认为 false
     var EXTERNAL_STORAGE: Boolean by mmkv("EXTERNAL_STORAGE", false)
     // 用户信息，默认为 null。可以是可空类型
@@ -19,6 +19,11 @@ object MMKVConfig {
     var launchCount: Int by mmkv("launch_count", 0)
     // 字体大小
     var fontScale: Float by mmkv("fontScale", 1.0f)
+
+    //  设备OAID
+    var modelOAID: String by mmkv("model_OAID", "")
+    //  用户token
+    var userToken: String by mmkv("user_Token", "")
 }
 
 

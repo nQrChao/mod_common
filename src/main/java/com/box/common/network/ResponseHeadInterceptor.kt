@@ -1,7 +1,7 @@
 package com.box.common.network
 
 import android.util.Log
-import com.box.common.utils.MMKVUtil
+import com.box.common.MMKVConfig
 import okhttp3.Interceptor
 import okhttp3.Response
 import java.io.IOException
@@ -23,7 +23,7 @@ class ResponseHeadInterceptor : Interceptor {
         val url = originalResponse.request.url.toString()
         if (url.contains("api/v1/accountslogin")) {
             originalResponse.headers["Jwt-Token"]?.let {
-                MMKVUtil.saveJwtToken(it)
+                MMKVConfig.userToken = it
             }
         }
         return originalResponse

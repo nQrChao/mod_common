@@ -7,12 +7,12 @@ import com.box.base.network.BaseNetworkApi
 import com.box.base.network.CacheInterceptor
 import com.box.base.network.LogInterceptor
 import com.box.com.BuildConfig
+import com.box.common.MMKVConfig
 import com.box.common.appContext
 import com.box.common.appViewModel
 import com.box.common.network.Des.signKey
 import com.box.common.network.Des.signKeyXdqy
 import com.box.common.sdk.ApkUtils
-import com.box.common.utils.MMKVUtil
 import com.box.other.blankj.utilcode.util.AppUtils
 import com.box.other.blankj.utilcode.util.DeviceUtils
 import com.box.other.blankj.utilcode.util.GsonUtils
@@ -140,7 +140,7 @@ open class NetworkApi : BaseNetworkApi() {
 
     // ========================= 已恢复并加固的工具方法 =========================
 
-    private fun MD5(s: String): String? {
+    private fun stringToMD5(s: String): String? {
         val hexDigits = charArrayOf(
             '0', '1', '2', '3', '4', '5', '6',
             '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'
@@ -167,7 +167,7 @@ open class NetworkApi : BaseNetworkApi() {
     }
 
     // **[代码优化]** 使用更高效和简洁的 Kotlin 写法。
-    private fun MapToString(map: Map<String, String>): String {
+    private fun mapToString(map: Map<String, String>): String {
         return map.entries.joinToString("&") { (k, v) -> "$k=$v" }
     }
 
@@ -190,9 +190,9 @@ open class NetworkApi : BaseNetworkApi() {
 
         // **[安全警告]** 将密钥硬编码在代码中(Des.signKey)是极不安全的做法，容易被反编译获取。
         // 建议：将密钥存储在 BuildConfig 中，并通过 local.properties 文件注入，或者存储在NDK的C/C++代码中以提高安全性。
-        val signString = MapToString(newParams) + signKey
+        val signString = mapToString(newParams) + signKey
         Logs.d("getSignKey", "String to be signed (before MD5): $signString")
-        return MD5(signString)
+        return stringToMD5(signString)
     }
 
     private fun getXdqySignKey(params: Map<String, String>): String? {
@@ -210,9 +210,9 @@ open class NetworkApi : BaseNetworkApi() {
                 return null
             }
         }
-        val signString = MapToString(newParams) + signKeyXdqy
+        val signString = mapToString(newParams) + signKeyXdqy
         Logs.d("getSignKey", "String to be signed (before MD5): $signString")
-        return MD5(signString)
+        return stringToMD5(signString)
     }
 
     /**
@@ -221,7 +221,7 @@ open class NetworkApi : BaseNetworkApi() {
     fun createModPostData(params: MutableMap<String, String>): String? {
         val targetParams = getModCommonMap(params)
         val mapData = try {
-            URLEncoder.encode(Des.encode(MapToString(targetParams)), "UTF-8")
+            URLEncoder.encode(Des.encode(mapToString(targetParams)), "UTF-8")
         } catch (e: Exception) {
             return null
         }
@@ -237,9 +237,9 @@ open class NetworkApi : BaseNetworkApi() {
 
     fun createXdqyPostData(params: MutableMap<String, String>): String? {
         val targetParams = getXdqyCommonMap(params)
-        Logs.d("createPostData", "Parameters with common data: ${MapToString(targetParams)}")
+        Logs.d("createPostData", "Parameters with common data: ${mapToString(targetParams)}")
         val mapData = try {
-            URLEncoder.encode(Des.encode(MapToString(targetParams)), "UTF-8")
+            URLEncoder.encode(Des.encode(mapToString(targetParams)), "UTF-8")
         } catch (e: Exception) {
             Logs.e("createPostData", "Failed to DES encode or URLEncode data.", e)
             return null
@@ -253,9 +253,9 @@ open class NetworkApi : BaseNetworkApi() {
      */
     fun createPostData(params: MutableMap<String, String>): String? {
         val targetParams = getCommonMap(params)
-        Logs.d("createPostData", "Parameters with common data: ${MapToString(targetParams)}")
+        Logs.d("createPostData", "Parameters with common data: ${mapToString(targetParams)}")
         val mapData = try {
-            URLEncoder.encode(Des.encode(MapToString(targetParams)), "UTF-8")
+            URLEncoder.encode(Des.encode(mapToString(targetParams)), "UTF-8")
         } catch (e: Exception) {
             // 捕获所有可能的异常，包括加密和URL编码。
             Logs.e("createPostData", "Failed to DES encode or URLEncode data.", e)
@@ -267,9 +267,9 @@ open class NetworkApi : BaseNetworkApi() {
 
     fun createInitPostData(params: MutableMap<String, String>): String? {
         val targetParams = getMarketInitCommonMap(params)
-        Logs.d("createPostData", "Parameters with common data: ${MapToString(targetParams)}")
+        Logs.d("createPostData", "Parameters with common data: ${mapToString(targetParams)}")
         val mapData = try {
-            URLEncoder.encode(Des.encode(MapToString(targetParams)), "UTF-8")
+            URLEncoder.encode(Des.encode(mapToString(targetParams)), "UTF-8")
         } catch (e: Exception) {
             // 捕获所有可能的异常，包括加密和URL编码。
             Logs.e("createPostData", "Failed to DES encode or URLEncode data.", e)
@@ -291,7 +291,7 @@ open class NetworkApi : BaseNetworkApi() {
             commonParams["appid"] = BuildConfig.APP_UPDATE_ID
             commonParams["api_version"] = BuildConfig.API_VERSION
             commonParams["packagename"] = Utils.getApp().packageName
-            if (!StringUtils.isEmpty(MMKVUtil.getShouQuan())) {
+            if (!MMKVConfig.shouQuan) {
                 commonParams["mac"] = DeviceUtils.getMacAddress()
                 commonParams["android_infos"] =
                     DeviceUtils.getModel() + "|" + Build.BRAND + "|" + Build.VERSION.RELEASE + "|" + Build.VERSION.SDK_INT.toString() + "|" + AppUtils.getAppName() + "|" + Build.SUPPORTED_ABIS[0] + "|" + AppUtils.getAppSignaturesSHA1()[0]
@@ -338,7 +338,7 @@ open class NetworkApi : BaseNetworkApi() {
             commonParams["app_id"] = BuildConfig.APP_UPDATE_ID
             commonParams["api_version"] = BuildConfig.API_VERSION
             commonParams["packagename"] = Utils.getApp().packageName
-            if (!StringUtils.isEmpty(MMKVUtil.getShouQuan())) {
+            if (MMKVConfig.shouQuan) {
                 commonParams["mac"] = DeviceUtils.getMacAddress()
                 commonParams["android_infos"] =
                     DeviceUtils.getModel() + "|" + Build.BRAND + "|" + Build.VERSION.RELEASE + "|" + Build.VERSION.SDK_INT.toString() + "|" + AppUtils.getAppName() + "|" + Build.SUPPORTED_ABIS[0] + "|" + AppUtils.getAppSignaturesSHA1()[0]
@@ -407,7 +407,9 @@ open class NetworkApi : BaseNetworkApi() {
         return arrayOf(
             @SuppressLint("CustomX509TrustManager")
             object : X509TrustManager {
+                @SuppressLint("TrustAllX509TrustManager")
                 override fun checkClientTrusted(chain: Array<X509Certificate?>?, authType: String?) {}
+                @SuppressLint("TrustAllX509TrustManager")
                 override fun checkServerTrusted(chain: Array<X509Certificate?>?, authType: String?) {}
                 override fun getAcceptedIssuers(): Array<X509Certificate> = arrayOf()
             }
@@ -420,7 +422,7 @@ open class NetworkApi : BaseNetworkApi() {
             trustManagerFactory.init(null as KeyStore?)
             val trustManagers = trustManagerFactory.trustManagers
             check(!(trustManagers.size != 1 || trustManagers[0] !is X509TrustManager)) {
-                "Unexpected default trust managers:" + Arrays.toString(trustManagers)
+                "Unexpected default trust managers:" + trustManagers.contentToString()
             }
             trustManagers[0] as X509TrustManager
         } catch (e: Exception) {

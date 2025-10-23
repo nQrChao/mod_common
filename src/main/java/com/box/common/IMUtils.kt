@@ -2,7 +2,6 @@ package com.box.common
 
 // 请确保在文件顶部导入这个函数
 import android.annotation.SuppressLint
-import android.app.Application
 import android.app.NotificationManager
 import android.content.ActivityNotFoundException
 import android.content.Context
@@ -48,7 +47,6 @@ import com.box.common.data.model.ModTradeGoodDetailBean
 import com.box.common.glide.GlideApp
 import com.box.common.sdk.ApkUtils
 import com.box.common.utils.GetFilePathFromUri
-import com.box.common.utils.MMKVUtil
 import com.box.common.utils.totp.PasscodeGenerator
 import com.box.other.blankj.utilcode.util.ActivityUtils
 import com.box.other.blankj.utilcode.util.AppUtils
@@ -86,13 +84,7 @@ import java.util.regex.Pattern
 import kotlin.coroutines.resume
 import kotlin.random.Random
 import kotlin.system.exitProcess
-
-
-fun getDraft(conversationID: String): String? {
-    return if (MMKVUtil.getConversationDraft(conversationID) == "") null else MMKVUtil.getConversationDraft(
-        conversationID
-    )
-}
+import androidx.core.net.toUri
 
 
 fun getUserShowName(remark: String?, nickName: String? = ""): String {
@@ -244,11 +236,11 @@ fun generateTotpNumber(key: String) {
 }
 
 @SuppressLint("SimpleDateFormat")
-fun verifyTOTP(Key: String?, otp: String?): Boolean {
+fun verifyTOTP(key: String?, otp: String?): Boolean {
     val currentDate = Date()
     val date = SimpleDateFormat("yyyyMMddhhmm")
     val dataString = date.format(currentDate)
-    return PasscodeGenerator.generateTotpNum(Key!!, dataString) == otp
+    return PasscodeGenerator.generateTotpNum(key!!, dataString) == otp
 }
 
 
@@ -297,7 +289,7 @@ fun loadAssetFileAsString(context: Context, fileName: String): String {
     // val fileContent = loadAssetFileAsString(this, "path/to/your/file_in_assets.txt")
     // val fileContent = loadAssetFileAsString(applicationContext, "path/to/your/file_in_assets.assets")
     var inputStream: InputStream? = null
-    var content = ""
+    var content: String
     try {
         // 获取 AssetManager
         val assetManager = context.assets
@@ -350,9 +342,7 @@ fun loadPicture(url: String, onError: (() -> Unit)? = null, onReady: (() -> Unit
                 dataSource: DataSource?,
                 isFirstResource: Boolean
             ): Boolean {
-                onReady?.let {
-                    it.invoke()
-                }
+                onReady?.invoke()
                 return false
             }
         }).placeholder(R.mipmap.ic_chat_photo)
@@ -369,9 +359,7 @@ fun loadPicture(pic: ModTradeGoodDetailBean.PicList, onError: (() -> Unit)? = nu
                 target: Target<Drawable>?,
                 isFirstResource: Boolean
             ): Boolean {
-                onError?.let {
-                    it.invoke()
-                }
+                onError?.invoke()
                 return onError != null
             }
 
@@ -382,9 +370,7 @@ fun loadPicture(pic: ModTradeGoodDetailBean.PicList, onError: (() -> Unit)? = nu
                 dataSource: DataSource?,
                 isFirstResource: Boolean
             ): Boolean {
-                onReady?.let {
-                    it.invoke()
-                }
+                onReady?.invoke()
                 return false
             }
         }).placeholder(R.mipmap.ic_chat_photo)
@@ -415,9 +401,7 @@ fun loadPicture(elem: PictureElem, onError: (() -> Unit)? = null, onReady: (() -
                 target: Target<Drawable>?,
                 isFirstResource: Boolean
             ): Boolean {
-                onError?.let {
-                    it.invoke()
-                }
+                onError?.invoke()
                 return onError != null
             }
 
@@ -428,9 +412,7 @@ fun loadPicture(elem: PictureElem, onError: (() -> Unit)? = null, onReady: (() -
                 dataSource: DataSource?,
                 isFirstResource: Boolean
             ): Boolean {
-                onReady?.let {
-                    it.invoke()
-                }
+                onReady?.invoke()
                 return false
             }
         }).placeholder(R.mipmap.ic_chat_photo)
@@ -440,13 +422,13 @@ fun loadPicture(elem: PictureElem, onError: (() -> Unit)? = null, onReady: (() -
 fun toBrowser(url: String) {
     val intent = Intent()
     intent.setAction("android.intent.action.VIEW")
-    val contentUrl = Uri.parse(url)
+    val contentUrl = url.toUri()
     intent.setData(contentUrl)
     ActivityUtils.startActivity(intent)
 }
 
 fun toWeChat(customerServiceUrl: String) {
-    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(customerServiceUrl))
+    val intent = Intent(Intent.ACTION_VIEW, customerServiceUrl.toUri())
     try {
         ActivityUtils.startActivity(intent)
     } catch (e: ActivityNotFoundException) {
@@ -510,7 +492,7 @@ suspend fun getDetailedInformation(context: Context, type: Boolean): StringBuild
         var oaid = appViewModel.oaid
         if (StringUtils.isEmpty(oaid)) {
             AppInit.initCNOAID()
-            oaid = getOAIDWithCoroutines(appContext)
+            oaid = getOAIDWithCoroutines()
         }
         builder.append("\nOAID???：\t").append(oaid)
             .append("\nGUID???：\t").append(DeviceIdentifier.getGUID(appContext) ?: "")
@@ -632,7 +614,7 @@ fun loadRoundImage(view: ImageView, resId: Int?, radiusInDp: Int) {
     GlideApp.with(appContext)
         .load(resId)
         .transform(CenterCrop(), RoundedCorners(radiusInPixels))
-        .error(com.box.com.R.drawable.status_error_ic)
+        .error(R.drawable.status_error_ic)
         .into(view)
 }
 
@@ -709,14 +691,14 @@ private sealed class OaidAttemptResult {
 /**
  * 获取 OAID 的方法 (协程)
  */
-suspend fun getOAIDWithCoroutines(application: Application): String {
+suspend fun getOAIDWithCoroutines(): String {
     val maxRetry = 3
     var retryCount = 0
     var oaid = ""
     while (retryCount < maxRetry) {
         Logs.e("getOAIDWithCoroutines", "正在进行第 ${retryCount + 1} 次尝试...")
         val result = withTimeoutOrNull(2000L) {
-            suspendCancellableCoroutine<OaidAttemptResult> { continuation ->
+            suspendCancellableCoroutine { continuation ->
                 val consumer = object : Consumer {
                     override fun onSuccess(result: IdentifierResult) {
                         oaid = result.oaid
@@ -797,11 +779,11 @@ suspend fun getOAIDWithCoroutines(application: Application): String {
     return oaid
 }
 
-private fun dealOAID(OAID: String): String {
-    return if (OAID.contains("00000000") || OAID.isNullOrEmpty()) {
+private fun dealOAID(thisOAID: String): String {
+    return if (thisOAID.contains("00000000") || thisOAID.isEmpty()) {
         DeviceIdentifier.getPseudoID()
     } else {
-        OAID
+        thisOAID
     }
 }
 

@@ -8,17 +8,17 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStore
 import androidx.lifecycle.ViewModelStoreOwner
+import com.box.base.base.AppScope
 import com.box.com.R
 import com.box.com.BuildConfig
 import com.box.common.event.AppViewModel
 import com.box.common.event.EventViewModel
-import com.box.common.event.imEvent
+import com.box.common.event.modEvent
 import com.box.common.sdk.SDKLifecycle
 import com.box.common.ui.activity.crash.CrashHandler
 import com.box.common.utils.DirUtils
-import com.box.common.utils.MMKVUtil
-import com.box.common.utils.loge
-import com.box.common.utils.logw
+import com.box.common.utils.logsE
+import com.box.common.utils.logsW
 import com.box.common.utils.other.MaterialHeader
 import com.box.common.utils.other.SmartBallPulseFooter
 import com.box.other.blankj.utilcode.util.AppUtils
@@ -34,7 +34,12 @@ import com.phantomvk.identifier.IdentifierManager
 import com.phantomvk.identifier.log.Logger
 import com.phantomvk.identifier.log.TraceLevel
 import com.tencent.mmkv.MMKV
+import kotlinx.coroutines.NonCancellable
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.util.concurrent.Executors
+import kotlin.coroutines.cancellation.CancellationException
+
 object AppViewModelProvider : ViewModelStoreOwner {
     override val viewModelStore = ViewModelStore()
     private val factory by lazy {
@@ -61,7 +66,7 @@ object AppInit {
 
     fun init(app: Application) {
         if (isInitialized) {
-            logw("App has already been initialized.")
+            logsW("App has already been initialized.")
             return
         }
         this.application = app
@@ -69,7 +74,7 @@ object AppInit {
 
         Toaster.init(application)
         CrashHandler.register(application)
-        MMKV.initialize(PathUtils.getInternalAppFilesPath() + "/immune")
+        MMKV.initialize(app,PathUtils.getInternalAppFilesPath() + "/immune")
 
         initViewModelsAndEvents()
         initUIComponents()
@@ -94,7 +99,7 @@ object AppInit {
             }
         }
         // 持久化存储
-        if (fontScale != MMKVUtil.getFontScale()) {
+        if (fontScale != MMKVConfig.fontScale) {
             MMKVConfig.fontScale = fontScale
         }
     }
@@ -103,7 +108,7 @@ object AppInit {
 
 
     private fun initViewModelsAndEvents() {
-        imEvent.init()
+        modEvent.init()
     }
 
     private fun initUIComponents() {
@@ -149,7 +154,7 @@ object AppInit {
 
     fun initCNOAID() {
         if (!isInitialized) {
-            loge("AppInit has not been initialized yet. Cannot init CN_OAID.")
+            logsE("AppInit has not been initialized yet. Cannot init CN_OAID.")
             return
         }
 
@@ -172,9 +177,12 @@ object AppInit {
             .setExecutor(Executors.newFixedThreadPool(1))
             .setLogger(logger)
             .build()
-
-        Log.i("AppInit", "CNOAID has been initialized on-demand after user consent.")
+        logsE("CNOAID has been initialized on-demand after user consent.")
+        getOAID()
     }
+
+
+
     private fun initLifecycleListener() {
         SDKLifecycle.instance.init(application)
         SDKLifecycle.instance.get()?.addListener(object : SDKLifecycle.Listener {
@@ -192,5 +200,27 @@ object AppInit {
 
     fun initUmeng(context: Context) {
         // ... 友盟初始化代码 ...
+    }
+
+    fun getOAID(){
+        AppScope.applicationScope.launch {
+            try {
+                //getCommonParams()
+                val oaid = getOAIDWithCoroutines()
+                appViewModel.oaid = oaid
+                MMKVConfig.modelOAID = oaid
+                Logs.e("getOAIDWithCoroutines---getOAID:$oaid")
+            } catch (e: CancellationException) {
+                Logs.e("Coroutine was cancelled. This is why adActive() was not called.", e)
+                throw e
+            } catch (e: Throwable) {
+                Logs.e("getOAID process failed with a non-cancellation error", e)
+            } finally {
+                withContext(NonCancellable) {
+                    postGetData()
+                    Logs.d("Running final, non-cancellable actions.")
+                }
+            }
+        }
     }
 }

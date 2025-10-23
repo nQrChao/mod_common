@@ -104,7 +104,7 @@ class ModGameUnifiedJsBridge(
         Logs.e("${TAG}:getDeviceId:$msg")
         AppScope.applicationScope.launch {
             try {
-                val oaid = getOAIDWithCoroutines(appContext)
+                val oaid = getOAIDWithCoroutines()
                 host.setOaid(oaid)
                 takeDeviceId(oaid) // 将获取到的ID传给H5
             } catch (e: Throwable) {

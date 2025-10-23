@@ -14,21 +14,19 @@ import com.box.base.network.ExceptionHandle
 import com.box.base.state.ModResultState
 import com.box.base.state.ModResultStateWithMsg
 import com.box.base.state.ResultState
-import com.box.base.state.paresException as paresModException // 为ModResultState的扩展重命名
-import com.box.base.state.paresResult as paresModResult     // 为ModResultState的扩展重命名
+import com.box.base.state.paresException as paresModException
+import com.box.base.state.paresResult as paresModResult
 import com.box.base.state.paresException
 import com.box.base.state.paresResult
 import com.box.base.utils.loge
+import com.box.common.MMKVConfig
 import com.box.common.getOAIDWithCoroutines
 import com.box.common.network.ModApiResponse
+import com.box.common.network.NetworkApi
 import com.box.common.network.apiService
 import com.box.common.network.initializeNetwork
-import com.box.common.utils.MMKVUtil
 import com.box.other.blankj.utilcode.util.Logs
-import com.google.gson.Gson
 import kotlinx.coroutines.*
-import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import okhttp3.RequestBody
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 
@@ -37,7 +35,7 @@ import kotlin.coroutines.resumeWithException
 // =================================================================================================
 
 /**
- * [UI辅助] 在 Activity 中解析并处理 ResultState 的状态。
+ * 在 Activity 中解析并处理 ResultState 的状态。
  */
 fun <T> BaseModVmDbActivity<*, *>.parseState(
     resultState: ResultState<T>,
@@ -116,7 +114,7 @@ fun <T> BaseVmDbFragment<*, *>.parseModState(
 
 
 /**
- * [UI辅助] 在 Activity 中解析并处理 ModResultStateWithMsg 的状态。
+ * 在 Activity 中解析并处理 ModResultStateWithMsg 的状态。
  * 成功回调同时返回 data 和 message。
  */
 fun <T> BaseModVmDbActivity<*, *>.parseModStateWithMsg(
@@ -169,7 +167,7 @@ fun <T> BaseVmDbFragment<*, *>.parseModStateWithMsg(
 
 
 /**
- * [新增方法] 专为 ModResultStateWithMsg 设计的通用网络请求方法。
+ * 专为 ModResultStateWithMsg 设计的通用网络请求方法。
  * 它可以在请求成功时，将 data 和 msg 同时返回。
  */
 fun <T> BaseViewModel.modRequestWithMsg(
@@ -212,7 +210,7 @@ fun <T> BaseViewModel.modRequestWithMsg(
 }
 
 /**
- * [UI辅助] 在 Fragment 中解析并处理 ResultState 的状态。
+ * 在 Fragment 中解析并处理 ResultState 的状态。
  */
 fun <T> BaseVmDbFragment<*, *>.parseState(
     resultState: ResultState<T>,
@@ -246,7 +244,7 @@ fun <T> BaseVmDbFragment<*, *>.parseState(
 // =================================================================================================
 
 /**
- * [兼容旧版] 通用的网络请求方法，结合 LiveData 和 ResultState 模式。
+ * 通用的网络请求方法，结合 LiveData 和 ResultState 模式。
  */
 fun <T> BaseViewModel.request(
     block: suspend () -> BaseResponse<T>,
@@ -269,7 +267,7 @@ fun <T> BaseViewModel.request(
 }
 
 /**
- * [兼容旧版] 回调式的网络请求方法。
+ * 回调式的网络请求方法。
  */
 fun <T> BaseViewModel.request(
     block: suspend () -> BaseResponse<T>,
@@ -396,10 +394,10 @@ private fun <T> BaseViewModel.safeLaunch(
     return viewModelScope.launch {
         try {
             onStart()
-            val result = runCatching {
+            val result = run {
                 initializeNetwork()
                 block()
-            }.getOrThrow()
+            }
             onSuccess(result)
         } catch (e: Throwable) {
             e.message?.loge()
@@ -421,10 +419,10 @@ private fun <T> BaseViewModel.modSafeLaunch(
     return viewModelScope.launch {
         try {
             onStart()
-            val result = runCatching {
+            val result = run {
                 initializeNetwork()
                 block()
-            }.getOrThrow()
+            }
             onSuccess(result)
         } catch (e: Throwable) {
             e.message?.loge()
@@ -463,49 +461,19 @@ private suspend fun <T> executeModResponse(response: ModApiResponse<T>): T? {
 // =================================================================================================
 
 /**
- * [已重构] 异步刷新用户Token。这是一个安全的、非阻塞的请求。
+ * 异步刷新用户Token。这是一个安全的、非阻塞的请求。
  */
 fun BaseViewModel.refreshToken() {
     request(
         block = {
-            val map = mutableMapOf<String, Any>()
-            map["token"] = MMKVUtil.getJwtRefreshToken() ?: ""
-            map["device"] = 21
-            val body = RequestBody.create(
-                "application/json; charset=utf-8".toMediaTypeOrNull(),
-                Gson().toJson(map)
-            )
-            apiService.refreshToken(body)
+            val map = mutableMapOf<String, String>()
+            map["token"] = MMKVConfig.userToken
+            map["device"] = "21"
+            apiService.refreshToken(NetworkApi.INSTANCE.createPostData(map)!!)
         },
         success = { data ->
             data?.let {
-                MMKVUtil.saveJwtToken(it.jwtToken)
-                MMKVUtil.saveJwtRefreshToken(it.jwtRefreshToken)
-            }
-        },
-        error = {
-        }
-    )
-}
-
-/**
- * [已重构] 异步刷新AI Token。
- */
-fun BaseViewModel.refreshAiToken() {
-    request(
-        block = {
-            val map = mutableMapOf<String, Any>()
-            map["refresh"] = MMKVUtil.getAiRefreshToken() ?: ""
-            map["device"] = 21
-            val body = RequestBody.create(
-                "application/json; charset=utf-8".toMediaTypeOrNull(),
-                Gson().toJson(map)
-            )
-            apiService.refreshAiToken(body)
-        },
-        success = { data ->
-            data?.let {
-                MMKVUtil.saveAiRefreshToken(it.refresh)
+                MMKVConfig.userToken = data
             }
         },
         error = {
@@ -709,7 +677,7 @@ class RequestFlow(private val viewModel: BaseViewModel) {
                         // 业务失败
                         val appException = ModAppException(
                             response.getResponseStatus(),
-                            response.getResponseMsg() ?: "Unknown error"
+                            response.getResponseMsg()
                         )
                         resultState.postValue(ModResultStateWithMsg.onAppError(appException))
                         // 以异常方式恢复协程，中断整个流程
@@ -757,7 +725,7 @@ fun BaseViewModel.getOAID(
 ): Job {
     return viewModelScope.launch {
         try {
-            val oaid = getOAIDWithCoroutines(application)
+            val oaid = getOAIDWithCoroutines()
             onSuccess(oaid)
         } catch (e: Throwable) {
             e.message?.loge()

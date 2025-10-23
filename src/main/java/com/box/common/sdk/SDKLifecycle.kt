@@ -6,8 +6,8 @@ import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import com.box.common.MMKVConfig
 import com.box.other.blankj.utilcode.util.Logs
-import com.box.common.utils.MMKVUtil
 import java.util.concurrent.CopyOnWriteArrayList
 
 class SDKLifecycle : Application.ActivityLifecycleCallbacks {
@@ -88,9 +88,9 @@ class SDKLifecycle : Application.ActivityLifecycleCallbacks {
        // Logs.e("online:onActivityCreated==${activity}")
         // 禁止字体大小随系统设置变化
         val resources = activity.resources
-        if (resources != null && resources.configuration.fontScale != MMKVUtil.getFontScale()) {
+        if (resources != null && resources.configuration.fontScale != MMKVConfig.fontScale) {
             val configuration = resources.configuration
-            configuration.fontScale = MMKVUtil.getFontScale()
+            configuration.fontScale = MMKVConfig.fontScale
             resources.updateConfiguration(configuration, resources.displayMetrics)
         }
         activityList.add(activity)

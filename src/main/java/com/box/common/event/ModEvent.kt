@@ -4,7 +4,7 @@ import android.app.Activity
 
 import com.box.other.blankj.utilcode.util.ColorUtils
 
-import com.box.common.event.ImEvent.Companion.Instance
+import com.box.common.event.ModEvent.Companion.Instance
 
 import com.box.com.R
 
@@ -14,14 +14,14 @@ import com.box.other.xpopup.enums.PopupAnimation
 import com.box.other.xpopup.interfaces.SimpleCallback
 
 
-val imEvent: ImEvent by lazy(LazyThreadSafetyMode.SYNCHRONIZED) {
+val modEvent: ModEvent by lazy(LazyThreadSafetyMode.SYNCHRONIZED) {
     Instance
 }
 
-class ImEvent {
+class ModEvent {
     companion object {
-        val Instance: ImEvent by lazy(LazyThreadSafetyMode.SYNCHRONIZED) {
-            ImEvent()
+        val Instance: ModEvent by lazy(LazyThreadSafetyMode.SYNCHRONIZED) {
+            ModEvent()
         }
         var callView: BasePopupView? = null
         var takeCallPopupView: BasePopupView? = null

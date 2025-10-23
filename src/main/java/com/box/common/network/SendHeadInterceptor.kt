@@ -1,7 +1,7 @@
 package com.box.common.network
 
+import com.box.common.MMKVConfig
 import com.box.common.appViewModel
-import com.box.common.utils.MMKVUtil
 import okhttp3.Interceptor
 import okhttp3.Response
 import java.io.IOException
@@ -26,11 +26,10 @@ class SendHeadInterceptor : Interceptor {
         }
 
         if(url.contains("userlogout")){
-            MMKVUtil.getJwtToken()?.let {
+            MMKVConfig.userToken.let {
                 builder.addHeader("Jwt-Token", it).build()
             }
         }
-
         //builder.addHeader("deviceID", UUID.randomUUID().toString()).build()
       //  builder.addHeader("isLogin", CacheUtil.isLogin().toString()).build()
         return chain.proceed(builder.build())

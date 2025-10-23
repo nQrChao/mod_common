@@ -17,14 +17,15 @@ import com.box.base.base.activity.BaseModVmDbActivity
 import com.box.base.base.viewmodel.BaseViewModel
 import com.box.base.callback.databind.BooleanObservableField
 import com.box.com.databinding.CommonActivityBrowserBinding
+import com.box.common.MMKVConfig
 import com.box.common.eventViewModel
 import com.box.common.getDetailedInformation
 import com.box.common.ui.layout.StatusLayout
 import com.box.common.ui.view.BrowserView
-import com.box.common.utils.MMKVUtil
-import com.box.common.utils.loge
+import com.box.common.utils.logsE
 import com.box.com.R as RC
 import com.box.other.blankj.utilcode.util.ActivityUtils
+import com.box.other.blankj.utilcode.util.GsonUtils
 import com.box.other.blankj.utilcode.util.Logs
 import com.box.other.blankj.utilcode.util.StringUtils
 import com.box.other.hjq.toast.Toaster
@@ -77,14 +78,14 @@ class CommonActivityBrowser : BaseModVmDbActivity<CommonActivityBrowser.Model, C
             mDataBinding.textView.visibility = View.VISIBLE
             eventViewModel.viewModelScope.launch {
                 val text = getDetailedInformation(this@CommonActivityBrowser, true)
-                val marketInitStr = MMKVUtil.getMarketInit()
-                if (!StringUtils.isEmpty(marketInitStr)) {
-                    text.append("\n\nMarketInit:${marketInitStr}")
-                    loge("marketInitStr:${text}")
+                val modInitStr = GsonUtils.toJson(MMKVConfig.modInit)
+                if (!StringUtils.isEmpty(modInitStr)) {
+                    text.append("\n\nMarketInit:${modInitStr}")
+                    logsE("marketInitStr:${text}")
                 } else {
                     text.append("\n\nNO-MarketInit")
                 }
-                loge( "text.toString():${text}")
+                logsE( "text.toString():${text}")
                 mDataBinding.textView.text = text.toString()
 
             }

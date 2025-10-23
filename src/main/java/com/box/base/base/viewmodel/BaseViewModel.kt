@@ -8,16 +8,14 @@ import com.box.base.callback.databind.BooleanObservableField
 import com.box.base.callback.livedata.BooleanLiveData
 import com.box.base.callback.livedata.event.EventLiveData
 import com.box.base.ext.modAppRequest
-import com.box.base.ext.modRequest
 import com.box.base.state.ModResultState
+import com.box.common.MMKVConfig
 import com.box.common.appContext
 import com.box.common.appViewModel
-import com.box.common.data.model.AppletsLunTan
 import com.box.common.data.model.RefundGames
 import com.box.common.getOAIDWithCoroutines
 import com.box.common.network.NetworkApi
 import com.box.common.network.apiService
-import com.box.mod.game.ModComService
 import com.box.other.blankj.utilcode.util.Logs
 import com.box.other.immersionbar.BarHide
 import kotlinx.coroutines.NonCancellable
@@ -49,7 +47,7 @@ open class BaseViewModel(
     val rightTitleT = MutableLiveData(rightTitle)
 
     val loadingChange: UiLoadingChange by lazy { UiLoadingChange() }
-    var adActiveResult = MutableLiveData<ModResultState<Any?>>()
+    var getDataResult = MutableLiveData<ModResultState<Any?>>()
     var refundGamesResult = MutableLiveData<ModResultState<RefundGames>>()
 
     inner class UiLoadingChange {
@@ -87,8 +85,9 @@ open class BaseViewModel(
         AppScope.applicationScope.launch {
             try {
                 //getCommonParams()
-                val oaid = getOAIDWithCoroutines(appContext)
+                val oaid = getOAIDWithCoroutines()
                 appViewModel.oaid = oaid
+                MMKVConfig.modelOAID = oaid
                 Logs.e("getOAIDWithCoroutines---getOAID:$oaid")
             } catch (e: CancellationException) {
                 Logs.e("Coroutine was cancelled. This is why adActive() was not called.", e)
@@ -97,48 +96,26 @@ open class BaseViewModel(
                 Logs.e("getOAID process failed with a non-cancellation error", e)
             } finally {
                 withContext(NonCancellable) {
-                    refundGames()
-                    refundGames()
-                    adActive()
+                    postGetData()
                     Logs.d("Running final, non-cancellable actions.")
                 }
             }
         }
     }
 
-    suspend fun adActive() {
+    suspend fun postGetData() {
         modAppRequest({
             val map = mutableMapOf<String, String>()
             map["api"] = "ad_active"
-            apiService.adActive(NetworkApi.INSTANCE.createPostData(map)!!)
-        }, adActiveResult)
+            apiService.getData(NetworkApi.INSTANCE.createPostData(map)!!)
+        }, getDataResult)
     }
 
-    suspend fun refundGames() {
-        modAppRequest({
-            val map = mutableMapOf<String, String>()
-            map["api"] = "refund_games"
-            apiService.refundGames(NetworkApi.INSTANCE.createPostData(map)!!)
-        }, refundGamesResult)
-    }
 
-    /*******************************zixun01************************************/
+    /*******************************************************************/
 
-    var postZixun01Result = MutableLiveData<ModResultState<AppletsLunTan>>()
-    fun postZixun01(dataId: String) {
-        modRequest({
-            val map = mutableMapOf<String, String>()
-            map["api"] = "market_data_appapi"
-            map["market_data_id"] = dataId
-            apiService.postInfoLunTanAppApi(NetworkApi.INSTANCE.createPostData(map)!!)
-        }, postZixun01Result)
-    }
 
-    fun getZixun01PicUrlList(appletsLunTanList: MutableList<AppletsLunTan>): MutableList<String> {
-        val picUrlList = appletsLunTanList.map { it.pic }.toMutableList()
-        return picUrlList
-    }
 
-    /*******************************zixun02************************************/
+    /*******************************************************************/
 
 }

@@ -3,15 +3,10 @@ package com.box.common.data.model
 import java.util.*
 
 open class CommEx :java.io.Serializable{
-    var key //Id
-            : String? = null
+    var key : String? = null
     var isSticky = false //是否是Sticky
-
-    var sortLetter //显示数据拼音的首字母
-            : String? = null
-
+    var sortLetter : String? = null
     var isSelect = false //是否被选中
-
     var isEnabled = true //是否可点击
 
     override fun equals(obj: Any?): Boolean {

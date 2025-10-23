@@ -2,7 +2,6 @@ package com.box.base.base.data
 
 import com.box.base.state.ModResultState
 import com.box.base.state.ModResultStateWithMsg
-import com.box.common.data.model.AppletsLunTan
 import com.box.common.data.model.RefundGames
 import com.box.common.network.ModApiResponse
 import com.box.common.network.NetworkApi
@@ -15,8 +14,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 /**
- * 【最终版】数据仓库层
- * - 封装所有数据源的调用，向上层提供干净的数据接口。
+ * - 封装数据源的调用，向上层提供干净的数据接口。
  * - 内置了统一的异常处理和线程切换。
  */
 @Singleton
@@ -79,26 +77,16 @@ class DataRepository @Inject constructor() {
     // --- 现在，所有的数据请求都变得极其简洁 ---
 
     suspend fun adActive(): ModResultState<Any?> {
-        val map = mutableMapOf("api" to "ad_active")
-        return safeApiCall { apiService.adActive(NetworkApi.INSTANCE.createPostData(map)!!) }
-    }
-
-    suspend fun refundGames(): ModResultState<RefundGames> {
-        val map = mutableMapOf("api" to "refund_games")
-        return safeApiCall { apiService.refundGames(NetworkApi.INSTANCE.createPostData(map)!!) }
-    }
-
-    suspend fun getZixun01(dataId: String): ModResultState<AppletsLunTan> {
-        val map = mutableMapOf("api" to "market_data_appapi", "market_data_id" to dataId)
-        return safeApiCall { apiService.postInfoLunTanAppApi(NetworkApi.INSTANCE.createPostData(map)!!) }
+        val map = mutableMapOf("api" to "getData")
+        return safeApiCall { apiService.getData(NetworkApi.INSTANCE.createPostData(map)!!) }
     }
 
     /**
      * 【新增】一个需要返回 msg 的请求示例
      */
-    suspend fun getZixun01WithMsg(dataId: String): ModResultStateWithMsg<AppletsLunTan> {
-        val map = mutableMapOf("api" to "market_data_appapi", "market_data_id" to dataId)
-        return safeApiCallWithMsg { apiService.postInfoLunTanAppApi(NetworkApi.INSTANCE.createPostData(map)!!) }
+    suspend fun getDataWithMsg(dataId: String): ModResultStateWithMsg<Any> {
+        val map = mutableMapOf("api" to "getDataWithMsg", "market_data_id" to dataId)
+        return safeApiCallWithMsg { apiService.getDataWithMsg(NetworkApi.INSTANCE.createPostData(map)!!) }
     }
 
 
