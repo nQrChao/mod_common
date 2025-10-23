@@ -31,23 +31,32 @@ def defaultConfig = [
 
 // key 是 MOD_SRC_DIR 的值，value 是需要覆盖默认值的配置项
 def channelConfigs = [
-        master                 : [
-                appName       : "BOXMOD",
+        master     : [
+                appName       : "BOXMOD_MASTER",
                 appVersionCode: 1,
                 appVersionName: "1.0.0",
-                appPackageName: "com.xdyx.modall",
-                appUpdateId   : "\"37\"",
-                defaultTGID   : "\"ga1001090\"",
-                signingName   : "youxifuliquan"
+                appPackageName: "com.box.modall",
+                appUpdateId   : "\"0\"",
+                defaultTGID   : "\"aa1000000\"",
+                signingName   : "box4319"
         ],
-        mod_all                 : [
-                appName       : "BOXMOD",
+        mod_all    : [
+                appName       : "BOXMOD_ALL",
                 appVersionCode: 1,
                 appVersionName: "1.0.0",
-                appPackageName: "com.xdyx.modall",
-                appUpdateId   : "\"37\"",
-                defaultTGID   : "\"ga1001090\"",
-                signingName   : "youxifuliquan"
+                appPackageName: "com.box.modall",
+                appUpdateId   : "\"0\"",
+                defaultTGID   : "\"aa1000000\"",
+                signingName   : "box4319"
+        ],
+        mod_box4319: [
+                appName       : "4319游戏盒",
+                appVersionCode: 1,
+                appVersionName: "1.0",
+                appPackageName: "com.lingdian.game4319",
+                appUpdateId   : "\"1\"",
+                defaultTGID   : "\"aa1000000\"",
+                signingName   : "box4319"
         ],
 ]
 
@@ -65,7 +74,6 @@ finalConfig.each { key, value ->
 }
 println "======================================================================="
 
-// 6. 将最终配置应用到项目中
 ext {
     LOG_ENABLE = log_enable
     OKHTTP_PROXY_ENABLE = false

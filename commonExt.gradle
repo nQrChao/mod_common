@@ -9,9 +9,12 @@ ext {
     MOD_ALL = [
             mod_all = "mod_all",
     ]
+    MOD_box4319 = [
+            mod_box4319 = "mod_box4319",
+    ]
 }
 
-ext.mod_name = master
+ext.mod_name = mod_box4319
 ext.mod_type = ""
 ext.log_enable = true
 
