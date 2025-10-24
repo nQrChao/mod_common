@@ -227,7 +227,7 @@ object AppInit {
         }
     }
 
-    private fun getModInfos(): ModInfosBean{
+    fun getModInfos(): ModInfosBean{
         val modInfosBean= ModInfosBean()
         modInfosBean.deviceModel = DeviceUtils.getModel()
         modInfosBean.deviceBRAND = Build.BRAND

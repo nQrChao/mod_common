@@ -17,7 +17,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/idp_295"
                 android:scaleType="fitCenter"
-                android:src="@drawable/mod_game_list_top_bg"
+                android:src="@drawable/a_rounded_top_white_10"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -58,7 +58,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="-50dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/mod_game_list_top_bg_top"
+            android:src="@drawable/a_rounded_bottom_white_10"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
