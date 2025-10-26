@@ -6,8 +6,6 @@ import android.view.View
 import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.bumptech.glide.request.RequestOptions
 import com.box.base.base.action.ClickAction
 import com.box.base.base.action.KeyboardAction
 import com.box.com.R
@@ -19,6 +17,8 @@ import com.box.common.ui.xpop.mod.adapter.ModGameListAAdapter
 import com.box.other.hjq.shape.drawable.ShapeDrawable
 import com.box.other.xpopup.core.BottomPopupView
 import com.box.other.xpopup.util.XPopupUtils
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 
 @SuppressLint("ViewConstructor")
 class ModXPopupBottomGameList(
@@ -72,7 +72,7 @@ class ModXPopupBottomGameList(
 
         val requestOptions = RequestOptions().transform(RoundedCorners(18)) // 设置圆角半径
         GlideApp.with(appContext)
-            .load(R.drawable.mod_game_list_top_bg)
+            .load(R.drawable.mod_bg_game_list_btn_a)
             .apply(requestOptions)
             .into(topPic!!)
 

@@ -14,12 +14,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.load.resource.bitmap.CenterCrop
-import com.bumptech.glide.load.resource.bitmap.CircleCrop
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.bumptech.glide.request.RequestOptions
 import com.box.common.glide.GlideApp
 import com.box.common.ui.layout.SettingBar
 import com.box.common.ui.view.SwitchButton
@@ -31,6 +25,12 @@ import com.box.other.blankj.utilcode.util.SizeUtils
 import com.box.other.blankj.utilcode.util.StringUtils
 import com.box.other.blankj.utilcode.util.TimeUtils
 import com.box.other.hjq.titlebar.TitleBar
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.bumptech.glide.request.RequestOptions
 import com.box.com.R as RC
 
 object CustomBindAdapter {
@@ -491,20 +491,6 @@ object CustomBindAdapter {
         }
     }
 
-    @BindingAdapter("loadImagePickMediaUri")
-    @JvmStatic
-    fun loadImagePickMediaUri(imageView: ImageView, uri: Uri?) {
-        if (uri != null) {
-            GlideApp.with(imageView.context)
-                .load(uri)
-                .transform(CenterCrop(), RoundedCorners(15))
-                .placeholder(RC.drawable.loading_spinner_rotate) // 加载中的占位图
-                .error(RC.drawable.image_error_ic)       // 加载失败的占位图
-                .into(imageView)
-        } else {
-            imageView.setImageResource(RC.drawable.mod_goods_plus)
-        }
-    }
 
     @BindingAdapter(value = ["loadRoundSizeImageGone"])
     @JvmStatic
@@ -711,24 +697,35 @@ object CustomBindAdapter {
         }
     }
 
-    @BindingAdapter("ratingScore", "starPosition", requireAll = true)
+    @BindingAdapter("loadImagePickMediaUri")
     @JvmStatic
-    fun setStarImage(imageView: ImageView, score: Float?, starPosition: Int) {
-        score?.let {
-            when {
-                it >= starPosition -> {
-                    imageView.setImageResource(RC.drawable.mod_game_detail_xing_all)
-                }
-
-                it >= starPosition - 0.5 -> {
-                    imageView.setImageResource(RC.drawable.mod_game_detail_xing_ban)
-                }
-
-                else -> {
-                    imageView.setImageResource(RC.drawable.mod_game_detail_xing_kong)
-                }
-            }
+    fun loadImagePickMediaUri(imageView: ImageView, uri: Uri?) {
+        if (uri != null) {
+            GlideApp.with(imageView.context)
+                .load(uri)
+                .transform(CenterCrop(), RoundedCorners(15))
+                .placeholder(RC.drawable.loading_spinner_rotate) // 加载中的占位图
+                .error(RC.drawable.image_error_ic)       // 加载失败的占位图
+                .into(imageView)
+        } else {
+            imageView.setImageResource(RC.drawable.mod_add_pic_2)
         }
+    }
+
+    @BindingAdapter(value = ["dynamicBackground"])
+    @JvmStatic
+    fun setDynamicBackground(view: View, position: Int) {
+        // 定义一个 drawable 资源数组，使用 intArrayOf()
+        val drawableResources = intArrayOf(
+            RC.drawable.bg_item_color_1,
+            RC.drawable.bg_item_color_2,
+            RC.drawable.bg_item_color_3,
+            RC.drawable.bg_item_color_4,
+        )
+        // 根据 position 对数组长度取模，得到对应的 drawable 索引
+        val drawableResId = drawableResources[position % drawableResources.size]
+        // 设置背景
+        view.setBackgroundResource(drawableResId)
     }
 
 

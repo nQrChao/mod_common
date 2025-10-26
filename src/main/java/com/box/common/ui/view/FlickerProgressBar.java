@@ -126,7 +126,7 @@ public class FlickerProgressBar extends View implements Runnable{
             progressColor = loadingColor;
         }
 
-        flikerBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.flicker);
+        flikerBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.toast_fuli_icon);
         flickerLeft = -flikerBitmap.getWidth();
 
         initPgBimap();

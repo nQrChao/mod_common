@@ -3,7 +3,6 @@ package com.box.common
 import com.box.common.data.model.ModInfo
 import com.box.common.data.model.ModInfosBean
 import com.box.common.data.model.ModUserInfoBean
-import com.box.common.utils.mmkv.MMKVDelegate
 import com.box.common.utils.mmkv.mmkv
 
 object MMKVConfig {
@@ -11,7 +10,8 @@ object MMKVConfig {
     var modInit: ModInfo? by mmkv("mod_Init", null)
     // 授权状态，默认为 false
     var shouQuan: Boolean by mmkv("SHOU_QUAN", false)
-
+    // 相册获取授权状态，默认为 false
+    var picPermissions: Boolean by mmkv("Pic_Permissions", false)
     // 存储授权状态，默认为 false
     var EXTERNAL_STORAGE: Boolean by mmkv("EXTERNAL_STORAGE", false)
     // 用户信息，默认为 null。可以是可空类型
