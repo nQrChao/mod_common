@@ -33,7 +33,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 import com.box.com.R as RC
 
-object CustomBindAdapter {
+object  CustomBindAdapter {
     @BindingAdapter(value = ["checkChange"])
     @JvmStatic
     fun checkChange(checkbox: CheckBox, listener: CompoundButton.OnCheckedChangeListener) {

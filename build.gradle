@@ -96,9 +96,9 @@ dependencies {
 
     //api 'com.tbuonomo:dotsindicator:4.3'
     //embed project(path: ':ModAAR:cloud')
-    api("androidx.startup:startup-runtime:1.2.0")
+    api libs.androidx.startup.runtime
     // 对于 Activity
-    api "androidx.activity:activity-ktx:1.8.0"
+    api libs.androidx.activity.ktx
     api libs.androidx.multidex
     api libs.androidx.core.ktx
     api libs.androidx.fragment
