@@ -3,15 +3,12 @@ package com.box.common.network
 import com.box.common.data.model.MarketInit
 import com.box.common.data.model.ProtocolInit
 
-import com.box.common.data.model.ModUserInfoBean
+import com.box.common.data.model.ModUserInfo
 import com.box.common.data.model.ModUserRealName
 
-import okhttp3.RequestBody
-import okhttp3.ResponseBody
 import retrofit2.Response
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
 import retrofit2.http.HEAD
 import retrofit2.http.Headers
 import retrofit2.http.POST
@@ -61,11 +58,11 @@ interface ApiService {
 
     @FormUrlEncoded
     @POST("/index.php/App/index")
-    suspend fun postAuthLogin(@Query(value = "api") api: String, @Field("data") data: String): ModApiResponse<ModUserInfoBean>
+    suspend fun postAuthLogin(@Query(value = "api") api: String, @Field("data") data: String): ModApiResponse<ModUserInfo>
 
     @FormUrlEncoded
     @POST("App/index?api=login")
-    suspend fun postUserInfo(@Field("data") data: String): ModApiResponse<ModUserInfoBean>
+    suspend fun postUserInfo(@Field("data") data: String): ModApiResponse<ModUserInfo>
 
     @FormUrlEncoded
     @POST("/index.php/App/index")

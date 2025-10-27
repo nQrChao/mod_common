@@ -17,5 +17,5 @@ class ProtocolInfo(
     val app_beianhao: String = "",
     val app_beianhao_url: String = "",
     val AUTH_LOGIN_SIGN_INFO: String = "",
-    val list_data: MutableList<ModInfo> = mutableListOf()
+    val list_data: MutableList<ModInitBean> = mutableListOf()
 ) : Serializable

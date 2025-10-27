@@ -1,34 +1,39 @@
 package com.box.common
 
 import com.box.com.BuildConfig
-import com.box.common.data.model.ModInfo
-import com.box.common.data.model.ModInfosBean
-import com.box.common.data.model.ModUserInfoBean
+import com.box.common.data.model.DeviceInfoBean
+import com.box.common.data.model.ModInitBean
+import com.box.common.data.model.ModInfoBean
+import com.box.common.data.model.ModUserInfo
 import com.box.common.utils.mmkv.mmkv
 
 object MMKVConfig {
+    //  设备OAID
+    var deviceOAID: String by mmkv("deviceOAID", "")
+    //  设备信息
+    var deviceInfos: DeviceInfoBean? by mmkv("deviceInfos", null)
     // 用户信息，默认为 null。可以是可空类型
-    var modInit: ModInfo? by mmkv("mod_Init", null)
+    var modInit: ModInitBean? by mmkv("modInit", null)
+    //  马甲信息
+    var modInfos: ModInfoBean? by mmkv("modInfos", null)
+    //  设备vasId
+    var modVasId: String by mmkv("modVasId", BuildConfig.DEFAULE_CHANNEL_VASID)
+    //  用户token
+    var userToken: String by mmkv("userToken", "")
+    // 用户信息，默认为 null。可以是可空类型
+    var userInfo: ModUserInfo? by mmkv("userInfo", null)
     // 授权状态，默认为 false
-    var shouQuan: Boolean by mmkv("SHOU_QUAN", false)
+    var permissionsUser: Boolean by mmkv("permissionsUser", false)
     // 相册获取授权状态，默认为 false
-    var picPermissions: Boolean by mmkv("Pic_Permissions", false)
+    var permissionsAlbum: Boolean by mmkv("permissionsAlbum", false)
     // 存储授权状态，默认为 false
-    var EXTERNAL_STORAGE: Boolean by mmkv("EXTERNAL_STORAGE", false)
-    // 用户信息，默认为 null。可以是可空类型
-    var userInfo: ModUserInfoBean? by mmkv("USER_INFO", null)
+    var permissionsStorage: Boolean by mmkv(" permissionsStorage", false)
     // 启动次数
     var launchCount: Int by mmkv("launch_count", 0)
     // 字体大小
     var fontScale: Float by mmkv("fontScale", 1.0f)
-    //  马甲信息
-    var modInfos: ModInfosBean? by mmkv("modInfos", null)
-    //  设备vasId
-    var modVasId: String by mmkv("mod_VasId", BuildConfig.DEFAULE_CHANNEL_VASID)
-    //  设备OAID
-    var modelOAID: String by mmkv("model_OAID", "")
-    //  用户token
-    var userToken: String by mmkv("user_Token", "")
+
+
 }
 
 

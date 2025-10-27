@@ -10,7 +10,6 @@ import com.box.base.callback.livedata.event.EventLiveData
 import com.box.base.ext.modAppRequest
 import com.box.base.state.ModResultState
 import com.box.common.MMKVConfig
-import com.box.common.appContext
 import com.box.common.appViewModel
 import com.box.common.data.model.RefundGames
 import com.box.common.getOAIDWithCoroutines
@@ -87,7 +86,7 @@ open class BaseViewModel(
                 //getCommonParams()
                 val oaid = getOAIDWithCoroutines()
                 appViewModel.oaid = oaid
-                MMKVConfig.modelOAID = oaid
+                MMKVConfig.deviceOAID = oaid
                 Logs.e("getOAIDWithCoroutines---getOAID:$oaid")
             } catch (e: CancellationException) {
                 Logs.e("Coroutine was cancelled. This is why adActive() was not called.", e)

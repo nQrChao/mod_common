@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelStoreOwner
 import com.box.base.base.AppScope
 import com.box.com.R
 import com.box.com.BuildConfig
-import com.box.common.data.model.ModInfosBean
+import com.box.common.data.model.ModInfoBean
 import com.box.common.event.AppViewModel
 import com.box.common.event.EventViewModel
 import com.box.common.event.modEvent
@@ -208,7 +208,7 @@ object AppInit {
                 //getCommonParams()
                 val oaid = getOAIDWithCoroutines()
                 appViewModel.oaid = oaid
-                MMKVConfig.modelOAID = oaid
+                MMKVConfig.deviceOAID = oaid
                 getModInfos()
                 Logs.e("getOAIDWithCoroutines---getOAID:$oaid")
             } catch (e: CancellationException) {
@@ -224,36 +224,36 @@ object AppInit {
         }
     }
 
-    fun getModInfos(): ModInfosBean {
-        val modInfosBean = ModInfosBean()
-        modInfosBean.deviceModel = DeviceUtils.getModel()
-        modInfosBean.deviceBRAND = Build.BRAND
-        modInfosBean.deviceVersionRelease = Build.VERSION.RELEASE
-        modInfosBean.deviceVersionSDKInt = Build.VERSION.SDK_INT.toString()
-        modInfosBean.deviceSupportedABIS0 = Build.SUPPORTED_ABIS[0]
-        modInfosBean.deviceIMEI = DeviceIdentifier.getIMEI(appContext) ?: ""
-        modInfosBean.deviceGUID = DeviceIdentifier.getGUID(application) ?: ""
-        modInfosBean.deviceCanvas = DeviceIdentifier.getCanvasFingerprint() ?: ""
-        modInfosBean.deviceUniqueDeviceId = DeviceUtils.getUniqueDeviceId()
-        modInfosBean.deviceAndroidID = DeviceUtils.getAndroidID()
-        modInfosBean.deviceMacAddress = DeviceUtils.getMacAddress()
-        modInfosBean.deviceManufacturer = DeviceUtils.getManufacturer()
-        modInfosBean.deviceSDKVersionName = DeviceUtils.getSDKVersionName()
-        modInfosBean.deviceSDKVersionCode = DeviceUtils.getSDKVersionCode().toString()
-        modInfosBean.devicePseudoID = DeviceIdentifier.getPseudoID()
-        modInfosBean.deviceOAID = MMKVConfig.modelOAID
-        modInfosBean.appName = AppUtils.getAppName()
-        modInfosBean.appPackageName = AppUtils.getAppPackageName()
-        modInfosBean.appVersionName = AppUtils.getAppVersionName()
-        modInfosBean.appVersionCode = AppUtils.getAppVersionCode().toString()
-        modInfosBean.appSignaturesMD5 = AppUtils.getAppSignaturesMD5()[0]
-        modInfosBean.appSignaturesSHA1 = AppUtils.getAppSignaturesSHA1()[0]
-        modInfosBean.modId = ""
-        modInfosBean.modName = ""
-        modInfosBean.modVasDollyId = ""
-        modInfosBean.modAPIVersion = BuildConfig.API_VERSION
-        modInfosBean.systemId = "1"
-        MMKVConfig.modInfos = modInfosBean
-        return modInfosBean
+    fun getModInfos(): ModInfoBean {
+        val modInfoBean = ModInfoBean()
+        modInfoBean.deviceModel = DeviceUtils.getModel()
+        modInfoBean.deviceBRAND = Build.BRAND
+        modInfoBean.deviceVersionRelease = Build.VERSION.RELEASE
+        modInfoBean.deviceVersionSDKInt = Build.VERSION.SDK_INT.toString()
+        modInfoBean.deviceSupportedABIS0 = Build.SUPPORTED_ABIS[0]
+        modInfoBean.deviceIMEI = DeviceIdentifier.getIMEI(appContext) ?: ""
+        modInfoBean.deviceGUID = DeviceIdentifier.getGUID(application) ?: ""
+        modInfoBean.deviceCanvas = DeviceIdentifier.getCanvasFingerprint() ?: ""
+        modInfoBean.deviceUniqueDeviceId = DeviceUtils.getUniqueDeviceId()
+        modInfoBean.deviceAndroidID = DeviceUtils.getAndroidID()
+        modInfoBean.deviceMacAddress = DeviceUtils.getMacAddress()
+        modInfoBean.deviceManufacturer = DeviceUtils.getManufacturer()
+        modInfoBean.deviceSDKVersionName = DeviceUtils.getSDKVersionName()
+        modInfoBean.deviceSDKVersionCode = DeviceUtils.getSDKVersionCode().toString()
+        modInfoBean.devicePseudoID = DeviceIdentifier.getPseudoID()
+        modInfoBean.deviceOAID = MMKVConfig.deviceOAID
+        modInfoBean.appName = AppUtils.getAppName()
+        modInfoBean.appPackageName = AppUtils.getAppPackageName()
+        modInfoBean.appVersionName = AppUtils.getAppVersionName()
+        modInfoBean.appVersionCode = AppUtils.getAppVersionCode().toString()
+        modInfoBean.appSignaturesMD5 = AppUtils.getAppSignaturesMD5()[0]
+        modInfoBean.appSignaturesSHA1 = AppUtils.getAppSignaturesSHA1()[0]
+        modInfoBean.modId = ""
+        modInfoBean.modName = ""
+        modInfoBean.modVasDollyId = ""
+        modInfoBean.modAPIVersion = BuildConfig.API_VERSION
+        modInfoBean.systemId = "1"
+        MMKVConfig.modInfos = modInfoBean
+        return modInfoBean
     }
 }

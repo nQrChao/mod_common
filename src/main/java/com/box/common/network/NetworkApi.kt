@@ -279,7 +279,7 @@ open class NetworkApi : BaseNetworkApi() {
         commonParams["modAPIVersion"] = BuildConfig.API_VERSION
         commonParams["systemId"] = "1"
         if (MMKVConfig.modInfos != null) {
-            commonParams["deviceOAID"] = MMKVConfig.modelOAID
+            commonParams["deviceOAID"] = MMKVConfig.deviceOAID
             commonParams["deviceModel"] = DeviceUtils.getModel()
             commonParams["deviceBRAND"] = Build.BRAND
             commonParams["deviceVersionRelease"]= Build.VERSION.RELEASE

@@ -2,7 +2,7 @@ package com.box.common.data.model
 
 import java.io.Serializable
 
-data class ModInfosBean(
+data class DeviceInfoBean(
     var deviceModel: String = "",
     var deviceBRAND: String = "",
     var deviceVersionRelease: String = "",
@@ -15,21 +15,11 @@ data class ModInfosBean(
     var deviceUniqueDeviceId: String = "",
     var deviceAndroidID: String = "",
     var deviceMacAddress: String = "",
-    var modAPIVersion: String = "",
     var deviceManufacturer: String = "",
     var deviceSDKVersionName: String = "",
     var deviceSDKVersionCode: String = "",
     var devicePseudoID: String = "",
-    var appName: String = "",
-    var appPackageName : String = "",
-    var appVersionName : String = "",
-    var appVersionCode : String = "",
-    var modVasDollyId : String = "",
-    var appSignaturesMD5: String = "",
-    var appSignaturesSHA1: String = "",
-    var modId: String = "",
-    var modName: String = "",
-    var systemId: String = "",
+
 ) :Serializable {
 }
 
