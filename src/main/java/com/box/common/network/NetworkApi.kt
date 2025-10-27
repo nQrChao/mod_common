@@ -274,9 +274,9 @@ open class NetworkApi : BaseNetworkApi() {
         commonParams["appSignaturesMD5"] = AppUtils.getAppSignaturesMD5()[0]
         commonParams["appSignaturesSHA1"] = AppUtils.getAppSignaturesSHA1()[0]
         commonParams["modId"] = BuildConfig.MOD_ID
-        commonParams["modName"] = BuildConfig.MOD_ID
-        commonParams["modVasDollyId"] = MMKVConfig.modVasId
-        commonParams["modAPIVersion"] = BuildConfig.API_VERSION
+        commonParams["modName"] = BuildConfig.MOD_NAME
+        commonParams["modVasDollyId"] = BuildConfig.MOD_VASID
+        commonParams["modAPIVersion"] = BuildConfig.MOD_API_VERSION
         commonParams["systemId"] = "1"
         if (MMKVConfig.modInfos != null) {
             commonParams["deviceOAID"] = MMKVConfig.deviceOAID
@@ -314,9 +314,9 @@ open class NetworkApi : BaseNetworkApi() {
         commonParams["appSignaturesMD5"] = AppUtils.getAppSignaturesMD5()[0]
         commonParams["appSignaturesSHA1"] = AppUtils.getAppSignaturesSHA1()[0]
         commonParams["modId"] = BuildConfig.MOD_ID
-        commonParams["modName"] = BuildConfig.MOD_ID
-        commonParams["modVasDollyId"] = MMKVConfig.modVasId
-        commonParams["modAPIVersion"] = BuildConfig.API_VERSION
+        commonParams["modName"] = BuildConfig.MOD_NAME
+        commonParams["modVasDollyId"] =  BuildConfig.MOD_VASID
+        commonParams["modAPIVersion"] = BuildConfig.MOD_API_VERSION
         commonParams["systemId"] = "1"
         commonParams["sign"] = getSignKey(commonParams) ?: ""
         Logs.e("getCommonMap：${GsonUtils.toJson(commonParams)}")

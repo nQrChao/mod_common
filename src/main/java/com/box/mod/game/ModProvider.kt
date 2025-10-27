@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import androidx.activity.result.ActivityResultLauncher
-import com.box.common.data.model.ModInfoBean
 
 /**
  * 应用服务提供者接口
@@ -72,7 +71,6 @@ interface ModProvider {
 
     fun startCurrencyFragment()
 
-    fun getModInfos(): ModInfoBean
 
 }
 

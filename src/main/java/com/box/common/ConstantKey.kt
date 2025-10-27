@@ -17,7 +17,7 @@ object MMKVConfig {
     //  马甲信息
     var modInfos: ModInfoBean? by mmkv("modInfos", null)
     //  设备vasId
-    var modVasId: String by mmkv("modVasId", BuildConfig.DEFAULE_CHANNEL_VASID)
+    var modVasId: String by mmkv("modVasId", BuildConfig.MOD_VASID)
     //  用户token
     var userToken: String by mmkv("userToken", "")
     // 用户信息，默认为 null。可以是可空类型

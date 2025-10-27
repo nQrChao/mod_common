@@ -30,18 +30,10 @@ import android.webkit.WebSettings
 import android.widget.ImageView
 import androidx.annotation.ColorRes
 import androidx.core.app.NotificationManagerCompat
-import com.bumptech.glide.Glide
-import com.bumptech.glide.RequestBuilder
-import com.bumptech.glide.load.DataSource
-import com.bumptech.glide.load.engine.GlideException
-import com.bumptech.glide.load.resource.bitmap.CenterCrop
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.bumptech.glide.request.RequestListener
-import com.bumptech.glide.request.target.SimpleTarget
-import com.bumptech.glide.request.target.Target
-import com.bumptech.glide.request.transition.Transition
+import androidx.core.net.toUri
 import com.box.com.BuildConfig
 import com.box.com.R
+import com.box.common.AppInit.application
 import com.box.common.data.PictureElem
 import com.box.common.data.model.ModTradeGoodDetailBean
 import com.box.common.glide.GlideApp
@@ -64,6 +56,16 @@ import com.box.other.cnoaid.oaid.DeviceIdentifier
 import com.box.other.cnoaid.oaid.IGetter
 import com.box.other.hjq.toast.Toaster
 import com.box.other.xpopup.XPopup
+import com.bumptech.glide.Glide
+import com.bumptech.glide.RequestBuilder
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.target.SimpleTarget
+import com.bumptech.glide.request.target.Target
+import com.bumptech.glide.request.transition.Transition
 import com.hjq.permissions.Permission
 import com.hjq.permissions.XXPermissions
 import com.phantomvk.identifier.IdentifierManager
@@ -84,8 +86,6 @@ import java.util.regex.Pattern
 import kotlin.coroutines.resume
 import kotlin.random.Random
 import kotlin.system.exitProcess
-import androidx.core.net.toUri
-import com.box.common.AppInit.application
 
 
 fun getUserShowName(remark: String?, nickName: String? = ""): String {
@@ -840,9 +840,9 @@ fun getCommonParams() {
         commonParams["appSignaturesMD5"] = AppUtils.getAppSignaturesMD5()[0]
         commonParams["appSignaturesSHA1"] = AppUtils.getAppSignaturesSHA1()[0]
         commonParams["modId"] = BuildConfig.MOD_ID
-        commonParams["modName"] = BuildConfig.MOD_ID
-        commonParams["modVasDollyId"] = MMKVConfig.modVasId
-        commonParams["modAPIVersion"] = BuildConfig.API_VERSION
+        commonParams["modName"] = BuildConfig.MOD_NAME
+        commonParams["modVasDollyId"] = BuildConfig.MOD_VASID
+        commonParams["modAPIVersion"] = BuildConfig.MOD_API_VERSION
         commonParams["systemId"] = "1"
         if (MMKVConfig.modInfos != null) {
             commonParams["deviceOAID"] = MMKVConfig.deviceOAID

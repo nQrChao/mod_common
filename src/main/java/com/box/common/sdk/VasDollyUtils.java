@@ -32,8 +32,8 @@ import java.util.zip.ZipFile;
 
 public class VasDollyUtils {
     private static final String TAG = VasDollyUtils.class.getSimpleName();
-    private static final String E = !TextUtils.isEmpty(BuildConfig.DEFAULE_CHANNEL_VASID) ? BuildConfig.DEFAULE_CHANNEL_VASID : "aa1000000";
-    private static String defaultVasId = !TextUtils.isEmpty(BuildConfig.DEFAULE_CHANNEL_VASID) ? BuildConfig.DEFAULE_CHANNEL_VASID : E;
+    private static final String E = !TextUtils.isEmpty(BuildConfig.MOD_VASID) ? BuildConfig.MOD_VASID : "aa1000000";
+    private static String defaultVasId = !TextUtils.isEmpty(BuildConfig.MOD_VASID) ? BuildConfig.MOD_VASID : E;
     private static String vasDollyId = defaultVasId;
 
     public static String initVasId(Application app) {
@@ -78,8 +78,8 @@ public class VasDollyUtils {
             return defaultVasId;
         }
 
-        if (!TextUtils.isEmpty(BuildConfig.DEFAULE_CHANNEL_VASID)) {
-            return BuildConfig.DEFAULE_CHANNEL_VASID;
+        if (!TextUtils.isEmpty(BuildConfig.MOD_VASID)) {
+            return BuildConfig.MOD_VASID;
         }
 
         //从apk包中获取

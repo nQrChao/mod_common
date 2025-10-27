@@ -5,7 +5,7 @@ import java.io.Serializable
 data class ModUserInfo(
     val accountName: String = "",
     val userId: String = "",
-    val userToken: String = "",
+    var userToken: String = "",
     val userAuthLoginToken: String = "",
     val userVasDollyId: String = "",
     val userAvatar: String = "",
