@@ -26,7 +26,7 @@ fun <T> MutableLiveData<ModResultState<T>>.paresResult(result: BaseResponse<T>) 
             ModResultState.onAppSuccess(result.getResponseData())
         }
         else -> {
-            ModResultState.onAppError(ModAppException("","",result.getResponseMsg()))
+            ModResultState.onAppError(ModAppException(-1,"",result.getResponseMsg()))
         }
     }
 }

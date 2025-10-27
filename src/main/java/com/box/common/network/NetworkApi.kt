@@ -7,18 +7,15 @@ import com.box.base.network.BaseNetworkApi
 import com.box.base.network.CacheInterceptor
 import com.box.base.network.LogInterceptor
 import com.box.com.BuildConfig
+import com.box.common.AppInit.application
 import com.box.common.MMKVConfig
 import com.box.common.appContext
-import com.box.common.appViewModel
 import com.box.common.network.Des.signKey
-import com.box.common.network.Des.signKeyXdqy
-import com.box.common.sdk.ApkUtils
+import com.box.common.network.Des.signKeyX
 import com.box.other.blankj.utilcode.util.AppUtils
 import com.box.other.blankj.utilcode.util.DeviceUtils
 import com.box.other.blankj.utilcode.util.GsonUtils
 import com.box.other.blankj.utilcode.util.Logs
-import com.box.other.blankj.utilcode.util.StringUtils
-import com.box.other.blankj.utilcode.util.Utils
 import com.box.other.cnoaid.oaid.DeviceIdentifier
 import com.box.other.franmontiel.persistentcookiejar.PersistentCookieJar
 import com.box.other.franmontiel.persistentcookiejar.cache.SetCookieCache
@@ -210,7 +207,7 @@ open class NetworkApi : BaseNetworkApi() {
                 return null
             }
         }
-        val signString = mapToString(newParams) + signKeyXdqy
+        val signString = mapToString(newParams) + signKeyX
         Logs.d("getSignKey", "String to be signed (before MD5): $signString")
         return stringToMD5(signString)
     }
@@ -218,8 +215,8 @@ open class NetworkApi : BaseNetworkApi() {
     /**
      * 创建虚拟账号postData
      */
-    fun createModPostData(params: MutableMap<String, String>): String? {
-        val targetParams = getModCommonMap(params)
+    fun createVirtualUserPostData(params: MutableMap<String, String>): String? {
+        val targetParams = getVirtualUserCommonMap(params)
         val mapData = try {
             URLEncoder.encode(Des.encode(mapToString(targetParams)), "UTF-8")
         } catch (e: Exception) {
@@ -228,24 +225,11 @@ open class NetworkApi : BaseNetworkApi() {
         return mapData
     }
 
-    private fun getModCommonMap(params: MutableMap<String, String>): Map<String, String> {
+    private fun getVirtualUserCommonMap(params: MutableMap<String, String>): Map<String, String> {
         val commonParams = mutableMapOf<String, String>()
         commonParams.putAll(params)
-        commonParams["is_vir"] = "1"
+        commonParams["virtual"] = "1"
         return getCommonMap(commonParams)
-    }
-
-    fun createXdqyPostData(params: MutableMap<String, String>): String? {
-        val targetParams = getXdqyCommonMap(params)
-        Logs.d("createPostData", "Parameters with common data: ${mapToString(targetParams)}")
-        val mapData = try {
-            URLEncoder.encode(Des.encode(mapToString(targetParams)), "UTF-8")
-        } catch (e: Exception) {
-            Logs.e("createPostData", "Failed to DES encode or URLEncode data.", e)
-            return null
-        }
-        Logs.d("createPostData", "Final encrypted and encoded data: $mapData")
-        return mapData
     }
 
     /**
@@ -283,91 +267,37 @@ open class NetworkApi : BaseNetworkApi() {
         val commonParams = mutableMapOf<String, String>()
         // 先放入业务参数
         commonParams.putAll(params)
-        commonParams["plat_id"] = "4"
-        commonParams["client_type"] = "1"
-        if (appViewModel.commonParams.value?.isEmpty() == true) {
-            commonParams["tgid"] = ApkUtils.getTgid()
-            commonParams["oldtgid"] = ApkUtils.getTgid()
-            commonParams["appid"] = BuildConfig.APP_UPDATE_ID
-            commonParams["api_version"] = BuildConfig.API_VERSION
-            commonParams["packagename"] = Utils.getApp().packageName
-            if (!MMKVConfig.shouQuan) {
-                commonParams["mac"] = DeviceUtils.getMacAddress()
-                commonParams["android_infos"] =
-                    DeviceUtils.getModel() + "|" + Build.BRAND + "|" + Build.VERSION.RELEASE + "|" + Build.VERSION.SDK_INT.toString() + "|" + AppUtils.getAppName() + "|" + Build.SUPPORTED_ABIS[0] + "|" + AppUtils.getAppSignaturesSHA1()[0]
-                commonParams["oaid"] = appViewModel.oaid
-                commonParams["imei"] = DeviceIdentifier.getIMEI(appContext) ?: ""
-                commonParams["guid"] = DeviceIdentifier.getGUID(appContext) ?: ""
-                commonParams["canvas"] = DeviceIdentifier.getCanvasFingerprint() ?: ""
-                commonParams["device_id"] = DeviceUtils.getUniqueDeviceId()
-                commonParams["androidid"] = DeviceUtils.getAndroidID() ?: ""
-                appViewModel.commonParams.value = commonParams
-            }
-        } else {
-            commonParams["tgid"] = appViewModel.commonParams.value?.get("tgid").toString()
-            commonParams["oldtgid"] = appViewModel.commonParams.value?.get("oldtgid").toString()
-            commonParams["appid"] = appViewModel.commonParams.value?.get("appid").toString()
-            commonParams["api_version"] = appViewModel.commonParams.value?.get("api_version").toString()
-            commonParams["packagename"] = appViewModel.commonParams.value?.get("packagename").toString()
-            commonParams["mac"] = appViewModel.commonParams.value?.get("mac").toString()
-            commonParams["android_infos"] = appViewModel.commonParams.value?.get("android_infos").toString()
-            commonParams["oaid"] = appViewModel.oaid
-            commonParams["imei"] = appViewModel.commonParams.value?.get("imei").toString()
-            commonParams["guid"] = appViewModel.commonParams.value?.get("guid").toString()
-            commonParams["canvas"] = appViewModel.commonParams.value?.get("canvas").toString()
-            commonParams["device_id"] = appViewModel.commonParams.value?.get("device_id").toString()
-            commonParams["androidid"] = appViewModel.commonParams.value?.get("androidid").toString()
-            Logs.e("getLocalCommonMap：${GsonUtils.toJson(commonParams)}")
+        commonParams["appName"]  = AppUtils.getAppName()
+        commonParams["appPackageName"]= AppUtils.getAppPackageName()
+        commonParams["appVersionName"] = AppUtils.getAppVersionName()
+        commonParams["appVersionCode"] = AppUtils.getAppVersionCode().toString()
+        commonParams["appSignaturesMD5"] = AppUtils.getAppSignaturesMD5()[0]
+        commonParams["appSignaturesSHA1"] = AppUtils.getAppSignaturesSHA1()[0]
+        commonParams["modId"] = BuildConfig.MOD_ID
+        commonParams["modName"] = BuildConfig.MOD_ID
+        commonParams["modVasDollyId"] = MMKVConfig.modVasId
+        commonParams["modAPIVersion"] = BuildConfig.API_VERSION
+        commonParams["systemId"] = "1"
+        if (MMKVConfig.modInfos != null) {
+            commonParams["deviceOAID"] = MMKVConfig.modelOAID
+            commonParams["deviceModel"] = DeviceUtils.getModel()
+            commonParams["deviceBRAND"] = Build.BRAND
+            commonParams["deviceVersionRelease"]= Build.VERSION.RELEASE
+            commonParams["deviceVersionSDKInt"] = Build.VERSION.SDK_INT.toString()
+            commonParams["deviceSupportedABIS0"] = Build.SUPPORTED_ABIS[0]
+            commonParams["deviceIMEI"] = DeviceIdentifier.getIMEI(appContext) ?: ""
+            commonParams["deviceGUID"] = DeviceIdentifier.getGUID(application) ?: ""
+            commonParams["deviceCanvas"] = DeviceIdentifier.getCanvasFingerprint() ?: ""
+            commonParams["deviceUniqueDeviceId"] = DeviceUtils.getUniqueDeviceId()
+            commonParams["deviceAndroidID"]= DeviceUtils.getAndroidID()
+            commonParams["deviceMacAddress"] = DeviceUtils.getMacAddress()
+            commonParams["deviceManufacturer"]  = DeviceUtils.getManufacturer()
+            commonParams["deviceSDKVersionName"]  = DeviceUtils.getSDKVersionName()
+            commonParams["deviceSDKVersionCode"]  = DeviceUtils.getSDKVersionCode().toString()
+            commonParams["devicePseudoID"]  = DeviceIdentifier.getPseudoID()
+
         }
         commonParams["sign"] = getSignKey(commonParams) ?: ""
-        Logs.e("getCommonMap：${GsonUtils.toJson(commonParams)}")
-        return commonParams
-    }
-
-
-    private fun getXdqyCommonMap(params: MutableMap<String, String>): Map<String, String> {
-        val commonParams = mutableMapOf<String, String>()
-        // 先放入业务参数
-        commonParams.putAll(params)
-        commonParams["plat_id"] = "4"
-        commonParams["client_type"] = "1"
-        if (appViewModel.commonParams.value?.isEmpty() == true) {
-            commonParams["tgid"] = ApkUtils.getTgid()
-            commonParams["oldtgid"] = ApkUtils.getTgid()
-            commonParams["appid"] = BuildConfig.APP_UPDATE_ID
-            commonParams["app_id"] = BuildConfig.APP_UPDATE_ID
-            commonParams["api_version"] = BuildConfig.API_VERSION
-            commonParams["packagename"] = Utils.getApp().packageName
-            if (MMKVConfig.shouQuan) {
-                commonParams["mac"] = DeviceUtils.getMacAddress()
-                commonParams["android_infos"] =
-                    DeviceUtils.getModel() + "|" + Build.BRAND + "|" + Build.VERSION.RELEASE + "|" + Build.VERSION.SDK_INT.toString() + "|" + AppUtils.getAppName() + "|" + Build.SUPPORTED_ABIS[0] + "|" + AppUtils.getAppSignaturesSHA1()[0]
-                commonParams["oaid"] = appViewModel.oaid
-                commonParams["imei"] = DeviceIdentifier.getIMEI(appContext) ?: ""
-                commonParams["guid"] = DeviceIdentifier.getGUID(appContext) ?: ""
-                commonParams["canvas"] = DeviceIdentifier.getCanvasFingerprint() ?: ""
-                commonParams["device_id"] = DeviceUtils.getUniqueDeviceId()
-                commonParams["androidid"] = DeviceUtils.getAndroidID() ?: ""
-                appViewModel.commonParams.value = commonParams
-            }
-        } else {
-            commonParams["tgid"] = appViewModel.commonParams.value?.get("tgid").toString()
-            commonParams["oldtgid"] = appViewModel.commonParams.value?.get("oldtgid").toString()
-            commonParams["appid"] = appViewModel.commonParams.value?.get("appid").toString()
-            commonParams["app_id"] = appViewModel.commonParams.value?.get("appid").toString()
-            commonParams["api_version"] = appViewModel.commonParams.value?.get("api_version").toString()
-            commonParams["packagename"] = appViewModel.commonParams.value?.get("packagename").toString()
-            commonParams["mac"] = appViewModel.commonParams.value?.get("mac").toString()
-            commonParams["android_infos"] = appViewModel.commonParams.value?.get("android_infos").toString()
-            commonParams["oaid"] = appViewModel.oaid
-            commonParams["imei"] = appViewModel.commonParams.value?.get("imei").toString()
-            commonParams["guid"] = appViewModel.commonParams.value?.get("guid").toString()
-            commonParams["canvas"] = appViewModel.commonParams.value?.get("canvas").toString()
-            commonParams["device_id"] = appViewModel.commonParams.value?.get("device_id").toString()
-            commonParams["androidid"] = appViewModel.commonParams.value?.get("androidid").toString()
-            Logs.e("getLocalCommonMap：${GsonUtils.toJson(commonParams)}")
-        }
-        commonParams["sign"] = getXdqySignKey(commonParams) ?: ""
         Logs.e("getCommonMap：${GsonUtils.toJson(commonParams)}")
         return commonParams
     }
@@ -377,13 +307,17 @@ open class NetworkApi : BaseNetworkApi() {
         val commonParams = mutableMapOf<String, String>()
         // 先放入业务参数
         commonParams.putAll(params)
-        commonParams["plat_id"] = "4"
-        commonParams["client_type"] = "1"
-        commonParams["tgid"] = ApkUtils.getTgid()
-        commonParams["oldtgid"] = ApkUtils.getTgid()
-        commonParams["appid"] = BuildConfig.APP_UPDATE_ID
-        commonParams["api_version"] = BuildConfig.API_VERSION
-        commonParams["packagename"] = Utils.getApp().packageName
+        commonParams["appName"]  = AppUtils.getAppName()
+        commonParams["appPackageName"]= AppUtils.getAppPackageName()
+        commonParams["appVersionName"] = AppUtils.getAppVersionName()
+        commonParams["appVersionCode"] = AppUtils.getAppVersionCode().toString()
+        commonParams["appSignaturesMD5"] = AppUtils.getAppSignaturesMD5()[0]
+        commonParams["appSignaturesSHA1"] = AppUtils.getAppSignaturesSHA1()[0]
+        commonParams["modId"] = BuildConfig.MOD_ID
+        commonParams["modName"] = BuildConfig.MOD_ID
+        commonParams["modVasDollyId"] = MMKVConfig.modVasId
+        commonParams["modAPIVersion"] = BuildConfig.API_VERSION
+        commonParams["systemId"] = "1"
         commonParams["sign"] = getSignKey(commonParams) ?: ""
         Logs.e("getCommonMap：${GsonUtils.toJson(commonParams)}")
         return commonParams

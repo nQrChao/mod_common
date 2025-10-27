@@ -22,13 +22,12 @@ import retrofit2.http.Url
  * 网络请求类
  */
 interface ApiService {
-    //https://appapi-nstest.xiaodianyouxi.com
     companion object {
         var HTTP_RELEASE_URLS: Array<String> = arrayOf(
-            "https://appapi-ns1.xiaodianyouxi.com",
-            "https://appapi-ns2.xiaodianyouxi.com"
+            "https://4319g.yize01.com/",
+            "https://4319g.yize01.com/"
         )
-        var D_API_URL = "https://appapi-ns1.xiaodianyouxi.com/index.php/"
+        var D_API_URL = "https://4319g.yize01.com/api"
         var XY_1_URL = "https://mobile.xiaodianyouxi.com/index.php/Index/view/?id=100000012"//注册
         var XY_2_URL = "https://mobile.xiaodianyouxi.com/index.php/Index/view/?id=100000011"//隐私
     }

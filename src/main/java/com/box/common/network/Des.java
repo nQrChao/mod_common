@@ -14,7 +14,7 @@ import javax.crypto.spec.IvParameterSpec;
 
 public class Des {
     public static final String signKey = "Df1&#%$WT9sGc%^urZO0!XkjglAv!Vel";
-    public static final String signKeyXdqy = "Df1&#%$WT9sAv!Vel";
+    public static final String signKeyX = "Df1&#%$WT9sAv!Vel";
     public static final String key = "qn%49E&E";
     public static final String ALGORITHM_DES = "DES/CBC/PKCS5Padding";
 

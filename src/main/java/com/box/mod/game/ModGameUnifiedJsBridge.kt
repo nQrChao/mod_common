@@ -2,7 +2,6 @@ package com.box.mod.game
 
 import android.webkit.JavascriptInterface
 import com.box.base.base.AppScope
-import com.box.common.appContext
 import com.box.common.data.model.MarketInit
 import com.box.common.getOAIDWithCoroutines
 import com.box.other.blankj.utilcode.util.GsonUtils
@@ -121,9 +120,9 @@ class ModGameUnifiedJsBridge(
     }
 
     @JavascriptInterface
-    fun getTGID(msg: String?): String {
-        Logs.e("${TAG}:getTGID:$msg")
-        return host.getTgid()
+    fun getVASID(msg: String?): String {
+        Logs.e("${TAG}:getVASID:$msg")
+        return host.getVasId()
     }
 
     @JavascriptInterface
@@ -165,8 +164,8 @@ class ModGameUnifiedJsBridge(
     fun takeDeviceId(oaid: String) {
         postToJs("takeDeviceId('$oaid')")
     }
-    fun takeTGID(id: String) {
-        postToJs("takeTGID('$id')")
+    fun takeVASID(id: String) {
+        postToJs("takeVASID('$id')")
     }
 
     fun takeAndroidId(id: String) {

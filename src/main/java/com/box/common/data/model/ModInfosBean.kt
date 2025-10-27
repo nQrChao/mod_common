@@ -22,10 +22,14 @@ data class ModInfosBean(
     var devicePseudoID: String = "",
     var appName: String = "",
     var appPackageName : String = "",
-    var modTencentId : String = "",
+    var appVersionName : String = "",
+    var appVersionCode : String = "",
+    var modVasDollyId : String = "",
+    var appSignaturesMD5: String = "",
     var appSignaturesSHA1: String = "",
     var modId: String = "",
     var modName: String = "",
+    var systemId: String = "",
 ) :Serializable {
 }
 

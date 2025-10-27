@@ -1,5 +1,6 @@
 package com.box.common
 
+import com.box.com.BuildConfig
 import com.box.common.data.model.ModInfo
 import com.box.common.data.model.ModInfosBean
 import com.box.common.data.model.ModUserInfoBean
@@ -20,8 +21,10 @@ object MMKVConfig {
     var launchCount: Int by mmkv("launch_count", 0)
     // 字体大小
     var fontScale: Float by mmkv("fontScale", 1.0f)
-    //  设备OAID
+    //  马甲信息
     var modInfos: ModInfosBean? by mmkv("modInfos", null)
+    //  设备vasId
+    var modVasId: String by mmkv("mod_VasId", BuildConfig.DEFAULE_CHANNEL_VASID)
     //  设备OAID
     var modelOAID: String by mmkv("model_OAID", "")
     //  用户token

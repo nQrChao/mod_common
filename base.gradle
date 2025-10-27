@@ -8,15 +8,15 @@ def defaultConfig = [
         appName         : "a",
         appVersionCode  : 85222,
         appVersionName  : "8.5.2",
+        modId           : "\"0\"",
         appPackageName  : "com.chaoji.lc",
         appIcon         : "@mipmap/mod_icon",
-        defaultTGID     : "\"ga1001090\"",
+        defaultVasId    : "\"ga1001090\"",
         appApiVersion   : "\"20250904\"",
         appFiling       : "\"\"",
         appAuthLoginSign: "\"\"",
         appTencentAppId : "\"\"",
         appTencentAppKey: "\"\"",
-        appUpdateId     : "\"0\"",
         appOldTemplate  : "-1",
         oAppId          : "\"\"",
         oAppKey         : "\"\"",
@@ -36,8 +36,8 @@ def channelConfigs = [
                 appVersionCode: 1,
                 appVersionName: "1.0.0",
                 appPackageName: "com.box.modall",
-                appUpdateId   : "\"0\"",
-                defaultTGID   : "\"aa1000000\"",
+                modId   : "\"0\"",
+                defaultVasId   : "\"aa1000000\"",
                 signingName   : "box4319"
         ],
         mod_all    : [
@@ -45,8 +45,8 @@ def channelConfigs = [
                 appVersionCode: 1,
                 appVersionName: "1.0.0",
                 appPackageName: "com.box.modall",
-                appUpdateId   : "\"0\"",
-                defaultTGID   : "\"aa1000000\"",
+                modId   : "\"0\"",
+                defaultVasId   : "\"aa1000000\"",
                 signingName   : "box4319"
         ],
         mod_box4319: [
@@ -54,8 +54,8 @@ def channelConfigs = [
                 appVersionCode: 1,
                 appVersionName: "1.0",
                 appPackageName: "com.lingdian.game4319",
-                appUpdateId   : "\"1\"",
-                defaultTGID   : "\"aa1000000\"",
+                modId   : "\"1\"",
+                defaultVasId   : "\"aa1000000\"",
                 signingName   : "box4319"
         ],
 ]
@@ -82,14 +82,14 @@ ext {
     APPLICATION_ID = finalConfig.appPackageName
 
     MOD_INFO = [
-            MOD_APP_UPDATA_ID = finalConfig.appUpdateId,
+            MOD_ID = finalConfig.modId,
             MOD_APP_NAME = finalConfig.appName,
             MOD_APP_ICON = finalConfig.appIcon,
             MOD_APP_FILING = finalConfig.appFiling,
             MOD_APP_AUTH_LOGIN_SIGN = finalConfig.appAuthLoginSign,
             MOD_APP_TENCENT_ID = finalConfig.appTencentAppId,
             MOD_APP_TENCENT_KEY = finalConfig.appTencentAppKey,
-            MOD_APP_DEFAULT_TGID = finalConfig.defaultTGID,
+            MOD_APP_DEFAULT_VASID = finalConfig.defaultVasId,
             MOD_APP_API_VERSION = finalConfig.appApiVersion,
             MOD_APP_OLD_TEMPLATE = finalConfig.appOldTemplate,
             MOD_GAME_O_ID = finalConfig.oAppId,

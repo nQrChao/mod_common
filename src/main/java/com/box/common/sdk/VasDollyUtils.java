@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.box.com.BuildConfig;
+import com.box.common.MMKVConfig;
 import com.box.common.network.Des;
 import com.box.common.utils.subpackage.Base64;
 import com.box.common.utils.subpackage.ChannelReaderUtil;
@@ -29,72 +30,63 @@ import java.util.TreeMap;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
-/**
- * Created by Administrator on 2016/5/11.
- */
-public class ApkUtils {
-    private static final String TAG = ApkUtils.class.getSimpleName();
+public class VasDollyUtils {
+    private static final String TAG = VasDollyUtils.class.getSimpleName();
+    private static final String E = !TextUtils.isEmpty(BuildConfig.DEFAULE_CHANNEL_VASID) ? BuildConfig.DEFAULE_CHANNEL_VASID : "aa1000000";
+    private static String defaultVasId = !TextUtils.isEmpty(BuildConfig.DEFAULE_CHANNEL_VASID) ? BuildConfig.DEFAULE_CHANNEL_VASID : E;
+    private static String vasDollyId = defaultVasId;
 
-    //ea0000001
-    //ab1222222
-    private static final String E = !TextUtils.isEmpty(BuildConfig.DEFAULE_CHANNEL_TGID) ? BuildConfig.DEFAULE_CHANNEL_TGID : "ga1001099";
+    public static String initVasId(Application app) {
+        vasDollyId = getVasIdFromApk(app);
+        MMKVConfig.INSTANCE.setModVasId(vasDollyId);
+        return vasDollyId;
+    }
 
-    /**
-     * 九妖默认Tgid = ""
-     * ea0000001
-     * wa0000001
-     * <p>
-     * 审核测试Tgid = aa0001001,cf1111112,ab1212222,ca1111111,ab1212007,aa2004001
-     */
-    private static String defaultTgid = !TextUtils.isEmpty(BuildConfig.CHANNEL_TGID) ? BuildConfig.CHANNEL_TGID : (isRefundChannel() ? "ga1001099" : E);
-    private static String tgid = defaultTgid;
 
     /**
      * 从apk中获取渠道信息
-     *
-     * @return
      */
-    public static String getChannelFromApk(Application app) {
-        String tencentChannel = ChannelReaderUtil.getChannel(app);
-        if (!TextUtils.isEmpty(tencentChannel)) {
-            byte[] decode = Base64.decode(tencentChannel);
+    public static String getVasIdFromApk(Application app) {
+        String vasChannel = ChannelReaderUtil.getChannel(app);
+        if (!TextUtils.isEmpty(vasChannel)) {
+            byte[] decode = Base64.decode(vasChannel);
             if (decode != null) {
                 String channel = new String(decode);
                 if (!TextUtils.isEmpty(channel)) {
-                    String tgid = "";
+                    String vasId = "";
                     try {
                         JSONObject jsonObject = new JSONObject(channel);
-                        tgid = jsonObject.getString("tgid");
+                        vasId = jsonObject.getString("vasId");
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                    if (!TextUtils.isEmpty(tgid)) {
-                        defaultTgid = tgid;
+                    if (!TextUtils.isEmpty(vasId)) {
+                        defaultVasId = vasId;
                     }
                 }
             } else {
-                String tgid = "";
+                String vasId = "";
                 try {
-                    JSONObject jsonObject = new JSONObject(tencentChannel);
-                    tgid = jsonObject.getString("tgid");
+                    JSONObject jsonObject = new JSONObject(vasChannel);
+                    vasId = jsonObject.getString("vasId");
                 } catch (JSONException e) {
                 }
-                if (!TextUtils.isEmpty(tgid)) {
-                    defaultTgid = tgid;
+                if (!TextUtils.isEmpty(vasId)) {
+                    defaultVasId = vasId;
                 }
             }
-            return defaultTgid;
+            return defaultVasId;
         }
 
-        if (!TextUtils.isEmpty(BuildConfig.CHANNEL_TGID)) {
-            return BuildConfig.CHANNEL_TGID;
+        if (!TextUtils.isEmpty(BuildConfig.DEFAULE_CHANNEL_VASID)) {
+            return BuildConfig.DEFAULE_CHANNEL_VASID;
         }
 
         //从apk包中获取
-        ApplicationInfo appinfo = app.getApplicationInfo();
-        String sourceDir = appinfo.sourceDir;
+        ApplicationInfo applicationInfo = app.getApplicationInfo();
+        String sourceDir = applicationInfo.sourceDir;
         //注意这里：默认放在meta-inf/里， 所以需要再拼接一下
-        String key = "META-INF/" + "cychannel";
+        String key = "META-INF/" + "vasId";
         String ret = "";
         ZipFile zipfile = null;
         try {
@@ -123,20 +115,19 @@ public class ApkUtils {
         String[] split = ret.split("_");
         for (int i = 0; i < split.length; i++) {
         }
-        String channel = defaultTgid;
-        if (split != null && split.length >= 2) {
-            channel = ret.substring(split[0].length() + 1);
+        String vasId = defaultVasId;
+        if (split.length >= 2) {
+            vasId = ret.substring(split[0].length() + 1);
         }
 
-        Log.e("ApkUtils-initTGID", channel);
-        return channel;
+        Log.e("ApkUtils-initVASID", vasId);
+        return vasId;
     }
-
 
     public static int getChannelGameidFromApk(Application app) {
         //从apk包中获取
-        ApplicationInfo appinfo = app.getApplicationInfo();
-        String sourceDir = appinfo.sourceDir;
+        ApplicationInfo applicationInfo = app.getApplicationInfo();
+        String sourceDir = applicationInfo.sourceDir;
         //注意这里：默认放在meta-inf/里， 所以需要再拼接一下
         String key = "META-INF/" + "gameid";
         String ret = "";
@@ -166,10 +157,11 @@ public class ApkUtils {
         try {
             String[] split = ret.split("_");
             String gameid = null;
-            if (split != null && split.length >= 2) {
+            if (split.length >= 2) {
                 gameid = ret.substring(split[0].length() + 1);
             }
 
+            assert gameid != null;
             return Integer.parseInt(gameid);
         } catch (Exception e) {
             e.printStackTrace();
@@ -178,24 +170,17 @@ public class ApkUtils {
     }
 
 
-    /**
-     * 初始化tgid(apk包tgid)
-     */
-    public static String initTgid(Application app) {
-        tgid = getChannelFromApk(app);
-        return tgid;
+
+    public static String getVasId() {
+        return vasDollyId;
     }
 
-    public static String getTgid() {
-        return tgid;
+    public static void setVasId(String vasId) {
+        vasDollyId = vasId;
     }
 
-    public static void setTgid(String tgids) {
-        tgid = tgids;
-    }
-
-    public static void setDefaultTgid(String tgids) {
-        defaultTgid = tgids;
+    public static void setDefaultVasId(String vasId) {
+        defaultVasId = vasId;
     }
 
     public static String MD5(String s) {
@@ -281,7 +266,4 @@ public class ApkUtils {
         }
     }
 
-    public static boolean isRefundChannel() {
-        return "9".equals(BuildConfig.APP_UPDATE_ID);
-    }
 }

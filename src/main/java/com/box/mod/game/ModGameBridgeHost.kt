@@ -36,7 +36,7 @@ interface ModGameBridgeHost {
     fun getPrivacyPolicyUrl(): String?
     fun getOaid(): String
     fun getAndroidId(): String
-    fun getTgid(): String
+    fun getVasId(): String
     fun getPackageName(): String
 
     // --- 需要向App层写入/更新的数据 ---

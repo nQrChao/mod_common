@@ -2,18 +2,18 @@ package com.box.common.network
 
 import com.box.base.network.BaseResponse
 
-data class ModApiResponse<T>(val msg: String?, val data: T?, val state: String?) :
+data class ModApiResponse<T>(val msg: String?, val data: T?, val code: Int) :
     BaseResponse<T>() {
     override fun isSucceed(): Boolean {
-        return state == "ok"
+        return code == 200
     }
 
     override fun getResponseCode(): Int {
-        return if (state == "ok") 200 else 0
+        return code
     }
 
     override fun getResponseData() = data
     override fun getResponseMsg() = msg ?: ""
-    fun getResponseStatus(): String = state ?: ""
+    fun getResponseStatus(): Int = code
 
 }

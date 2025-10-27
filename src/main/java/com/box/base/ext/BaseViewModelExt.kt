@@ -368,7 +368,7 @@ fun <T> BaseViewModel.modRequestWithCallback(
         onSuccess = { data ->
             loadingChange.dismissDialog.postValue(false)
             data?.let { success(it) }
-                ?: error(ModAppException("err", "请求成功但服务器返回数据为null"))
+                ?: error(ModAppException(-5, "请求成功但服务器返回数据为null"))
         },
         onFailure = { exception ->
             loadingChange.dismissDialog.postValue(false)
@@ -451,7 +451,7 @@ private suspend fun <T> executeModResponse(response: ModApiResponse<T>): T? {
     if (response.isSucceed()) {
         return response.getResponseData()
     } else {
-        throw ModAppException(response.getResponseCode().toString(), response.getResponseMsg())
+        throw ModAppException(response.getResponseCode(), response.getResponseMsg())
     }
 }
 
@@ -583,7 +583,7 @@ class ModRequestChain<T> private constructor(
             if (previousData != null) {
                 nextBlock(previousData)
             } else {
-                throw ModAppException("err", "请求成功但返回数据为null，链式请求中断")
+                throw ModAppException(-5, "请求成功但返回数据为null，链式请求中断")
             }
         }
         return ModRequestChain(viewModel, newBlock)
@@ -668,7 +668,7 @@ class RequestFlow(private val viewModel: BaseViewModel) {
 
                         if (data == null) {
                             continuation.resumeWithException(
-                                ModAppException("err_null_data", "请求成功但返回数据为null，流程中断")
+                                ModAppException(-5, "请求成功但返回数据为null，流程中断")
                             )
                         } else {
                             continuation.resume(data)

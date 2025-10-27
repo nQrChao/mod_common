@@ -17,6 +17,7 @@ import com.box.common.event.AppViewModel
 import com.box.common.event.EventViewModel
 import com.box.common.event.modEvent
 import com.box.common.sdk.SDKLifecycle
+import com.box.common.sdk.VasDollyUtils
 import com.box.common.ui.activity.crash.CrashHandler
 import com.box.common.utils.DirUtils
 import com.box.common.utils.logsE
@@ -58,6 +59,7 @@ object AppViewModelProvider : ViewModelStoreOwner {
 
 val appViewModel: AppViewModel get() = AppViewModelProvider.appModel
 val eventViewModel: EventViewModel get() = AppViewModelProvider.eventModel
+
 /**
  * 初始化器对象，实现线程安全单例。
  */
@@ -68,21 +70,21 @@ object AppInit {
         private set // 只允许内部修改
 
     fun init(app: Application) {
+        this.application = app
+        initLogging()
         if (isInitialized) {
             logsW("App has already been initialized.")
             return
         }
-        this.application = app
         isInitialized = true
+        MMKV.initialize(app, PathUtils.getInternalAppFilesPath() + "/boxMMKV")
+        Toaster.init(app)
 
-        Toaster.init(application)
-        CrashHandler.register(application)
-        MMKV.initialize(app,PathUtils.getInternalAppFilesPath() + "/immune")
-
+        VasDollyUtils.initVasId(app)
+        CrashHandler.register(app)
         initViewModelsAndEvents()
         initUIComponents()
-        initLogging()
-        initCNOAID()
+        //initCNOAID()
         initLifecycleListener()
     }
 
@@ -106,9 +108,6 @@ object AppInit {
             MMKVConfig.fontScale = fontScale
         }
     }
-
-
-
 
     private fun initViewModelsAndEvents() {
         modEvent.init()
@@ -136,7 +135,6 @@ object AppInit {
         XPopup.setIsLightStatusBar(true)
         XPopup.setNavigationBarColor(ColorUtils.getColor(R.color.white))
     }
-
 
 
     private fun initLogging() {
@@ -185,7 +183,6 @@ object AppInit {
     }
 
 
-
     private fun initLifecycleListener() {
         SDKLifecycle.instance.init(application)
         SDKLifecycle.instance.get()?.addListener(object : SDKLifecycle.Listener {
@@ -205,7 +202,7 @@ object AppInit {
         // ... 友盟初始化代码 ...
     }
 
-    private fun getOAID(){
+    private fun getOAID() {
         AppScope.applicationScope.launch {
             try {
                 //getCommonParams()
@@ -227,8 +224,8 @@ object AppInit {
         }
     }
 
-    fun getModInfos(): ModInfosBean{
-        val modInfosBean= ModInfosBean()
+    fun getModInfos(): ModInfosBean {
+        val modInfosBean = ModInfosBean()
         modInfosBean.deviceModel = DeviceUtils.getModel()
         modInfosBean.deviceBRAND = Build.BRAND
         modInfosBean.deviceVersionRelease = Build.VERSION.RELEASE
@@ -243,15 +240,19 @@ object AppInit {
         modInfosBean.deviceManufacturer = DeviceUtils.getManufacturer()
         modInfosBean.deviceSDKVersionName = DeviceUtils.getSDKVersionName()
         modInfosBean.deviceSDKVersionCode = DeviceUtils.getSDKVersionCode().toString()
-        modInfosBean.devicePseudoID =DeviceIdentifier.getPseudoID()
+        modInfosBean.devicePseudoID = DeviceIdentifier.getPseudoID()
         modInfosBean.deviceOAID = MMKVConfig.modelOAID
-        modInfosBean. appName = AppUtils.getAppName()
-        modInfosBean. appPackageName  = AppUtils.getAppPackageName()
-        modInfosBean. appSignaturesSHA1 = AppUtils.getAppSignaturesSHA1()[0]
-        modInfosBean. modId = ""
-        modInfosBean. modName = ""
-        modInfosBean. modTencentId  = ""
-        modInfosBean. modAPIVersion = BuildConfig.API_VERSION
+        modInfosBean.appName = AppUtils.getAppName()
+        modInfosBean.appPackageName = AppUtils.getAppPackageName()
+        modInfosBean.appVersionName = AppUtils.getAppVersionName()
+        modInfosBean.appVersionCode = AppUtils.getAppVersionCode().toString()
+        modInfosBean.appSignaturesMD5 = AppUtils.getAppSignaturesMD5()[0]
+        modInfosBean.appSignaturesSHA1 = AppUtils.getAppSignaturesSHA1()[0]
+        modInfosBean.modId = ""
+        modInfosBean.modName = ""
+        modInfosBean.modVasDollyId = ""
+        modInfosBean.modAPIVersion = BuildConfig.API_VERSION
+        modInfosBean.systemId = "1"
         MMKVConfig.modInfos = modInfosBean
         return modInfosBean
     }

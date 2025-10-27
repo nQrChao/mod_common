@@ -45,7 +45,7 @@ import com.box.com.R
 import com.box.common.data.PictureElem
 import com.box.common.data.model.ModTradeGoodDetailBean
 import com.box.common.glide.GlideApp
-import com.box.common.sdk.ApkUtils
+import com.box.common.sdk.VasDollyUtils
 import com.box.common.utils.GetFilePathFromUri
 import com.box.common.utils.totp.PasscodeGenerator
 import com.box.other.blankj.utilcode.util.ActivityUtils
@@ -85,6 +85,7 @@ import kotlin.coroutines.resume
 import kotlin.random.Random
 import kotlin.system.exitProcess
 import androidx.core.net.toUri
+import com.box.common.AppInit.application
 
 
 fun getUserShowName(remark: String?, nickName: String? = ""): String {
@@ -467,8 +468,8 @@ private fun getTotalInternalMemorySize(): Float {
 suspend fun getDetailedInformation(context: Context, type: Boolean): StringBuilder {
     val builder = StringBuilder()
     builder.append("♡♡♡\t：\t")
-    builder.append("\n\nTGID\t：\t").append(ApkUtils.getTgid())
-    builder.append("\nAPP_ID\t：\t").append(BuildConfig.APP_UPDATE_ID)
+    builder.append("\n\nVASID\t：\t").append(VasDollyUtils.getVasId())
+    builder.append("\nAPP_ID\t：\t").append(BuildConfig.MOD_ID)
     builder.append("\n\n应用名称\t\t：\t").append(AppUtils.getAppName())
     builder.append("\n应用包名\t\t：\t").append(AppUtils.getAppPackageName())
     builder.append("\n版本代码\t\t：\t").append(AppUtils.getAppVersionCode())
@@ -832,22 +833,36 @@ fun checkInstallInMinuteDifference(minutes: Int): Boolean {
 fun getCommonParams() {
     if (appViewModel.commonParams.value?.isEmpty() == true) {
         val commonParams = mutableMapOf<String, String>()
-        commonParams["plat_id"] = "4"
-        commonParams["client_type"] = "1"
-        commonParams["tgid"] = ApkUtils.getTgid()
-        commonParams["oldtgid"] = ApkUtils.getTgid()
-        commonParams["appid"] = BuildConfig.APP_UPDATE_ID
-        commonParams["api_version"] = BuildConfig.API_VERSION
-        commonParams["packagename"] = Utils.getApp().packageName
-        commonParams["mac"] = DeviceUtils.getMacAddress()
-        commonParams["android_infos"] =
-            DeviceUtils.getModel() + "|" + Build.BRAND + "|" + Build.VERSION.RELEASE + "|" + Build.VERSION.SDK_INT.toString() + "|" + AppUtils.getAppName() + "|" + Build.SUPPORTED_ABIS[0] + "|" + AppUtils.getAppSignaturesSHA1()[0]
-        commonParams["oaid"] = appViewModel.oaid
-        commonParams["imei"] = DeviceIdentifier.getIMEI(appContext) ?: ""
-        commonParams["guid"] = DeviceIdentifier.getGUID(appContext) ?: ""
-        commonParams["canvas"] = DeviceIdentifier.getCanvasFingerprint() ?: ""
-        commonParams["device_id"] = DeviceUtils.getUniqueDeviceId()
-        commonParams["androidid"] = DeviceUtils.getAndroidID() ?: ""
+        commonParams["appName"]  = AppUtils.getAppName()
+        commonParams["appPackageName"]= AppUtils.getAppPackageName()
+        commonParams["appVersionName"] = AppUtils.getAppVersionName()
+        commonParams["appVersionCode"] = AppUtils.getAppVersionCode().toString()
+        commonParams["appSignaturesMD5"] = AppUtils.getAppSignaturesMD5()[0]
+        commonParams["appSignaturesSHA1"] = AppUtils.getAppSignaturesSHA1()[0]
+        commonParams["modId"] = BuildConfig.MOD_ID
+        commonParams["modName"] = BuildConfig.MOD_ID
+        commonParams["modVasDollyId"] = MMKVConfig.modVasId
+        commonParams["modAPIVersion"] = BuildConfig.API_VERSION
+        commonParams["systemId"] = "1"
+        if (MMKVConfig.modInfos != null) {
+            commonParams["deviceOAID"] = MMKVConfig.modelOAID
+            commonParams["deviceModel"] = DeviceUtils.getModel()
+            commonParams["deviceBRAND"] = Build.BRAND
+            commonParams["deviceVersionRelease"]= Build.VERSION.RELEASE
+            commonParams["deviceVersionSDKInt"] = Build.VERSION.SDK_INT.toString()
+            commonParams["deviceSupportedABIS0"] = Build.SUPPORTED_ABIS[0]
+            commonParams["deviceIMEI"] = DeviceIdentifier.getIMEI(appContext) ?: ""
+            commonParams["deviceGUID"] = DeviceIdentifier.getGUID(application) ?: ""
+            commonParams["deviceCanvas"] = DeviceIdentifier.getCanvasFingerprint() ?: ""
+            commonParams["deviceUniqueDeviceId"] = DeviceUtils.getUniqueDeviceId()
+            commonParams["deviceAndroidID"]= DeviceUtils.getAndroidID()
+            commonParams["deviceMacAddress"] = DeviceUtils.getMacAddress()
+            commonParams["deviceManufacturer"]  = DeviceUtils.getManufacturer()
+            commonParams["deviceSDKVersionName"]  = DeviceUtils.getSDKVersionName()
+            commonParams["deviceSDKVersionCode"]  = DeviceUtils.getSDKVersionCode().toString()
+            commonParams["devicePseudoID"]  = DeviceIdentifier.getPseudoID()
+
+        }
         appViewModel.commonParams.value = commonParams
     }
 }
