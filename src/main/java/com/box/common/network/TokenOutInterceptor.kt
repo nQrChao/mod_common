@@ -20,7 +20,6 @@ class TokenOutInterceptor : Interceptor {
 //            val apiResponse = gson.fromJson(string, ApiResponse::class.java)
 //            //判断逻辑 模拟一下
 //            if (apiResponse.errCode == 99999) {
-//                    //todo token失效跳转
 //            }
             response.newBuilder().body(responseBody).build()
         } else {

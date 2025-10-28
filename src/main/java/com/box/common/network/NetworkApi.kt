@@ -11,7 +11,6 @@ import com.box.common.AppInit.application
 import com.box.common.MMKVConfig
 import com.box.common.appContext
 import com.box.common.network.Des.signKey
-import com.box.common.network.Des.signKeyX
 import com.box.other.blankj.utilcode.util.AppUtils
 import com.box.other.blankj.utilcode.util.DeviceUtils
 import com.box.other.blankj.utilcode.util.GsonUtils
@@ -192,25 +191,6 @@ open class NetworkApi : BaseNetworkApi() {
         return stringToMD5(signString)
     }
 
-    private fun getXdqySignKey(params: Map<String, String>): String? {
-        val newParams: SortedMap<String, String> = TreeMap()
-        params.forEach { (key, value) ->
-            try {
-                val processedValue = if (!TextUtils.isEmpty(value)) {
-                    URLEncoder.encode(value, "UTF-8").replace("*", "%2A")
-                } else {
-                    ""
-                }
-                newParams[key] = processedValue
-            } catch (e: UnsupportedEncodingException) {
-                Logs.e("getSignKey", "Error encoding parameter value for key: $key", e)
-                return null
-            }
-        }
-        val signString = mapToString(newParams) + signKeyX
-        Logs.d("getSignKey", "String to be signed (before MD5): $signString")
-        return stringToMD5(signString)
-    }
 
     /**
      * 创建虚拟账号postData
@@ -219,7 +199,7 @@ open class NetworkApi : BaseNetworkApi() {
         val targetParams = getVirtualUserCommonMap(params)
         val mapData = try {
             URLEncoder.encode(Des.encode(mapToString(targetParams)), "UTF-8")
-        } catch (e: Exception) {
+        } catch (_: Exception) {
             return null
         }
         return mapData

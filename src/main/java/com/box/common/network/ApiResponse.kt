@@ -2,12 +2,12 @@ package com.box.common.network
 
 import com.box.base.network.BaseResponse
 
-data class ApiResponse<T>(val status: String?, val msg: String?, val data: T?) : BaseResponse<T>() {
+data class ApiResponse<T>(val status: Int, val msg: String?, val data: T?) : BaseResponse<T>() {
     override fun isSucceed(): Boolean {
-        return status == "ok"
+        return status == 200
     }
     override fun getResponseCode():Int{
-        return if (status == "ok") 200 else 0
+        return status
     }
 
     override fun getResponseData() = data
