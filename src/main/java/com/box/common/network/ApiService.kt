@@ -2,12 +2,9 @@ package com.box.common.network
 
 import com.box.common.data.model.MarketInit
 import com.box.common.data.model.ModDataBean
-import com.box.common.data.model.ModGameListBean
-import com.box.common.data.model.ProtocolInit
-
 import com.box.common.data.model.ModUserInfo
 import com.box.common.data.model.ModUserRealName
-
+import com.box.common.data.model.ProtocolInit
 import retrofit2.Response
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -27,7 +24,7 @@ interface ApiService {
             "https://4319g.yize01.com/",
             "https://4319g.yize01.com/"
         )
-        var D_API_URL = "https://4319g.yize01.com/api"
+        var D_API_URL = "https://4319g.yize01.com"
         var XY_1_URL = "https://mobile.xiaodianyouxi.com/index.php/Index/view/?id=100000012"//注册
         var XY_2_URL = "https://mobile.xiaodianyouxi.com/index.php/Index/view/?id=100000011"//隐私
     }
@@ -57,7 +54,7 @@ interface ApiService {
      * 根据ID获取新闻详情
      * 对应的 URL: https://4319g.yize01.com/api/no/common/news/getDetailById?id=3
      */
-    @GET("no/common/news/getDetailById")
+    @GET("api/no/common/news/getDetailById")
     suspend fun getNewsDetailById(@Query("id") id: Int): ModApiResponse<ModDataBean>
 
     /**

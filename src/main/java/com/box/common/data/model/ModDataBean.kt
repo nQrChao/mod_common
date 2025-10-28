@@ -3,7 +3,7 @@ package com.box.common.data.model
 import java.io.Serializable
 
 data class ModDataBean(
-    var id: String = "",
+    var id: Int = 0 ,
     var title: String = "",
     var image: String = "",
     var description: String = "",

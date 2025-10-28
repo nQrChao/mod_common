@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.box.common.ui.activity.CommonActivityRichText.Model" />
+
+        <variable
+            name="click"
+            type="com.box.common.ui.activity.CommonActivityRichText.ProxyClick" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/rootView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.box.other.hjq.titlebar.TitleBar
+            android:id="@+id/titleBar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/idp_40"
+            android:background="@color/common_bg_color"
+            android:gravity="center"
+            app:leftIcon="@drawable/arrows_left_b_ic"
+            app:leftTitleColor="@color/black90"
+            app:leftTitleSize="@dimen/isp_17"
+            app:leftTitleStyle="bold"
+            app:lineVisible="true"
+            app:titleColor="@color/black90"
+            app:titleSize="@dimen/isp_16"
+            app:titleStyle="bold" />
+
+        <com.box.other.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/refreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:srlAccentColor="@android:color/white"
+            app:srlEnableHeaderTranslationContent="true"
+            app:srlEnableLoadMore="true"
+            app:srlEnablePureScrollMode="true"
+            app:srlEnableRefresh="true"
+            app:srlPrimaryColor="@color/colorPrimary"
+            app:srlReboundDuration="600">
+                <FrameLayout
+                    android:id="@+id/parentView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <com.box.common.ui.view.BrowserView
+                        android:id="@+id/richWebview"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                </FrameLayout>
+        </com.box.other.scwang.smartrefresh.layout.SmartRefreshLayout>
+    </LinearLayout>
+
+</layout>

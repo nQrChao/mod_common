@@ -36,7 +36,8 @@ import java.security.KeyStore
 import java.security.MessageDigest
 import java.security.SecureRandom
 import java.security.cert.X509Certificate
-import java.util.*
+import java.util.SortedMap
+import java.util.TreeMap
 import java.util.concurrent.TimeUnit
 import javax.net.ssl.SSLContext
 import javax.net.ssl.SSLSocketFactory
@@ -384,13 +385,11 @@ suspend fun initializeNetwork() {
                 apiUrlNetworkCode = validResponseCode
                 Logs.d("NetworkTest", "Final SERVER_URL: $serverUrl, Network Code: $apiUrlNetworkCode")
 
-                RetrofitUrlManager.getInstance().putDomain("SERVER_URL", "$serverUrl/index.php/")
-                RetrofitUrlManager.getInstance().putDomain("TRANSACTION_API_URL", "https://tradeapi.cqxiayou.com/")
+                RetrofitUrlManager.getInstance().putDomain("SERVER_URL", serverUrl)
+                RetrofitUrlManager.getInstance().putDomain("API_URL", "https://4319g.yize01.com")
 
-                RetrofitUrlManager.getInstance().putDomain("XDQY_API_URL", "https://xgameapi.xiaodianyouxi.com/")
-                RetrofitUrlManager.getInstance().putDomain("XDQY_SERVER_URL", "https://appapi.xiaodianyouxi.com/index.php/Wap/index.php/")
 
-                apiServiceHolder = NetworkApi.INSTANCE.getApi(ApiService::class.java, "$serverUrl/index.php/")
+                apiServiceHolder = NetworkApi.INSTANCE.getApi(ApiService::class.java, serverUrl)
             }
         } catch (e: Exception) {
             Logs.e("NetworkInit", "FATAL: Network initialization failed unexpectedly.", e)
