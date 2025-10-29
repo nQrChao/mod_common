@@ -62,6 +62,16 @@ def channelConfigs = [
                 modVasId      : "\"aa1000000\"",
                 signingName   : "box4319"
         ],
+        mod_zhezhetao: [
+                appName       : "折折淘游宝",
+                appVersionCode: 1,
+                appVersionName: "1.0",
+                appPackageName: "com.hongsheng.zhezhetao",
+                modId         : "\"1\"",
+                modName       : "\"mod_zhezhetao\"",
+                modVasId      : "\"aa1000000\"",
+                signingName   : "zhezhetaoyoubao"
+        ],
 ]
 
 // 复制共用的配置
