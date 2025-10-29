@@ -173,7 +173,6 @@ object AppInit {
             }
         }
 
-        DeviceUtils.getUniqueDeviceId()
         IdentifierManager.Builder(application)
             .setDebug(BuildConfig.DEBUG)
             .setExecutor(Executors.newFixedThreadPool(1))
@@ -181,6 +180,7 @@ object AppInit {
             .build()
         logsE("CNOAID has been initialized on-demand after user consent.")
         getOAID()
+        getModAndDeviceInfos()
     }
 
 
@@ -210,7 +210,6 @@ object AppInit {
                 val oaid = getOAIDWithCoroutines()
                 appViewModel.oaid = oaid
                 MMKVConfig.deviceOAID = oaid
-                getModAndDeviceInfos()
                 Logs.e("getOAIDWithCoroutines---getOAID:$oaid")
             } catch (e: CancellationException) {
                 Logs.e("Coroutine was cancelled. This is why adActive() was not called.", e)

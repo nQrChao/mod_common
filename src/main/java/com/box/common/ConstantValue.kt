@@ -6,11 +6,7 @@ import com.hjq.permissions.Permission
 
 //最大游戏数
 const val COUNT_GAME_MAX = 3
-const val GAME_CHENGYUCAICAICAI = "file:///android_asset/game/chengyucaicaicai/index.html"
-const val GAME_KAIXINYIXIA = "file:///android_asset/game/kaixinyixia/index.html"
-const val GAME_JIANFENGCHAZHEN = "file:///android_asset/game/jianfengchazhen/index.html"
-const val GAME_CAICAIDIANYINGMING = "file:///android_asset/game/caicaidianyingming/index.html"
-const val GAME_CAIMIYU = "file:///android_asset/game/caimiyu/index.html"
+const val ASSET_GAME = "file:///android_asset/game/1/index.html"
 
 //支付订单自动查询次数
 const val COUNT_ORDER_QUERY = 10

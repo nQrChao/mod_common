@@ -12,23 +12,24 @@ object MMKVConfig {
     var deviceOAID: String by mmkv("deviceOAID", "")
     //  设备信息
     var deviceInfos: DeviceInfoBean? by mmkv("deviceInfos", null)
-    // 用户信息，默认为 null。可以是可空类型
+    //  初始化信息，默认为 null。
     var modInit: ModInitBean? by mmkv("modInit", null)
     //  马甲信息
     var modInfos: ModInfoBean? by mmkv("modInfos", null)
+    //  用户信息，默认为 null。
+    var userInfo: ModUserInfo? by mmkv("userInfo", null)
     //  设备vasId
     var modVasId: String by mmkv("modVasId", BuildConfig.MOD_VASID)
     //  用户token
     var userToken: String by mmkv("userToken", "")
-    // 用户信息，默认为 null。可以是可空类型
-    var userInfo: ModUserInfo? by mmkv("userInfo", null)
-    // 授权状态，默认为 false
+
+    // 用户隐私授权状态，默认为 false
     var permissionsUser: Boolean by mmkv("permissionsUser", false)
-    // 相册获取授权状态，默认为 false
+    // 设备相册获取授权状态，默认为 false
     var permissionsAlbum: Boolean by mmkv("permissionsAlbum", false)
-    // 存储授权状态，默认为 false
+    // 设备存储授权状态，默认为 false
     var permissionsStorage: Boolean by mmkv(" permissionsStorage", false)
-    // 启动次数
+    // 应用启动次数
     var launchCount: Int by mmkv("launch_count", 0)
     // 字体大小
     var fontScale: Float by mmkv("fontScale", 1.0f)
