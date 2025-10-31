@@ -76,7 +76,7 @@ interface ApiService {
      * 对应的 URL: https://4319g.yize01.com/api/no/common/role/type
      */
     @GET("api/no/common/role/type")
-    suspend fun getRoleType(): ModApiResponse<ModDataBean>
+    suspend fun getRoleType(): ModApiResponse<MutableList<ModDataBean>>
 
 
 

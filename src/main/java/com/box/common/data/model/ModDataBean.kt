@@ -18,6 +18,7 @@ data class ModDataBean(
     var createTime: String = "",
     var dictLabel: String = "",
     var dictValue: String = "",
+    var isSelect: Boolean = false,
 ) : Serializable{
     //getModGameList [{"id":0,"name":"","url":"","tag":"","createTime":""}]
     //getNewsDetailById {"id":0,"content":""}

@@ -33,7 +33,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 import com.box.com.R as RC
 
-object  CustomBindAdapter {
+object CustomBindAdapter {
     @BindingAdapter(value = ["checkChange"])
     @JvmStatic
     fun checkChange(checkbox: CheckBox, listener: CompoundButton.OnCheckedChangeListener) {
@@ -712,7 +712,7 @@ object  CustomBindAdapter {
         }
     }
 
-    @BindingAdapter(value = ["dynamicBackground"])
+    @BindingAdapter(value = ["setDynamicBackground"])
     @JvmStatic
     fun setDynamicBackground(view: View, position: Int) {
         // 定义一个 drawable 资源数组，使用 intArrayOf()
