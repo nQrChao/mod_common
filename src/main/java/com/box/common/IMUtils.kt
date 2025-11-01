@@ -19,8 +19,10 @@ import android.os.Handler
 import android.os.Looper
 import android.os.StatFs
 import android.os.SystemClock
+import android.text.InputFilter
 import android.text.Spannable
 import android.text.SpannableStringBuilder
+import android.text.Spanned
 import android.text.TextUtils
 import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
@@ -894,4 +896,39 @@ fun saveNetworkImageToAlbum(imageUrl: String) {
                 }
             }
         })
+}
+
+/**
+ * 一个 InputFilter，用于限制输入为最多 N 位小数的数字。
+ * @param digitsAfterZero 允许的小数点后最大位数
+ */
+class DecimalDigitsInputFilter(digitsAfterZero: Int) : InputFilter {
+    // 正则表达式:
+    // ^     - 字符串开头
+    // \d* - 0个或多个数字 (整数部分)
+    // \.?   - 0个或1个小数点
+    // \d{0,X} - 0到X个数字 (小数部分), X 是 digitsAfterZero
+    // $     - 字符串结尾
+    private val mPattern: Pattern = Pattern.compile("^\\d*\\.?\\d{0,$digitsAfterZero}$")
+
+    override fun filter(
+        source: CharSequence, // 准备插入的新字符
+        start: Int,
+        end: Int,
+        dest: Spanned,        // EditText 中已有的内容
+        dstart: Int,          // 准备修改的起始位置
+        dend: Int             // 准备修改的结束位置
+    ): CharSequence? {
+        // 构造出修改后的“未来”字符串
+        val futureText = StringBuilder(dest)
+        futureText.replace(dstart, dend, source.toString())
+        // 用正则表达式检查这个“未来”字符串
+        val matcher = mPattern.matcher(futureText.toString())
+        // 如果不匹配，则阻止本次输入 (返回空字符串)
+        if (!matcher.matches()) {
+            return ""
+        }
+        // 如果匹配，则允许本次输入 (返回 null)
+        return null
+    }
 }
