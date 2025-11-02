@@ -2,6 +2,7 @@ package com.box.base.utils
 
 import android.text.TextUtils
 import android.util.Log
+import com.box.common.utils.IMLOG
 
 object ImLog {
     private const val DEFAULT_TAG = "AIM"

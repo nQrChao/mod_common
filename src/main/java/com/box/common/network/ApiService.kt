@@ -41,13 +41,13 @@ interface ApiService {
 
     /**
      * 获取游戏列表
-     * 对应的 URL: https://4319g.yize01.com/api/no/common/game/getGameList?pageNum=1&pageSize=10&integer=1
+     * 对应的 URL: https://4319g.yize01.com/api/no/common/game/getGameList?pageNum=1&pageSize=10&type=1
      */
     @GET("api/no/common/game/getGameList")
-    suspend fun getModGameList(
+    suspend fun getModGameRankList(
         @Query("pageNum") pageNum: Int,
         @Query("pageSize") pageSize: Int,
-        @Query("integer") integer: Int
+        @Query("type") type: Int
     ): ModApiResponse<MutableList<ModDataBean>>
 
     /**
