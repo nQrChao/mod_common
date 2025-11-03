@@ -143,6 +143,7 @@
 
     <color name="text_hit_color">#96A5BA</color>
     <color name="text_default_color">#101010</color>
+    <color name="text_select_color">#5990ff</color>
     <color name="mod_tab_text_select_color">#1628FF</color>
     <color name="text_more_dialog_color">#616A75</color>
 

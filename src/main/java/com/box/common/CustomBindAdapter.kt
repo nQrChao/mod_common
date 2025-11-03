@@ -371,6 +371,57 @@ object CustomBindAdapter {
             .into(view)
     }
 
+    @BindingAdapter(value = ["loadRound15Image"])
+    @JvmStatic
+    fun loadRound15Image(view: ImageView, resId: Int?) {
+        val radiusInDp = 15
+        val density = appContext.resources.displayMetrics.density
+        val radiusInPixels = (radiusInDp * density + 0.5f).toInt()
+
+        GlideApp.with(appContext)
+            .load(resId)
+            .transform(CenterCrop(), RoundedCorners(radiusInPixels))
+            .error(RC.drawable.image_loading_ic)
+            .into(view)
+    }
+
+    @BindingAdapter(value = ["loadRound15Image"])
+    @JvmStatic
+    fun loadRound15Image(view: ImageView, url: String?) {
+        if (url.isNullOrEmpty()) {
+            view.visibility = View.GONE
+        } else {
+            val radiusInDp = 15
+            val density = appContext.resources.displayMetrics.density
+            val radiusInPixels = (radiusInDp * density + 0.5f).toInt()
+
+            GlideApp.with(appContext)
+                .load(url)
+                .transform(CenterCrop(), RoundedCorners(radiusInPixels))
+                .error(RC.drawable.status_error_ic)
+                .into(view)
+        }
+    }
+
+    @BindingAdapter(value = ["loadRound20Image"])
+    @JvmStatic
+    fun loadRound20Image(view: ImageView, url: String?) {
+        if (url.isNullOrEmpty()) {
+            view.visibility = View.GONE
+        } else {
+            val radiusInDp = 20
+            val density = appContext.resources.displayMetrics.density
+            val radiusInPixels = (radiusInDp * density + 0.5f).toInt()
+
+            GlideApp.with(appContext)
+                .load(url)
+                .transform(CenterCrop(), RoundedCorners(radiusInPixels))
+                .error(RC.drawable.status_error_ic)
+                .into(view)
+        }
+    }
+
+
     @BindingAdapter(value = ["loadRound12Image"])
     @JvmStatic
     fun loadRound12Image(view: ImageView, url: String?) {
