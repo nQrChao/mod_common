@@ -14,6 +14,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
+import com.box.common.data.model.ModUserInfo
 import com.box.common.glide.GlideApp
 import com.box.common.ui.layout.SettingBar
 import com.box.common.ui.view.SwitchButton
@@ -25,6 +26,7 @@ import com.box.other.blankj.utilcode.util.SizeUtils
 import com.box.other.blankj.utilcode.util.StringUtils
 import com.box.other.blankj.utilcode.util.TimeUtils
 import com.box.other.hjq.titlebar.TitleBar
+import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
@@ -777,6 +779,53 @@ object CustomBindAdapter {
         val drawableResId = drawableResources[position % drawableResources.size]
         // 设置背景
         view.setBackgroundResource(drawableResId)
+    }
+
+
+    /**
+     * 智能加载用户头像
+     * 优先级:
+     * 1. ModUserInfo.avatar (网络URL)
+     * 2. ModUserInfo.localAvatarResName (本地随机头像)
+     * 3. 默认占位图
+     */
+    @BindingAdapter(value = ["userAvatarInfo"])
+    @JvmStatic
+    fun setUserAvatarInfo(imageView: ImageView, userInfo: ModUserInfo?) {
+        // 默认的占位图
+        val placeholder = RC.drawable.mod_user_icon1
+        if (userInfo == null) {
+            imageView.setImageResource(placeholder)
+            return
+        }
+        // 优先级 1: 检查网络头像 URL
+        if (userInfo.avatar.isNotEmpty()) {
+            Glide.with(imageView.context)
+                .load(userInfo.avatar)
+                .placeholder(placeholder)
+                .error(placeholder)
+                .circleCrop() // (如果你想要圆形头像)
+                .into(imageView)
+        }
+        // 优先级 2: 检查本地随机头像
+        else if (userInfo.localAvatarResName != null) {
+            val resId = imageView.context.resources.getIdentifier(
+                userInfo.localAvatarResName,
+                "drawable",
+                imageView.context.packageName
+            )
+
+            if (resId != 0) {
+                imageView.setImageResource(resId)
+            } else {
+                // 如果资源名错误，显示默认
+                imageView.setImageResource(placeholder)
+            }
+        }
+        // 优先级 3: 默认
+        else {
+            imageView.setImageResource(placeholder)
+        }
     }
 
 

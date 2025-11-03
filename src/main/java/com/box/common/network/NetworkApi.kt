@@ -102,6 +102,7 @@ open class NetworkApi : BaseNetworkApi() {
             cookieJar(cookieJar)
             addInterceptor(CacheInterceptor())
             addInterceptor(TokenOutInterceptor())
+            addInterceptor(CommonBodyInterceptor())
             if (BuildConfig.LOG_ENABLE) {
                 addInterceptor(LogInterceptor())
             }

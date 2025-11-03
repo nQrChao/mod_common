@@ -57,7 +57,7 @@ def channelConfigs = [
                 appVersionCode: 1,
                 appVersionName: "1.0",
                 appPackageName: "com.lingdian.game4319",
-                modId         : "\"1\"",
+                modId         : "\"1143042713248108544\"",
                 modName       : "\"mod_box4319\"",
                 modVasId      : "\"aa1000000\"",
                 signingName   : "box4319"

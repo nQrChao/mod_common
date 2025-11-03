@@ -11,11 +11,11 @@ import android.view.View
 import android.webkit.WebView
 import androidx.activity.viewModels
 import androidx.lifecycle.viewModelScope
-import com.box.base.network.NetState
 import com.box.base.base.action.StatusAction
 import com.box.base.base.activity.BaseModVmDbActivity
 import com.box.base.base.viewmodel.BaseViewModel
 import com.box.base.callback.databind.BooleanObservableField
+import com.box.base.network.NetState
 import com.box.com.databinding.CommonActivityBrowserBinding
 import com.box.common.MMKVConfig
 import com.box.common.eventViewModel
@@ -23,7 +23,6 @@ import com.box.common.getDetailedInformation
 import com.box.common.ui.layout.StatusLayout
 import com.box.common.ui.view.BrowserView
 import com.box.common.utils.logsE
-import com.box.com.R as RC
 import com.box.other.blankj.utilcode.util.ActivityUtils
 import com.box.other.blankj.utilcode.util.GsonUtils
 import com.box.other.blankj.utilcode.util.Logs
@@ -33,6 +32,7 @@ import com.box.other.immersionbar.immersionBar
 import com.box.other.scwang.smart.refresh.layout.api.RefreshLayout
 import com.box.other.scwang.smart.refresh.layout.listener.OnRefreshListener
 import kotlinx.coroutines.launch
+import com.box.com.R as RC
 
 class CommonActivityBrowser : BaseModVmDbActivity<CommonActivityBrowser.Model, CommonActivityBrowserBinding>(), StatusAction, OnRefreshListener {
     override val mViewModel: Model by viewModels()
@@ -58,6 +58,7 @@ class CommonActivityBrowser : BaseModVmDbActivity<CommonActivityBrowser.Model, C
         mDataBinding.vm = mViewModel
         mDataBinding.click = ProxyClick()
         immersionBar {
+            titleBar(mDataBinding.titleBar)
             navigationBarColor(RC.color.white)
             init()
         }

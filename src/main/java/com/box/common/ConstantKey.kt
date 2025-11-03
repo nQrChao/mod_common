@@ -36,7 +36,7 @@ object MMKVConfig {
     // 字体大小
     var fontScale: Float by mmkv("fontScale", 1.0f)
 
-    //  生成的角色名
+    /*********************生成的角色名********************/
     val randomNameList: MutableList<ModDataBean> = mmkvList("randomNameList")
     fun addRandomNameList(toAdd: ModDataBean) {
         val existingIndex = randomNameList.indexOfFirst { it.name == toAdd.name }
@@ -70,11 +70,11 @@ object MMKVConfig {
             val updatedItem = currentItem.copy(isShouCang = newShouCangStatus)
             randomNameList[indexToUpdate] = updatedItem
         } else {
-            logsE("updateShouCangStatus: 未找到 name 为 $nameToFind 的项")
+            logsE("updateRandomNameStatusByName: 未找到 name 为 $nameToFind 的项")
         }
     }
 
-    //  小游戏排行榜
+    /*********************小游戏排行榜********************/
     val gameRankList: MutableList<ModDataBean> = mmkvList("gameRankList")
     fun addGameRankList(toAdd: ModDataBean) {
         val existingIndex = gameRankList.indexOfFirst { it.name == toAdd.name }
@@ -105,7 +105,42 @@ object MMKVConfig {
             val updatedItem = currentItem.copy(isShouCang = newShouCangStatus)
             gameRankList[indexToUpdate] = updatedItem
         } else {
-            logsE("updateShouCangStatus: 未找到 name 为 $nameToFind 的项")
+            logsE("updateGameRankByName: 未找到 name 为 $nameToFind 的项")
+        }
+    }
+
+    /*********************图片点赞********************/
+    val gameEventList: MutableList<ModDataBean> = mmkvList("gameEventList")
+    fun addGameEventList(toAdd: ModDataBean) {
+        val existingIndex = gameEventList.indexOfFirst { it.id == toAdd.id }
+        if (existingIndex != -1) {
+            gameEventList[existingIndex] = toAdd
+        } else {
+            gameEventList.add(toAdd)
+        }
+    }
+
+    fun getGameEvent(): MutableList<ModDataBean> {
+        return gameEventList.toMutableList()
+    }
+    fun removeGameEventList(remove: ModDataBean) {
+        val indexToRemove = gameEventList.indexOfFirst { it.id == remove.id }
+        if (indexToRemove != -1) {
+            gameEventList.removeAt(indexToRemove)
+        }
+    }
+
+    fun updateGameEventById(idToFind: Int, newShouCangStatus: Boolean) {
+        val indexToUpdate = gameEventList.indexOfFirst { it.id == idToFind }
+        if (indexToUpdate != -1) {
+            val currentItem = gameEventList[indexToUpdate]
+            if (currentItem.isShouCang == newShouCangStatus) {
+                return
+            }
+            val updatedItem = currentItem.copy(isShouCang = newShouCangStatus)
+            gameEventList[indexToUpdate] = updatedItem
+        } else {
+            logsE("updateGameEventById: 未找到 id 为 $idToFind 的项")
         }
     }
 

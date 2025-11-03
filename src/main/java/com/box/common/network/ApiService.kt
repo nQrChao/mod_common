@@ -1,11 +1,15 @@
 package com.box.common.network
 
+import com.box.common.data.AndroidStatusRequest
+import com.box.common.data.RegisterRequest
 import com.box.common.data.model.MarketInit
 import com.box.common.data.model.ModDataBean
+import com.box.common.data.model.ModInitBean
 import com.box.common.data.model.ModUserInfo
 import com.box.common.data.model.ModUserRealName
 import com.box.common.data.model.ProtocolInit
 import retrofit2.Response
+import retrofit2.http.Body
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
@@ -35,9 +39,41 @@ interface ApiService {
     @FormUrlEncoded
     @POST("/api/no/common/game/getGameList")
     suspend fun getData(@Field("data") data: String): ModApiResponse<Any?>
+
     @FormUrlEncoded
     @POST("App/index?api=market_init")
     suspend fun getDataWithMsg(@Field("data") data: String): ModApiResponse<Any>
+
+
+    /**
+     * 安卓获取应用初始化信息
+     * 对应的 URL: [POST] /api/no/common/control/initialization
+     */
+    @POST("api/no/common/control/initialization")
+    suspend fun postInitializationInfo(@Body requestBody: AndroidStatusRequest): ModApiResponse<ModInitBean>
+
+    /**
+     * 获取安卓状态 (切换控制接口)
+     * 对应的 URL: [POST] /api/no/common/control/getAndroidStatus
+     */
+    @POST("/api/no/common/control/getAndroidStatus")
+    suspend fun getAndroidStatus(@Body requestBody: RegisterRequest): ModApiResponse<Any>
+
+    /**
+     * 用户登录
+     * 对应的 URL: [POST] /api/no/common/user/login
+     * 发送 application/json 格式的数据
+     */
+    @POST("/api/no/common/user/login")
+    suspend fun postUserLogin(@Body requestBody: RegisterRequest): ModApiResponse<ModUserInfo>
+
+    /**
+     * 用户注册
+     * 对应的 URL: [POST] /api/no/common/user/register
+     * 发送 application/json 格式的数据
+     */
+    @POST("/api/no/common/user/register")
+    suspend fun postUserRegister(@Body requestBody: RegisterRequest): ModApiResponse<ModUserInfo>
 
     /**
      * 获取游戏列表
@@ -62,14 +98,20 @@ interface ApiService {
      * 对应的 URL: https://4319g.yize01.com/api/no/common/news/list?pageNum=1&pageSize=10
      */
     @GET("api/no/common/news/list")
-    suspend fun getNewsList(@Query("pageNum") pageNum: Int, @Query("pageSize") pageSize: Int): ModApiResponse<MutableList<ModDataBean>>
+    suspend fun getNewsList(
+        @Query("pageNum") pageNum: Int,
+        @Query("pageSize") pageSize: Int
+    ): ModApiResponse<MutableList<ModDataBean>>
 
     /**
      * 随机获取角色名称
      * 对应的 URL: https://4319g.yize01.com/api/no/common/role/randName?roleType=1&length=3
      */
     @GET("api/no/common/role/randName")
-    suspend fun getRandomName(@Query("roleType") roleType: Int, @Query("length") length: Int): ModApiResponse<ModDataBean>
+    suspend fun getRandomName(
+        @Query("roleType") roleType: Int,
+        @Query("length") length: Int
+    ): ModApiResponse<ModDataBean>
 
     /**
      * 获取角色类型
@@ -77,11 +119,6 @@ interface ApiService {
      */
     @GET("api/no/common/role/type")
     suspend fun getRoleType(): ModApiResponse<MutableList<ModDataBean>>
-
-
-
-
-
 
 
     @FormUrlEncoded
@@ -104,7 +141,10 @@ interface ApiService {
 
     @FormUrlEncoded
     @POST("/index.php/App/index")
-    suspend fun postAuthLogin(@Query(value = "api") api: String, @Field("data") data: String): ModApiResponse<ModUserInfo>
+    suspend fun postAuthLogin(
+        @Query(value = "api") api: String,
+        @Field("data") data: String
+    ): ModApiResponse<ModUserInfo>
 
     @FormUrlEncoded
     @POST("App/index?api=login")
