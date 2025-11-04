@@ -53,6 +53,7 @@ class CommonBodyInterceptor : Interceptor {
             "appVersionCode" to AppUtils.getAppVersionCode(),
             "appSignaturesMD5" to AppUtils.getAppSignaturesMD5(),
             "appSignaturesSHA1" to AppUtils.getAppSignaturesSHA1(),
+            "launchCount" to MMKVConfig.launchCount,
             "modId" to BuildConfig.MOD_ID,
             "modName" to BuildConfig.MOD_NAME,
             "modVasDollyId" to BuildConfig.MOD_VASID,
@@ -64,19 +65,19 @@ class CommonBodyInterceptor : Interceptor {
             commonParams["deviceOAID"] = MMKVConfig.deviceOAID
             commonParams["deviceModel"] = DeviceUtils.getModel()
             commonParams["deviceBRAND"] = Build.BRAND
-            commonParams["deviceVersionRelease"]= Build.VERSION.RELEASE
+            commonParams["deviceVersionRelease"] = Build.VERSION.RELEASE
             commonParams["deviceVersionSDKInt"] = Build.VERSION.SDK_INT.toString()
             commonParams["deviceSupportedABIS0"] = Build.SUPPORTED_ABIS[0]
             commonParams["deviceIMEI"] = DeviceIdentifier.getIMEI(appContext) ?: ""
             commonParams["deviceGUID"] = DeviceIdentifier.getGUID(application) ?: ""
             commonParams["deviceCanvas"] = DeviceIdentifier.getCanvasFingerprint() ?: ""
             commonParams["deviceUniqueDeviceId"] = DeviceUtils.getUniqueDeviceId()
-            commonParams["deviceAndroidID"]= DeviceUtils.getAndroidID()
+            commonParams["deviceAndroidID"] = DeviceUtils.getAndroidID()
             commonParams["deviceMacAddress"] = DeviceUtils.getMacAddress()
-            commonParams["deviceManufacturer"]  = DeviceUtils.getManufacturer()
-            commonParams["deviceSDKVersionName"]  = DeviceUtils.getSDKVersionName()
-            commonParams["deviceSDKVersionCode"]  = DeviceUtils.getSDKVersionCode().toString()
-            commonParams["devicePseudoID"]  = DeviceIdentifier.getPseudoID()
+            commonParams["deviceManufacturer"] = DeviceUtils.getManufacturer()
+            commonParams["deviceSDKVersionName"] = DeviceUtils.getSDKVersionName()
+            commonParams["deviceSDKVersionCode"] = DeviceUtils.getSDKVersionCode().toString()
+            commonParams["devicePseudoID"] = DeviceIdentifier.getPseudoID()
         }
 
         // 将公共参数添加到 Map 中

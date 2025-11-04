@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelStoreOwner
 import com.box.base.base.AppScope
 import com.box.com.BuildConfig
 import com.box.com.R
+import com.box.common.MMKVConfig.launchCount
 import com.box.common.data.model.DeviceInfoBean
 import com.box.common.data.model.ModInfoBean
 import com.box.common.event.AppViewModel
@@ -87,6 +88,9 @@ object AppInit {
         initUIComponents()
         //initCNOAID()
         initLifecycleListener()
+
+        launchCount++
+        logsE("LaunchCount:$launchCount")
     }
 
     fun setAppFontScale(fontScale: Float) {

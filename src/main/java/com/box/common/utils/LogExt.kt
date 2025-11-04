@@ -4,25 +4,25 @@ import android.util.Log
 import com.box.other.blankj.utilcode.util.Logs
 
 fun Any.logsD(message: String) {
-    Logs.d(this.javaClass.simpleName, message)
+    Logs.d( message)
 }
 
 fun Any.logsE(message: String) {
-    Logs.e(this.javaClass.simpleName, message)
+    Logs.e( message)
 }
 
 fun Any.logsI(message: String) {
-    Logs.i(this.javaClass.simpleName, message)
+    Logs.i(message)
 }
 fun Any.logsW(message: String) {
-    Logs.w(this.javaClass.simpleName, message)
+    Logs.w(message)
 }
 
 fun Any.logsA(message: String) {
-    Logs.a(this.javaClass.simpleName, message)
+    Logs.a( message)
 }
 
-const val TAG = "AIM"
+const val TAG = "AM"
 
 /**
  *

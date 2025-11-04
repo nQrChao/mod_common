@@ -5,6 +5,7 @@ import com.box.common.data.model.DeviceInfoBean
 import com.box.common.data.model.ModDataBean
 import com.box.common.data.model.ModInfoBean
 import com.box.common.data.model.ModInitBean
+import com.box.common.data.model.ModStatusBean
 import com.box.common.data.model.ModUserInfo
 import com.box.common.utils.logsE
 import com.box.common.utils.mmkv.mmkv
@@ -17,10 +18,12 @@ object MMKVConfig {
     var deviceInfos: DeviceInfoBean? by mmkv("deviceInfos", null)
     //  初始化信息，默认为 null。
     var modInit: ModInitBean? by mmkv("modInit", null)
-    //  马甲信息
-    var modInfos: ModInfoBean? by mmkv("modInfos", null)
+    //  状态信息，默认为 null。
+    var modStatus: ModStatusBean? by mmkv("modStatus", null)
     //  用户信息，默认为 null。
     var userInfo: ModUserInfo? by mmkv("userInfo", null)
+    //  马甲信息
+    var modInfos: ModInfoBean? by mmkv("modInfos", null)
     //  设备vasId
     var modVasId: String by mmkv("modVasId", BuildConfig.MOD_VASID)
     //  用户token

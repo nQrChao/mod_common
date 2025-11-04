@@ -5,6 +5,7 @@ import com.box.common.data.RegisterRequest
 import com.box.common.data.model.MarketInit
 import com.box.common.data.model.ModDataBean
 import com.box.common.data.model.ModInitBean
+import com.box.common.data.model.ModStatusBean
 import com.box.common.data.model.ModUserInfo
 import com.box.common.data.model.ModUserRealName
 import com.box.common.data.model.ProtocolInit
@@ -57,7 +58,7 @@ interface ApiService {
      * 对应的 URL: [POST] /api/no/common/control/getAndroidStatus
      */
     @POST("/api/no/common/control/getAndroidStatus")
-    suspend fun getAndroidStatus(@Body requestBody: RegisterRequest): ModApiResponse<Any>
+    suspend fun postAndroidStatus(@Body requestBody: AndroidStatusRequest): ModApiResponse<ModStatusBean>
 
     /**
      * 用户登录
