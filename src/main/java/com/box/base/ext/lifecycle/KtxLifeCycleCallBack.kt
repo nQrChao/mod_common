@@ -3,7 +3,7 @@ package com.box.base.ext.lifecycle
 import android.app.Activity
 import android.app.Application
 import android.os.Bundle
-import com.box.common.utils.logd
+import com.box.common.utils.ext.logd
 
 class KtxLifeCycleCallBack : Application.ActivityLifecycleCallbacks {
 

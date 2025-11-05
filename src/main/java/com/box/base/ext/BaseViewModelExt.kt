@@ -14,7 +14,7 @@ import com.box.base.state.ModResultStateWithMsg
 import com.box.base.state.ResultState
 import com.box.base.state.paresException
 import com.box.base.state.paresResult
-import com.box.common.MMKVConfig
+import com.box.common.utils.mmkv.MMKVConfig
 import com.box.common.getOAIDWithCoroutines
 import com.box.common.network.ModApiResponse
 import com.box.common.network.NetworkApi

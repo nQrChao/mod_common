@@ -7,7 +7,7 @@ import android.widget.RelativeLayout;
 
 import com.box.com.R;
 import com.box.common.utils.GetFilePathFromUri;
-import com.box.common.utils.UtilMediaFile;
+import com.box.common.utils.media.UtilMediaFile;
 import com.box.other.blankj.utilcode.util.AppUtils;
 
 

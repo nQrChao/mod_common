@@ -8,7 +8,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.box.com.BuildConfig;
-import com.box.common.MMKVConfig;
+import com.box.common.utils.mmkv.MMKVConfig;
 import com.box.common.network.Des;
 import com.box.common.utils.subpackage.Base64;
 import com.box.common.utils.subpackage.ChannelReaderUtil;

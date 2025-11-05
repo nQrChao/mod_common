@@ -1,16 +1,16 @@
 package com.box.common.utils.totp
 
 open class Base32String protected constructor(
-    ALPHABET: String
+    val alphaBet: String
 ) : Cloneable {
-    private val DIGITS: CharArray = ALPHABET.toCharArray()
-    private val MASK: Int = DIGITS.size - 1
-    private val SHIFT: Int = Integer.numberOfTrailingZeros(DIGITS.size)
-    private val CHAR_MAP: HashMap<Char, Int> = HashMap()
+    private val digits: CharArray = alphaBet.toCharArray()
+    private val mask: Int = digits.size - 1
+    private val shift: Int = Integer.numberOfTrailingZeros(digits.size)
+    private val charMap: HashMap<Char, Int> = HashMap()
 
     init {
-        for (i in DIGITS.indices) {
-            CHAR_MAP[DIGITS[i]] = i
+        for (i in digits.indices) {
+            charMap[digits[i]] = i
         }
     }
 
@@ -30,18 +30,18 @@ open class Base32String protected constructor(
             return ByteArray(0)
         }
         val encodedLength = encoded.length
-        val outLength = encodedLength * SHIFT / 8
+        val outLength = encodedLength * shift / 8
         val result = ByteArray(outLength)
         var buffer = 0
         var next = 0
         var bitsLeft = 0
         for (c in encoded.toCharArray()) {
-            if (!CHAR_MAP.containsKey(c)) {
+            if (!charMap.containsKey(c)) {
                 throw DecodingException("Illegal character: $c")
             }
-            buffer = buffer shl SHIFT
-            buffer = buffer or (CHAR_MAP[c]!! and MASK)
-            bitsLeft += SHIFT
+            buffer = buffer shl shift
+            buffer = buffer or (charMap[c]!! and mask)
+            bitsLeft += shift
             if (bitsLeft >= 8) {
                 result[next++] = (buffer shr bitsLeft - 8).toByte()
                 bitsLeft -= 8
@@ -64,26 +64,26 @@ open class Base32String protected constructor(
         // output is the length of the input multiplied by 8/SHIFT, rounded up.
         // The computation below will fail, so don't do it.
         require(!(data.size >= 1 shl 28))
-        val outputLength = (data.size * 8 + SHIFT - 1) / SHIFT
+        val outputLength = (data.size * 8 + shift - 1) / shift
         val result = StringBuilder(outputLength)
         var buffer = data[0].toInt()
         var next = 1
         var bitsLeft = 8
         while (bitsLeft > 0 || next < data.size) {
-            if (bitsLeft < SHIFT) {
+            if (bitsLeft < shift) {
                 if (next < data.size) {
                     buffer = buffer shl 8
                     buffer = buffer or (data[next++].toInt() and 0xff)
                     bitsLeft += 8
                 } else {
-                    val pad = SHIFT - bitsLeft
+                    val pad = shift - bitsLeft
                     buffer = buffer shl pad
                     bitsLeft += pad
                 }
             }
-            val index = MASK and (buffer shr bitsLeft - SHIFT)
-            bitsLeft -= SHIFT
-            result.append(DIGITS[index])
+            val index = mask and (buffer shr bitsLeft - shift)
+            bitsLeft -= shift
+            result.append(digits[index])
         }
         return result.toString()
     }

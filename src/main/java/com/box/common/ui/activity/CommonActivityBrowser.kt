@@ -17,12 +17,12 @@ import com.box.base.base.viewmodel.BaseViewModel
 import com.box.base.callback.databind.BooleanObservableField
 import com.box.base.network.NetState
 import com.box.com.databinding.CommonActivityBrowserBinding
-import com.box.common.MMKVConfig
+import com.box.common.utils.mmkv.MMKVConfig
 import com.box.common.eventViewModel
 import com.box.common.getDetailedInformation
 import com.box.common.ui.layout.StatusLayout
 import com.box.common.ui.view.BrowserView
-import com.box.common.utils.logsE
+import com.box.common.utils.ext.logsE
 import com.box.other.blankj.utilcode.util.ActivityUtils
 import com.box.other.blankj.utilcode.util.GsonUtils
 import com.box.other.blankj.utilcode.util.Logs

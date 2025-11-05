@@ -1,4 +1,4 @@
-package com.box.common.utils
+package com.box.common.utils.ext
 
 import android.util.Log
 import com.box.other.blankj.utilcode.util.Logs

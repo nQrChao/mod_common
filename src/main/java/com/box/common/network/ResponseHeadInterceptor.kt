@@ -1,7 +1,7 @@
 package com.box.common.network
 
 import android.util.Log
-import com.box.common.MMKVConfig
+import com.box.common.utils.mmkv.MMKVConfig
 import okhttp3.Interceptor
 import okhttp3.Response
 import java.io.IOException

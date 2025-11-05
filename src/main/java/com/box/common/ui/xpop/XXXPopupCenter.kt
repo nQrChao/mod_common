@@ -15,7 +15,7 @@ import com.box.com.R
 import com.box.common.countClick
 import com.box.common.eventViewModel
 import com.box.common.generateTotpNumber
-import com.box.common.utils.getCurrentDateTimeString
+import com.box.common.utils.ext.getCurrentDateTimeString
 import com.box.common.verifyTOTP
 import com.box.other.xpopup.core.CenterPopupView
 import java.util.concurrent.Executors

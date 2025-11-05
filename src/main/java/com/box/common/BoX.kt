@@ -2,7 +2,6 @@ package com.box.common
 
 // 请确保在文件顶部导入这个函数
 import android.annotation.SuppressLint
-import android.app.NotificationManager
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
@@ -41,6 +40,7 @@ import com.box.common.data.model.ModTradeGoodDetailBean
 import com.box.common.glide.GlideApp
 import com.box.common.sdk.VasDollyUtils
 import com.box.common.utils.GetFilePathFromUri
+import com.box.common.utils.mmkv.MMKVConfig
 import com.box.common.utils.totp.PasscodeGenerator
 import com.box.other.blankj.utilcode.util.ActivityUtils
 import com.box.other.blankj.utilcode.util.AppUtils
@@ -89,15 +89,22 @@ import kotlin.coroutines.resume
 import kotlin.random.Random
 import kotlin.system.exitProcess
 
-
-fun getUserShowName(remark: String?, nickName: String? = ""): String {
-    remark?.let {
-        if (TextUtils.isEmpty(it)) {
-            return nickName ?: ""
-        }
-        return remark
+/**
+ * 连续点击事件，10次后触发
+ */
+private const val clickCount = 10
+private const val clickTime: Long = 2000
+private var clickHits = LongArray(clickCount)
+fun countClick(commit: (() -> Unit)) {
+    System.arraycopy(clickHits, 1, clickHits, 0, clickHits.size - 1)
+    clickHits[clickHits.size - 1] = SystemClock.uptimeMillis()
+    // 只有当 clickHits[0] 不为 0 (意味着10次点击已经存满)
+    // 并且时间差在 clickTime (2秒) 内时，才触发
+    if (clickHits[0] != 0L && clickHits[0] >= SystemClock.uptimeMillis() - clickTime) {
+        commit.invoke()
+        //触发后立即重置数组，要求用户重新开始10次点击
+        clickHits = LongArray(clickCount)
     }
-    return nickName ?: ""
 }
 
 
@@ -130,27 +137,16 @@ fun getSequence(txt: String?, name: String?): CharSequence {
 }
 
 
-fun buildClickAndColorSpannables(
+fun buildClickAndColorSpannable(
     spannableString: SpannableStringBuilder,
     tags: MutableList<String>,
     clickableSpan: ClickableSpan?
 ): CharSequence {
-    //val reString : CharSequence
     for (tag in tags) {
         val colorSpan = ForegroundColorSpan(ColorUtils.getColor(R.color.colorPrimary))
         val start = spannableString.toString().indexOf(tag)
         val end = spannableString.toString().indexOf(tag) + tag.length
         spannableString.setSpan(colorSpan, start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-//        if (start >= 0) {
-//            val end = spannableString.toString().indexOf(tag) + tag.length
-//            if (null != clickableSpan) spannableString.setSpan(
-//                clickableSpan,
-//                start,
-//                end,
-//                Spannable.SPAN_EXCLUSIVE_INCLUSIVE
-//            )
-//            spannableString.setSpan(colorSpan, start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-//        }
     }
     return spannableString
 }
@@ -217,16 +213,7 @@ fun isEmoji(string: String): Boolean {
 }
 
 
-private const val clickCount = 10
-private const val clickTime: Long = 2000
-private var clickHits = LongArray(clickCount)
-fun countClick(commit: (() -> Unit)) {
-    System.arraycopy(clickHits, 1, clickHits, 0, clickHits.size - 1)
-    clickHits[clickHits.size - 1] = SystemClock.uptimeMillis()
-    if (clickHits[0] >= SystemClock.uptimeMillis() - clickTime) {
-        commit.invoke()
-    }
-}
+
 
 @SuppressLint("SimpleDateFormat")
 fun generateTotpNumber(key: String) {
@@ -247,17 +234,14 @@ fun verifyTOTP(key: String?, otp: String?): Boolean {
 }
 
 
-const val min = 1
-const val max = 9999999
-fun getIntUUID(): Int {
-    return Random.nextInt(min, max + 1)
-}
-
 val uriNotification: Uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
-val mRingNotification: Ringtone = RingtoneManager.getRingtone(appContext, uriNotification)
+val mRingNotification: Ringtone? = RingtoneManager.getRingtone(appContext, uriNotification)
 fun playNotification() {
-    if (!mRingNotification.isPlaying)
-        mRingNotification.play()
+    mRingNotification?.let {
+        if (!it.isPlaying) {
+            it.play()
+        }
+    }
 }
 
 val uriRingtone: Uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE)
@@ -273,17 +257,8 @@ fun stopRingtone() {
     }
 }
 
-
 fun hasNotificationPermission(): Boolean {
-    val notificationManager =
-        appContext.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-        // 在Android 8.0及以上版本
-        notificationManager.areNotificationsEnabled()
-    } else {
-        // 在Android 7.0及以下版本
-        NotificationManagerCompat.from(appContext).areNotificationsEnabled()
-    }
+    return NotificationManagerCompat.from(appContext).areNotificationsEnabled()
 }
 
 fun loadAssetFileAsString(context: Context, fileName: String): String {
@@ -423,11 +398,13 @@ fun loadPicture(elem: PictureElem, onError: (() -> Unit)? = null, onReady: (() -
 }
 
 fun toBrowser(url: String) {
-    val intent = Intent()
-    intent.setAction("android.intent.action.VIEW")
-    val contentUrl = url.toUri()
-    intent.setData(contentUrl)
-    ActivityUtils.startActivity(intent)
+    try {
+        val intent = Intent(Intent.ACTION_VIEW, url.toUri())
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK) // 确保在 Activity 栈外启动
+        ActivityUtils.startActivity(intent)
+    } catch (e: ActivityNotFoundException) {
+        Toaster.show("无法打开链接，未找到可用的浏览器")
+    }
 }
 
 fun toWeChat(customerServiceUrl: String) {
@@ -869,6 +846,51 @@ fun getCommonParams() {
     }
 }
 
+/**
+ * 从 URL 中提取路径部分 (移自 UtilDir.getPath)
+ */
+fun getPathFromUrl(url: String?): String {
+    if (url.isNullOrEmpty()) return ""
+    return try {
+        val fileName = url.substring(url.lastIndexOf("/") + 1)
+        val p1 = url.removePrefix("http://").removePrefix("https://")
+        val parts = p1.split("/")
+        if (parts.size <= 1) return p1 // e.g., "www.example.com"
+
+        val pathWithoutHost = p1.substring(parts[0].length)
+        val finalPath = pathWithoutHost.removeSuffix(fileName)
+        if (finalPath.length < 2) p1 else finalPath
+    } catch (e: Exception) {
+        e.printStackTrace()
+        ""
+    }
+}
+
+/**
+ * 从 URL 中获取域名 (移自 UtilDir.getDomain)
+ */
+fun getDomainFromUrl(url: String?): String {
+    if (url.isNullOrEmpty()) return ""
+    return try {
+        url.removePrefix("http://").removePrefix("https://").split("/").firstOrNull() ?: url
+    } catch (e: Exception) {
+        e.printStackTrace()
+        url
+    }
+}
+
+/**
+ * 从 file:// 路径中剥离协议头 (移自 UtilDir.getDomainFile)
+ */
+fun getPathFromFileUrl(fileUrl: String?): String {
+    if (fileUrl.isNullOrEmpty()) return ""
+    return try {
+        fileUrl.removePrefix("file://").removePrefix("file:/")
+    } catch (e: Exception) {
+        e.printStackTrace()
+        fileUrl
+    }
+}
 
 /**
  * 将网络图片保存到相册

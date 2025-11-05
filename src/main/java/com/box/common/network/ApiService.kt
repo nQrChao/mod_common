@@ -30,8 +30,6 @@ interface ApiService {
             "https://4319g.yize01.com/"
         )
         var D_API_URL = "https://4319g.yize01.com"
-        var XY_1_URL = "https://mobile.xiaodianyouxi.com/index.php/Index/view/?id=100000012"//注册
-        var XY_2_URL = "https://mobile.xiaodianyouxi.com/index.php/Index/view/?id=100000011"//隐私
     }
 
     @HEAD

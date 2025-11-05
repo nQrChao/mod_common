@@ -6,7 +6,7 @@ import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import com.box.common.MMKVConfig
+import com.box.common.utils.mmkv.MMKVConfig
 import com.box.other.blankj.utilcode.util.Logs
 import java.util.concurrent.CopyOnWriteArrayList
 

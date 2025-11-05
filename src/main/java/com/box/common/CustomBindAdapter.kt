@@ -42,7 +42,7 @@ object CustomBindAdapter {
         checkbox.setOnCheckedChangeListener(listener)
     }
 
-    @BindingAdapter(value = ["isShowView"])
+    @BindingAdapter(value = ["showView"])
     @JvmStatic
     fun showView(view: View, boolean: Boolean) {
         if (boolean) {

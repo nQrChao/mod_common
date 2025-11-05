@@ -3,7 +3,7 @@ package com.box.common.network // (确保这是你的包名)
 import android.os.Build
 import com.box.com.BuildConfig
 import com.box.common.AppInit.application
-import com.box.common.MMKVConfig
+import com.box.common.utils.mmkv.MMKVConfig
 import com.box.common.appContext
 import com.box.other.blankj.utilcode.util.AppUtils
 import com.box.other.blankj.utilcode.util.DeviceUtils

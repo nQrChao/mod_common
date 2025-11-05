@@ -43,11 +43,11 @@ open class PasscodeGenerator {
         return `val`
     }
 
-    private fun generateResponseCode(Key: String, dataString: String): String {
+    private fun generateResponseCode(key: String, dataString: String): String {
         try {
-            val KeyBytes = decode(Key + dataString)
+            val keyBytes = decode(key + dataString)
             val mac = Mac.getInstance("HMACSHA1")
-            mac.init(SecretKeySpec(KeyBytes, ""))
+            mac.init(SecretKeySpec(keyBytes, ""))
             val time = valueAtTime
             val data = long2bytes(time)
             val hash = mac.doFinal(data)

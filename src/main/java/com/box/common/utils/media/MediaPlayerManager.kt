@@ -1,8 +1,7 @@
-package com.box.common.utils
+package com.box.common.utils.media
 
 import android.content.Context
 import android.media.AudioAttributes
-import android.media.AudioManager
 import android.media.MediaPlayer
 import android.net.Uri
 import com.box.other.blankj.utilcode.util.Logs
@@ -14,10 +13,11 @@ import java.io.IOException
 import java.net.HttpURLConnection
 import java.net.URL
 
+
 /**
  * 音频播放管理类
  */
-object MediaPlayerManage2 {
+object MediaPlayerManager {
     private var mediaPlayer: MediaPlayer? = null  //播放音频API类：MediaPlayer
     private var isPause = false  //是否暂停
     val isPlaying = mediaPlayer?.let {//是否正在播放
@@ -30,9 +30,8 @@ object MediaPlayerManage2 {
      */
     fun playSound(context: Context, filePath: String, completeListener: MediaPlayer.OnCompletionListener) {
         if (mediaPlayer == null) {
+            //初始化mediaPlayer
             mediaPlayer = MediaPlayer()
-            mediaPlayer!!.setAudioStreamType(AudioManager.STREAM_MUSIC)
-
             val audioAttributes = AudioAttributes.Builder()
                 .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
                 .setUsage(AudioAttributes.USAGE_MEDIA)
@@ -57,7 +56,10 @@ object MediaPlayerManage2 {
                     prepareAsync()
 
                 }
+
+
             }
+
         }
 
     }

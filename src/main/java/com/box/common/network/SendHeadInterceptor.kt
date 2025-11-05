@@ -1,6 +1,6 @@
 package com.box.common.network
 
-import com.box.common.MMKVConfig
+import com.box.common.utils.mmkv.MMKVConfig
 import com.box.common.appViewModel
 import okhttp3.Interceptor
 import okhttp3.Response

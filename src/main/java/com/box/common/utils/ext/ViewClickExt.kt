@@ -1,4 +1,4 @@
-package com.box.common.utils // 或者你喜欢的任何工具类包名
+package com.box.common.utils.ext // 或者你喜欢的任何工具类包名
 
 import android.os.SystemClock
 import android.view.View
@@ -29,33 +29,6 @@ fun View.setOnSingleClickListener(delayMillis: Long = 1000L, onSingleClick: (Vie
     }
 }
 
-/**
- * 如果不喜欢用 setTag，可以使用一个独立的 manager object 来管理时间戳。
- * 这种方式更 OO 一些，但调用方式完全一样。
- */
-object SingleClickManager {
-    private var lastClickTime: Long = 0L
-    private const val DEFAULT_DELAY = 1000L
-
-    @Synchronized
-    fun isSingleClick(delay: Long = DEFAULT_DELAY): Boolean {
-        val currentTime = SystemClock.uptimeMillis()
-        if (currentTime - lastClickTime > delay) {
-            lastClickTime = currentTime
-            return true
-        }
-        return false
-    }
-}
-
-// 使用 SingleClickManager 的扩展函数版本
-fun View.setOnSingleClickListenerV2(delayMillis: Long = 1000L, onSingleClick: (View) -> Unit) {
-    setOnClickListener {
-        if (SingleClickManager.isSingleClick(delayMillis)) {
-            onSingleClick(it)
-        }
-    }
-}
 
 /**
  * 用于 Data Binding 的防抖点击属性。

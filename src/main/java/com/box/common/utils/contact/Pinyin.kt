@@ -5,12 +5,7 @@ import java.util.Locale
 import java.util.regex.Pattern
 
 /**
- * <pre>
- * author: Blankj
- * blog  : http://blankj.com
- * time  : 16/11/16
  * desc  : 拼音相关工具类
-</pre> *
  */
 internal class Pinyin private constructor() {
     init {

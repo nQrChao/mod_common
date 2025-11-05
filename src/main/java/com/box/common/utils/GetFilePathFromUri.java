@@ -61,9 +61,6 @@ public class GetFilePathFromUri {
 
     /**
      * 根据Uri获取文件绝对路径，解决Android4.4以上版本Uri转换 兼容Android 10
-     *
-     * @param context
-     * @param imageUri
      */
     public static String getFileAbsolutePath(Context context, Uri imageUri) {
         if (context == null || imageUri == null) {
@@ -76,7 +73,7 @@ public class GetFilePathFromUri {
         }
 
         //大于4.4，小于10
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT && Build.VERSION.SDK_INT < Build.VERSION_CODES.Q && DocumentsContract.isDocumentUri(context, imageUri)) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q && DocumentsContract.isDocumentUri(context, imageUri)) {
 
             if (isExternalStorageDocument(imageUri)) {
                 String docId = DocumentsContract.getDocumentId(imageUri);

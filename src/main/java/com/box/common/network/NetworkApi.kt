@@ -8,7 +8,7 @@ import com.box.base.network.CacheInterceptor
 import com.box.base.network.LogInterceptor
 import com.box.com.BuildConfig
 import com.box.common.AppInit.application
-import com.box.common.MMKVConfig
+import com.box.common.utils.mmkv.MMKVConfig
 import com.box.common.appContext
 import com.box.common.network.Des.signKey
 import com.box.other.blankj.utilcode.util.AppUtils

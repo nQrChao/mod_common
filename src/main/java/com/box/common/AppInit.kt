@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelStoreOwner
 import com.box.base.base.AppScope
 import com.box.com.BuildConfig
 import com.box.com.R
-import com.box.common.MMKVConfig.launchCount
+import com.box.common.utils.mmkv.MMKVConfig.launchCount
 import com.box.common.data.model.DeviceInfoBean
 import com.box.common.data.model.ModInfoBean
 import com.box.common.event.AppViewModel
@@ -22,8 +22,9 @@ import com.box.common.sdk.SDKLifecycle
 import com.box.common.sdk.VasDollyUtils
 import com.box.common.ui.activity.crash.CrashHandler
 import com.box.common.utils.DirUtils
-import com.box.common.utils.logsE
-import com.box.common.utils.logsW
+import com.box.common.utils.ext.logsE
+import com.box.common.utils.ext.logsW
+import com.box.common.utils.mmkv.MMKVConfig
 import com.box.common.utils.other.MaterialHeader
 import com.box.common.utils.other.SmartBallPulseFooter
 import com.box.other.blankj.utilcode.util.AppUtils
@@ -79,8 +80,8 @@ object AppInit {
             return
         }
         isInitialized = true
-        MMKV.initialize(app, PathUtils.getInternalAppFilesPath() + "/boxMMKV")
         Toaster.init(app)
+        MMKV.initialize(app, PathUtils.getInternalAppFilesPath() + "/boxM")
 
         VasDollyUtils.initVasId(app)
         CrashHandler.register(app)

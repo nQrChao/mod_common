@@ -1,4 +1,4 @@
-package com.box.common.utils
+package com.box.common.utils.ext
 
 import android.annotation.SuppressLint
 import com.box.com.R

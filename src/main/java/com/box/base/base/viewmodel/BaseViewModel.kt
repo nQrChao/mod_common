@@ -9,7 +9,7 @@ import com.box.base.callback.livedata.BooleanLiveData
 import com.box.base.callback.livedata.event.EventLiveData
 import com.box.base.ext.modAppRequest
 import com.box.base.state.ModResultState
-import com.box.common.MMKVConfig
+import com.box.common.utils.mmkv.MMKVConfig
 import com.box.common.appViewModel
 import com.box.common.data.model.RefundGames
 import com.box.common.getOAIDWithCoroutines

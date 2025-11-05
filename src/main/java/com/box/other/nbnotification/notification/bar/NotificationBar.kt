@@ -9,11 +9,17 @@ import android.graphics.BitmapFactory
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import com.box.common.appContext
-import com.box.common.getIntUUID
 import com.box.other.nbnotification.NBNotification
+import kotlin.random.Random
 
-
+const val minRandom = 1
+const val maxRandom = 9999999
 object NotificationBar {
+
+    fun getIntUUID(): Int {
+        return Random.nextInt(minRandom, maxRandom + 1)
+    }
+
     @SuppressLint("UnspecifiedImmutableFlag")
     fun notify(nbBuilder: NBNotification.Builder) {
 
@@ -59,4 +65,7 @@ object NotificationBar {
 //        )
     }
 
+
+
 }
+

@@ -1,4 +1,4 @@
-package com.box.common.utils;
+package com.box.common.utils.media;
 
 import android.graphics.Bitmap;
 import android.media.MediaMetadataRetriever;

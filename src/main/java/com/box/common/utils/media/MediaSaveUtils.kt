@@ -1,4 +1,4 @@
-package com.box.common.utils
+package com.box.common.utils.media
 
 import android.content.ContentValues
 import android.content.Context
