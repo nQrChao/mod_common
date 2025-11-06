@@ -362,12 +362,12 @@ fun loadPicture(elem: PictureElem, onError: (() -> Unit)? = null, onReady: (() -
 
     if (TextUtils.isEmpty(url)) {
         elem.snapshotPicture?.let {
-            url = it.url + "?key=" + appViewModel.userInfo.value
+            url = it.url + "?key=" + appViewModel.modUserInfo.value
         }
     }
     if (TextUtils.isEmpty(url)) {
         elem.sourcePicture?.let {
-            url = it.url + "?key=" + appViewModel.userInfo.value
+            url = it.url + "?key=" + appViewModel.modUserInfo.value
         }
     }
     return GlideApp.with(appContext)

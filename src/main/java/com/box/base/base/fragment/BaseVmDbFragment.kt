@@ -16,6 +16,7 @@ import com.box.base.base.action.KeyboardAction
 import com.box.base.base.viewmodel.BaseViewModel
 import com.box.base.network.NetState
 import com.box.base.network.NetworkStateManager
+import com.box.common.eventViewModel
 import com.box.other.xpopup.XPopup
 import com.box.other.xpopup.impl.LoadingPopupView
 
@@ -73,6 +74,10 @@ abstract class BaseVmDbFragment<VM : BaseViewModel, DB : ViewDataBinding> : Frag
             }, lazyLoadTime())
             isFirstLoad = false
         }
+    }
+
+    fun isLogin(): Boolean {
+        return eventViewModel.isLogin.value ?: false
     }
 
     /**

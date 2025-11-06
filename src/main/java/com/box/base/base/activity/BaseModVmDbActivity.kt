@@ -5,16 +5,11 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.view.ViewGroup
 import android.view.Window
-import androidx.activity.viewModels
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import com.box.other.blankj.utilcode.util.KeyboardUtils
 import com.box.base.base.action.BundleAction
 import com.box.base.base.action.HandlerAction
 import com.box.base.base.action.KeyboardAction
@@ -22,9 +17,10 @@ import com.box.base.base.action.TitleBarAction
 import com.box.base.base.viewmodel.BaseViewModel
 import com.box.base.network.NetState
 import com.box.base.network.NetworkStateManager
-import com.box.other.hjq.titlebar.TitleBar
 import com.box.com.R
-import com.box.mod.game.ModComService
+import com.box.common.eventViewModel
+import com.box.other.blankj.utilcode.util.KeyboardUtils
+import com.box.other.hjq.titlebar.TitleBar
 import com.box.other.immersionbar.ImmersionBar
 import com.box.other.xpopup.XPopup
 import com.box.other.xpopup.impl.LoadingPopupView
@@ -130,20 +126,20 @@ abstract class BaseModVmDbActivity<VM : BaseViewModel, DB : ViewDataBinding> : A
 
     // --- 公共方法封装 ---
 
-    // 【改造】2. 重写 showLoading 方法，实现内置管理
+    //  重写 showLoading 方法，实现内置管理
     open fun showLoading(message: String) {
         mHandler.removeCallbacks(showLoadingRunnable)
         mHandler.postDelayed(showLoadingRunnable, 300)
     }
 
-    // 【改造】3. 重写 dismissLoading 方法，实现内置管理
+    // 重写 dismissLoading 方法，实现内置管理
     open fun dismissLoading() {
         mHandler.removeCallbacks(showLoadingRunnable)
         loadingPopup?.dismiss()
         loadingPopup = null
     }
 
-    // 【新增】4. 在 onDestroy 中确保资源被释放
+    // 在 onDestroy 中确保资源被释放
     override fun onDestroy() {
         super.onDestroy()
         dismissLoading() // 确保 Activity 销毁时弹窗关闭
@@ -192,6 +188,9 @@ abstract class BaseModVmDbActivity<VM : BaseViewModel, DB : ViewDataBinding> : A
         }
     }
 
+    fun isLogin(): Boolean {
+        return eventViewModel.isLogin.value ?: false
+    }
 
     // --- 沉浸式状态栏配置 ---
 

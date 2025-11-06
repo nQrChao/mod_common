@@ -1,11 +1,10 @@
 package com.box.common.network
 
-import com.box.common.utils.mmkv.MMKVConfig
 import com.box.common.appViewModel
+import com.box.common.utils.mmkv.MMKVConfig
 import okhttp3.Interceptor
 import okhttp3.Response
 import java.io.IOException
-import java.util.*
 
 class SendHeadInterceptor : Interceptor {
     @Throws(IOException::class)
@@ -15,12 +14,12 @@ class SendHeadInterceptor : Interceptor {
         val url= chain.request().url.encodedPath
         if (chain.request().url.toString().startsWith(ApiService.D_API_URL)){
             if (url.startsWith("/api")){
-                appViewModel.userInfo.value?.let {
+                appViewModel.modUserInfo.value?.let {
                     builder.addHeader("token", it.token).build()
                 }
             }
         }else{
-            appViewModel.userInfo.value?.let {
+            appViewModel.modUserInfo.value?.let {
                 builder.addHeader("Authorization", "Bearer "+it.token).build()
             }
         }
