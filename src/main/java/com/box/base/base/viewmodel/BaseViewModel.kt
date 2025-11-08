@@ -9,12 +9,14 @@ import com.box.base.callback.livedata.BooleanLiveData
 import com.box.base.callback.livedata.event.EventLiveData
 import com.box.base.ext.modAppRequest
 import com.box.base.state.ModResultState
-import com.box.common.utils.mmkv.MMKVConfig
 import com.box.common.appViewModel
+import com.box.common.data.model.ModUserInfo
 import com.box.common.data.model.RefundGames
+import com.box.common.eventViewModel
 import com.box.common.getOAIDWithCoroutines
 import com.box.common.network.NetworkApi
 import com.box.common.network.apiService
+import com.box.common.utils.mmkv.MMKVConfig
 import com.box.other.blankj.utilcode.util.Logs
 import com.box.other.immersionbar.BarHide
 import kotlinx.coroutines.NonCancellable
@@ -48,6 +50,16 @@ open class BaseViewModel(
     val loadingChange: UiLoadingChange by lazy { UiLoadingChange() }
     var getDataResult = MutableLiveData<ModResultState<Any?>>()
     var refundGamesResult = MutableLiveData<ModResultState<RefundGames>>()
+
+    fun isLogin(): Boolean {
+        return eventViewModel.isLogin.value ?: false
+    }
+
+    fun userInfo(): ModUserInfo? {
+        return appViewModel.modUserInfo.value
+    }
+
+
 
     inner class UiLoadingChange {
         //显示加载框

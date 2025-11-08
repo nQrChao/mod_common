@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.box.base.base.activity.BaseModVmDbActivity
+import com.box.base.base.activity.BaseVmDbActivity
 import com.box.base.base.fragment.BaseVmDbFragment
 import com.box.base.base.viewmodel.BaseViewModel
 import com.box.base.network.AppException
@@ -14,12 +15,13 @@ import com.box.base.state.ModResultStateWithMsg
 import com.box.base.state.ResultState
 import com.box.base.state.paresException
 import com.box.base.state.paresResult
-import com.box.common.utils.mmkv.MMKVConfig
 import com.box.common.getOAIDWithCoroutines
 import com.box.common.network.ModApiResponse
 import com.box.common.network.NetworkApi
 import com.box.common.network.apiService
 import com.box.common.network.initializeNetwork
+import com.box.common.utils.mmkv.MMKVConfig
+import com.box.mod.game.ModComService
 import com.box.mod.modnetwork.ModAppException
 import com.box.mod.modnetwork.ModExceptionHandle
 import com.box.other.blankj.utilcode.util.Logs
@@ -141,7 +143,43 @@ fun <T> BaseModVmDbActivity<*, *>.parseModStateWithMsg(
 
         is ModResultStateWithMsg.Error -> {
             dismissLoading()
-            onError?.invoke(resultState.error)
+            if(resultState.error.state == 401 || resultState.error.state == 403){
+                ModComService.get().startLoginInvalid()
+            }else{
+                onError?.invoke(resultState.error)
+            }
+        }
+    }
+}
+
+/**
+ * 在 Activity 中解析并处理 ModResultStateWithMsg 的状态。
+ * 成功回调同时返回 data 和 message。
+ */
+fun <T> BaseVmDbActivity<*, *>.parseModStateWithMsg(
+    resultState: ModResultStateWithMsg<T>,
+    onSuccess: (data: T?, msg: String?) -> Unit,
+    onError: ((ModAppException) -> Unit)? = null,
+    onLoading: (() -> Unit)? = null
+) {
+    when (resultState) {
+        is ModResultStateWithMsg.Loading -> {
+            showLoading(resultState.loadingMessage)
+            onLoading?.invoke()
+        }
+
+        is ModResultStateWithMsg.Success -> {
+            dismissLoading()
+            onSuccess(resultState.data, resultState.message)
+        }
+
+        is ModResultStateWithMsg.Error -> {
+            dismissLoading()
+            if(resultState.error.state == 401 || resultState.error.state == 403){
+                ModComService.get().startLoginInvalid()
+            }else{
+                onError?.invoke(resultState.error)
+            }
         }
     }
 }
@@ -165,7 +203,11 @@ fun <T> BaseVmDbFragment<*, *>.parseModStateWithMsg(
 
         is ModResultStateWithMsg.Error -> {
             dismissLoading()
-            onError?.invoke(resultState.error)
+            if(resultState.error.state == 401 || resultState.error.state == 403){
+                ModComService.get().startLoginInvalid()
+            }else{
+                onError?.invoke(resultState.error)
+            }
         }
     }
 }

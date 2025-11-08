@@ -16,6 +16,8 @@ import com.box.base.base.action.KeyboardAction
 import com.box.base.base.viewmodel.BaseViewModel
 import com.box.base.network.NetState
 import com.box.base.network.NetworkStateManager
+import com.box.common.appViewModel
+import com.box.common.data.model.ModUserInfo
 import com.box.common.eventViewModel
 import com.box.other.xpopup.XPopup
 import com.box.other.xpopup.impl.LoadingPopupView
@@ -80,6 +82,9 @@ abstract class BaseVmDbFragment<VM : BaseViewModel, DB : ViewDataBinding> : Frag
         return eventViewModel.isLogin.value ?: false
     }
 
+    fun userInfo(): ModUserInfo? {
+        return appViewModel.modUserInfo.value
+    }
     /**
      * - 以便子类可以重写此方法，添加自己的观察者
      */

@@ -18,6 +18,8 @@ import com.box.base.base.viewmodel.BaseViewModel
 import com.box.base.network.NetState
 import com.box.base.network.NetworkStateManager
 import com.box.com.R
+import com.box.common.appViewModel
+import com.box.common.data.model.ModUserInfo
 import com.box.common.eventViewModel
 import com.box.other.blankj.utilcode.util.KeyboardUtils
 import com.box.other.hjq.titlebar.TitleBar
@@ -190,6 +192,10 @@ abstract class BaseModVmDbActivity<VM : BaseViewModel, DB : ViewDataBinding> : A
 
     fun isLogin(): Boolean {
         return eventViewModel.isLogin.value ?: false
+    }
+
+    fun userInfo(): ModUserInfo? {
+        return appViewModel.modUserInfo.value
     }
 
     // --- 沉浸式状态栏配置 ---

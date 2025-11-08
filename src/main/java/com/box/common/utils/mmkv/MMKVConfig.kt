@@ -5,6 +5,7 @@ import com.box.common.data.model.DeviceInfoBean
 import com.box.common.data.model.ModDataBean
 import com.box.common.data.model.ModInfoBean
 import com.box.common.data.model.ModInitBean
+import com.box.common.data.model.ModLocalGuJiaBean
 import com.box.common.data.model.ModStatusBean
 import com.box.common.data.model.ModUserInfo
 import com.box.common.utils.ext.logsE
@@ -12,30 +13,73 @@ import com.box.common.utils.ext.logsE
 object MMKVConfig {
     //  设备OAID
     var deviceOAID: String by mmkv("deviceOAID", "")
+
     //  设备信息
     var deviceInfos: DeviceInfoBean? by mmkv("deviceInfos", null)
+
     //  初始化信息，默认为 null。
     var modInit: ModInitBean? by mmkv("modInit", null)
+
     //  状态信息，默认为 null。
     var modStatus: ModStatusBean? by mmkv("modStatus", null)
+
     //  用户信息，默认为 null。
     var userInfo: ModUserInfo? by mmkv("userInfo", null)
+
     //  马甲信息
     var modInfos: ModInfoBean? by mmkv("modInfos", null)
+
     //  设备vasId
     var modVasId: String by mmkv("modVasId", BuildConfig.MOD_VASID)
+
     //  用户token
     var userToken: String by mmkv("userToken", "")
+
     // 用户隐私授权状态，默认为 false
     var permissionsUser: Boolean by mmkv("permissionsUser", false)
+
     // 设备相册获取授权状态，默认为 false
     var permissionsAlbum: Boolean by mmkv("permissionsAlbum", false)
+
     // 设备存储授权状态，默认为 false
     var permissionsStorage: Boolean by mmkv(" permissionsStorage", false)
+
     // 应用启动次数
     var launchCount: Int by mmkv("launch_count", 0)
+
     // 字体大小
     var fontScale: Float by mmkv("fontScale", 1.0f)
+
+    /*********************估价的信息列表********************/
+    val guJiaList: MutableList<ModLocalGuJiaBean> = mmkvList("guJiaList")
+
+    fun addGuJiaList(toAdd: ModLocalGuJiaBean) {
+        val existingIndex = guJiaList.indexOfFirst { it.name == toAdd.name }
+        if (existingIndex != -1) {
+            guJiaList[existingIndex] = toAdd
+        } else {
+            guJiaList.add(toAdd)
+        }
+    }
+
+    fun removeGuJiaList(remove: ModLocalGuJiaBean) {
+        val indexToRemove = guJiaList.indexOfFirst { it.name == remove.name }
+        if (indexToRemove != -1) {
+            guJiaList.removeAt(indexToRemove)
+        }
+    }
+
+    fun getGuJiaListList(): MutableList<ModLocalGuJiaBean> {
+        return guJiaList.toMutableList()
+    }
+
+    fun isGuJiaExists(item: ModLocalGuJiaBean): Boolean {
+        return guJiaList.contains(item)
+    }
+
+    fun findGuJiaByName(name: String): ModLocalGuJiaBean? {
+        return guJiaList.find { it.name == name }
+    }
 
     /*********************生成的角色名********************/
     val randomNameList: MutableList<ModDataBean> = mmkvList("randomNameList")
@@ -47,12 +91,14 @@ object MMKVConfig {
             randomNameList.add(toAdd)
         }
     }
+
     fun removeRandomNameList(remove: ModDataBean) {
         val indexToRemove = randomNameList.indexOfFirst { it.name == remove.name }
         if (indexToRemove != -1) {
             randomNameList.removeAt(indexToRemove)
         }
     }
+
     fun getRandomName(): MutableList<ModDataBean> {
         return randomNameList.toMutableList()
     }
@@ -89,6 +135,7 @@ object MMKVConfig {
     fun getGameRank(): MutableList<ModDataBean> {
         return gameRankList.toMutableList()
     }
+
     fun removeGameRankList(remove: ModDataBean) {
         val indexToRemove = gameRankList.indexOfFirst { it.name == remove.name }
         if (indexToRemove != -1) {
@@ -124,6 +171,7 @@ object MMKVConfig {
     fun getGameEvent(): MutableList<ModDataBean> {
         return gameEventList.toMutableList()
     }
+
     fun removeGameEventList(remove: ModDataBean) {
         val indexToRemove = gameEventList.indexOfFirst { it.id == remove.id }
         if (indexToRemove != -1) {

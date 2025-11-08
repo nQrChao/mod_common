@@ -22,7 +22,7 @@ data class ModUserInfo(
     val loginIp: String = "",
     val loginDate: String = "",
     val pwdUpdateDate: String = "",
-    val dept: String = "",
+    val dept: Dept,
     val postIds: String = "",
     val roleIds: String = "",
     val roleId: String = "",
@@ -33,6 +33,26 @@ data class ModUserInfo(
     //
     var localAvatarResName: String? = null
 ) : Serializable {
+
+    data class Dept(
+        val createBy: String = "",
+        val createTime: String = "",
+        val updateBy: String = "",
+        val updateTime: String = "",
+        val remark: String = "",
+        val deptId: String = "",
+        val parentId: String = "",
+        val ancestors: String = "",
+        val deptName: String = "",
+        val orderNum: String = "",
+        val leader: String = "",
+        val phone: String = "",
+        val email: String = "",
+        val status: String = "",
+        val delFlag: String = "",
+        val children: MutableList<Dept> = mutableListOf(),
+    )
+
     data class Role(
         val createBy: String = "",
         val createTime: String = "",

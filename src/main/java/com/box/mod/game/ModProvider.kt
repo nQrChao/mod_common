@@ -47,6 +47,10 @@ interface ModProvider {
     fun startModLoginActivity(activity: Activity, loginLauncher: ActivityResultLauncher<Intent>)
 
     /**
+     * 登录信息失效
+     */
+    fun startLoginInvalid()
+    /**
      * 启动主页面 (MainActivity)
      * @param context 上下文
      */

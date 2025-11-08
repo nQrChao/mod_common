@@ -1,6 +1,8 @@
 package com.box.common.network
 
 import com.box.common.data.AndroidStatusRequest
+import com.box.common.data.ChangePasswordRequest
+import com.box.common.data.DeleteUserRequest
 import com.box.common.data.RegisterRequest
 import com.box.common.data.model.MarketInit
 import com.box.common.data.model.ModDataBean
@@ -75,6 +77,22 @@ interface ApiService {
     suspend fun postUserRegister(@Body requestBody: RegisterRequest): ModApiResponse<ModUserInfo>
 
     /**
+     * 用户注销
+     * 对应的 URL: [POST] /api/userCenter/delete
+     * 发送 application/json 格式的数据
+     */
+    @POST("/api/userCenter/delete")
+    suspend fun deleteUser(@Body requestBody: DeleteUserRequest): ModApiResponse<ModUserInfo>
+
+    /**
+     * 修改密码
+     * 对应的 URL: [POST] /api/userCenter/updatePwd
+     * 发送 application/json 格式的数据
+     */
+    @POST("/api/userCenter/updatePwd")
+    suspend fun changePassword(@Body requestBody: ChangePasswordRequest): ModApiResponse<ModUserInfo>
+
+    /**
      * 获取游戏列表
      * 对应的 URL: https://4319g.yize01.com/api/no/common/game/getGameList?pageNum=1&pageSize=10&type=1
      */
@@ -91,6 +109,15 @@ interface ApiService {
      */
     @GET("api/no/common/news/getDetailById")
     suspend fun getNewsDetailById(@Query("id") id: Int): ModApiResponse<ModDataBean>
+    /**
+     * 获取消息列表
+     * 对应的 URL: https://4319g.yize01.com/api/no/common/notice/list/?pageNum=1&pageSize=10
+     */
+    @GET("api/no/common/notice/list")
+    suspend fun getMessageList(
+        @Query("pageNum") pageNum: Int,
+        @Query("pageSize") pageSize: Int
+    ): ModApiResponse<MutableList<ModDataBean>>
 
     /**
      * 获取新闻列表

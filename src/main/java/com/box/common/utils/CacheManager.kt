@@ -12,6 +12,19 @@ import kotlin.math.pow
 object CacheManager {
 
     /**
+     * 获取格式化后的总缓存大小 (例如 10.5 MB)
+     * @param context Context
+     * @return 格式化后的字符串
+     */
+    fun getFormattedTotalCacheSize(context: Context): String {
+        // 1. 调用现有的 getTotalCacheSize 获取以 bytes 为单位的总大小
+        val totalBytes = getTotalCacheSize(context)
+        // 2. 调用现有的 formatSize 将 bytes 转换为 "KB", "MB", "GB" 等
+        return formatSize(totalBytes)
+    }
+
+
+    /**
      * 获取总缓存大小（内部 + 外部）
      * @return 缓存大小，单位 B
      */
@@ -78,7 +91,7 @@ object CacheManager {
      */
     fun formatSize(bytes: Long): String {
         if (bytes <= 0) return "0 B"
-        val units = arrayOf("B", "KB", "MB", "GB", "TB")
+        val units = arrayOf("B", "Kb", "Mb", "Gb", "Tb")
         val digitGroups = (log10(bytes.toDouble()) / log10(1024.0)).toInt()
         return String.format(
             Locale.US, "%.2f %s",

@@ -19,6 +19,16 @@ data class ModDataBean(
     var createTime: String = "",
     var dictLabel: String = "",
     var dictValue: String = "",
+    //系统消息
+    var createBy: String = "",
+    var updateBy: String = "",
+    var updateTime: String = "",
+    var remark: String = "",
+    var noticeId: String = "",
+    var noticeTitle: String = "",
+    var noticeType: String = "",
+    var noticeContent: String = "",
+    var status: String = "",
     //自定义数据
     var isSelect: Boolean = false,
     var isShouCang: Boolean = false,
