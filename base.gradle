@@ -53,7 +53,7 @@ def channelConfigs = [
                 signingName   : "box4319"
         ],
         mod_box4319: [
-                appName       : "4319游戏盒",
+                appName       : "4319玩盒",
                 appVersionCode: 1,
                 appVersionName: "1.0",
                 appPackageName: "com.lingdian.game4319",
