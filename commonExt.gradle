@@ -12,9 +12,12 @@ ext {
     MOD_box4319 = [
             mod_box4319 = "mod_box4319",
     ]
+    MOD_zhezhetao = [
+            mod_zhezhetao = "mod_zhezhetao",
+    ]
 }
 
-ext.mod_name = mod_box4319
+ext.mod_name = mod_zhezhetao
 ext.mod_type = ""
 ext.log_enable = true
 
