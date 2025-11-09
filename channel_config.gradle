@@ -1,0 +1,55 @@
+// 存放所有模块共享的渠道配置
+ext {
+    // 默认配置
+    defaultConfigData = [
+            appName         : "a",
+            appVersionCode  : 85222,
+            appVersionName  : "8.5.2",
+            modId           : "\"0\"",
+            modName         : "\"modName\"",
+            modVasId        : "\"aa1000000\"",
+            modApiVersion   : "\"20251028\"",
+            appPackageName  : "com.chaoji.lc",
+            appIcon         : "@mipmap/mod_icon",
+            appFiling       : "\"\"",
+            appAuthLoginSign: "\"\"",
+            appTencentAppId : "\"\"",
+            appTencentAppKey: "\"\"",
+            appOldTemplate  : -1,
+            oAppId          : "\"\"",
+            oAppKey         : "\"\"",
+            oAppSecret      : "\"\"",
+            oChannelName    : "\"\"",
+            hasVideo        : false,
+            signingName     : null
+    ]
+
+    // 渠道配置
+    channelConfigsData = [
+            mod_box4319_A: [
+                    appName       : "4319玩盒",
+                    appVersionCode: 1,
+                    appPackageName: "com.lingdian.game4319",
+                    modId         : "\"1143042713248108544\"",
+                    modName       : "\"mod_box4319\"",
+                    signingName   : "box4319"
+            ],
+            mod_box4319_B: [
+                    appName       : "4319玩盒",
+                    appVersionCode: 1,
+                    appPackageName: "com.lingdian.game4319",
+                    modId         : "\"1143042713248108544\"",
+                    modName       : "\"mod_box_4319\"",
+                    signingName   : "box4319"
+            ],
+
+            mod_zhezhetao: [
+                    appName       : "折折淘游宝",
+                    appVersionCode: 1,
+                    appPackageName: "com.hongsheng.zhezhetao",
+                    modId         : "\"1146667008870141952\"",
+                    modName       : "\"mod_zhezhetao\"",
+                    signingName   : "zhezhetaoyoubao"
+            ],
+    ]
+}

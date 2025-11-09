@@ -104,9 +104,7 @@ open class NetworkApi : BaseNetworkApi() {
             addInterceptor(TokenOutInterceptor())
             addInterceptor(CommonBodyInterceptor())
             addInterceptor(SendHeadInterceptor())
-            if (BuildConfig.LOG_ENABLE) {
-                addInterceptor(LogInterceptor())
-            }
+            addInterceptor(LogInterceptor())
             connectTimeout(10, TimeUnit.SECONDS)
             readTimeout(5, TimeUnit.SECONDS)
             writeTimeout(5, TimeUnit.SECONDS)
@@ -118,7 +116,10 @@ open class NetworkApi : BaseNetworkApi() {
             if (BuildConfig.DEBUG) {
                 hostnameVerifier { _, _ -> true }
                 getX509TrustManager()?.let { sslSocketFactory(getSSLSocketFactory(), it) }
-                Logs.w("NetworkApi", "SSL SECURITY WARNING: Trusting all certificates in DEBUG mode.")
+                Logs.w(
+                    "NetworkApi",
+                    "SSL SECURITY WARNING: Trusting all certificates in DEBUG mode."
+                )
             }
             // 在 Release 构建中，此处不添加任何自定义的 sslSocketFactory 和 hostnameVerifier，
             // OkHttp 将自动使用系统默认的、安全的 SSL 配置。
@@ -250,8 +251,8 @@ open class NetworkApi : BaseNetworkApi() {
         val commonParams = mutableMapOf<String, String>()
         // 先放入业务参数
         commonParams.putAll(params)
-        commonParams["appName"]  = AppUtils.getAppName()
-        commonParams["appPackageName"]= AppUtils.getAppPackageName()
+        commonParams["appName"] = AppUtils.getAppName()
+        commonParams["appPackageName"] = AppUtils.getAppPackageName()
         commonParams["appVersionName"] = AppUtils.getAppVersionName()
         commonParams["appVersionCode"] = AppUtils.getAppVersionCode().toString()
         commonParams["appSignaturesMD5"] = AppUtils.getAppSignaturesMD5()[0]
@@ -265,19 +266,19 @@ open class NetworkApi : BaseNetworkApi() {
             commonParams["deviceOAID"] = MMKVConfig.deviceOAID
             commonParams["deviceModel"] = DeviceUtils.getModel()
             commonParams["deviceBRAND"] = Build.BRAND
-            commonParams["deviceVersionRelease"]= Build.VERSION.RELEASE
+            commonParams["deviceVersionRelease"] = Build.VERSION.RELEASE
             commonParams["deviceVersionSDKInt"] = Build.VERSION.SDK_INT.toString()
             commonParams["deviceSupportedABIS0"] = Build.SUPPORTED_ABIS[0]
             commonParams["deviceIMEI"] = DeviceIdentifier.getIMEI(appContext) ?: ""
             commonParams["deviceGUID"] = DeviceIdentifier.getGUID(application) ?: ""
             commonParams["deviceCanvas"] = DeviceIdentifier.getCanvasFingerprint() ?: ""
             commonParams["deviceUniqueDeviceId"] = DeviceUtils.getUniqueDeviceId()
-            commonParams["deviceAndroidID"]= DeviceUtils.getAndroidID()
+            commonParams["deviceAndroidID"] = DeviceUtils.getAndroidID()
             commonParams["deviceMacAddress"] = DeviceUtils.getMacAddress()
-            commonParams["deviceManufacturer"]  = DeviceUtils.getManufacturer()
-            commonParams["deviceSDKVersionName"]  = DeviceUtils.getSDKVersionName()
-            commonParams["deviceSDKVersionCode"]  = DeviceUtils.getSDKVersionCode().toString()
-            commonParams["devicePseudoID"]  = DeviceIdentifier.getPseudoID()
+            commonParams["deviceManufacturer"] = DeviceUtils.getManufacturer()
+            commonParams["deviceSDKVersionName"] = DeviceUtils.getSDKVersionName()
+            commonParams["deviceSDKVersionCode"] = DeviceUtils.getSDKVersionCode().toString()
+            commonParams["devicePseudoID"] = DeviceIdentifier.getPseudoID()
 
         }
         commonParams["sign"] = getSignKey(commonParams) ?: ""
@@ -290,15 +291,15 @@ open class NetworkApi : BaseNetworkApi() {
         val commonParams = mutableMapOf<String, String>()
         // 先放入业务参数
         commonParams.putAll(params)
-        commonParams["appName"]  = AppUtils.getAppName()
-        commonParams["appPackageName"]= AppUtils.getAppPackageName()
+        commonParams["appName"] = AppUtils.getAppName()
+        commonParams["appPackageName"] = AppUtils.getAppPackageName()
         commonParams["appVersionName"] = AppUtils.getAppVersionName()
         commonParams["appVersionCode"] = AppUtils.getAppVersionCode().toString()
         commonParams["appSignaturesMD5"] = AppUtils.getAppSignaturesMD5()[0]
         commonParams["appSignaturesSHA1"] = AppUtils.getAppSignaturesSHA1()[0]
         commonParams["modId"] = BuildConfig.MOD_ID
         commonParams["modName"] = BuildConfig.MOD_NAME
-        commonParams["modVasDollyId"] =  BuildConfig.MOD_VASID
+        commonParams["modVasDollyId"] = BuildConfig.MOD_VASID
         commonParams["modAPIVersion"] = BuildConfig.MOD_API_VERSION
         commonParams["systemId"] = "1"
         commonParams["sign"] = getSignKey(commonParams) ?: ""
@@ -325,9 +326,19 @@ open class NetworkApi : BaseNetworkApi() {
             @SuppressLint("CustomX509TrustManager")
             object : X509TrustManager {
                 @SuppressLint("TrustAllX509TrustManager")
-                override fun checkClientTrusted(chain: Array<X509Certificate?>?, authType: String?) {}
+                override fun checkClientTrusted(
+                    chain: Array<X509Certificate?>?,
+                    authType: String?
+                ) {
+                }
+
                 @SuppressLint("TrustAllX509TrustManager")
-                override fun checkServerTrusted(chain: Array<X509Certificate?>?, authType: String?) {}
+                override fun checkServerTrusted(
+                    chain: Array<X509Certificate?>?,
+                    authType: String?
+                ) {
+                }
+
                 override fun getAcceptedIssuers(): Array<X509Certificate> = arrayOf()
             }
         )
@@ -335,7 +346,8 @@ open class NetworkApi : BaseNetworkApi() {
 
     private fun getX509TrustManager(): X509TrustManager? {
         return try {
-            val trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm())
+            val trustManagerFactory =
+                TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm())
             trustManagerFactory.init(null as KeyStore?)
             val trustManagers = trustManagerFactory.trustManagers
             check(!(trustManagers.size != 1 || trustManagers[0] !is X509TrustManager)) {
@@ -385,7 +397,10 @@ suspend fun initializeNetwork() {
 
                 serverUrl = validServerUrl ?: ApiService.D_API_URL
                 apiUrlNetworkCode = validResponseCode
-                Logs.d("NetworkTest", "Final SERVER_URL: $serverUrl, Network Code: $apiUrlNetworkCode")
+                Logs.d(
+                    "NetworkTest",
+                    "Final SERVER_URL: $serverUrl, Network Code: $apiUrlNetworkCode"
+                )
 
                 RetrofitUrlManager.getInstance().putDomain("SERVER_URL", serverUrl)
                 RetrofitUrlManager.getInstance().putDomain("API_URL", "https://4319g.yize01.com")
@@ -405,10 +420,16 @@ private suspend fun checkPollingUrl(url: String): Int {
         try {
             val response = PollingUrl.instance.checkUrl(url)
             if (response.isSuccessful) {
-                Logs.d("NetworkTest", "URL '$url' is accessible (Response Code: ${response.code()})")
+                Logs.d(
+                    "NetworkTest",
+                    "URL '$url' is accessible (Response Code: ${response.code()})"
+                )
                 response.code()
             } else {
-                Logs.e("NetworkTest", "URL '$url' is not accessible (Response Code: ${response.code()})")
+                Logs.e(
+                    "NetworkTest",
+                    "URL '$url' is not accessible (Response Code: ${response.code()})"
+                )
                 -1
             }
         } catch (e: Exception) {
