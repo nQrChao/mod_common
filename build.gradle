@@ -6,7 +6,6 @@ plugins {
     id 'com.google.dagger.hilt.android'
 }
 
-//apply from: 'base.gradle'
 apply from: 'channel_config.gradle'
 
 android {
@@ -14,7 +13,7 @@ android {
     compileSdk 34
     flavorDimensions "channel"
     defaultConfig {
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 31
         multiDexEnabled true
         consumerProguardFiles 'proguard-sdk.pro'
@@ -106,52 +105,57 @@ dependencies {
             }
         }
     }
-
     //api 'com.tbuonomo:dotsindicator:4.3'
     //embed project(path: ':ModAAR:cloud')
     api libs.androidx.startup.runtime
-    // 对于 Activity
     api libs.androidx.activity.ktx
     api libs.androidx.multidex
     api libs.androidx.core.ktx
     api libs.androidx.fragment
+    api libs.androidx.fragment.ktx
     api libs.androidx.appcompat
     api libs.androidx.viewpager2
     api libs.androidx.recyclerview
-    api libs.androidx.navigation.ui.ktx
-    api libs.androidx.navigation.fragment.ktx
     api libs.androidx.lifecycle.runtime.ktx
     api libs.androidx.lifecycle.viewmodel.ktx
     api libs.androidx.constraintlayout
+    kapt libs.android.databinding.compiler
+
     api libs.google.gson
     api libs.google.material
-    api libs.kotlinx.coroutines.core
-    api libs.kotlinx.coroutines.android
-    implementation libs.flexbox
-    api libs.okhttp
+    api libs.google.hilt.android
+    kapt libs.google.hilt.compiler
+    api libs.jetbrains.kotlinx.coroutines.core
+    api libs.jetbrains.kotlinx.coroutines.android
+    api libs.squareup.okhttp
+    api libs.squareup.retrofit2.retrofit
+    api libs.squareup.retrofit2.converter.gson
     api libs.glide
     kapt libs.glide.compiler
     api libs.glide.okhttp3.integration
-    kapt libs.databinding.compiler
-    implementation libs.mmkv
+    api libs.airbnb.lottie
+    implementation libs.tencent.mmkv
 
-    api libs.banner
-    api libs.lottie
     api libs.xxPermissions
     api libs.unpeek.livedata
     api libs.baseRecyclerViewAdapterHelper
-    api libs.retrofit2.retrofit
-    api libs.retrofit2.converter.gson
-    api libs.apache.commons.text
     api libs.subsampling.scale.image.view.androidx
-    api libs.eventbus
-    api libs.umeng.asms// 必选
-    api libs.umeng.common// oaid
+
+    api libs.banner
     api libs.bannerviewpager
-    api 'com.github.angcyo:DslAdapter:6.0.4'
-    api 'com.github.lihangleo2:SmartViewPager2Adapter:3.1.3'
-    api "com.google.dagger:hilt-android:2.48"
-    kapt "com.google.dagger:hilt-compiler:2.48"
+
+    //implementation libs.flexbox
+    //api libs.androidx.navigation.ui.ktx
+    //api libs.androidx.navigation.fragment.ktx
+    //api libs.apache.commons.text
+
+    //api libs.eventbus
+    //api libs.umeng.asms// 必选
+    //api libs.umeng.common// oaid
+
+    //api 'com.github.angcyo:DslAdapter:6.0.4'
+    //api 'com.github.lihangleo2:SmartViewPager2Adapter:3.1.3'
+
 //    if (MOD_SRC_DIR.contains("oppo")){
 //        api (libs.android.cn.oaid)
 //        //implementation 'com.huawei.hms:ads-identifier:3.4.65.300'

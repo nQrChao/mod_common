@@ -5,13 +5,17 @@ import com.box.base.utils.UrlEncoderUtils.Companion.hasUrlEncoded
 import com.box.base.utils.ZipHelper.Companion.decompressForGzip
 import com.box.base.utils.ZipHelper.Companion.decompressToStringForZlib
 import com.box.other.blankj.utilcode.util.Logs
-import okhttp3.*
+import okhttp3.Interceptor
+import okhttp3.MediaType
+import okhttp3.Request
+import okhttp3.Response
+import okhttp3.ResponseBody
 import okio.Buffer
 import java.io.IOException
 import java.io.UnsupportedEncodingException
 import java.net.URLDecoder
 import java.nio.charset.Charset
-import java.util.*
+import java.util.Locale.getDefault
 import java.util.concurrent.TimeUnit
 
 class LogInterceptor : Interceptor {
@@ -239,33 +243,33 @@ class LogInterceptor : Interceptor {
             return if (mediaType?.subtype == null) {
                 false
             } else mediaType.subtype
-                .toLowerCase().contains("plain")
+                .lowercase(getDefault()).contains("plain")
         }
 
         @JvmStatic
         fun isJson(mediaType: MediaType?): Boolean {
             return if (mediaType?.subtype == null) {
                 false
-            } else mediaType.subtype.toLowerCase(Locale.getDefault()).contains("json")
+            } else mediaType.subtype.lowercase(getDefault()).contains("json")
         }
 
         @JvmStatic
         fun isXml(mediaType: MediaType?): Boolean {
             return if (mediaType?.subtype == null) {
                 false
-            } else mediaType.subtype.toLowerCase(Locale.getDefault()).contains("xml")
+            } else mediaType.subtype.lowercase(getDefault()).contains("xml")
         }
 
         fun isHtml(mediaType: MediaType?): Boolean {
             return if (mediaType?.subtype == null) {
                 false
-            } else mediaType.subtype.toLowerCase(Locale.getDefault()).contains("html")
+            } else mediaType.subtype.lowercase(getDefault()).contains("html")
         }
 
         fun isForm(mediaType: MediaType?): Boolean {
             return if (mediaType?.subtype == null) {
                 false
-            } else mediaType.subtype.toLowerCase(Locale.getDefault())
+            } else mediaType.subtype.lowercase(getDefault())
                 .contains("x-www-form-urlencoded")
         }
 

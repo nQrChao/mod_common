@@ -30,7 +30,7 @@ class TargetValueReflect(private val target: Any) : TargetValueAbstract() {
 
         } else {
             val methodName =
-                "set${fieldName[0].toUpperCase() + fieldName.substring(1, fieldName.length)}"
+                "set${fieldName[0].uppercaseChar() + fieldName.substring(1, fieldName.length)}"
             val method = getTargetMethod(targetClass, methodName)
             if (method != null) {
                 if (method.genericParameterTypes.isNotEmpty()) {
@@ -68,7 +68,7 @@ class TargetValueReflect(private val target: Any) : TargetValueAbstract() {
             }
         } else {
             val methodName =
-                "get${fieldName[0].toUpperCase() + fieldName.substring(1, fieldName.length)}"
+                "get${fieldName[0].uppercaseChar() + fieldName.substring(1, fieldName.length)}"
             val method = getTargetMethod(targetClass, methodName)
             if (method != null) {
                 val value = method.invoke(target)

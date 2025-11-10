@@ -27,7 +27,6 @@ import com.box.base.base.viewmodel.BaseViewModel
 import com.box.base.network.NetState
 import com.box.com.R
 import com.box.com.databinding.CommonActivityCrashBinding
-import com.box.common.ui.activity.ademo.ActivityDemoModel
 import com.box.other.hjq.titlebar.TitleBar
 import com.box.other.immersionbar.BarHide
 import com.hjq.permissions.Permission

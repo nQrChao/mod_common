@@ -1,8 +1,6 @@
 package com.box.common.utils.subpackage;
 
 
-import org.greenrobot.eventbus.EventBus;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
@@ -206,7 +204,7 @@ public class V2SchemeUtil {
         try {
             byteBuffer = ByteBuffer.allocate(length);
         }catch (OutOfMemoryError exception){
-            EventBus.getDefault().post(new EventCenter(EventConfig.SEND_PUT_CHANNEL_ERR));
+            //EventBus.getDefault().post(new EventCenter(EventConfig.SEND_PUT_CHANNEL_ERR));
         }
         byteBuffer.order(ByteOrder.LITTLE_ENDIAN);
         baseApk.seek(offset);
