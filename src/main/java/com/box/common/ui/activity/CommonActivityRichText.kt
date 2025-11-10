@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.lifecycle.MutableLiveData
 import com.box.base.base.activity.BaseModVmDbActivity
 import com.box.base.base.viewmodel.BaseViewModel
 import com.box.base.network.NetState
@@ -24,6 +25,7 @@ class CommonActivityRichText :
     companion object {
         const val INTENT_KEY_HTML: String = "richHtml"
         const val INTENT_KEY_TITLE: String = "title"
+        const val INTENT_KEY_COUNT: String = "COUNT"
 
         fun start(context: Context) {
             val intent = Intent(context, CommonActivityRichText::class.java)
@@ -51,6 +53,19 @@ class CommonActivityRichText :
             }
             ActivityUtils.startActivity(intent)
         }
+
+        fun start(context: Context, title: String, richText: String,hotCount:String) {
+            val intent = Intent(context, CommonActivityRichText::class.java)
+            intent.putExtra(INTENT_KEY_TITLE, title)
+            intent.putExtra(INTENT_KEY_HTML, richText)
+            intent.putExtra(INTENT_KEY_COUNT, hotCount)
+            if (context !is Activity) {
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            }
+            ActivityUtils.startActivity(intent)
+        }
+
+
     }
 
     override fun initView(savedInstanceState: Bundle?) {
@@ -63,6 +78,7 @@ class CommonActivityRichText :
         }
         //mDataBinding.titleBar.setTitle(intent.getStringExtra(INTENT_KEY_TITLE) ?: "A")
         mViewModel.titleT.value = intent.getStringExtra(INTENT_KEY_TITLE) ?: ""
+        mViewModel.hotCount.value = intent.getStringExtra(INTENT_KEY_COUNT) ?: "-1"
 
 
         val html = """
@@ -132,7 +148,6 @@ class CommonActivityRichText :
 
 
     class Model : BaseViewModel(title = "", rightTitle = "") {
-
-
+        val hotCount = MutableLiveData("-1")
     }
 }

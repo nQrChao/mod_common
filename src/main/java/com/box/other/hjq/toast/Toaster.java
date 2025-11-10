@@ -317,18 +317,18 @@ public final class Toaster {
      * 成功样式
      */
 
-    public static void showFuLiSuccess(int id) {
-        showFuLiSuccess(stringIdToCharSequence(id));
+    public static void showReSuccess(int id) {
+        showReSuccess(stringIdToCharSequence(id));
     }
 
-    public static void showFuLiSuccess(Object object) {
-        showFuLiSuccess(objectToCharSequence(object));
+    public static void showReSuccess(Object object) {
+        showReSuccess(objectToCharSequence(object));
     }
 
-    public static void showFuLiSuccess(CharSequence text) {
+    public static void showReSuccess(CharSequence text) {
         ToastParams params = new ToastParams();
         params.text = text;
-        params.style = new CustomToastStyle(R.layout.toast_fuli_success);
+        params.style = new CustomToastStyle(R.layout.toast_re_success);
         show(params);
     }
 }

@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:bind="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.box.other.blankj.utilcode.util.StringUtils" />
 
         <variable
             name="vm"
@@ -35,30 +39,54 @@
             app:titleSize="@dimen/isp_16"
             app:titleStyle="bold" />
 
-        <com.box.other.scwang.smartrefresh.layout.SmartRefreshLayout
-            android:id="@+id/refreshLayout"
+        <RelativeLayout
+            android:id="@+id/parentView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:srlAccentColor="@android:color/white"
-            app:srlEnableHeaderTranslationContent="true"
-            app:srlEnableLoadMore="true"
-            app:srlEnablePureScrollMode="true"
-            app:srlEnableRefresh="true"
-            app:srlPrimaryColor="@color/colorPrimary"
-            app:srlReboundDuration="600">
-                <FrameLayout
-                    android:id="@+id/parentView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+            android:orientation="vertical">
 
-                    <com.box.common.ui.view.BrowserView
-                        android:id="@+id/richWebview"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+            <LinearLayout
+                android:id="@+id/hot_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingVertical="@dimen/idp_10"
+                android:visibility="@{vm.hotCount != `-1` ? View.VISIBLE : View.GONE}">
 
-                </FrameLayout>
-        </com.box.other.scwang.smartrefresh.layout.SmartRefreshLayout>
+                <ImageView
+                    android:layout_width="@dimen/idp_18"
+                    android:layout_height="@dimen/idp_18"
+                    android:src="@drawable/mod_ic_fire" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/idp_8"
+                    android:text="热度值："
+                    android:textSize="@dimen/isp_13" />
+
+                <TextView
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{vm.hotCount}"
+                    android:textColor="#FF3F3F"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/isp_13"
+                    tools:text="321" />
+
+            </LinearLayout>
+
+            <com.box.common.ui.view.BrowserView
+                android:id="@+id/richWebview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/hot_layout"
+                android:background="@color/white" />
+
+        </RelativeLayout>
     </LinearLayout>
 
 </layout>

@@ -3,8 +3,8 @@ ext {
     // 默认配置
     defaultConfigData = [
             appName         : "a",
-            appVersionCode  : 85222,
-            appVersionName  : "8.5.2",
+            appVersionCode  : 1,
+            appVersionName  : "1.0",
             modId           : "\"0\"",
             modName         : "\"modName\"",
             modVasId        : "\"aa1000000\"",
@@ -26,29 +26,55 @@ ext {
 
     // 渠道配置
     channelConfigsData = [
-            mod_box4319_A: [
+            mod_box4319_admin: [
                     appName       : "4319玩盒",
                     appVersionCode: 1,
+                    appVersionName  : "1.0",
                     appPackageName: "com.lingdian.game4319",
                     modId         : "\"1143042713248108544\"",
                     modName       : "\"mod_box4319\"",
+                    oChannelName    : "\"admin\"",
                     signingName   : "box4319"
             ],
-            mod_box4319_B: [
+            mod_box4319_huawei: [
                     appName       : "4319玩盒",
                     appVersionCode: 1,
+                    appVersionName  : "1.0",
                     appPackageName: "com.lingdian.game4319",
-                    modId         : "\"1143042713248108544\"",
+                    modId         : "\"1147709261860392960\"",
+                    modName       : "\"mod_box4319\"",
+                    oChannelName    : "\"huawei\"",
+                    signingName   : "box4319"
+            ],
+            mod_box4319_oppo: [
+                    appName       : "4319玩盒",
+                    appVersionCode: 1,
+                    appVersionName  : "1.0",
+                    appPackageName: "com.lingdian.game4319",
+                    modId         : "\"1147709330139467776\"",
                     modName       : "\"mod_box_4319\"",
+                    oChannelName    : "\"oppo\"",
+                    signingName   : "box4319"
+            ],
+            mod_box4319_vivo: [
+                    appName       : "4319玩盒",
+                    appVersionCode: 1,
+                    appVersionName  : "1.0",
+                    appPackageName: "com.lingdian.game4319",
+                    modId         : "\"1147709392328413184\"",
+                    modName       : "\"mod_box_4319\"",
+                    oChannelName    : "\"vivo\"",
                     signingName   : "box4319"
             ],
 
             mod_zhezhetao: [
                     appName       : "折折淘游宝",
                     appVersionCode: 1,
+                    appVersionName  : "1.0",
                     appPackageName: "com.hongsheng.zhezhetao",
                     modId         : "\"1146667008870141952\"",
                     modName       : "\"mod_zhezhetao\"",
+                    oChannelName    : "\"vivo\"",
                     signingName   : "zhezhetaoyoubao"
             ],
     ]
