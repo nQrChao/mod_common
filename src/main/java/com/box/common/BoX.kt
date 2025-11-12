@@ -663,10 +663,6 @@ private sealed class OaidAttemptResult {
     data class Error(val exception: Exception) : OaidAttemptResult()
 }
 
-/**
- * 获取 OAID 的方法 (协程)
- */
-
 
 /**
  * 获取 OAID 的方法 (协程)
@@ -706,27 +702,12 @@ suspend fun getOAIDWithCoroutines(): String {
                     .setMemoryConfig(MemoryConfig(false))
                     .subscribe(consumer)
 
-//                DeviceID.getOAID(application, object : IGetter {
-//                    override fun onOAIDGetComplete(oaid: String) {
-//                        if (continuation.isActive) {
-//                            Logs.d("OAID_SDK_CALLBACK", "onOAIDGetComplete 回调被触发! oaid: $oaid")
-//                            continuation.resume(OaidAttemptResult.Success(dealOAID(oaid)))
-//                        }
-//                    }
-//
-//                    override fun onOAIDGetError(error: Exception) {
-//                        if (continuation.isActive) {
-//                            Logs.e("OAID_SDK_CALLBACK", "onOAIDGetError 回调被触发!", error)
-//                            continuation.resume(OaidAttemptResult.Error(error))
-//                        }
-//                    }
-//                })
             }
         } // 如果5秒内没有回调，这里的 result 将会是 null
 
         if (result == null) {
             retryCount++
-            Logs.e("getOAIDWithCoroutines", "[超时] 第 $retryCount 次尝试，SDK在5秒内未响应。")
+            Logs.e("getOAIDWithCoroutines", "[超时] 第 $retryCount 次尝试，SDK在2秒内未响应。")
             if (retryCount < maxRetry) {
                 delay(1000L)
             }
@@ -736,7 +717,6 @@ suspend fun getOAIDWithCoroutines(): String {
         when (result) {
             is OaidAttemptResult.Success -> {
                 oaid = dealOAID(result.oaid)
-                appViewModel.oaid = oaid
                 Logs.e("getOAIDWithCoroutines...OAID Get Complete: $oaid")
                 return oaid
             }

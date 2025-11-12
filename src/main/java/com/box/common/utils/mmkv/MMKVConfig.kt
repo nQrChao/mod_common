@@ -15,7 +15,7 @@ object MMKVConfig {
     var deviceOAID: String by mmkv("deviceOAID", "")
 
     //  设备信息
-    var deviceInfos: DeviceInfoBean? by mmkv("deviceInfos", null)
+    var deviceInfos: DeviceInfoBean by mmkv("deviceInfos", DeviceInfoBean())
 
     //  初始化信息，默认为 null。
     var modInit: ModInitBean? by mmkv("modInit", null)

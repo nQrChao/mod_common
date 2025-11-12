@@ -12,7 +12,6 @@ import androidx.lifecycle.ViewModelStoreOwner
 import com.box.base.base.AppScope
 import com.box.com.BuildConfig
 import com.box.com.R
-import com.box.common.utils.mmkv.MMKVConfig.launchCount
 import com.box.common.data.model.DeviceInfoBean
 import com.box.common.data.model.ModInfoBean
 import com.box.common.event.AppViewModel
@@ -25,6 +24,7 @@ import com.box.common.utils.DirUtils
 import com.box.common.utils.ext.logsE
 import com.box.common.utils.ext.logsW
 import com.box.common.utils.mmkv.MMKVConfig
+import com.box.common.utils.mmkv.MMKVConfig.launchCount
 import com.box.common.utils.other.MaterialHeader
 import com.box.common.utils.other.SmartBallPulseFooter
 import com.box.other.blankj.utilcode.util.AppUtils
@@ -148,7 +148,7 @@ object AppInit {
         //设置 log 文件开关
         Logs.getConfig().setLog2FileSwitch(BuildConfig.DEBUG)
         //设置 log 文件前缀
-        Logs.getConfig().setFilePrefix(AppUtils.getAppName())
+        Logs.getConfig().setFilePrefix(AppUtils.getAppName()+ BuildConfig.MOD_ID)
         //设置 log 文件存储目录
         Logs.getConfig().setDir(DirUtils.getLogDir())
         //设置 log 边框开关
@@ -166,7 +166,12 @@ object AppInit {
         }
 
         val logger = object : Logger {
-            override fun log(level: TraceLevel, tag: String, message: String, throwable: Throwable?) {
+            override fun log(
+                level: TraceLevel,
+                tag: String,
+                message: String,
+                throwable: Throwable?
+            ) {
                 when (level) {
                     TraceLevel.VERBOSE -> Log.v(tag, message, throwable)
                     TraceLevel.DEBUG -> Log.d(tag, message, throwable)
@@ -183,9 +188,10 @@ object AppInit {
             .setExecutor(Executors.newFixedThreadPool(1))
             .setLogger(logger)
             .build()
+
         logsE("CNOAID has been initialized on-demand after user consent.")
         getOAID()
-        getModAndDeviceInfos()
+
     }
 
 
@@ -204,25 +210,28 @@ object AppInit {
         })
     }
 
-    fun initUmeng(context: Context) {
-        // ... 友盟初始化代码 ...
-    }
-
     private fun getOAID() {
         AppScope.applicationScope.launch {
+            var finalOaid: String? = null
             try {
-                //getCommonParams()
                 val oaid = getOAIDWithCoroutines()
-                appViewModel.oaid = oaid
-                MMKVConfig.deviceOAID = oaid
+                finalOaid = oaid
                 Logs.e("getOAIDWithCoroutines---getOAID:$oaid")
             } catch (e: CancellationException) {
-                Logs.e("Coroutine was cancelled. This is why adActive() was not called.", e)
-                throw e
+                Logs.e("Coroutine was cancelled.", e)
+                throw e // 重新抛出以确保协程状态为 "Cancelled"
             } catch (e: Throwable) {
-                Logs.e("getOAID process failed with a non-cancellation error", e)
+                Logs.e("getOAID process failed, falling back to PseudoID", e)
+                finalOaid = DeviceIdentifier.getPseudoID() // 捕获到 *任何* 异常，设置兜底值
             } finally {
                 withContext(NonCancellable) {
+                    if (finalOaid.isNullOrEmpty()) {
+                        Logs.w("getOAID", "OAID 获取被取消或失败，设置兜底 PseudoID")
+                        finalOaid = DeviceIdentifier.getPseudoID()
+                    }
+                    appViewModel.oaid = finalOaid
+                    MMKVConfig.deviceOAID = finalOaid
+                    getModAndDeviceInfos()
                     Logs.d("Running final, non-cancellable actions.")
                 }
             }
@@ -259,6 +268,8 @@ object AppInit {
         modInfoBean.modVasDollyId = BuildConfig.MOD_VASID
         modInfoBean.modAPIVersion = BuildConfig.MOD_API_VERSION
         modInfoBean.systemId = "1"
+
         MMKVConfig.modInfos = modInfoBean
+        MMKVConfig.deviceInfos = deviceInfoBean
     }
 }

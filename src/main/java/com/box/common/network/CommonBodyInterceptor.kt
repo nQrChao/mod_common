@@ -1,13 +1,8 @@
-package com.box.common.network // (确保这是你的包名)
+package com.box.common.network
 
-import android.os.Build
 import com.box.com.BuildConfig
-import com.box.common.AppInit.application
 import com.box.common.utils.mmkv.MMKVConfig
-import com.box.common.appContext
 import com.box.other.blankj.utilcode.util.AppUtils
-import com.box.other.blankj.utilcode.util.DeviceUtils
-import com.box.other.cnoaid.oaid.DeviceIdentifier
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import okhttp3.Interceptor
@@ -45,7 +40,7 @@ class CommonBodyInterceptor : Interceptor {
             gson.fromJson(originalJson, type)
         }
 
-        // 创建你的公共参数 Map
+        // 公共参数，未授权参数
         val commonParams = mutableMapOf<String, Any?>(
             "appName" to AppUtils.getAppName(),
             "appPackageName" to AppUtils.getAppPackageName(),
@@ -60,36 +55,33 @@ class CommonBodyInterceptor : Interceptor {
             "modAPIVersion" to BuildConfig.MOD_API_VERSION,
             "systemId" to 1
         )
-
-        if (MMKVConfig.modInfos != null) {
+        //授权后增加
+        if (MMKVConfig.deviceOAID.isNotEmpty()) {
             commonParams["deviceOAID"] = MMKVConfig.deviceOAID
-            commonParams["deviceModel"] = DeviceUtils.getModel()
-            commonParams["deviceBRAND"] = Build.BRAND
-            commonParams["deviceVersionRelease"] = Build.VERSION.RELEASE
-            commonParams["deviceVersionSDKInt"] = Build.VERSION.SDK_INT.toString()
-            commonParams["deviceSupportedABIS0"] = Build.SUPPORTED_ABIS[0]
-            commonParams["deviceIMEI"] = DeviceIdentifier.getIMEI(appContext) ?: ""
-            commonParams["deviceGUID"] = DeviceIdentifier.getGUID(application) ?: ""
-            commonParams["deviceCanvas"] = DeviceIdentifier.getCanvasFingerprint() ?: ""
-            commonParams["deviceUniqueDeviceId"] = DeviceUtils.getUniqueDeviceId()
-            commonParams["deviceAndroidID"] = DeviceUtils.getAndroidID()
-            commonParams["deviceMacAddress"] = DeviceUtils.getMacAddress()
-            commonParams["deviceManufacturer"] = DeviceUtils.getManufacturer()
-            commonParams["deviceSDKVersionName"] = DeviceUtils.getSDKVersionName()
-            commonParams["deviceSDKVersionCode"] = DeviceUtils.getSDKVersionCode().toString()
-            commonParams["devicePseudoID"] = DeviceIdentifier.getPseudoID()
+            commonParams["deviceModel"] = MMKVConfig.deviceInfos.deviceModel
+            commonParams["deviceBRAND"] = MMKVConfig.deviceInfos.deviceBRAND
+            commonParams["deviceVersionRelease"] = MMKVConfig.deviceInfos.deviceVersionRelease
+            commonParams["deviceVersionSDKInt"] = MMKVConfig.deviceInfos.deviceVersionSDKInt
+            commonParams["deviceSupportedABIS0"] = MMKVConfig.deviceInfos.deviceSupportedABIS0
+            commonParams["deviceIMEI"] = MMKVConfig.deviceInfos.deviceIMEI
+            commonParams["deviceGUID"] = MMKVConfig.deviceInfos.deviceGUID
+            commonParams["deviceCanvas"] = MMKVConfig.deviceInfos.deviceCanvas
+            commonParams["deviceUniqueDeviceId"] = MMKVConfig.deviceInfos.deviceUniqueDeviceId
+            commonParams["deviceAndroidID"] = MMKVConfig.deviceInfos.deviceAndroidID
+            commonParams["deviceMacAddress"] = MMKVConfig.deviceInfos.deviceMacAddress
+            commonParams["deviceManufacturer"] = MMKVConfig.deviceInfos.deviceManufacturer
+            commonParams["deviceSDKVersionName"] = MMKVConfig.deviceInfos.deviceSDKVersionName
+            commonParams["deviceSDKVersionCode"] = MMKVConfig.deviceInfos.deviceSDKVersionCode
+            commonParams["devicePseudoID"] = MMKVConfig.deviceInfos.devicePseudoID
         }
 
         // 将公共参数添加到 Map 中
         // (如果 key 相同，公共参数会覆盖原始参数)
         jsonMap.putAll(commonParams)
-
         // 将合并后的 Map 转换回 JSON 字符串
         val newJson = gson.toJson(jsonMap)
-
         // 创建新的 RequestBody
         val newBody = newJson.toRequestBody(contentType)
-
         // 构建新的 Request 并继续请求
         val newRequest = originalRequest.newBuilder()
             .post(newBody)

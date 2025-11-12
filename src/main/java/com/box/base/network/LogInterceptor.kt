@@ -60,7 +60,7 @@ class LogInterceptor : Interceptor {
 
         //打印响应结果
         var bodyString: String? = null
-        if (responseBody != null && isParseable(responseBody.contentType())) {
+        if (isParseable(responseBody.contentType())) {
             bodyString = printResult(request, originalResponse, logResponse)
         }
         if (logResponse) {
@@ -71,7 +71,7 @@ class LogInterceptor : Interceptor {
             val message = originalResponse.message
             val url = originalResponse.request.url.toString()
 
-            if (responseBody != null && isParseable(responseBody.contentType())) {
+            if (isParseable(responseBody.contentType())) {
                 mPrinter.printJsonResponse(
                     TimeUnit.NANOSECONDS.toMillis(t2 - t1), isSuccessful,
                     code, header, responseBody.contentType(), bodyString, segmentList, message, url
