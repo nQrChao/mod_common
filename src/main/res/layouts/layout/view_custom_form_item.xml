@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:weightSum="10">
+
+    <TextView
+        android:id="@+id/tv_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:layout_gravity="center_vertical"
+        android:gravity="end"
+        android:paddingEnd="@dimen/idp_10"
+        android:text="游戏名"
+        android:textColor="@color/text_default_color"
+        android:textSize="@dimen/isp_15"
+        android:textStyle="bold"
+        tools:text="游戏名啊啊啊" />
+
+    <com.box.common.ui.view.ClearEditText
+        android:id="@+id/et_input"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="7"
+        android:background="@drawable/bg_custom_edit_text"
+        android:gravity="start"
+        android:paddingHorizontal="@dimen/idp_10"
+        android:paddingVertical="@dimen/idp_8"
+        android:singleLine="true"
+        android:text="@={vm.gameName}"
+        android:textColor="@color/text_default_color"
+        android:textSize="@dimen/isp_14"
+        tools:hint="请填写游戏名" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="*"
+        android:textColor="#FF3F3F"
+        android:textSize="@dimen/mod_edit_title_text_size"
+        android:visibility="gone" />
+
+
+</LinearLayout>

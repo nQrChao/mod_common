@@ -3,6 +3,7 @@ package com.box.common.network
 import com.box.common.data.AndroidStatusRequest
 import com.box.common.data.ChangePasswordRequest
 import com.box.common.data.DeleteUserRequest
+import com.box.common.data.GameValuationCommitRequest
 import com.box.common.data.RegisterRequest
 import com.box.common.data.model.MarketInit
 import com.box.common.data.model.ModDataBean
@@ -145,6 +146,35 @@ interface ApiService {
      */
     @GET("api/no/common/role/type")
     suspend fun getRoleType(): ModApiResponse<MutableList<ModDataBean>>
+
+    /**
+     * 获取提交估价游戏-评估记录
+     * 对应的 URL: https://4319g.yize01.com:443/api/system/gameValuationCommit/list
+     */
+    @GET("api/system/gameValuationCommit/list")
+    suspend fun getValuationCommitList(): ModApiResponse<Any>
+
+    /**
+     * 获取提交估价游戏-类型
+     * 对应的 URL: https://4319g.yize01.com:443/api/system/gameValuationCommit/listGame
+     */
+    @GET("api/system/gameValuationCommit/listGame")
+    suspend fun getValuationCommitGameList(): ModApiResponse<MutableList<ModDataBean>>
+
+    /**
+     * 获取提交估价游戏-根据游戏Id查询对应配置的表单
+     * 对应的 URL: https://4319g.yize01.com:443/api/system/gameValuationCommit/listGameFrom
+     */
+    @GET("api/system/gameValuationCommit/listGameFrom")
+    suspend fun getValuationCommitGameFrom(): ModApiResponse<Any>
+
+    /**
+     * 获取提交估价游戏-提交估值
+     * 对应的 URL: [POST] /api/system/gameValuationCommit
+     * 发送 application/json 格式的数据
+     */
+    @POST("api/system/gameValuationCommit")
+    suspend fun postValuationCommit(@Body requestBody: GameValuationCommitRequest): ModApiResponse<Any>
 
 
     @FormUrlEncoded
