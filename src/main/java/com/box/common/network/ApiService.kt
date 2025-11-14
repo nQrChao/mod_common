@@ -11,6 +11,7 @@ import com.box.common.data.model.ModInitBean
 import com.box.common.data.model.ModStatusBean
 import com.box.common.data.model.ModUserInfo
 import com.box.common.data.model.ModUserRealName
+import com.box.common.data.model.ModValuationCommitBean
 import com.box.common.data.model.ProtocolInit
 import retrofit2.Response
 import retrofit2.http.Body
@@ -110,6 +111,7 @@ interface ApiService {
      */
     @GET("api/no/common/news/getDetailById")
     suspend fun getNewsDetailById(@Query("id") id: Int): ModApiResponse<ModDataBean>
+
     /**
      * 获取消息列表
      * 对应的 URL: https://4319g.yize01.com/api/no/common/notice/list/?pageNum=1&pageSize=10
@@ -166,7 +168,9 @@ interface ApiService {
      * 对应的 URL: https://4319g.yize01.com:443/api/system/gameValuationCommit/listGameFrom
      */
     @GET("api/system/gameValuationCommit/listGameFrom")
-    suspend fun getValuationCommitGameFrom(): ModApiResponse<Any>
+    suspend fun getValuationCommitGameFrom(
+        @Query("id") id: String
+    ): ModApiResponse<MutableList<ModValuationCommitBean>>
 
     /**
      * 获取提交估价游戏-提交估值

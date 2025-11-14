@@ -9,7 +9,6 @@ class SendHeadInterceptor : Interceptor {
     @Throws(IOException::class)
     override fun intercept(chain: Interceptor.Chain): Response {
         val builder = chain.request().newBuilder()
-        //builder.addHeader("operationID", System.currentTimeMillis().toString() + "").build()
         val url = chain.request().url.encodedPath
         if (chain.request().url.toString().startsWith(ApiService.D_API_URL)) {
             if (url.startsWith("/api")) {

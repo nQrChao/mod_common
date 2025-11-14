@@ -34,6 +34,39 @@ class ClearEditText @JvmOverloads constructor(
         super.addTextChangedListener(this)
     }
 
+    // 这是 @InverseBindingAdapter 期望调用的方法，用于获取当前输入内容
+    fun getTextValue(): String {
+        return text?.toString() ?: ""
+    }
+
+    // 这是 @BindingAdapter 期望调用的方法，用于设置输入框内容
+    fun setTextValue(value: String?) {
+        // 避免不必要的更新和光标跳动
+        if (text?.toString() != value) {
+            setText(value)
+        }
+    }
+
+    // 这是用于设置 TextWatcher 的方法，并在文本变化时触发回调
+    fun setTextChangeListener(listener: () -> Unit) {
+        // 先移除所有旧的 TextWatcher，避免多次监听
+        this.removeTextChangedListener(currentTextWatcher)
+
+        val newTextWatcher = object : android.text.TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                // 当文本变化时，调用传入的监听器 (listener)
+                listener.invoke()
+            }
+            override fun afterTextChanged(s: android.text.Editable?) {}
+        }
+
+        this.addTextChangedListener(newTextWatcher)
+        currentTextWatcher = newTextWatcher
+    }
+
+    // 用于记录当前的 TextWatcher 实例，以便移除
+    private var currentTextWatcher: android.text.TextWatcher? = null
     private fun setDrawableVisible(visible: Boolean) {
         if (clearDrawable.isVisible == visible) {
             return

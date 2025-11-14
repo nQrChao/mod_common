@@ -14,9 +14,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
+import androidx.databinding.InverseBindingAdapter
+import androidx.databinding.InverseBindingListener
 import com.box.common.data.model.ModUserInfo
 import com.box.common.glide.GlideApp
 import com.box.common.ui.layout.SettingBar
+import com.box.common.ui.view.ClearEditText
 import com.box.common.ui.view.SwitchButton
 import com.box.common.ui.widget.ViewLinearLayoutCommonTitleContent
 import com.box.common.utils.CustomCornersTransformation
@@ -420,6 +423,38 @@ object ConstantBindingAdapter {
         )
     }
 
+    @BindingAdapter(value = ["ceHint"])
+    @JvmStatic
+    fun setHint(view: ClearEditText, hint: String?) {
+        view.hint = hint
+    }
+
+    @BindingAdapter(value = ["textValue"])
+    @JvmStatic
+    fun setTextValue(view: ClearEditText, value: String?) {
+        // 避免无限循环：只有在 View 当前显示的值与新值不同时才更新
+        if (view.getTextValue() != value) {
+            view.setTextValue(value)
+        }
+    }
+
+    @InverseBindingAdapter(attribute = "textValue", event = "textValueAttrChanged")
+    @JvmStatic
+    fun getTextValue(view: ClearEditText): String {
+        return view.getTextValue()
+    }
+
+    @BindingAdapter(value = ["textValueAttrChanged"])
+    @JvmStatic
+    fun setTextWatcher(view: ClearEditText, listener: InverseBindingListener?) {
+        if (listener != null) {
+            // 假设您的 ClearEditText 有一个自定义的监听器或使用标准的 TextWatcher
+            // 您需要在这里设置一个监听器，并在文本变化时调用 listener.onChange()
+            view.setTextChangeListener {
+                listener.onChange()
+            }
+        }
+    }
 
     @BindingAdapter("ratingText")
     @JvmStatic
