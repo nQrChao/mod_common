@@ -19,6 +19,17 @@ data class ModDataBean(
     var createTime: String = "",
     var dictLabel: String = "",
     var dictValue: String = "",
+    //估价系统
+    var checkTime: String = "",
+    var checkState: Int = 0,
+    var characteristic: String = "",
+    var userId: String = "",
+    var money: String = "",
+    var gameName: String = "",
+    var gameId: String = "",
+    var checkNum: String = "",
+    var froms: String = "",
+    var fileNames: String = "",
     //系统消息
     var createBy: String = "",
     var updateBy: String = "",
@@ -33,6 +44,7 @@ data class ModDataBean(
     var isSelect: Boolean = false,
     var isShouCang: Boolean = false,
     var rank: Int = 0,
+
 ) : Serializable{
     //getModGameList [{"id":0,"name":"","url":"","tag":"","createTime":""}]
     //getNewsDetailById {"id":0,"content":""}

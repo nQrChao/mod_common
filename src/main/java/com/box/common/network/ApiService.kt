@@ -13,6 +13,8 @@ import com.box.common.data.model.ModUserInfo
 import com.box.common.data.model.ModUserRealName
 import com.box.common.data.model.ModValuationCommitBean
 import com.box.common.data.model.ProtocolInit
+import com.box.common.data.model.UploadResponseString
+import okhttp3.MultipartBody
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.Field
@@ -20,7 +22,9 @@ import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.HEAD
 import retrofit2.http.Headers
+import retrofit2.http.Multipart
 import retrofit2.http.POST
+import retrofit2.http.Part
 import retrofit2.http.Query
 import retrofit2.http.Url
 
@@ -154,7 +158,21 @@ interface ApiService {
      * 对应的 URL: https://4319g.yize01.com:443/api/system/gameValuationCommit/list
      */
     @GET("api/system/gameValuationCommit/list")
-    suspend fun getValuationCommitList(): ModApiResponse<Any>
+    suspend fun getValuationCommitList(
+        @Query("checkState") checkState: Int,
+        @Query("pageNum") pageNum: Int,
+        @Query("pageSize") pageSize: Int
+
+    ): ModApiResponse<MutableList<ModDataBean>>
+
+    /**
+     * 获取提交估价游戏-评估详情
+     * 对应的 URL: https://4319g.yize01.com:443/api/system/gameValuationCommit/commitDetail
+     */
+    @GET("api/system/gameValuationCommit/commitDetail")
+    suspend fun getValuationCommitDetail(
+        @Query("id") id: String,
+    ): ModApiResponse<GameValuationCommitRequest>
 
     /**
      * 获取提交估价游戏-类型
@@ -180,6 +198,11 @@ interface ApiService {
     @POST("api/system/gameValuationCommit")
     suspend fun postValuationCommit(@Body requestBody: GameValuationCommitRequest): ModApiResponse<Any>
 
+    @Multipart
+    @POST("/api/common/uploadFiles")
+    suspend fun uploadFiles(
+        @Part files: List<MultipartBody.Part>
+    ): ModApiResponse<UploadResponseString>
 
     @FormUrlEncoded
     @Headers("Domain-Name: XDQY_API_URL")

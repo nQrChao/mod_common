@@ -1,10 +1,8 @@
 package com.box.common
 
 import android.content.res.ColorStateList
-import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.net.Uri
-import android.os.SystemClock
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
 import android.view.View
@@ -475,7 +473,7 @@ object ConstantBindingAdapter {
                 .error(RC.drawable.image_error_ic)       // 加载失败的占位图
                 .into(imageView)
         } else {
-            imageView.setImageResource(RC.drawable.mod_add_pic_2)
+            imageView.setImageResource(RC.drawable.mod_add_pic_3)
         }
     }
 

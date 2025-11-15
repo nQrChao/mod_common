@@ -4,15 +4,22 @@ import com.box.common.data.model.ModValuationCommitBean
 import java.io.Serializable
 
 data class GameValuationCommitRequest(
-    val checkState: Int,
-    val checkTime: String,
-    val createTime: String,
-    val desc: String,
-    val fileNames: MutableList<String>,
-    val froms: MutableList<ModValuationCommitBean>,
-    val id: Int,
-    val money: String,
-    val userId: String,
+    var checkState: Int = 0,
+    var checkTime: String = "",
+    var createTime: String = "",
+    var characteristic: String = "",
+    var fileNames: MutableList<String> = mutableListOf(),
+    var froms: MutableList<ModValuationCommitBean> = mutableListOf(),
+    var id: String = "",
+    var gameId: String = "",
+    var gameIcon: String = "",
+    var gameName: String = "",
+    var money: String = "",
+    var userId: String = "",
+) : Serializable
+
+data class GameValuationCommitDetailRequest(
+    val id: String,
 ) : Serializable
 
 data class RegisterRequest(
