@@ -14,7 +14,7 @@ class SendHeadInterceptor : Interceptor {
             if (url.startsWith("/api")) {
                 appViewModel.modUserInfo.value?.let {
                     builder.addHeader("token", it.token).build()
-                    builder.addHeader("Authorization", it.token).build()
+                    //builder.addHeader("Authorization", it.token).build()
                 }
             }
         }
