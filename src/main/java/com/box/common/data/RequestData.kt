@@ -1,6 +1,7 @@
 package com.box.common.data
 
 import com.box.common.data.model.ModValuationCommitBean
+import com.box.other.blankj.utilcode.util.StringUtils
 import java.io.Serializable
 
 data class GameValuationCommitRequest(
@@ -16,7 +17,17 @@ data class GameValuationCommitRequest(
     var gameName: String = "",
     var money: String = "",
     var userId: String = "",
-) : Serializable
+) : Serializable{
+    fun getCheckMoney():String{
+        return when (checkState) {
+            0 -> "审核中"
+            2 -> "未通过"
+            else ->{
+                StringUtils.format("￥ %s", money)
+            }
+        }
+    }
+}
 
 data class GameValuationCommitDetailRequest(
     val id: String,

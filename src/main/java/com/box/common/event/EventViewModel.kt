@@ -37,7 +37,7 @@ class EventViewModel : BaseViewModel() {
     val getAiChatCount = UnPeekLiveData<String>()
 
 
-    val deleteAllAiChat = UnPeekLiveData<String>()
+    val updateMessage = UnPeekLiveData<Boolean>()
 
     val deleteAllMsg = UnPeekLiveData<String>()
 

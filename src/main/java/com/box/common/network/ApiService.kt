@@ -175,6 +175,25 @@ interface ApiService {
     ): ModApiResponse<GameValuationCommitRequest>
 
     /**
+     * 读取通知
+     * 对应的 URL: https://4319g.yize01.com:443/api/no/common/notice/readNotice
+     */
+    @GET("api/no/common/notice/readNotice")
+    suspend fun getReadNotice(
+        @Query("noticeId") noticeId: String,
+    ): ModApiResponse<Any>
+
+    /**
+     * 通知数量
+     * 对应的 URL: https://4319g.yize01.com:443/api/no/common/notice/count
+     */
+    @GET("api/no/common/notice/count")
+    suspend fun getReadNoticeCount(
+        @Query("pageNum") pageNum: Int,
+        @Query("pageSize") pageSize: Int
+    ): ModApiResponse<ModDataBean>
+
+    /**
      * 获取提交估价游戏-类型
      * 对应的 URL: https://4319g.yize01.com:443/api/system/gameValuationCommit/listGame
      */

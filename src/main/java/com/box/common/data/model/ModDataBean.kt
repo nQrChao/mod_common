@@ -1,6 +1,7 @@
 package com.box.common.data.model
 
 import com.box.com.R
+import com.box.other.blankj.utilcode.util.StringUtils
 import java.io.Serializable
 
 data class ModDataBean(
@@ -31,6 +32,7 @@ data class ModDataBean(
     var froms: String = "",
     var fileNames: String = "",
     //系统消息
+    var count :Int = 0,
     var createBy: String = "",
     var updateBy: String = "",
     var updateTime: String = "",
@@ -40,6 +42,7 @@ data class ModDataBean(
     var noticeType: String = "",
     var noticeContent: String = "",
     var status: String = "",
+    var readStatus : Int = 0,
     //自定义数据
     var isSelect: Boolean = false,
     var isShouCang: Boolean = false,
@@ -62,6 +65,15 @@ data class ModDataBean(
             3 -> R.drawable.mod_rank_top3
             else ->
                 android.R.color.transparent
+        }
+    }
+    fun getCheckStateString(): String {
+        return when (checkState) {
+            0 -> "审核中"
+            2 -> "未通过"
+            else ->{
+                StringUtils.format("估价\n￥%s", money)
+            }
         }
     }
 
