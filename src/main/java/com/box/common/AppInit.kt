@@ -41,6 +41,7 @@ import com.phantomvk.identifier.IdentifierManager
 import com.phantomvk.identifier.log.Logger
 import com.phantomvk.identifier.log.TraceLevel
 import com.tencent.mmkv.MMKV
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -159,10 +160,10 @@ object AppInit {
         Logs.getConfig().setSingleTagSwitch(false)
     }
 
-    fun initCNOAID() {
+    fun initCNOAID(): kotlinx.coroutines.Job {
         if (!isInitialized) {
             logsE("AppInit has not been initialized yet. Cannot init CN_OAID.")
-            return
+            return kotlinx.coroutines.Job().apply { complete() }
         }
 
         val logger = object : Logger {
@@ -190,7 +191,7 @@ object AppInit {
             .build()
 
         logsE("CNOAID has been initialized on-demand after user consent.")
-        getOAID()
+        return getOAID() // 返回 getOAID() 启动的 Job
 
     }
 
@@ -210,8 +211,8 @@ object AppInit {
         })
     }
 
-    private fun getOAID() {
-        AppScope.applicationScope.launch {
+    private fun getOAID(): kotlinx.coroutines.Job {
+        return AppScope.applicationScope.launch {
             var finalOaid: String? = null
             try {
                 val oaid = getOAIDWithCoroutines()

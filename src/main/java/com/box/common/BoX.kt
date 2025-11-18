@@ -673,7 +673,7 @@ suspend fun getOAIDWithCoroutines(): String {
     var oaid = ""
     while (retryCount < maxRetry) {
         Logs.e("getOAIDWithCoroutines", "正在进行第 ${retryCount + 1} 次尝试...")
-        val result = withTimeoutOrNull(2000L) {
+        val result = withTimeoutOrNull(1000L) {
             suspendCancellableCoroutine { continuation ->
                 val consumer = object : Consumer {
                     override fun onSuccess(result: IdentifierResult) {
@@ -707,7 +707,7 @@ suspend fun getOAIDWithCoroutines(): String {
 
         if (result == null) {
             retryCount++
-            Logs.e("getOAIDWithCoroutines", "[超时] 第 $retryCount 次尝试，SDK在2秒内未响应。")
+            Logs.e("getOAIDWithCoroutines", "[超时] 第 $retryCount 次尝试，SDK在1秒内未响应。")
             if (retryCount < maxRetry) {
                 delay(1000L)
             }
