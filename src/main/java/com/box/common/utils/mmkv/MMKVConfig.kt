@@ -36,6 +36,9 @@ object MMKVConfig {
     var userToken: String by mmkv("userToken", "")
 
     // 用户隐私授权状态，默认为 false
+    var guJiaTips: Boolean by mmkv("guJiaTips", false)
+
+    // 用户隐私授权状态，默认为 false
     var permissionsUser: Boolean by mmkv("permissionsUser", false)
 
     // 设备相册获取授权状态，默认为 false

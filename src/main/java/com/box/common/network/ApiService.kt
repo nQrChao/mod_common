@@ -34,10 +34,10 @@ import retrofit2.http.Url
 interface ApiService {
     companion object {
         var HTTP_RELEASE_URLS: Array<String> = arrayOf(
-            "https://4319g.yize01.com/",
-            "https://4319g.yize01.com/"
+            "http://4319g.yize01.com/",
+            "http://4319g.yize01.com/"
         )
-        var D_API_URL = "https://4319g.yize01.com"
+        var D_API_URL = "http://4319g.yize01.com"
     }
 
     @HEAD
