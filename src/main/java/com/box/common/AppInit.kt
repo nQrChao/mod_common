@@ -211,7 +211,7 @@ object AppInit {
         })
     }
 
-    private fun getOAID(): kotlinx.coroutines.Job {
+    private fun getOAID(): Job {
         return AppScope.applicationScope.launch {
             var finalOaid: String? = null
             try {
