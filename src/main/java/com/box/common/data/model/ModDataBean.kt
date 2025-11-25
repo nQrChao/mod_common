@@ -5,7 +5,7 @@ import com.box.other.blankj.utilcode.util.StringUtils
 import java.io.Serializable
 
 data class ModDataBean(
-    var id: Int = 0 ,
+    var id: Int = 0,
     var title: String = "",
     var image: String = "",
     var description: String = "",
@@ -30,9 +30,19 @@ data class ModDataBean(
     var gameId: String = "",
     var checkNum: String = "",
     var froms: String = "",
-    var fileNames: String = "",
+    var fileNames: MutableList<String> = mutableListOf(),
+    var serverName: String = "",
+    var amount: String = "",
+    var gameIcon: String = "",
+    var gameOwnScreenshots: String = "",
+    var tradeId: String = "",
+    var gameAccount: String = "",
+    var gameAccountIcon: String = "",
+    var self: String = "",
+    var banner: String = "",
+    var userAccount: String = "",
     //系统消息
-    var count :Int = 0,
+    var count: Int = 0,
     var createBy: String = "",
     var updateBy: String = "",
     var updateTime: String = "",
@@ -42,22 +52,24 @@ data class ModDataBean(
     var noticeType: String = "",
     var noticeContent: String = "",
     var status: String = "",
-    var readStatus : Int = 0,
+    var readStatus: Int = 0,
     //自定义数据
     var isSelect: Boolean = false,
     var isShouCang: Boolean = false,
     var rank: Int = 0,
 
-) : Serializable{
+
+    ) : Serializable {
     //getModGameList [{"id":0,"name":"","url":"","tag":"","createTime":""}]
     //getNewsDetailById {"id":0,"content":""}
     //getNewsList [{"id":0,"title":"","image":"","description":"","views":,"deleteTime":,"createTime":}]
     //getRandomName {"id":1,"type":"1","name":"","createTime":"","length":3}
     //getRoleType [{"dictLabel":"","dictValue":"1"}]
 
-    fun getRankText():String{
+    fun getRankText(): String {
         return rank.toString()
     }
+
     fun getRankIcon(): Int {
         return when (rank) {
             1 -> R.drawable.mod_rank_top1
@@ -67,11 +79,12 @@ data class ModDataBean(
                 android.R.color.transparent
         }
     }
+
     fun getCheckStateString(): String {
         return when (checkState) {
             0 -> "审核中"
             2 -> "未通过"
-            else ->{
+            else -> {
                 StringUtils.format("估价\n￥%s", money)
             }
         }

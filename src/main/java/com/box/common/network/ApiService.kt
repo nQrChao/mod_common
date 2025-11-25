@@ -193,6 +193,31 @@ interface ApiService {
         @Query("pageSize") pageSize: Int
     ): ModApiResponse<ModDataBean>
 
+
+    /**
+     * 获取提交估价游戏-todayList
+     * 对应的 URL: https://4319g.yize01.com:443/api/system/gameValuationCommit/todayList
+     */
+    @GET("api/system/gameValuationCommit/todayList")
+    suspend fun getValuationCommitTodayList(): ModApiResponse<MutableList<ModDataBean>>
+
+    /**
+     * 获取提交估价游戏-banner
+     * 对应的 URL: https://4319g.yize01.com:443/api/system/gameValuationCommit/banner
+     */
+    @GET("api/system/gameValuationCommit/banner")
+    suspend fun getValuationCommitBanner(): ModApiResponse<MutableList<ModDataBean>>
+
+    /**
+     * 获取提交估价游戏-热门
+     * 对应的 URL: https://4319g.yize01.com:443/api/system/gameValuationCommit/hot
+     */
+    @GET("api/system/gameValuationCommit/hot")
+    suspend fun getValuationCommitHotList(
+        @Query("pageNum") pageNum: Int,
+        @Query("pageSize") pageSize: Int)
+    : ModApiResponse<MutableList<ModDataBean>>
+
     /**
      * 获取提交估价游戏-类型
      * 对应的 URL: https://4319g.yize01.com:443/api/system/gameValuationCommit/listGame
