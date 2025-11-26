@@ -5,6 +5,7 @@ import com.box.common.data.ChangePasswordRequest
 import com.box.common.data.DeleteUserRequest
 import com.box.common.data.GameValuationCommitRequest
 import com.box.common.data.RegisterRequest
+import com.box.common.data.UpdateAccountRequest
 import com.box.common.data.model.MarketInit
 import com.box.common.data.model.ModDataBean
 import com.box.common.data.model.ModInitBean
@@ -172,7 +173,7 @@ interface ApiService {
     @GET("api/system/gameValuationCommit/commitDetail")
     suspend fun getValuationCommitDetail(
         @Query("id") id: String,
-    ): ModApiResponse<GameValuationCommitRequest>
+    ): ModApiResponse<ModDataBean>
 
     /**
      * 读取通知
@@ -209,14 +210,26 @@ interface ApiService {
     suspend fun getValuationCommitBanner(): ModApiResponse<MutableList<ModDataBean>>
 
     /**
+     * 获取提交估价游戏-广场
+     * 对应的 URL: https://4319g.yize01.com:443/api/system/gameValuationCommit/square
+     */
+    @GET("api/system/gameValuationCommit/square")
+    suspend fun getValuationCommitSquare(
+        @Query("checkState") checkState: Int,
+        @Query("gameName") gameName: String,
+        @Query("pageNum") pageNum: Int,
+        @Query("pageSize") pageSize: Int
+    ): ModApiResponse<MutableList<ModDataBean>>
+
+    /**
      * 获取提交估价游戏-热门
      * 对应的 URL: https://4319g.yize01.com:443/api/system/gameValuationCommit/hot
      */
     @GET("api/system/gameValuationCommit/hot")
     suspend fun getValuationCommitHotList(
         @Query("pageNum") pageNum: Int,
-        @Query("pageSize") pageSize: Int)
-    : ModApiResponse<MutableList<ModDataBean>>
+        @Query("pageSize") pageSize: Int
+    ): ModApiResponse<MutableList<ModDataBean>>
 
     /**
      * 获取提交估价游戏-类型
@@ -224,6 +237,13 @@ interface ApiService {
      */
     @GET("api/system/gameValuationCommit/listGame")
     suspend fun getValuationCommitGameList(): ModApiResponse<MutableList<ModDataBean>>
+
+    /**
+     * 获取提交估价游戏-次数
+     * 对应的 URL: https://4319g.yize01.com:443/api/system/gameValuationCommit/userTodayCount
+     */
+    @GET("api/system/gameValuationCommit/userTodayCount")
+    suspend fun getValuationCommitUserTodayCount(): ModApiResponse<ModDataBean>
 
     /**
      * 获取提交估价游戏-根据游戏Id查询对应配置的表单
@@ -243,7 +263,16 @@ interface ApiService {
     suspend fun postValuationCommit(@Body requestBody: GameValuationCommitRequest): ModApiResponse<Any>
 
     @Multipart
-    @POST("/api/common/uploadFiles")
+    @POST("api/userCenter/avatar")
+    suspend fun uploadAvatarFiles(
+        @Part avatarFile: List<MultipartBody.Part>
+    ): ModApiResponse<UploadResponseString>
+
+    @POST("api/userCenter/updateAccount")
+    suspend fun postUpdateAccount(@Body requestBody: UpdateAccountRequest): ModApiResponse<Any>
+
+    @Multipart
+    @POST("api/common/uploadFiles")
     suspend fun uploadFiles(
         @Part files: List<MultipartBody.Part>
     ): ModApiResponse<UploadResponseString>

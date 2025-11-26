@@ -9,6 +9,7 @@ data class UploadResponseString(
     var msg: String = "",
     var code: Int = 0,
     var urls: String = "",
+    var imgUrl: String = "",
     var newFileNames: String = "",
     var fileNames: String = "",
     var originalFilenames: String = "",

@@ -29,7 +29,7 @@ data class ModDataBean(
     var gameName: String = "",
     var gameId: String = "",
     var checkNum: String = "",
-    var froms: String = "",
+    var froms: MutableList<ModValuationCommitBean> = mutableListOf(),
     var fileNames: MutableList<String> = mutableListOf(),
     var serverName: String = "",
     var amount: String = "",
@@ -77,6 +77,16 @@ data class ModDataBean(
             3 -> R.drawable.mod_rank_top3
             else ->
                 android.R.color.transparent
+        }
+    }
+
+    fun getCheckMoney(): String {
+        return when (checkState) {
+            0 -> "审核中"
+            2 -> "未通过"
+            else -> {
+                StringUtils.format("￥ %s", money)
+            }
         }
     }
 

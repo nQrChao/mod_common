@@ -24,6 +24,7 @@ class EventViewModel : BaseViewModel() {
     val closeMyGujiaActivity = UnPeekLiveData<Boolean>()
 
     val guJiaCurrentItem = UnPeekLiveData<Int>()
+    val guJiaStringCurrentItem = UnPeekLiveData<String>()
 
     val hideConversation = UnPeekLiveData<String>()
 

@@ -38,6 +38,12 @@ data class RegisterRequest(
     val password: String
 ) : Serializable
 
+data class UpdateAccountRequest(
+    val password: String="",
+    val userAccount: String="",
+    val userName: String=""
+) : Serializable
+
 data class ChangePasswordRequest(
     val newPwd: String,
     val oldPwd: String

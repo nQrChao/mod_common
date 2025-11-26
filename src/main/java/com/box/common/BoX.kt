@@ -936,3 +936,18 @@ class DecimalDigitsInputFilter(digitsAfterZero: Int) : InputFilter {
 
 }
 
+fun String?.toSafeMutableList(separator: String = ","): MutableList<String> {
+    val list = this?.split(separator)
+        ?.map { it.trim() }
+        ?.filter { it.isNotEmpty() }
+        ?: emptyList()
+    return list.toMutableList()
+}
+
+fun String?.toSafeArrayList(separator: String = ","): ArrayList<Any> {
+    return this?.split(separator)
+        ?.map { it.trim() }
+        ?.filter { it.isNotEmpty() }
+        ?.toCollection(ArrayList())
+        ?: ArrayList()
+}

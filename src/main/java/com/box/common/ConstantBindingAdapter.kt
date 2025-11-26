@@ -477,6 +477,87 @@ object ConstantBindingAdapter {
         }
     }
 
+    /**
+     * 加载 Uri 图片，并裁剪为圆形，同时添加指定颜色和宽度的边框。
+     * 效果参考：带蓝色边框的圆形头像。
+     *
+     * @param view ImageView
+     * @param uri 图片路径
+     * @param borderWidth 边框宽度 (dp)，默认 2dp
+     * @param borderColor 边框颜色 (Color Int)，默认蓝色 (#58A6FF)
+     */
+    @BindingAdapter(value = ["loadCircleWithBorderUri", "borderWidth", "borderColor"], requireAll = false)
+    @JvmStatic
+    fun loadCircleWithBorder(view: ImageView, uri: Uri?, borderWidth: Float?, borderColor: Int?) {
+        val context = view.context
+        // 1. 设置默认边框参数 (默认蓝色)
+        val defaultColor = android.graphics.Color.parseColor("#58A6FF")
+        val finalColor = borderColor ?: defaultColor
+        val finalWidthPx = SizeUtils.dp2px(borderWidth ?: 2f) // 默认 2dp 边框
+        // 2. 动态创建一个圆形边框 Drawable
+        val borderDrawable = android.graphics.drawable.GradientDrawable().apply {
+            shape = android.graphics.drawable.GradientDrawable.OVAL
+            setStroke(finalWidthPx, finalColor)
+            setColor(android.graphics.Color.TRANSPARENT) // 内部透明
+        }
+        // 3. 将边框设置为背景，并设置 padding 防止图片盖住边框
+        view.background = borderDrawable
+        view.setPadding(finalWidthPx, finalWidthPx, finalWidthPx, finalWidthPx)
+        // 4. 加载图片
+        if (uri != null) {
+            GlideApp.with(context)
+                .load(uri)
+                .transform(CircleCrop()) // 核心：裁剪成圆形
+                .placeholder(RC.drawable.loading_spinner_rotate)
+                .error(RC.drawable.image_error_ic)
+                .into(view)
+        } else {
+            // 没有图片时，加载默认头像（也要裁成圆形以匹配边框）
+            GlideApp.with(context)
+                .load(RC.drawable.mod_user_icon1) // 建议换成你的默认头像资源，如小熊图
+                .transform(CircleCrop())
+                .into(view)
+        }
+    }
+
+
+    /**
+     * 通用的带边框圆形图片加载器。
+     * 支持加载：资源ID (Int), URL (String), Uri, Drawable 等。
+     *
+     * @param view ImageView
+     * @param source 图片源 (R.drawable.xxx, url字符串, uri等)
+     * @param borderWidth 边框宽度 (dp)，默认 2dp
+     * @param borderColor 边框颜色 (Color Int)，默认蓝色 (#58A6FF)
+     */
+    @BindingAdapter(value = ["circleBorderSrc", "borderWidth", "borderColor"], requireAll = false)
+    @JvmStatic
+    fun setCircleBorderSrc(view: ImageView, source: Any?, borderWidth: Float?, borderColor: Int?) {
+        val context = view.context
+        // 1. 设置边框参数 (默认蓝色)
+        val defaultColor = android.graphics.Color.parseColor("#58A6FF")
+        val finalColor = borderColor ?: defaultColor
+        val finalWidthPx = SizeUtils.dp2px(borderWidth ?: 2f)
+        // 2. 动态绘制圆形边框背景
+        val borderDrawable = android.graphics.drawable.GradientDrawable().apply {
+            shape = android.graphics.drawable.GradientDrawable.OVAL
+            setStroke(finalWidthPx, finalColor)
+            setColor(android.graphics.Color.TRANSPARENT) // 内部透明
+        }
+        // 3. 设置背景和 Padding (防止图片盖住边框)
+        view.background = borderDrawable
+        view.setPadding(finalWidthPx, finalWidthPx, finalWidthPx, finalWidthPx)
+        // 4. 加载图片 (source 为空时加载默认图)
+        // 你可以将 R.drawable.mod_user_icon1 替换为你想要的默认占位图
+        val loadObj = source ?: RC.drawable.mod_user_icon1
+        GlideApp.with(context)
+            .load(loadObj)
+            .transform(CircleCrop()) // 核心：裁剪成圆形
+            .placeholder(RC.drawable.loading_spinner_rotate) // 加载中
+            .error(RC.drawable.image_error_ic) // 加载失败
+            .into(view)
+    }
+
     @BindingAdapter(value = ["setDynamicBackground"])
     @JvmStatic
     fun setDynamicBackground(view: View, position: Int) {
@@ -537,6 +618,34 @@ object ConstantBindingAdapter {
         // 优先级 3: 默认
         else {
             imageView.setImageResource(placeholder)
+        }
+    }
+
+
+    /**
+     * 设置文本，并将文本中的 "*" 标记为红色
+     */
+    @BindingAdapter("redStarText")
+    @JvmStatic
+    fun setRedStarText(view: TextView, text: String?) {
+        if (text.isNullOrEmpty()) {
+            view.text = ""
+            return
+        }
+        // 如果包含 * 号，进行变色处理
+        if (text.contains("*")) {
+            val builder = android.text.SpannableStringBuilder(text)
+            val index = text.indexOf("*")
+            // 设置红色
+            builder.setSpan(
+                android.text.style.ForegroundColorSpan(android.graphics.Color.RED),
+                index,
+                index + 1,
+                android.text.Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+            view.text = builder
+        } else {
+            view.text = text
         }
     }
 
